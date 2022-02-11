@@ -1,0 +1,18 @@
+#pragma once
+
+#include <windef.h>
+
+#include "DesignPattern/ComponentBase/Component/Component.h"
+#include "DesignPattern/ComponentBase/Component/Behaviour/Behaviour.h"
+
+class Rendered : virtual public Component, public Behaviour {
+private:
+protected:
+public:
+	Rendered();
+	virtual ~Rendered();
+
+	virtual void Operation() override;
+
+	virtual void Render(HDC _hdc) = 0;
+};
