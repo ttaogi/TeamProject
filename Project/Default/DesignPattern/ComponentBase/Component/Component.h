@@ -5,7 +5,8 @@ typedef char* Component_ID;
 class GameObject;
 class Transform;
 
-class Component {
+class Component
+{
 private:
 protected:
 	const Component_ID id;

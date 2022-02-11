@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../Utility/Enums.h"
+#include "Utility/Enums.h"
 
-typedef struct tagImage {
+typedef struct tagImage
+{
 	DWORD	resID;
 	HDC		hMemDC;
 	HBITMAP	hBit;
@@ -16,7 +17,8 @@ typedef struct tagImage {
 	int maxFrameX, maxFrameY, maxFrameIdx;
 	int frameWidth, frameHeight;
 
-	tagImage() {
+	tagImage()
+	{
 		resID = 0;
 		hMemDC = NULL;
 		hBit = NULL;
@@ -31,7 +33,8 @@ typedef struct tagImage {
 	}
 } IMAGE_INFO, * LPIMAGE_INFO;
 
-class Image {
+class Image
+{
 protected:
 	LPIMAGE_INFO	imageInfo;
 	wchar_t*		fileName;

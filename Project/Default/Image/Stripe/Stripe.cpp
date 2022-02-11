@@ -2,15 +2,12 @@
 
 #include "Stripe.h"
 
-Stripe::Stripe() {
-	image = NULL;
-}
+Stripe::Stripe() { image = NULL; }
 
-Stripe::~Stripe() {
-	Release();
-}
+Stripe::~Stripe() { Release(); }
 
-HRESULT Stripe::Init(std::wstring _imageKey, POINT _coordinateRevision) {
+HRESULT Stripe::Init(std::wstring _imageKey, POINT _coordinateRevision)
+{
 	image = IMG->FindImage(_imageKey);
 	if (image == NULL) return E_FAIL;
 
@@ -22,7 +19,8 @@ HRESULT Stripe::Init(std::wstring _imageKey, POINT _coordinateRevision) {
 
 void Stripe::Release() { }
 
-void Stripe::FrameRender(HDC _hdc, POINT _pos) {
+void Stripe::FrameRender(HDC _hdc, POINT _pos)
+{
 	LPIMAGE_INFO imageInfo = image->GetImageInfo();
 
 	if (frameIdx >= imageInfo->maxFrameIdx) frameIdx = imageInfo->maxFrameIdx - 1;
@@ -31,7 +29,8 @@ void Stripe::FrameRender(HDC _hdc, POINT _pos) {
 	int srcX = (frameIdx % imageInfo->maxFrameX) * imageInfo->frameWidth;
 	int srcY = (frameIdx / imageInfo->maxFrameX) * imageInfo->frameHeight;
 
-	if (image->GetIsTrans() == true) {
+	if (image->GetIsTrans() == true)
+	{
 		GdiTransparentBlt(
 			_hdc, destX, destY,
 			imageInfo->frameWidth,
@@ -41,8 +40,7 @@ void Stripe::FrameRender(HDC _hdc, POINT _pos) {
 			srcY,
 			imageInfo->frameWidth,
 			imageInfo->frameHeight,
-			image->GetTransColor()
-		);
+			image->GetTransColor());
 	}
 	else {
 		BitBlt(
@@ -52,8 +50,7 @@ void Stripe::FrameRender(HDC _hdc, POINT _pos) {
 			imageInfo->hMemDC,
 			srcX,
 			srcY,
-			SRCCOPY
-		);
+			SRCCOPY);
 	}
 
 	++frameIdx;

@@ -21,18 +21,18 @@ public:
 	void		RemoveComponent(Component* _c);
 	Component*	GetComponent(Component_ID _id);
 	template<class T>
-	T* GetComponent() {
+	T* GetComponent()
+	{
 		if (cList.size() == 0) return NULL;
 
 		T* c = new T();
 
-		for (auto it = cList.begin(); it != cList.end(); ++it) {
-			if (!strcmp((*it)->GetComponentID(), c->GetComponentID())) {
+		for (auto it = cList.begin(); it != cList.end(); ++it)
+			if ( !strcmp((*it)->GetComponentID(), c->GetComponentID()) )
+			{
 				delete c;
 				return dynamic_cast<T*>(*it);
-				//return ((T*)*it);
 			}
-		}
 
 		delete c;
 		return NULL;

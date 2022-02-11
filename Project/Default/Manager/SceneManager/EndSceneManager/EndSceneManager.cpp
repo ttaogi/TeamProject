@@ -10,14 +10,16 @@ EndSceneManager::EndSceneManager(MainGame* _mg)
 	bgImage = NULL;
 }
 
-void EndSceneManager::SetBackBuffer() {
+void EndSceneManager::SetBackBuffer()
+{
 	/*SAFE_RELEASE(backBuffer);
 	SAFE_DELETE(backBuffer);
 	backBuffer = new Image;
 	backBuffer->Init(WINSIZE_X, WINSIZE_Y);*/
 }
 
-void EndSceneManager::Init(MainGame* _mg) {
+void EndSceneManager::Init(MainGame* _mg)
+{
 	SetBackBuffer();
 
 	/*bgImage = new Image();
@@ -25,14 +27,14 @@ void EndSceneManager::Init(MainGame* _mg) {
 	bgImage->InitForAlphaBlend();*/
 }
 
-void EndSceneManager::Update(HWND _hWnd) {
-}
+void EndSceneManager::Update(HWND _hWnd) { }
 
 void EndSceneManager::LateUpdate() { }
 
 void EndSceneManager::Release() { }
 
-void EndSceneManager::Render(HDC _hdc) {
+void EndSceneManager::Render(HDC _hdc)
+{
 	//HDC memDC = GetBackBuffer()->GetMemDC();
 
 	//PatBlt(memDC, 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);

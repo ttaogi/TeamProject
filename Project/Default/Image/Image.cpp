@@ -12,11 +12,10 @@ Image::Image()
 	transColor(RGB(0, 0, 0)), blendImage(NULL)
 { }
 
-Image::~Image() {
-	Release();
-}
+Image::~Image() { Release(); }
 
-HRESULT Image::Init(int _width, int _height) {
+HRESULT Image::Init(int _width, int _height)
+{
 	if (imageInfo != NULL) Release();
 
 	HDC hdc = GetDC(HANDLE_WINDOW);
@@ -34,7 +33,8 @@ HRESULT Image::Init(int _width, int _height) {
 	isTrans = FALSE;
 	transColor = RGB(0, 0, 0);
 
-	if (imageInfo->hBit == NULL) { // fail to get resource.
+	if (imageInfo->hBit == NULL)
+	{ // fail to get resource.
 		Release();
 		ReleaseDC(HANDLE_WINDOW, hdc);
 		return E_FAIL;
@@ -46,8 +46,8 @@ HRESULT Image::Init(int _width, int _height) {
 }
 
 HRESULT Image::Init(const DWORD _resID, int _width, int _height,
-	bool _isTrans, COLORREF _transColor
-) {
+	bool _isTrans, COLORREF _transColor)
+{
 	if (imageInfo != NULL) Release();
 
 	HDC hdc = GetDC(HANDLE_WINDOW);
@@ -65,7 +65,8 @@ HRESULT Image::Init(const DWORD _resID, int _width, int _height,
 	isTrans = _isTrans;
 	transColor = _transColor;
 
-	if (imageInfo->hBit == 0) { // fail to get resource.
+	if (imageInfo->hBit == 0)
+	{ // fail to get resource.
 		Release();
 		ReleaseDC(HANDLE_WINDOW, hdc);
 		return E_FAIL;
@@ -77,8 +78,8 @@ HRESULT Image::Init(const DWORD _resID, int _width, int _height,
 }
 
 HRESULT Image::Init(const wchar_t* _fileName, int _width, int _height,
-	bool _isTrans, COLORREF _transColor
-) {
+	bool _isTrans, COLORREF _transColor)
+{
 	if (imageInfo != NULL) Release();
 
 	HDC hdc = GetDC(HANDLE_WINDOW);
@@ -100,7 +101,8 @@ HRESULT Image::Init(const wchar_t* _fileName, int _width, int _height,
 	isTrans = _isTrans;
 	transColor = _transColor;
 
-	if (imageInfo->hBit == 0) { // fail to get resource.
+	if (imageInfo->hBit == 0)
+	{ // fail to get resource.
 		Release();
 		ReleaseDC(HANDLE_WINDOW, hdc);
 		return E_FAIL;
@@ -112,8 +114,8 @@ HRESULT Image::Init(const wchar_t* _fileName, int _width, int _height,
 }
 
 HRESULT Image::Init(const wchar_t* _fileName, float _x, float _y,
-	int _width, int _height, BOOL _isTrans, COLORREF _transColor
-) {
+	int _width, int _height, BOOL _isTrans, COLORREF _transColor)
+{
 	if (imageInfo != NULL) this->Release();
 
 	HDC hdc = GetDC(HANDLE_WINDOW);
@@ -137,7 +139,8 @@ HRESULT Image::Init(const wchar_t* _fileName, float _x, float _y,
 	isTrans = _isTrans;
 	transColor = _transColor;
 
-	if (imageInfo->hBit == 0) { // fail to get resource.
+	if (imageInfo->hBit == 0)
+	{ // fail to get resource.
 		Release();
 		ReleaseDC(HANDLE_WINDOW, hdc);
 		return E_FAIL;
@@ -151,8 +154,8 @@ HRESULT Image::Init(const wchar_t* _fileName, float _x, float _y,
 // frame.
 HRESULT Image::Init(const wchar_t* _fileName, int _width, int _height,
 	int _maxFrameX, int _maxFrameY, int _maxFrameIdx,
-	bool _isTrans, COLORREF _transColor
-) {
+	bool _isTrans, COLORREF _transColor)
+{
 	if (imageInfo != NULL) this->Release();
 
 	HDC hdc = GetDC(HANDLE_WINDOW);
@@ -180,7 +183,8 @@ HRESULT Image::Init(const wchar_t* _fileName, int _width, int _height,
 	isTrans = _isTrans;
 	transColor = _transColor;
 
-	if (imageInfo->hBit == 0) { // fail to get resource.
+	if (imageInfo->hBit == 0)
+	{ // fail to get resource.
 		Release();
 		ReleaseDC(HANDLE_WINDOW, hdc);
 		return E_FAIL;
@@ -193,8 +197,8 @@ HRESULT Image::Init(const wchar_t* _fileName, int _width, int _height,
 
 HRESULT Image::Init(const wchar_t* _fileName, float _x, float _y,
 	int _width, int _height, int _maxFrameX, int _maxFrameY, int _maxFrameIdx,
-	bool _isTrans, COLORREF _transColor
-) {
+	bool _isTrans, COLORREF _transColor)
+{
 	if (imageInfo != NULL) Release();
 
 	HDC hdc = GetDC(HANDLE_WINDOW);
@@ -225,7 +229,8 @@ HRESULT Image::Init(const wchar_t* _fileName, float _x, float _y,
 	isTrans = _isTrans;
 	transColor = _transColor;
 
-	if (imageInfo->hBit == 0) { // fail to get resource.
+	if (imageInfo->hBit == 0)
+	{ // fail to get resource.
 		Release();
 		ReleaseDC(HANDLE_WINDOW, hdc);
 		return E_FAIL;
@@ -236,7 +241,8 @@ HRESULT Image::Init(const wchar_t* _fileName, float _x, float _y,
 	return S_OK;
 }
 
-HRESULT Image::InitForAlphaBlend() {
+HRESULT Image::InitForAlphaBlend()
+{
 	if (imageInfo == NULL) return E_FAIL;
 
 	HDC hdc = GetDC(HANDLE_WINDOW);
@@ -255,7 +261,8 @@ HRESULT Image::InitForAlphaBlend() {
 	blendImage->width = WINSIZE_X;
 	blendImage->height = WINSIZE_Y;
 
-	if (blendImage->hBit == 0) { // fail to get resource.
+	if (blendImage->hBit == 0)
+	{ // fail to get resource.
 		Release();
 		ReleaseDC(HANDLE_WINDOW, hdc);
 		return E_FAIL;
@@ -266,13 +273,16 @@ HRESULT Image::InitForAlphaBlend() {
 	return S_OK;
 }
 
-void Image::SetTransColor(bool _isTrans, COLORREF _transColor) {
+void Image::SetTransColor(bool _isTrans, COLORREF _transColor)
+{
 	isTrans = _isTrans;
 	transColor = _transColor;
 }
 
-void Image::Release() {
-	if (imageInfo != NULL) {
+void Image::Release()
+{
+	if (imageInfo != NULL)
+	{
 		SelectObject(imageInfo->hMemDC, imageInfo->hOBit);
 		DeleteObject(imageInfo->hBit);
 		DeleteDC(imageInfo->hMemDC);
@@ -280,7 +290,8 @@ void Image::Release() {
 		SAFE_DELETE(imageInfo);
 		SAFE_DELETE_ARRAY(fileName);
 	}
-	if (blendImage != NULL) {
+	if (blendImage != NULL)
+	{
 		SelectObject(blendImage->hMemDC, blendImage->hOBit);
 		DeleteObject(blendImage->hBit);
 		DeleteDC(blendImage->hMemDC);
@@ -289,8 +300,10 @@ void Image::Release() {
 	}
 }
 
-void Image::Render(HDC _hdc) {
-	if (isTrans) {
+void Image::Render(HDC _hdc)
+{
+	if (isTrans)
+	{
 		GdiTransparentBlt(
 			_hdc, 0, 0,
 			imageInfo->width,
@@ -299,23 +312,24 @@ void Image::Render(HDC _hdc) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			transColor
-		);
+			transColor);
 	}
-	else {
+	else
+	{
 		BitBlt(
 			_hdc, 0, 0,
 			imageInfo->width,
 			imageInfo->height,
 			imageInfo->hMemDC,
 			0, 0,
-			SRCCOPY
-		);
+			SRCCOPY);
 	}
 }
 
-void Image::Render(HDC _hdc, int _destX, int _destY) {
-	if (isTrans) {
+void Image::Render(HDC _hdc, int _destX, int _destY)
+{
+	if (isTrans)
+	{
 		GdiTransparentBlt(
 			_hdc, _destX, _destY,
 			imageInfo->width,
@@ -324,22 +338,22 @@ void Image::Render(HDC _hdc, int _destX, int _destY) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			transColor
-		);
+			transColor);
 	}
-	else {
+	else
+	{
 		BitBlt(
 			_hdc, _destX, _destY,
 			imageInfo->width,
 			imageInfo->height,
 			imageInfo->hMemDC,
 			0, 0,
-			SRCCOPY
-		);
+			SRCCOPY);
 	}
 }
 
-void Image::Render(HDC _hdc, int _destX, int _destY, int _destWidth, int _destHeight) {
+void Image::Render(HDC _hdc, int _destX, int _destY, int _destWidth, int _destHeight)
+{
 	GdiTransparentBlt(
 		_hdc, _destX, _destY,
 		_destWidth,
@@ -348,12 +362,14 @@ void Image::Render(HDC _hdc, int _destX, int _destY, int _destWidth, int _destHe
 		0, 0,
 		imageInfo->width,
 		imageInfo->height,
-		RGB(0, 0, 0)
-	);
+		RGB(0, 0, 0));
 }
 
-void Image::Render(HDC _hdc, int _destX, int _destY, int _srcX, int _srcY, int _srcWidth, int _srcHeight) {
-	if (isTrans) {
+void Image::Render(HDC _hdc, int _destX, int _destY,
+	int _srcX, int _srcY, int _srcWidth, int _srcHeight)
+{
+	if (isTrans)
+	{
 		GdiTransparentBlt(
 			_hdc, _destX, _destY,
 			_srcWidth,
@@ -362,28 +378,29 @@ void Image::Render(HDC _hdc, int _destX, int _destY, int _srcX, int _srcY, int _
 			_srcX, _srcY,
 			_srcWidth,
 			_srcHeight,
-			transColor
-		);
+			transColor);
 	}
-	else {
+	else
+	{
 		BitBlt(
 			_hdc, _destX, _destY,
 			_srcWidth,
 			_srcHeight,
 			imageInfo->hMemDC,
 			_srcX, _srcY,
-			SRCCOPY
-		);
+			SRCCOPY);
 	}
 }
 
-void Image::AlphaRender(HDC _hdc, BYTE _alpha) {
+void Image::AlphaRender(HDC _hdc, BYTE _alpha)
+{
 	// check that it`s the first call.
 	if (!blendImage) InitForAlphaBlend();
 
 	blendFunc.SourceConstantAlpha = _alpha;
 
-	if (isTrans) {
+	if (isTrans)
+	{
 		BitBlt(
 			blendImage->hMemDC,
 			0, 0,
@@ -391,8 +408,7 @@ void Image::AlphaRender(HDC _hdc, BYTE _alpha) {
 			imageInfo->height,
 			_hdc,
 			0, 0,
-			SRCCOPY
-		);
+			SRCCOPY);
 		GdiTransparentBlt(
 			blendImage->hMemDC,
 			0, 0,
@@ -402,8 +418,7 @@ void Image::AlphaRender(HDC _hdc, BYTE _alpha) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			transColor
-		);
+			transColor);
 		AlphaBlend(
 			_hdc,
 			0, 0,
@@ -413,10 +428,10 @@ void Image::AlphaRender(HDC _hdc, BYTE _alpha) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			blendFunc
-		);
+			blendFunc);
 	}
-	else {
+	else
+	{
 		AlphaBlend(
 			_hdc,
 			0, 0,
@@ -426,18 +441,19 @@ void Image::AlphaRender(HDC _hdc, BYTE _alpha) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			blendFunc
-		);
+			blendFunc);
 	}
 }
 
-void Image::AlphaRender(HDC _hdc, int _destX, int _destY, BYTE _alpha) {
+void Image::AlphaRender(HDC _hdc, int _destX, int _destY, BYTE _alpha)
+{
 	// check that it`s the first call.
 	if (!blendImage) InitForAlphaBlend();
 
 	blendFunc.SourceConstantAlpha = _alpha;
 
-	if (isTrans) {
+	if (isTrans)
+	{
 		BitBlt(
 			blendImage->hMemDC,
 			0, 0,
@@ -445,8 +461,7 @@ void Image::AlphaRender(HDC _hdc, int _destX, int _destY, BYTE _alpha) {
 			imageInfo->height,
 			_hdc,
 			_destX, _destY,
-			SRCCOPY
-		);
+			SRCCOPY);
 		GdiTransparentBlt(
 			blendImage->hMemDC,
 			0, 0,
@@ -456,8 +471,7 @@ void Image::AlphaRender(HDC _hdc, int _destX, int _destY, BYTE _alpha) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			transColor
-		);
+			transColor);
 		AlphaBlend(
 			_hdc,
 			_destX, _destY,
@@ -467,10 +481,10 @@ void Image::AlphaRender(HDC _hdc, int _destX, int _destY, BYTE _alpha) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			blendFunc
-		);
+			blendFunc);
 	}
-	else {
+	else
+	{
 		AlphaBlend(
 			_hdc,
 			_destX, _destY,
@@ -480,18 +494,20 @@ void Image::AlphaRender(HDC _hdc, int _destX, int _destY, BYTE _alpha) {
 			0, 0,
 			imageInfo->width,
 			imageInfo->height,
-			blendFunc
-		);
+			blendFunc);
 	}
 }
 
-void Image::AlphaRender(HDC _hdc, int _destX, int _destY, int _srcX, int _srcY, int _srcWidth, int _srcHeight, BYTE _alpha) {
+void Image::AlphaRender(HDC _hdc, int _destX, int _destY,
+	int _srcX, int _srcY, int _srcWidth, int _srcHeight, BYTE _alpha)
+{
 	// check that it`s the first call.
 	if (!blendImage) InitForAlphaBlend();
 
 	blendFunc.SourceConstantAlpha = _alpha;
 
-	if (isTrans) {
+	if (isTrans)
+	{
 		BitBlt(
 			blendImage->hMemDC,
 			_destX, _destY,
@@ -499,8 +515,7 @@ void Image::AlphaRender(HDC _hdc, int _destX, int _destY, int _srcX, int _srcY, 
 			_srcHeight,
 			_hdc,
 			_destX, _destY,
-			SRCCOPY
-		);
+			SRCCOPY);
 		GdiTransparentBlt(
 			blendImage->hMemDC,
 			_destX, _destY,
@@ -510,8 +525,7 @@ void Image::AlphaRender(HDC _hdc, int _destX, int _destY, int _srcX, int _srcY, 
 			_srcX, _srcY,
 			_srcWidth,
 			_srcHeight,
-			transColor
-		);
+			transColor);
 		AlphaBlend(
 			_hdc,
 			_destX, _destY,
@@ -521,23 +535,24 @@ void Image::AlphaRender(HDC _hdc, int _destX, int _destY, int _srcX, int _srcY, 
 			_destX, _destY,
 			_srcWidth,
 			_srcHeight,
-			blendFunc
-		);
+			blendFunc);
 	}
-	else {
+	else
+	{
 		BitBlt(
 			_hdc, _destX, _destY,
 			_srcWidth,
 			_srcHeight,
 			imageInfo->hMemDC,
 			_srcX, _srcY,
-			SRCCOPY
-		);
+			SRCCOPY);
 	}
 }
 
-void Image::FrameRender(HDC _hdc, int _destX, int _destY) {
-	if (isTrans) {
+void Image::FrameRender(HDC _hdc, int _destX, int _destY)
+{
+	if (isTrans)
+	{
 		GdiTransparentBlt(
 			_hdc, _destX, _destY,
 			imageInfo->frameWidth,
@@ -547,10 +562,10 @@ void Image::FrameRender(HDC _hdc, int _destX, int _destY) {
 			imageInfo->currentFrameY * imageInfo->frameHeight,
 			imageInfo->frameWidth,
 			imageInfo->frameHeight,
-			transColor
-		);
+			transColor);
 	}
-	else {
+	else
+	{
 		BitBlt(
 			_hdc, _destX, _destY,
 			imageInfo->frameWidth,
@@ -558,16 +573,19 @@ void Image::FrameRender(HDC _hdc, int _destX, int _destY) {
 			imageInfo->hMemDC,
 			imageInfo->currentFrameX * imageInfo->frameWidth,
 			imageInfo->currentFrameY * imageInfo->frameHeight,
-			SRCCOPY
-		);
+			SRCCOPY);
 	}
 }
 
-void Image::FrameRender(HDC _hdc, int _destX, int _destY, int _currentFrameX, int _currentFrameY) {
-	imageInfo->currentFrameX = (_currentFrameX < imageInfo->maxFrameX) ? (_currentFrameX) : imageInfo->maxFrameX - 1;
-	imageInfo->currentFrameY = (_currentFrameY < imageInfo->maxFrameY) ? (_currentFrameY) : imageInfo->maxFrameY - 1;
+void Image::FrameRender(HDC _hdc, int _destX, int _destY, int _currentFrameX, int _currentFrameY)
+{
+	imageInfo->currentFrameX = (_currentFrameX < imageInfo->maxFrameX)
+		? (_currentFrameX) : imageInfo->maxFrameX - 1;
+	imageInfo->currentFrameY = (_currentFrameY < imageInfo->maxFrameY)
+		? (_currentFrameY) : imageInfo->maxFrameY - 1;
 
-	if (isTrans) {
+	if (isTrans)
+	{
 		GdiTransparentBlt(
 			_hdc, _destX, _destY,
 			imageInfo->frameWidth,
@@ -577,10 +595,10 @@ void Image::FrameRender(HDC _hdc, int _destX, int _destY, int _currentFrameX, in
 			imageInfo->currentFrameY * imageInfo->frameHeight,
 			imageInfo->frameWidth,
 			imageInfo->frameHeight,
-			transColor
-		);
+			transColor);
 	}
-	else {
+	else
+	{
 		BitBlt(
 			_hdc, _destX, _destY,
 			imageInfo->frameWidth,
@@ -588,12 +606,12 @@ void Image::FrameRender(HDC _hdc, int _destX, int _destY, int _currentFrameX, in
 			imageInfo->hMemDC,
 			imageInfo->currentFrameX * imageInfo->frameWidth,
 			imageInfo->currentFrameY * imageInfo->frameHeight,
-			SRCCOPY
-		);
+			SRCCOPY);
 	}
 }
 
-void Image::LoopRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offsetY) {
+void Image::LoopRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offsetY)
+{
 	// - offset value, revise.
 	if (_offsetX < 0) _offsetX = imageInfo->width + (_offsetX % imageInfo->width);
 	if (_offsetY < 0) _offsetY = imageInfo->height + (_offsetY % imageInfo->height);
@@ -609,12 +627,14 @@ void Image::LoopRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offs
 	int drawAreaW = _drawArea->right - _drawArea->left;
 	int drawAreaH = _drawArea->bottom - _drawArea->top;
 
-	for (int y = 0; y < drawAreaH; y += srcHeight) {
+	for (int y = 0; y < drawAreaH; y += srcHeight)
+	{
 		rcSrc.top = (y + _offsetY) % imageInfo->height;
 		rcSrc.bottom = imageInfo->height;
 		srcHeight = rcSrc.bottom - rcSrc.top;
 
-		if (y + srcHeight > drawAreaH) {
+		if (y + srcHeight > drawAreaH)
+		{
 			rcSrc.bottom -= (y + srcHeight) - drawAreaH;
 			srcHeight = rcSrc.bottom - rcSrc.top;
 		}
@@ -622,12 +642,14 @@ void Image::LoopRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offs
 		rcDest.top = y + drawAreaY;
 		rcDest.bottom = rcDest.top + srcHeight;
 
-		for (int x = 0; x < drawAreaW; x += srcWidth) {
+		for (int x = 0; x < drawAreaW; x += srcWidth)
+		{
 			rcSrc.left = (x + _offsetX) % imageInfo->width;
 			rcSrc.right = imageInfo->width;
 			srcWidth = rcSrc.right - rcSrc.left;
 
-			if (x + srcWidth > drawAreaW) {
+			if (x + srcWidth > drawAreaW)
+			{
 				rcSrc.right -= (x + srcWidth) - drawAreaW;
 				srcWidth = rcSrc.right - rcSrc.left;
 			}
@@ -635,16 +657,14 @@ void Image::LoopRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offs
 			rcDest.left = x + drawAreaX;
 			rcDest.right = rcDest.left + srcWidth;
 
-			Render(
-				_hdc, rcDest.left, rcDest.top,
-				rcSrc.left, rcSrc.top,
-				srcWidth, srcHeight
-			);
+			Render(_hdc, rcDest.left, rcDest.top,
+				rcSrc.left, rcSrc.top, srcWidth, srcHeight);
 		}
 	}
 }
 
-void Image::LoopAlphaRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offsetY, BYTE _alpha) {
+void Image::LoopAlphaRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offsetY, BYTE _alpha)
+{
 	// - offset value, revise.
 	if (_offsetX < 0) _offsetX = imageInfo->width + (_offsetX % imageInfo->width);
 	if (_offsetY < 0) _offsetY = imageInfo->height + (_offsetY % imageInfo->height);
@@ -660,12 +680,14 @@ void Image::LoopAlphaRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int 
 	int drawAreaW = _drawArea->right - _drawArea->left;
 	int drawAreaH = _drawArea->bottom - _drawArea->top;
 
-	for (int y = 0; y < drawAreaH; y += srcHeight) {
+	for (int y = 0; y < drawAreaH; y += srcHeight)
+	{
 		rcSrc.top = (y + _offsetY) % imageInfo->height;
 		rcSrc.bottom = imageInfo->height;
 		srcHeight = rcSrc.bottom - rcSrc.top;
 
-		if (y + srcHeight > drawAreaH) {
+		if (y + srcHeight > drawAreaH)
+		{
 			rcSrc.bottom -= (y + srcHeight) - drawAreaH;
 			srcHeight = rcSrc.bottom - rcSrc.top;
 		}
@@ -673,12 +695,14 @@ void Image::LoopAlphaRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int 
 		rcDest.top = y + drawAreaY;
 		rcDest.bottom = rcDest.top + srcHeight;
 
-		for (int x = 0; x < drawAreaW; x += srcWidth) {
+		for (int x = 0; x < drawAreaW; x += srcWidth)
+		{
 			rcSrc.left = (x + _offsetX) % imageInfo->width;
 			rcSrc.right = imageInfo->width;
 			srcWidth = rcSrc.right - rcSrc.left;
 
-			if (x + srcWidth > drawAreaW) {
+			if (x + srcWidth > drawAreaW)
+			{
 				rcSrc.right -= (x + srcWidth) - drawAreaW;
 				srcWidth = rcSrc.right - rcSrc.left;
 			}
@@ -686,11 +710,8 @@ void Image::LoopAlphaRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int 
 			rcDest.left = x + drawAreaX;
 			rcDest.right = rcDest.left + srcWidth;
 
-			AlphaRender(
-				_hdc, rcDest.left, rcDest.top,
-				rcSrc.left, rcSrc.top,
-				srcWidth, srcHeight, _alpha
-			);
+			AlphaRender(_hdc, rcDest.left, rcDest.top,
+				rcSrc.left, rcSrc.top, srcWidth, srcHeight, _alpha);
 		}
 	}
 }

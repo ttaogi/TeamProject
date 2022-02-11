@@ -3,7 +3,8 @@
 #include "Behaviour.h"
 
 Behaviour::Behaviour()
-	: Component((const Component_ID)typeid(Behaviour).name()){
+	: Component((const Component_ID)typeid(Behaviour).name())
+{
 	enabled = true;
 }
 

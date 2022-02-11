@@ -5,7 +5,8 @@
 #include "DesignPattern/ComponentBase/Component/Component.h"
 #include "DesignPattern/ComponentBase/Component/Behaviour/Behaviour.h"
 
-class Rendered : virtual public Component, public Behaviour {
+class Rendered : public Behaviour
+{
 private:
 protected:
 public:

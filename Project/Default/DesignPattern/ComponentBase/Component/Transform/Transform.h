@@ -5,9 +5,11 @@
 #include "DesignPattern/ComponentBase/Component/Component.h"
 #include "Utility/CommonClasses/CommonClasses.h"
 
-class Transform : public Component {
+class Transform : public Component
+{
 private:
 	friend class GameObject;
+
 	F_POINT position;
 protected:
 public:

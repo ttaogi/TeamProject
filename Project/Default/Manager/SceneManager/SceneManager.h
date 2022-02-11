@@ -1,21 +1,17 @@
 #pragma once
 
-//#include <Windows.h>
 #include <functional>
 #include <vector>
 #include <windef.h>
 
-//#include "Button/Button.h"
-//#include "GameObject/GameObject.h"
-//#include "Image/Image.h"
 #include "Utility/Enums.h"
 
 class GameObject;
 class Image;
 class MainGame;
 
-class SceneManager {
-private:
+class SceneManager
+{
 protected:
 	SCENE_TYPE scnType;
 	Image* backBuffer;
@@ -24,7 +20,8 @@ protected:
 
 	virtual void SetBackBuffer() = 0;
 public:
-	SceneManager(SCENE_TYPE _scnType, MainGame* _mg) {
+	SceneManager(SCENE_TYPE _scnType, MainGame* _mg)
+	{
 		scnType = _scnType;
 		mg = _mg;
 		backBuffer = NULL;

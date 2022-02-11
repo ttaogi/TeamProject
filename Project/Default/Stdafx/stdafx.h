@@ -21,38 +21,24 @@
 #include <random>
 #include <vector>
 
-#include "../GameNode/MainGame/MainGame.h"
-#include "../Manager/ImageManager/ImageManager.h"
-#include "../Manager/KeyManager/KeyManager.h"
-#include "../Manager/FontManager/FontManager.h"
-#include "../Utility/CommonMacroFunction.h"
-#include "../Utility/Constants.h"
-#include "../Utility/Enums.h"
-#include "../Utility/RandomFunction.h"
+#include "GameNode/MainGame/MainGame.h"
+#include "Manager/ImageManager/ImageManager.h"
+#include "Manager/KeyManager/KeyManager.h"
+#include "Manager/FontManager/FontManager.h"
+#include "Utility/CommonMacroFunction.h"
+#include "Utility/Constants.h"
+#include "Utility/Enums.h"
+#include "Utility/RandomFunction.h"
 
 using namespace std;
 
-//#define WINNAME				(LPTSTR)(TEXT("WindowsAPI"))
 #define WINNAME				    L"WindowsAPI"
 
-//efine FULLSCREEN
-
-#ifdef FULLSCREEN
-#define WINSTART_X			    0
-#define WINSTART_Y			    0
-// GetSystemMetrics : return sys config info about argument
-//	SM_CXSCREEN : x value of current screen resolution
-//	SM_CYSCREEN : y value of current screen resolution
-#define WINSIZE_X				GetSystemMetrics(SM_CXSCREEN)
-#define WINSIZE_Y				GetSystemMetrics(SM_CYSCREEN)
-#define WINSTYLE				WS_POPUPWINDOW | WS_MAXIMIZE
-#else
 #define WINSTART_X			    1180
 #define WINSTART_Y			    500
 #define WINSIZE_X				1280
 #define WINSIZE_Y				800
 #define WINSTYLE				WS_CAPTION | WS_SYSMENU
-#endif
 
 #define RND						RandomFunction::GetSingleton()
 #define KEY						KeyManager::GetSingleton()

@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../Image.h"
+#include "Image/Image.h"
 
-class Stripe {
+class Stripe
+{
 private:
 	Image* image;
 	int frameIdx;

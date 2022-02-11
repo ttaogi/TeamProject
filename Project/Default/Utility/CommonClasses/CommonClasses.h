@@ -1,6 +1,7 @@
 #pragma once
 
-struct F_POINT {
+struct F_POINT
+{
 	float x;
 	float y;
 
@@ -17,7 +18,8 @@ struct F_POINT {
 
 #define VELOCITY_G	9.8f
 
-struct VELOCITY {
+struct VELOCITY
+{
 	float x;
 	float y;
 

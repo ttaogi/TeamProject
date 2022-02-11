@@ -17,16 +17,16 @@ OnGameSceneManager::OnGameSceneManager(MainGame* _mg)
 
 OnGameSceneManager::~OnGameSceneManager() { }
 
-void OnGameSceneManager::SetBackBuffer() {
-	//*
+void OnGameSceneManager::SetBackBuffer()
+{
 	SAFE_RELEASE(backBuffer);
 	SAFE_DELETE(backBuffer);
 	backBuffer = new Image;
 	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
-	//*/
 }
 
-void OnGameSceneManager::Init(MainGame* _mg) {
+void OnGameSceneManager::Init(MainGame* _mg)
+{
 	SetBackBuffer();
 
 	//*
@@ -34,10 +34,10 @@ void OnGameSceneManager::Init(MainGame* _mg) {
 	bgImage->Init(BACKGROUND_ONGAMESCENE, WINSIZE_X, WINSIZE_Y);
 	bgImage->InitForAlphaBlend();
 	//*/
-
 }
 
-void OnGameSceneManager::Update(HWND _hWnd) {
+void OnGameSceneManager::Update(HWND _hWnd)
+{
 	if (KEY->IsOnceKeyDown('Q')) {
 		//endBtn.SetDestroy(false);
 	}
@@ -50,13 +50,15 @@ void OnGameSceneManager::Update(HWND _hWnd) {
 
 void OnGameSceneManager::LateUpdate() { }
 
-void OnGameSceneManager::Release() {
+void OnGameSceneManager::Release()
+{
 	SAFE_RELEASE(backBuffer);
 	SAFE_DELETE(backBuffer);
 	IMG->DeleteImage(KEY_BACKGROUND_ONGAMESCENE);
 }
 
-void OnGameSceneManager::Render(HDC _hdc) {
+void OnGameSceneManager::Render(HDC _hdc)
+{
 	//*
 	HDC memDC = GetBackBuffer()->GetMemDC();
 

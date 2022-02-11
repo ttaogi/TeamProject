@@ -2,7 +2,8 @@
 
 #include "DesignPattern/ComponentBase/Component/Component.h"
 
-class RectTransform : public Component {
+class RectTransform : public Component
+{
 private:
 	RECT rect;
 protected:

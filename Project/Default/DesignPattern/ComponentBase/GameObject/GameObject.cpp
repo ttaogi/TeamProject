@@ -2,19 +2,22 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject() {
-	AddComponent(&transform);
+GameObject::GameObject() { AddComponent(&transform); }
+
+GameObject::~GameObject()
+{
+	for (auto iter = cList.begin(); iter != cList.end(); ++iter)
+		SAFE_DELETE(*iter);
 }
 
-GameObject::~GameObject() { }
-
-void GameObject::Operation() {
-	for (auto it = cList.begin(); it != cList.end(); ++it) {
+void GameObject::Operation()
+{
+	for (auto it = cList.begin(); it != cList.end(); ++it)
 		(*it)->Operation();
-	}
 }
 
-void GameObject::AddComponent(Component* _c) {
+void GameObject::AddComponent(Component* _c)
+{
 	for (auto it = cList.begin(); it != cList.end(); ++it)
 		if (!strcmp((*it)->GetComponentID(), _c->GetComponentID())) return;
 
@@ -23,17 +26,17 @@ void GameObject::AddComponent(Component* _c) {
 	cList.push_back(_c);
 }
 
-void GameObject::RemoveComponent(Component* _c) {
+void GameObject::RemoveComponent(Component* _c)
+{
 	for (auto it = cList.begin(); it != cList.end(); ++it)
 		if (!strcmp((*it)->GetComponentID(), _c->GetComponentID())) cList.erase(it);
 }
 
-Component* GameObject::GetComponent(Component_ID _id) {
+Component* GameObject::GetComponent(Component_ID _id)
+{
 	for (auto it = cList.begin(); it != cList.end(); ++it)
 		if (!strcmp((*it)->GetComponentID(), _id)) return *it;
 	return NULL;
 }
 
-Component_ID GameObject::GetComponentID() {
-	return id;
-}
+Component_ID GameObject::GetComponentID() { return id; }

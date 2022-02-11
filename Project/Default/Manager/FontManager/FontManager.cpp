@@ -5,8 +5,8 @@
 void FontManager::drawText(
 	HDC _hdc, int _destX, int _destY, wchar_t* _fontName,
 	int _fontSize, int _fontWidth, wchar_t* _printString,
-	int _length, COLORREF _color
-) {
+	int _length, COLORREF _color)
+{
 	// make background of text transparent.
 	SetBkMode(_hdc, TRANSPARENT);
 
@@ -20,8 +20,7 @@ void FontManager::drawText(
 		_fontWidth, false, false, 0,				// bold, italic, underline, cancel line
 		DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,		// character set, output precision
 		CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY,		// clipping precision, output quality
-		DEFAULT_PITCH | FF_SWISS, _fontName			// pitch(ja-gan), font
-	);
+		DEFAULT_PITCH | FF_SWISS, _fontName);		// pitch(ja-gan), font
 
 	oldFont = (HFONT)SelectObject(_hdc, font);
 	oldColor = GetTextColor(_hdc);

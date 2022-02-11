@@ -1,17 +1,20 @@
 #pragma once
 
-enum class DIRECTION {
+enum class DIRECTION
+{
 	LEFT = 0, TOP, RIGHT, BOTTOM,
 	LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM,
 	DIRECTION_NUM
 };
 
-enum class SCENE_TYPE {
+enum class SCENE_TYPE
+{
 	NONE = 0, TITLE, ONGAME, END,
 	SCENE_TYPE_NUM
 };
 
-enum class IMAGE_LOAD_KIND {
+enum class IMAGE_LOAD_KIND
+{
 	LOAD_RESOURCE = 0,
 	LOAD_FILE,
 	LOAD_EMPTY,
@@ -19,10 +22,16 @@ enum class IMAGE_LOAD_KIND {
 	IMAGE_LOAD_KIND_NUM
 };
 
-enum class CHARACTER_STATE {
+enum class CHARACTER_STATE
+{
 	IDLE = 0, ATTACK, ATTACKED, DEFFENCE,
 	CHARACTER_STATE_NUM
 };
 
-std::wstring StateToWString(CHARACTER_STATE _state);
+std::wstring CharacterStateToWString(CHARACTER_STATE _state);
 
+enum class BUTTON_FACTORY_TYPE
+{
+	DEFAULT = 0,
+	BUTTON_FACTORY_NUM
+};

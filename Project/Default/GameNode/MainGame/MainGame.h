@@ -1,11 +1,12 @@
 #pragma once
 
-#include "../GameNode.h"
-#include "../../Manager/SceneManager/EndSceneManager/EndSceneManager.h"
-#include "../../Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
-#include "../../Manager/SceneManager/TitleSceneManager/TitleSceneManager.h"
+#include "GameNode/GameNode.h"
+#include "Manager/SceneManager/EndSceneManager/EndSceneManager.h"
+#include "Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
+#include "Manager/SceneManager/TitleSceneManager/TitleSceneManager.h"
 
-class MainGame : public GameNode {
+class MainGame : public GameNode
+{
 	SceneManager* scnMgr;
 	SCENE_TYPE nextScnType;
 	bool quit;

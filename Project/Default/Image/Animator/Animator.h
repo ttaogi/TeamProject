@@ -1,8 +1,9 @@
 #pragma once
 
-#include "../Animation/Animation.h"
+#include "Image/Animation/Animation.h"
 
-class Animator {
+class Animator
+{
 private:
 	Animation* animations[(unsigned int)CHARACTER_STATE::CHARACTER_STATE_NUM];
 	CHARACTER_STATE curState;

@@ -1,15 +1,27 @@
 #include "Stdafx/stdafx.h"
 
-#include "PlayerStateMachine.h"
 #include "DesignPattern/ComponentBase/Component/Button/Button.h"
-#include "../../Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
-#include "../../Player/Player.h"
+#include "Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
+#include "Player/Player.h"
+#include "PlayerStateMachine.h"
 
 PlayerStateMachine::PlayerStateMachine() : StateMachine() { }
 
 PlayerStateMachine::~PlayerStateMachine() { }
 
-void PlayerStateMachine::Update(MonoBehaviour* _mb, SceneManager* _scnMgr) {
+void PlayerStateMachine::SetState(MonoBehaviour* _mb, CHARACTER_STATE _state)
+{
+	//_mb->GetAnimator()->ChangeAnimation(_state);
+	curState = _state;
+}
+
+void PlayerStateMachine::SetCallBack_v_CB_pMb(std::function<void(MonoBehaviour*)> _callBack)
+{
+	callBack = std::move(_callBack);
+}
+
+void PlayerStateMachine::Update(MonoBehaviour* _mb, SceneManager* _scnMgr)
+{
 	Player* player = (Player*)_mb;
 	OnGameSceneManager* scnMgr = (OnGameSceneManager*)_scnMgr;
 
@@ -62,13 +74,4 @@ void PlayerStateMachine::Update(MonoBehaviour* _mb, SceneManager* _scnMgr) {
 	//		break;
 	//	}
 	//}
-}
-
-void PlayerStateMachine::SetState(MonoBehaviour* _mb, CHARACTER_STATE _state) {
-	//_mb->GetAnimator()->ChangeAnimation(_state);
-	curState = _state;
-}
-
-void PlayerStateMachine::SetCallBack_v_CB_pMb(std::function<void(MonoBehaviour*)> _callBack) {
-	callBack = std::move(_callBack);
 }

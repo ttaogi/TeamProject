@@ -100,6 +100,12 @@
     <Filter Include="API_Framework\DesignPattern\ComponentBase\Component\Button">
       <UniqueIdentifier>{04612c0f-0290-4c16-b6b5-f63fb9426793}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API_Framework\DesignPattern\AbstractFactoryBase">
+      <UniqueIdentifier>{04200f47-9317-44ac-8628-3d2bfbeb2ff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\DesignPattern\FactoryBase">
+      <UniqueIdentifier>{c837b262-4967-41b1-bad6-c9782636d83d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -186,6 +192,12 @@
     </ClCompile>
     <ClCompile Include="DesignPattern\ComponentBase\Component\Button\Button.cpp">
       <Filter>API_Framework\DesignPattern\ComponentBase\Component\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="DesignPattern\AbstractFactoryBase\AbstractFactoryBase.cpp">
+      <Filter>API_Framework\DesignPattern\AbstractFactoryBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DesignPattern\FactoryBase\Factory.cpp">
+      <Filter>API_Framework\DesignPattern\FactoryBase</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +296,12 @@
     </ClInclude>
     <ClInclude Include="DesignPattern\ComponentBase\Component\Button\Button.h">
       <Filter>API_Framework\DesignPattern\ComponentBase\Component\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPattern\AbstractFactoryBase\AbstractFactoryBase.h">
+      <Filter>API_Framework\DesignPattern\AbstractFactoryBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPattern\FactoryBase\Factory.h">
+      <Filter>API_Framework\DesignPattern\FactoryBase</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

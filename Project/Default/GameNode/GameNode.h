@@ -1,10 +1,11 @@
 #pragma  once
 
-#include "../Image/Image.h"
+#include "Image/Image.h"
 
 static Image* backBuffer = NULL;
 
-class GameNode {
+class GameNode
+{
 private:
 	HDC nodeHdc;
 	bool managerInit;

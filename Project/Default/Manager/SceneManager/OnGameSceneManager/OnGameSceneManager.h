@@ -5,7 +5,8 @@
 
 const static std::wstring NOTICE = L"Press Q to quit.";
 
-class OnGameSceneManager : public SceneManager {
+class OnGameSceneManager : public SceneManager
+{
 private:
 	Image* bgImage;
 	std::wstring msg;

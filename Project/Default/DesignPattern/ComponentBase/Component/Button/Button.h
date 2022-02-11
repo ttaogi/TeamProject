@@ -4,7 +4,8 @@
 
 #include "DesignPattern/ComponentBase/Component/Behaviour/MonoBehaviour/MonoBehaviour.h"
 
-class Button : public MonoBehaviour {
+class Button : public MonoBehaviour
+{
 private:
 	std::function<void()> callBack_v_CB_v;
 	std::wstring str;

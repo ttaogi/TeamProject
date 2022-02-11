@@ -2,7 +2,8 @@
 
 #include "DesignPattern/ComponentBase/Component/Component.h"
 
-class Behaviour : virtual public Component {
+class Behaviour : virtual public Component
+{
 private:
 protected:
 public:

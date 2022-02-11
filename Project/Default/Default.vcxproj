@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DesignPattern\AbstractFactoryBase\AbstractFactoryBase.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Behaviour\Behaviour.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Component.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\RectTransform\RectTransform.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\Rendered.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\RenderedImage\RenderedImage.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Transform\Transform.cpp" />
+    <ClCompile Include="DesignPattern\FactoryBase\Factory.cpp" />
     <ClCompile Include="GameNode\GameNode.cpp" />
     <ClCompile Include="GameNode\MainGame\MainGame.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\GameObject\GameObject.cpp" />
@@ -52,12 +54,14 @@
     <ClCompile Include="Utility\Enums.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DesignPattern\AbstractFactoryBase\AbstractFactoryBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Behaviour\Behaviour.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Component.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\RectTransform\RectTransform.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\Rendered.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\RenderedImage\RenderedImage.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Transform\Transform.h" />
+    <ClInclude Include="DesignPattern\FactoryBase\Factory.h" />
     <ClInclude Include="DesignPattern\SingletonBase\SingletonBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\GameObject\GameObject.h" />
     <ClInclude Include="Utility\CommonClasses\CommonClasses.h" />

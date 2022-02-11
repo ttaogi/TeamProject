@@ -3,7 +3,8 @@
 #include "DesignPattern/ComponentBase/Component/Behaviour/MonoBehaviour/MonoBehaviour.h"
 #include "StateMachine/PlayerStateMachine/PlayerStateMachine.h"
 
-class Player : public MonoBehaviour {
+class Player : public MonoBehaviour
+{
 private:
 	int hp;
 public:

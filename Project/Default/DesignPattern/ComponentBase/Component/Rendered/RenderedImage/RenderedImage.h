@@ -4,7 +4,8 @@
 
 class Image;
 
-class RenderedImage : public Rendered {
+class RenderedImage : public Rendered
+{
 private:
 	Image* image;
 protected:

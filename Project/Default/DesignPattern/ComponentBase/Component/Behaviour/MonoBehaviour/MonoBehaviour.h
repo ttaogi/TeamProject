@@ -5,7 +5,8 @@
 
 #include "DesignPattern/ComponentBase/Component/Behaviour/Behaviour.h"
 
-class MonoBehaviour : public Behaviour {
+class MonoBehaviour : public Behaviour
+{
 protected:
 public:
 	MonoBehaviour();

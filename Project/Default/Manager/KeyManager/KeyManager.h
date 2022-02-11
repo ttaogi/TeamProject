@@ -2,11 +2,12 @@
 
 #include <bitset>
 
-#include "../../DesignPattern/SingletonBase/SingletonBase.h"
+#include "DesignPattern/SingletonBase/SingletonBase.h"
 
 #define KEY_MAX 256
 
-class KeyManager : public SingletonBase<KeyManager> {
+class KeyManager : public SingletonBase<KeyManager>
+{
 private:
 	std::bitset<KEY_MAX> keyDown;
 	std::bitset<KEY_MAX> keyUp;

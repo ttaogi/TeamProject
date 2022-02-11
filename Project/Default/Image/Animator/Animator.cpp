@@ -2,31 +2,39 @@
 
 #include "Animator.h"
 
-Animator::Animator() {
-	for (int i = 0; i < (int)CHARACTER_STATE::CHARACTER_STATE_NUM; ++i) animations[i] = NULL;
+Animator::Animator()
+{
+	for (int i = 0; i < (int)CHARACTER_STATE::CHARACTER_STATE_NUM; ++i)
+		animations[i] = NULL;
 	curState = CHARACTER_STATE::IDLE;
 }
 
-void Animator::Release() {
-	for (int i = 0; i < (int)CHARACTER_STATE::CHARACTER_STATE_NUM; ++i) {
+void Animator::Release()
+{
+	for (int i = 0; i < (int)CHARACTER_STATE::CHARACTER_STATE_NUM; ++i)
+	{
 		SAFE_RELEASE(animations[i]);
 		SAFE_DELETE(animations[i]);
 	}
 }
 
-void Animator::AddAnimation(CHARACTER_STATE _state, Animation* _animation) {
+void Animator::AddAnimation(CHARACTER_STATE _state, Animation* _animation)
+{
 	SAFE_RELEASE(animations[(int)_state]);
 	SAFE_DELETE(animations[(int)_state]);
 	animations[(int)_state] = _animation;
 }
 
-bool Animator::ChangeAnimation(CHARACTER_STATE _state) {
-	if (animations[(int)_state] != NULL) {
+bool Animator::ChangeAnimation(CHARACTER_STATE _state)
+{
+	if (animations[(int)_state] != NULL)
+	{
 		curState = _state;
 		animations[(int)_state]->Reset();
 		return true;
 	}
-	else {
+	else
+	{
 		curState = CHARACTER_STATE::IDLE;
 		if (animations[(int)CHARACTER_STATE::IDLE] != NULL)
 			animations[(int)CHARACTER_STATE::IDLE]->Reset();
@@ -34,15 +42,15 @@ bool Animator::ChangeAnimation(CHARACTER_STATE _state) {
 	}
 }
 
-void Animator::AnimationRender(HDC _hdc, POINT _pos) {
-	if (animations[(int)curState] != NULL) {
+void Animator::AnimationRender(HDC _hdc, POINT _pos)
+{
+	if (animations[(int)curState] != NULL)
 		animations[(int)curState]->AnimationRender(_hdc, _pos);
-	}
 }
 
-bool Animator::IsEnd() const {
-	if (animations[(int)curState] != NULL) {
+bool Animator::IsEnd() const
+{
+	if (animations[(int)curState] != NULL)
 		return animations[(int)curState]->IsEnd();
-	}
 	return true;
 }

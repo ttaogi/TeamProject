@@ -2,7 +2,8 @@
 
 #include "../SceneManager.h"
 
-class EndSceneManager : public SceneManager {
+class EndSceneManager : public SceneManager
+{
 private:
 	Image* bgImage;
 	
