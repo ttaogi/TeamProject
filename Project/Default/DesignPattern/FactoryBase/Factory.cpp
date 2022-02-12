@@ -9,17 +9,17 @@ ButtonFactory::~ButtonFactory() { }
 
 GameObject* ButtonFactory::GetObject(
 	std::function<void()> _callBack_v_CB_v,
-	RECT* _rect, Image* _image)
+	RECT* _rect, Image* _image, std::wstring _str)
 {
 	GameObject* go = new GameObject();
-	Button* btn = new Button();
+	Button* btn = new Button(_str);
 	RectTransform* rcT = new RectTransform();
 	RenderedImage* rImg = new RenderedImage();
 
 	btn->SetCallBack_v_CB_v(_callBack_v_CB_v);
 	btn->Init();
 	rcT->SetRect(RECT{ 0, 0, 200, 150 });
-	rImg->SetImage(IMG->FindImage(KEY_UI_START_BUTTON_STRIPE));
+	rImg->SetImage(_image);
 
 	go->AddComponent(btn);
 	go->AddComponent(rcT);

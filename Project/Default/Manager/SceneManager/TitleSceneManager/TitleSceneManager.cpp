@@ -1,25 +1,10 @@
 #include "Stdafx/stdafx.h"
 
 #include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
-#include "DesignPattern/ComponentBase/Component/Button/Button.h"
-#include "DesignPattern/ComponentBase/Component/RectTransform/RectTransform.h"
-#include "DesignPattern/ComponentBase/Component/Rendered/RenderedImage/RenderedImage.h"
-#include "DesignPattern/ComponentBase/GameObject/GameObject.h"
 #include "TitleSceneManager.h"
 
 TitleSceneManager::TitleSceneManager(MainGame* _mg)
-	: SceneManager(SCENE_TYPE::TITLE, _mg)
-{
-	bgImage = NULL;
-
-	RECT gameStartBtnRc{0, 0, 200, 150};
-	GameObject* gameStartBtn = AbstractFactoryButton::GetSingleton()
-		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
-			std::bind(&MainGame::SetNextScene_ONGAME, _mg),
-			&gameStartBtnRc,
-			IMG->FindImage(KEY_UI_START_BUTTON_STRIPE));
-	gameObjects.push_back(gameStartBtn);
-}
+	: SceneManager(SCENE_TYPE::TITLE, _mg) { }
 
 void TitleSceneManager::SetBackBuffer()
 {
@@ -33,24 +18,36 @@ void TitleSceneManager::Init(MainGame* _mg)
 {
 	SetBackBuffer();
 
-	bgImage = new Image();
-	bgImage->Init(BACKGROUND_TITLESCENE, WINSIZE_X, WINSIZE_Y);
-	bgImage->InitForAlphaBlend();
+	backgroundImage = IMG->FindImage(KEY_BACKGROUND_TITLESCENE);
+
+	RECT gameStartBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
+	GameObject* gameStartBtn = AbstractFactoryButton::GetSingleton()
+		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
+			std::bind(&MainGame::SetNextScene_ONGAME, _mg),
+			&gameStartBtnRc,
+			IMG->FindImage(KEY_UI_START_BUTTON_STRIPE));
+	gameStartBtn->GetComponent<Transform>()->SetPosition(F_POINT{WINSIZE_X / 2, WINSIZE_Y / 2});
+	gameObjects.push_back(gameStartBtn);
 }
 
 void TitleSceneManager::Update(HWND _hWnd)
 {
 	for (GameObject* go : gameObjects)
-		for (Component* c : go->cList)
-		{
-			MonoBehaviour* m = IsDerivedFromMonoBehaviour(c);
-			if (m != NULL) m->Update(_hWnd);
-		}
+		if(go->GetActive())
+			for (Component* c : go->cList)
+			{
+				MonoBehaviour* m = IsDerivedFromMonoBehaviour(c);
+				if (m != NULL) m->Update(_hWnd);
+			}
 }
 
 void TitleSceneManager::LateUpdate() { }
 
-void TitleSceneManager::Release() { }
+void TitleSceneManager::Release()
+{
+	SAFE_RELEASE(backBuffer);
+	SAFE_DELETE(backBuffer);
+}
 
 void TitleSceneManager::Render(HDC _hdc)
 {
@@ -58,13 +55,13 @@ void TitleSceneManager::Render(HDC _hdc)
 
 	PatBlt(memDC, 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 
-	bgImage->Render(memDC);
+	backgroundImage->Render(memDC);
 
 	for (GameObject* go : gameObjects)
-	{
-		RenderedImage* rImg = go->GetComponent<RenderedImage>();
-		if (rImg) rImg->Render(memDC);
-	}
+		if (go->GetActive()) {
+			RenderedImage* rImg = go->GetComponent<RenderedImage>();
+			if (rImg) rImg->Render(memDC);
+		}
 
 	GetBackBuffer()->Render(_hdc, 0, 0);
 }

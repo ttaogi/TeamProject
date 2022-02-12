@@ -10,8 +10,6 @@ class MainGame : public GameNode
 	SceneManager* scnMgr;
 	SCENE_TYPE nextScnType;
 	bool quit;
-
-	//GameNode* curScn;
 public:
 	MainGame();
 	~MainGame();

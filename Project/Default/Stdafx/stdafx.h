@@ -53,3 +53,5 @@ extern HINSTANCE				HANDLE_INSTANCE;
 extern HWND						HANDLE_WINDOW;
 extern POINT					POINT_MOUSE;
 extern bool						MOUSE_CLICKED;
+
+const COLORREF MAGENTA			RGB(255, 0, 255);

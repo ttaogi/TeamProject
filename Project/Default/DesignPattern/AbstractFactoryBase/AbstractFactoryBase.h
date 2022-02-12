@@ -12,8 +12,8 @@ public:
 	AbstractFactoryButton();
 	~AbstractFactoryButton();
 
-	GameObject* GetObject( BUTTON_FACTORY_TYPE _type,
+	GameObject* GetObject(BUTTON_FACTORY_TYPE _type,
 		std::function<void()> _callBack_v_CB_v,
-		RECT* _rect, Image* _image);
+		RECT* _rect, Image* _image, std::wstring _str = L"");
 };
 #pragma endregion AbstractFactoryButton

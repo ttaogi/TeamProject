@@ -19,6 +19,9 @@ RECT RectTransform::GetScreenRect() const {
 		return RECT{ 0, 0, 0, 0 };
 
 	POINT pos = t->GetPosition().ToPoint();
+	long width = rect.right - rect.left;
+	long height = rect.bottom - rect.top;
 
-	return RECT{rect.left + pos.x, rect.top + pos.y, rect.right + pos.x, rect.bottom + pos.y};
+	return RECT{pos.x - width / 2, pos.y - height / 2, 
+		pos.x + width / 2, pos.y + height / 2};
 }

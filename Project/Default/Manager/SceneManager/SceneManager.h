@@ -15,6 +15,7 @@ class SceneManager
 protected:
 	SCENE_TYPE scnType;
 	Image* backBuffer;
+	Image* backgroundImage;
 	MainGame* mg;
 	std::vector<GameObject*> gameObjects;
 
@@ -23,8 +24,9 @@ public:
 	SceneManager(SCENE_TYPE _scnType, MainGame* _mg)
 	{
 		scnType = _scnType;
-		mg = _mg;
 		backBuffer = NULL;
+		backgroundImage = NULL;
+		mg = _mg;
 	}
 	~SceneManager() {}
 

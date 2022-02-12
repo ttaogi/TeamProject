@@ -10,7 +10,7 @@ private:
 	std::function<void()> callBack_v_CB_v;
 	std::wstring str;
 public:
-	Button();
+	Button(std::wstring _str = L"");
 	virtual ~Button();
 
 	virtual void Operation() override;

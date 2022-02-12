@@ -17,6 +17,6 @@ public:
 	~ButtonFactory();
 
 	GameObject* GetObject(std::function<void()> _callBack_v_CB_v,
-		RECT* _rect, Image* _image);
+		RECT* _rect, Image* _image, std::wstring _str = L"");
 };
 #pragma endregion ButtonFactory

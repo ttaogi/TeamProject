@@ -1,14 +1,16 @@
 #pragma once
 
-#include "../SceneManager.h"
-#include "../../../Player/Player.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Player/Player.h"
+
+#define BUTTON_WIDTH	200
+#define BUTTON_HEIGHT	150
 
 const static std::wstring NOTICE = L"Press Q to quit.";
 
 class OnGameSceneManager : public SceneManager
 {
 private:
-	Image* bgImage;
 	std::wstring msg;
 
 	int alpha;

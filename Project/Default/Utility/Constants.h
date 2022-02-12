@@ -20,5 +20,17 @@ extern const std::wstring KEY_PLAYER_DEFFENCE_STRIPE;
 extern const wchar_t* PLAYER_DEFFENCE_STRIPE;
 
 
+extern const std::wstring KEY_UI_QUIT_BUTTON_STRIPE;
+extern const wchar_t* UI_QUIT_BUTTON_STRIPE;
+extern const std::wstring KEY_UI_RETRY_BUTTON_STRIPE;
+extern const wchar_t* UI_RETRY_BUTTON_STRIPE;
 extern const std::wstring KEY_UI_START_BUTTON_STRIPE;
 extern const wchar_t* UI_START_BUTTON_STRIPE;
+
+
+
+
+
+extern const std::wstring QUIT_BUTTON_TAG;
+extern const std::wstring RETRY_BUTTON_TAG;
+

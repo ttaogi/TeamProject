@@ -2,7 +2,12 @@
 
 #include "GameObject.h"
 
-GameObject::GameObject() { AddComponent(&transform); }
+GameObject::GameObject()
+{
+	AddComponent(&transform);
+	tag = L"";
+	active = true;
+}
 
 GameObject::~GameObject()
 {

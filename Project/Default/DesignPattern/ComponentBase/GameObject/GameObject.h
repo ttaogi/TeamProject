@@ -8,6 +8,8 @@ class GameObject {
 private:
 	const Component_ID id = (const Component_ID)L"GameObject";
 	Transform transform;
+	std::wstring tag;
+	bool active;
 public:
 	std::list<Component*> cList;
 public:
@@ -37,4 +39,8 @@ public:
 		delete c;
 		return NULL;
 	}
+	std::wstring GetTag() const { return tag; }
+	void SetTag(std::wstring _tag) { tag = _tag; }
+	bool GetActive() const { return active; }
+	void SetActive(bool _active) { active = _active; }
 };

@@ -1,16 +1,17 @@
 #pragma once
 
-#include "../SceneManager.h"
+#include "Manager/SceneManager/SceneManager.h"
+
+#define BUTTON_WIDTH	200
+#define BUTTON_HEIGHT	150
 
 class EndSceneManager : public SceneManager
 {
 private:
-	Image* bgImage;
-	
 	void SetBackBuffer();
 public:
 	EndSceneManager(MainGame* _mg);
-	~EndSceneManager() {}
+	~EndSceneManager();
 
 	void Init(MainGame* _mg);
 	void Update(HWND _hWnd);

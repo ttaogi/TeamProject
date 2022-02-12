@@ -2,9 +2,11 @@
 
 #include "Manager/SceneManager/SceneManager.h"
 
+#define BUTTON_WIDTH	200
+#define BUTTON_HEIGHT	150
+
 class TitleSceneManager : public SceneManager {
 private:
-	Image* bgImage;
 	
 	void SetBackBuffer();
 public:

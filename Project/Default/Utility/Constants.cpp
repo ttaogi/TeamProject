@@ -43,8 +43,25 @@ const wchar_t* PLAYER_DEFFENCE_STRIPE =
 
 
 #pragma region uiButton
+const std::wstring KEY_UI_QUIT_BUTTON_STRIPE =
+	L"UI_QUIT_BUTTON_STRIPE";
+const wchar_t* UI_QUIT_BUTTON_STRIPE =
+	L"Resources/Images/UI/BUTTON/QUIT_BUTTON.bmp";
+const std::wstring KEY_UI_RETRY_BUTTON_STRIPE =
+	L"UI_RETRY_BUTTON_STRIPE";
+const wchar_t* UI_RETRY_BUTTON_STRIPE =
+	L"Resources/Images/UI/BUTTON/RETRY_BUTTON.bmp";
 const std::wstring KEY_UI_START_BUTTON_STRIPE =
 	L"UI_START_BUTTON_STRIPE";
 const wchar_t* UI_START_BUTTON_STRIPE =
 	L"Resources/Images/UI/BUTTON/START_BUTTON.bmp";
 #pragma endregion uiButton
+
+
+
+
+const std::wstring QUIT_BUTTON_TAG = L"QUIT_BUTTON";
+const std::wstring RETRY_BUTTON_TAG = L"RETRY_BUTTON";
+
+
+

@@ -4,10 +4,10 @@
 #include "DesignPattern/ComponentBase/Component/RectTransform/RectTransform.h"
 #include "DesignPattern/ComponentBase/GameObject/GameObject.h"
 
-Button::Button() : Component((const Component_ID)typeid(Button).name())
+Button::Button(wstring _str) : Component((const Component_ID)typeid(Button).name())
 {
 	callBack_v_CB_v = nullptr;
-	str = L"";
+	str = _str;
 }
 
 Button::~Button() { }
