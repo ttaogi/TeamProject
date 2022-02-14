@@ -4,6 +4,7 @@
 
 Animator::Animator()
 {
+	isPlay = true;
 	for (int i = 0; i < (int)CHARACTER_STATE::CHARACTER_STATE_NUM; ++i)
 		animations[i] = NULL;
 	curState = CHARACTER_STATE::IDLE;
@@ -45,7 +46,7 @@ bool Animator::ChangeAnimation(CHARACTER_STATE _state)
 void Animator::AnimationRender(HDC _hdc, POINT _pos)
 {
 	if (animations[(int)curState] != NULL)
-		animations[(int)curState]->AnimationRender(_hdc, _pos);
+		animations[(int)curState]->AnimationRender(_hdc, _pos, isPlay);
 }
 
 bool Animator::IsEnd() const
@@ -54,3 +55,19 @@ bool Animator::IsEnd() const
 		return animations[(int)curState]->IsEnd();
 	return true;
 }
+
+void Animator::AniStart()
+{
+	isPlay = true;
+	animations[(int)curState]->Reset();
+}
+
+void Animator::AniStop()
+{
+	isPlay = false;
+	animations[(int)curState]->Reset();
+}
+
+void Animator::AniPause() { isPlay = false; }
+
+void Animator::AniResume() { isPlay = true; }

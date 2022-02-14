@@ -6,9 +6,10 @@
 class Animation
 {
 private:
+	bool autoLoop;
+
 	Stripe stripe;
 	CHARACTER_STATE state;
-	bool autoLoop;
 public:
 	Animation() {}
 	~Animation() { Release(); }
@@ -20,7 +21,7 @@ public:
 
 	void Release() { stripe.Release(); }
 
-	void AnimationRender(HDC _hdc, POINT _pos);
+	void AnimationRender(HDC _hdc, POINT _pos, bool _isPlay);
 
 	bool IsEnd() const;
 };

@@ -5,6 +5,8 @@
 class Animator
 {
 private:
+	bool isPlay;
+
 	Animation* animations[(unsigned int)CHARACTER_STATE::CHARACTER_STATE_NUM];
 	CHARACTER_STATE curState;
 public:
@@ -18,4 +20,10 @@ public:
 	bool ChangeAnimation(CHARACTER_STATE _state);
 	void AnimationRender(HDC _hdc, POINT _pos);
 	bool IsEnd() const;
+	bool IsPlay() const { return isPlay; }
+
+	void AniStart();
+	void AniStop();
+	void AniPause();
+	void AniResume();
 };

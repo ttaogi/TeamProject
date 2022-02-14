@@ -109,6 +109,12 @@
     <Filter Include="API_Framework\DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator">
       <UniqueIdentifier>{a5612741-6845-405b-b852-6405853b873d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API_Framework\Manager\TimeManager">
+      <UniqueIdentifier>{d379916a-ec57-4029-8520-e75548d5a0d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\Manager\TimeManager\Timer">
+      <UniqueIdentifier>{e8a6a673-ab39-48a8-ba6c-9c7d45088563}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -204,6 +210,12 @@
     </ClCompile>
     <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.cpp">
       <Filter>API_Framework\DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\TimeManager\Timer\Timer.cpp">
+      <Filter>API_Framework\Manager\TimeManager\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\TimeManager\TimeManager.cpp">
+      <Filter>API_Framework\Manager\TimeManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -311,6 +323,12 @@
     </ClInclude>
     <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.h">
       <Filter>API_Framework\DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\TimeManager\Timer\Timer.h">
+      <Filter>API_Framework\Manager\TimeManager\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\TimeManager\TimeManager.h">
+      <Filter>API_Framework\Manager\TimeManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
