@@ -18,5 +18,6 @@ public:
 	virtual ~Component() {};
 
 	virtual void Operation() = 0;
+
 	Component_ID GetComponentID() { return id; }
 };

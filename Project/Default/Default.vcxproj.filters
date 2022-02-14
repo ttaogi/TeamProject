@@ -106,6 +106,9 @@
     <Filter Include="API_Framework\DesignPattern\FactoryBase">
       <UniqueIdentifier>{c837b262-4967-41b1-bad6-c9782636d83d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API_Framework\DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator">
+      <UniqueIdentifier>{a5612741-6845-405b-b852-6405853b873d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -198,6 +201,9 @@
     </ClCompile>
     <ClCompile Include="DesignPattern\FactoryBase\Factory.cpp">
       <Filter>API_Framework\DesignPattern\FactoryBase</Filter>
+    </ClCompile>
+    <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.cpp">
+      <Filter>API_Framework\DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -302,6 +308,9 @@
     </ClInclude>
     <ClInclude Include="DesignPattern\FactoryBase\Factory.h">
       <Filter>API_Framework\DesignPattern\FactoryBase</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.h">
+      <Filter>API_Framework\DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

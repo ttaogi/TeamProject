@@ -24,6 +24,7 @@
     <ClCompile Include="DesignPattern\ComponentBase\Component\Component.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\RectTransform\RectTransform.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\Rendered.cpp" />
+    <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\RenderedImage\RenderedImage.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Transform\Transform.cpp" />
     <ClCompile Include="DesignPattern\FactoryBase\Factory.cpp" />
@@ -47,6 +48,7 @@
     <ClCompile Include="StateMachine\PlayerStateMachine\PlayerStateMachine.cpp" />
     <ClCompile Include="Stdafx\stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Utility\CommonClasses\CommonClasses.cpp" />
     <ClCompile Include="Utility\CommonMacroFunction.cpp" />
@@ -59,6 +61,7 @@
     <ClInclude Include="DesignPattern\ComponentBase\Component\Component.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\RectTransform\RectTransform.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\Rendered.h" />
+    <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\RenderedImage\RenderedImage.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Transform\Transform.h" />
     <ClInclude Include="DesignPattern\FactoryBase\Factory.h" />
@@ -171,13 +174,14 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <PrecompiledHeader>
-      </PrecompiledHeader>
+      <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>.\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeaderFile>Stdafx/stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

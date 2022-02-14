@@ -7,7 +7,6 @@
 
 class TitleSceneManager : public SceneManager {
 private:
-	
 	void SetBackBuffer();
 public:
 	TitleSceneManager(MainGame* _mg);
