@@ -43,6 +43,8 @@
     <ClCompile Include="Manager\SceneManager\TitleSceneManager\TitleSceneManager.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Button\Button.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Behaviour\MonoBehaviour\MonoBehaviour.cpp" />
+    <ClCompile Include="Manager\TimeManager\TimeManager.cpp" />
+    <ClCompile Include="Manager\TimeManager\Timer\Timer.cpp" />
     <ClCompile Include="Player\Player.cpp" />
     <ClCompile Include="StateMachine\PlayerStateMachine\PlayerStateMachine.cpp" />
     <ClCompile Include="Stdafx\stdafx.cpp">
@@ -64,6 +66,8 @@
     <ClInclude Include="DesignPattern\FactoryBase\Factory.h" />
     <ClInclude Include="DesignPattern\SingletonBase\SingletonBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\GameObject\GameObject.h" />
+    <ClInclude Include="Manager\TimeManager\TimeManager.h" />
+    <ClInclude Include="Manager\TimeManager\Timer\Timer.h" />
     <ClInclude Include="Utility\CommonClasses\CommonClasses.h" />
     <ClInclude Include="Utility\Enums.h" />
     <ClInclude Include="GameNode\GameNode.h" />

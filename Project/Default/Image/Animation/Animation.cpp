@@ -15,9 +15,9 @@ HRESULT Animation::Init(
 	return S_OK;
 }
 
-void Animation::AnimationRender(HDC _hdc, POINT _pos)
+void Animation::AnimationRender(HDC _hdc, POINT _pos, bool _isPlay)
 {
-	stripe.FrameRender(_hdc, _pos);
+	stripe.FrameRender(_hdc, _pos, _isPlay);
 	if (autoLoop && stripe.IsEnd()) stripe.Reset();
 }
 

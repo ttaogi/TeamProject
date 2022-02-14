@@ -5,10 +5,12 @@
 #include <Windows.h>
 
 //#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")	//Multibyte.
-#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")		//Unicode.
+#pragma comment(linker, "/entry:wWinMainCRTStartup /subsystem:console")	
+#pragma comment(lib, "Winmm.lib") // mmsystem.h	//Unicode.
 
 #include <malloc.h>
 #include <memory.h>
+#include <mmsystem.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <tchar.h>
@@ -25,6 +27,7 @@
 #include "Manager/ImageManager/ImageManager.h"
 #include "Manager/KeyManager/KeyManager.h"
 #include "Manager/FontManager/FontManager.h"
+#include "Manager/TimeManager/TimeManager.h"
 #include "Utility/CommonMacroFunction.h"
 #include "Utility/Constants.h"
 #include "Utility/Enums.h"
@@ -44,6 +47,7 @@ using namespace std;
 #define KEY						KeyManager::GetSingleton()
 #define IMG						ImageManager::GetSingleton()
 #define FONT					FontManager::GetSingleton()
+#define TIME					TimeManager::GetSingleton()
 
 #define SAFE_RELEASE(p)			{if((p) != NULL) { (p)->Release();}}
 #define SAFE_DELETE(p)			{if((p) != NULL) { delete (p); (p) = NULL;}}
