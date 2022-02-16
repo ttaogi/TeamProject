@@ -25,9 +25,6 @@
     <Filter Include="API_Framework\Image\Animator">
       <UniqueIdentifier>{6473f256-c2da-4ee9-9d0a-65dfa116153a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API_Framework\Image\Stripe">
-      <UniqueIdentifier>{b9a45210-1057-43da-b114-4be842fc36bd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API_Framework\Manager">
       <UniqueIdentifier>{f3853c5c-843f-4091-a22c-28bca57c5993}</UniqueIdentifier>
     </Filter>
@@ -130,9 +127,6 @@
     <ClCompile Include="Image\Animator\Animator.cpp">
       <Filter>API_Framework\Image\Animator</Filter>
     </ClCompile>
-    <ClCompile Include="Image\Stripe\Stripe.cpp">
-      <Filter>API_Framework\Image\Stripe</Filter>
-    </ClCompile>
     <ClCompile Include="Image\Image.cpp">
       <Filter>API_Framework\Image</Filter>
     </ClCompile>
@@ -233,9 +227,6 @@
     </ClInclude>
     <ClInclude Include="Image\Animator\Animator.h">
       <Filter>API_Framework\Image\Animator</Filter>
-    </ClInclude>
-    <ClInclude Include="Image\Stripe\Stripe.h">
-      <Filter>API_Framework\Image\Stripe</Filter>
     </ClInclude>
     <ClInclude Include="Image\Image.h">
       <Filter>API_Framework\Image</Filter>

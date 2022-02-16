@@ -15,6 +15,7 @@ public:
 
 	void Init() {}
 	void Release();
+	void Update();
 
 	void AddAnimation(CHARACTER_STATE _state, Animation* _animation);
 	bool ChangeAnimation(CHARACTER_STATE _state);

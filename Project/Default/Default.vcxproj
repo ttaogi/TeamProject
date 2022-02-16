@@ -34,7 +34,6 @@
     <ClCompile Include="Image\Animation\Animation.cpp" />
     <ClCompile Include="Image\Animator\Animator.cpp" />
     <ClCompile Include="Image\Image.cpp" />
-    <ClCompile Include="Image\Stripe\Stripe.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager\FontManager\FontManager.cpp" />
     <ClCompile Include="Manager\ImageManager\ImageManager.cpp" />
@@ -78,7 +77,6 @@
     <ClInclude Include="Image\Animation\Animation.h" />
     <ClInclude Include="Image\Animator\Animator.h" />
     <ClInclude Include="Image\Image.h" />
-    <ClInclude Include="Image\Stripe\Stripe.h" />
     <ClInclude Include="Manager\FontManager\FontManager.h" />
     <ClInclude Include="Manager\ImageManager\ImageManager.h" />
     <ClInclude Include="Manager\KeyManager\KeyManager.h" />

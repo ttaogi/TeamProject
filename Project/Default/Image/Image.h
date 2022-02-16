@@ -89,4 +89,12 @@ public:
 	void LoopAlphaRender(HDC _hdc, const LPRECT _drawArea, int _offsetX, int _offsetY, BYTE _alpha);
 
 	inline HDC GetMemDC() { return imageInfo->hMemDC; }
+
+	int GetWidth() { return imageInfo->width; }
+	int GetHeight() { return imageInfo->height; }
+	int GetFrameWidth() { return imageInfo->frameWidth; }
+	int GetFrameHeight() { return imageInfo->frameHeight; }
+	int GetMaxFrameX() { return imageInfo->maxFrameX; }
+	int GetMaxFrameY() { return imageInfo->maxFrameY; }
+	int GetMaxFrameIdx() { return imageInfo->maxFrameIdx; }
 };

@@ -19,6 +19,12 @@ void Animator::Release()
 	}
 }
 
+void Animator::Update()
+{
+	if (animations[(int)curState])
+		animations[(int)curState]->AnimationUpdate(isPlay);
+}
+
 void Animator::AddAnimation(CHARACTER_STATE _state, Animation* _animation)
 {
 	SAFE_RELEASE(animations[(int)_state]);
@@ -28,7 +34,7 @@ void Animator::AddAnimation(CHARACTER_STATE _state, Animation* _animation)
 
 bool Animator::ChangeAnimation(CHARACTER_STATE _state)
 {
-	if (animations[(int)_state] != NULL)
+	if (animations[(int)_state])
 	{
 		curState = _state;
 		animations[(int)_state]->Reset();
@@ -37,7 +43,7 @@ bool Animator::ChangeAnimation(CHARACTER_STATE _state)
 	else
 	{
 		curState = CHARACTER_STATE::IDLE;
-		if (animations[(int)CHARACTER_STATE::IDLE] != NULL)
+		if (animations[(int)CHARACTER_STATE::IDLE])
 			animations[(int)CHARACTER_STATE::IDLE]->Reset();
 		return false;
 	}
@@ -45,13 +51,13 @@ bool Animator::ChangeAnimation(CHARACTER_STATE _state)
 
 void Animator::AnimationRender(HDC _hdc, POINT _pos)
 {
-	if (animations[(int)curState] != NULL)
-		animations[(int)curState]->AnimationRender(_hdc, _pos, isPlay);
+	if (animations[(int)curState])
+		animations[(int)curState]->AnimationRender(_hdc, _pos);
 }
 
 bool Animator::IsEnd() const
 {
-	if (animations[(int)curState] != NULL)
+	if (animations[(int)curState])
 		return animations[(int)curState]->IsEnd();
 	return true;
 }
