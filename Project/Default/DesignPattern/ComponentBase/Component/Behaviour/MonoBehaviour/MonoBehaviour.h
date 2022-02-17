@@ -15,6 +15,6 @@ public:
 	virtual void Operation() override;
 
 	virtual void Init() = 0;
-	virtual void Update(HWND _hWnd) = 0;
+	virtual void Update() = 0;
 	virtual void LateUpdate() = 0;
 };

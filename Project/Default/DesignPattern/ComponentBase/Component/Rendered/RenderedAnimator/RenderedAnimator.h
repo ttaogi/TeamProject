@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Image/Animator/Animator.h"
+#include "DesignPattern/ComponentBase/Component/Behaviour/MonoBehaviour/MonoBehaviour.h"
 #include "DesignPattern/ComponentBase/Component/Rendered/Rendered.h"
+#include "Image/Animator/Animator.h"
 
 class RenderedAnimator : public Rendered, public MonoBehaviour {
 private:

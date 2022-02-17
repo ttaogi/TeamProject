@@ -1,25 +1,24 @@
 #pragma once
 
 #include "GameNode/GameNode.h"
-#include "Manager/SceneManager/EndSceneManager/EndSceneManager.h"
-#include "Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
-#include "Manager/SceneManager/TitleSceneManager/TitleSceneManager.h"
+#include "Utility/Enums.h"
+
+class SceneManager;
 
 class MainGame : public GameNode
 {
+private:
+	bool quit;
 	SceneManager* scnMgr;
 	SCENE_TYPE nextScnType;
-	bool quit;
 public:
 	MainGame();
 	~MainGame();
 
 	HRESULT Init();
-	HRESULT Init(bool _managerInit);
 	void Release();
-
-	void Update(HWND _hWnd);
-	void Render(HDC _hdc);
+	void Update();
+	void Render();
 
 	LRESULT MainProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam);
 

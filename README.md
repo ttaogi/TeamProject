@@ -88,6 +88,7 @@
 #
 #
 # 헤더.
+#   https://del4u.tistory.com/29
 #   stdafx -> cpp파일과 매칭되는 헤더 -> c <> -> c++ <> -> "" 순, 사전순으로 정렬.
 #   ex)
 #       //foo.cpp

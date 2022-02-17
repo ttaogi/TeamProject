@@ -1,6 +1,7 @@
 #include "Stdafx/stdafx.h"
 
 #include "RectTransform.h"
+
 #include "DesignPattern/ComponentBase/GameObject/GameObject.h"
 
 RectTransform::RectTransform()

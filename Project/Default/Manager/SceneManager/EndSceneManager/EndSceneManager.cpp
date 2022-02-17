@@ -1,31 +1,29 @@
 #include "Stdafx/stdafx.h"
 
-#include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
 #include "EndSceneManager.h"
 
-EndSceneManager::EndSceneManager(MainGame* _mg)
-	: SceneManager(SCENE_TYPE::TITLE, _mg) { }
+#include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
+#include "DesignPattern/ComponentBase/Component/Button/Button.h"
+#include "DesignPattern/ComponentBase/Component/Rendered/RenderedImage/RenderedImage.h"
+#include "DesignPattern/ComponentBase/Component/Transform/Transform.h"
+#include "DesignPattern/ComponentBase/GameObject/GameObject.h"
+
+#define BUTTON_WIDTH	200
+#define BUTTON_HEIGHT	150
+
+EndSceneManager::EndSceneManager()
+	: SceneManager(SCENE_TYPE::TITLE) { }
 
 EndSceneManager::~EndSceneManager() { }
 
-void EndSceneManager::SetBackBuffer()
+void EndSceneManager::Init()
 {
-	SAFE_RELEASE(backBuffer);
-	SAFE_DELETE(backBuffer);
-	backBuffer = new Image;
-	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
-}
-
-void EndSceneManager::Init(MainGame* _mg)
-{
-	SetBackBuffer();
-
 	backgroundImage = IMG->FindImage(KEY_BACKGROUND_ENDSCENE);
 
 	RECT quitBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
 	GameObject* quitBtn = AbstractFactoryButton::GetSingleton()
 		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
-			std::bind(&MainGame::QuitGame, _mg),
+			std::bind(&MainGame::QuitGame, MAIN_GAME),
 			&quitBtnRc,
 			IMG->FindImage(KEY_UI_QUIT_BUTTON_STRIPE));
 	quitBtn->SetTag(QUIT_BUTTON_TAG);
@@ -36,7 +34,7 @@ void EndSceneManager::Init(MainGame* _mg)
 	RECT retryBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
 	GameObject* retryBtn = AbstractFactoryButton::GetSingleton()
 		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
-			std::bind(&MainGame::SetNextScene_ONGAME, _mg),
+			std::bind(&MainGame::SetNextScene_ONGAME, MAIN_GAME),
 			&retryBtnRc,
 			IMG->FindImage(KEY_UI_RETRY_BUTTON_STRIPE));
 	retryBtn->SetTag(RETRY_BUTTON_TAG);
@@ -45,26 +43,21 @@ void EndSceneManager::Init(MainGame* _mg)
 	gameObjects.push_back(retryBtn);
 }
 
-void EndSceneManager::Update(HWND _hWnd) {
+void EndSceneManager::Update() {
 	for (GameObject* go : gameObjects)
 		if (go->GetActive())
 			for (Component* c : go->cList)
 			{
 				MonoBehaviour* m = IsDerivedFromMonoBehaviour(c);
-				if (m != NULL) m->Update(_hWnd);
+				if (m != NULL) m->Update();
 			}
 }
 
-void EndSceneManager::LateUpdate() { }
+void EndSceneManager::Release() { }
 
-void EndSceneManager::Release() {
-	SAFE_RELEASE(backBuffer);
-	SAFE_DELETE(backBuffer);
-}
-
-void EndSceneManager::Render(HDC _hdc)
+void EndSceneManager::Render()
 {
-	HDC memDC = GetBackBuffer()->GetMemDC();
+	HDC memDC = MAIN_GAME->GetBackBuffer()->GetMemDC();
 
 	PatBlt(memDC, 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 
@@ -75,6 +68,4 @@ void EndSceneManager::Render(HDC _hdc)
 			RenderedImage* rImg = go->GetComponent<RenderedImage>();
 			if (rImg) rImg->Render(memDC);
 		}
-
-	GetBackBuffer()->Render(_hdc, 0, 0);
 }

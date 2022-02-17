@@ -1,10 +1,6 @@
 #pragma once
 
 #include "Manager/SceneManager/SceneManager.h"
-#include "Player/Player.h"
-
-#define BUTTON_WIDTH	200
-#define BUTTON_HEIGHT	150
 
 const static std::wstring NOTICE = L"Press Q to quit.";
 
@@ -17,15 +13,12 @@ private:
 	int bgSpeed;
 	int bgOffsetX;
 	int bgOffsetY;
-
-	void SetBackBuffer();
 public:
-	OnGameSceneManager(MainGame* _mg);
+	OnGameSceneManager();
 	~OnGameSceneManager();
 
-	void Init(MainGame* _mg);
-	void Update(HWND _hWnd);
-	void LateUpdate();
+	void Init();
 	void Release();
-	void Render(HDC _hdc);
+	void Update();
+	void Render();
 };

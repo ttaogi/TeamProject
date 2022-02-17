@@ -1,57 +1,49 @@
 #include "Stdafx/stdafx.h"
 
-#include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
 #include "TitleSceneManager.h"
 
-TitleSceneManager::TitleSceneManager(MainGame* _mg)
-	: SceneManager(SCENE_TYPE::TITLE, _mg) { }
+#include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
+#include "DesignPattern/ComponentBase/Component/Button/Button.h"
+#include "DesignPattern/ComponentBase/Component/Rendered/RenderedImage/RenderedImage.h"
+#include "DesignPattern/ComponentBase/Component/Transform/Transform.h"
+#include "DesignPattern/ComponentBase/GameObject/GameObject.h"
 
-void TitleSceneManager::SetBackBuffer()
+#define BUTTON_WIDTH	200
+#define BUTTON_HEIGHT	150
+
+TitleSceneManager::TitleSceneManager()
+	: SceneManager(SCENE_TYPE::TITLE) { }
+
+void TitleSceneManager::Init()
 {
-	SAFE_RELEASE(backBuffer);
-	SAFE_DELETE(backBuffer);
-	backBuffer = new Image();
-	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
-}
-
-void TitleSceneManager::Init(MainGame* _mg)
-{
-	SetBackBuffer();
-
 	backgroundImage = IMG->FindImage(KEY_BACKGROUND_TITLESCENE);
 
 	RECT gameStartBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
 	GameObject* gameStartBtn = AbstractFactoryButton::GetSingleton()
 		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
-			std::bind(&MainGame::SetNextScene_ONGAME, _mg),
+			std::bind(&MainGame::SetNextScene_ONGAME, MAIN_GAME),
 			&gameStartBtnRc,
 			IMG->FindImage(KEY_UI_START_BUTTON_STRIPE));
 	gameStartBtn->GetComponent<Transform>()->SetPosition(F_POINT{WINSIZE_X / 2, WINSIZE_Y / 2});
 	gameObjects.push_back(gameStartBtn);
 }
 
-void TitleSceneManager::Update(HWND _hWnd)
+void TitleSceneManager::Update()
 {
 	for (GameObject* go : gameObjects)
 		if(go->GetActive())
 			for (Component* c : go->cList)
 			{
 				MonoBehaviour* m = IsDerivedFromMonoBehaviour(c);
-				if (m != NULL) m->Update(_hWnd);
+				if (m != NULL) m->Update();
 			}
 }
 
-void TitleSceneManager::LateUpdate() { }
+void TitleSceneManager::Release() { }
 
-void TitleSceneManager::Release()
+void TitleSceneManager::Render()
 {
-	SAFE_RELEASE(backBuffer);
-	SAFE_DELETE(backBuffer);
-}
-
-void TitleSceneManager::Render(HDC _hdc)
-{
-	HDC memDC = GetBackBuffer()->GetMemDC();
+	HDC memDC = MAIN_GAME->GetMemDC();
 
 	PatBlt(memDC, 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 
@@ -62,6 +54,4 @@ void TitleSceneManager::Render(HDC _hdc)
 			RenderedImage* rImg = go->GetComponent<RenderedImage>();
 			if (rImg) rImg->Render(memDC);
 		}
-
-	GetBackBuffer()->Render(_hdc, 0, 0);
 }

@@ -1,14 +1,17 @@
 #pragma warning(disable:28251)
-
 #include "Stdafx/stdafx.h"
 
 #include "MainGame.h"
 
+#include "Manager/SceneManager/EndSceneManager/EndSceneManager.h"
+#include "Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
+#include "Manager/SceneManager/TitleSceneManager/TitleSceneManager.h"
+
 MainGame::MainGame()
 {
-	scnMgr = nullptr;
-	nextScnType = SCENE_TYPE::NONE;
 	quit = false;
+	scnMgr = NULL;
+	nextScnType = SCENE_TYPE::NONE;
 }
 
 MainGame::~MainGame()
@@ -18,39 +21,50 @@ MainGame::~MainGame()
 
 HRESULT MainGame::Init()
 {
-	if (scnMgr == nullptr)
+	nodeHdc = GetDC(HANDLE_WINDOW);
+
+	// singleton init.
+	IMG->init();
+	_wsetlocale(LC_ALL, L"Korean");
+	TIME->Init();
+
+	SetBackBuffer(IMG->FindImage(KEY_BACKGROUND_BACKBUFFER));
+
+	if (scnMgr == NULL)
 	{
-		scnMgr = new TitleSceneManager(this);
-		scnMgr->Init(this);
+		scnMgr = new TitleSceneManager();
+		scnMgr->Init();
 	}
 
-	return GameNode::Init();
-}
+	SetTimer(HANDLE_WINDOW, 1, 42, NULL);
 
-HRESULT MainGame::Init(bool _managerInit)
-{
-	if (scnMgr == nullptr)
-	{
-		scnMgr = new TitleSceneManager(this);
-		scnMgr->Init(this);
-	}
-
-	return GameNode::Init(_managerInit);
+	return S_OK;
 }
 
 void MainGame::Release()
-{
-	if (scnMgr != nullptr)
+{ // reverse order of init.
+	KillTimer(HANDLE_WINDOW, 1);
+
+	if (scnMgr != NULL)
 	{
 		scnMgr->Release();
 		delete scnMgr;
-		scnMgr = nullptr;
+		scnMgr = NULL;
 	}
 
-	GameNode::Release();
+	// singleton release.
+	TIME->Release();
+	TIME->ReleaseSingleton();
+	FONT->ReleaseSingleton();
+	IMG->Release();
+	IMG->ReleaseSingleton();
+	KEY->ReleaseSingleton();
+	RND->ReleaseSingleton();
+
+	ReleaseDC(HANDLE_WINDOW, nodeHdc);
 }
 
-void MainGame::Update(HWND _hWnd)
+void MainGame::Update()
 {
 	if (quit == true)
 	{
@@ -63,7 +77,7 @@ void MainGame::Update(HWND _hWnd)
 	if (KEY->IsOnceKeyDown(VK_LBUTTON))
 	{
 		GetCursorPos(&POINT_MOUSE);
-		ScreenToClient(_hWnd, &POINT_MOUSE);
+		ScreenToClient(HANDLE_WINDOW, &POINT_MOUSE);
 		MOUSE_CLICKED = true;
 	}
 
@@ -74,22 +88,22 @@ void MainGame::Update(HWND _hWnd)
 		break;
 	case SCENE_TYPE::ONGAME:
 		nextScnType = SCENE_TYPE::NONE;
-		if (scnMgr != nullptr)
+		if (scnMgr != NULL)
 		{
 			scnMgr->Release();
 			delete scnMgr;
-			scnMgr = new OnGameSceneManager(this);
-			scnMgr->Init(this);
+			scnMgr = new OnGameSceneManager();
+			scnMgr->Init();
 		}
 		break;
 	case SCENE_TYPE::END:
 		nextScnType = SCENE_TYPE::NONE;
-		if (scnMgr != nullptr)
+		if (scnMgr != NULL)
 		{
 			scnMgr->Release();
 			delete scnMgr;
-			scnMgr = new EndSceneManager(this);
-			scnMgr->Init(this);
+			scnMgr = new EndSceneManager();
+			scnMgr->Init();
 		}
 		break;
 	default:
@@ -97,15 +111,15 @@ void MainGame::Update(HWND _hWnd)
 		break;
 	}
 
-	if (scnMgr != nullptr) scnMgr->Update(_hWnd);
+	if (scnMgr != NULL) scnMgr->Update();
 
-	GameNode::Update(_hWnd);
+	InvalidateRect(HANDLE_WINDOW, NULL, true);
 }
 
-void MainGame::Render(HDC _hdc)
+void MainGame::Render()
 {
-	if (scnMgr != nullptr) scnMgr->Render(_hdc);
-	GameNode::Render(_hdc);
+	if (scnMgr != NULL) scnMgr->Render();
+	GetBackBuffer()->Render(GetHDC());
 }
 
 LRESULT MainGame::MainProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)
@@ -121,14 +135,14 @@ LRESULT MainGame::MainProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lP
 		switch (_wParam)
 		{
 		case 1:
-			Update(_hWnd);
+			Update();
 			break;
 		}
 		break;
 	case WM_PAINT:
 		hdc = BeginPaint(_hWnd, &ps);
 
-		Render(hdc);
+		Render();
 
 		EndPaint(_hWnd, &ps);
 		break;

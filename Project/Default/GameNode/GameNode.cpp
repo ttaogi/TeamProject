@@ -1,50 +1,30 @@
 #include "Stdafx/stdafx.h"
 
+#include "GameNode.h"
+
 #include <locale.h>
 
-#include "GameNode.h"
+#include "Image/Image.h"
 
 GameNode::GameNode() { }
 
 GameNode::~GameNode() { Release(); }
 
-HRESULT GameNode::Init()
-{
-	backBuffer = IMG->AddImage(KEY_BACKGROUND_BACKBUFFER, BACKGROUND_BACKBUFFER, WINSIZE_X, WINSIZE_Y);
-	SetTimer(HANDLE_WINDOW, 1, 42, NULL);
-	return S_OK;
-}
+HRESULT GameNode::Init() { return S_OK; }
 
-HRESULT GameNode::Init(bool _managerInit)
-{
-	nodeHdc = GetDC(HANDLE_WINDOW);
-	managerInit = _managerInit;
+void GameNode::Release() { }
 
-	if (_managerInit)
-	{
-		IMG->init();
-		_wsetlocale(LC_ALL, L"Korean");
-	}
+void GameNode::Update() { }
 
-	return Init();
-}
+void GameNode::Render() { }
 
-void GameNode::Release()
-{
-	KillTimer(HANDLE_WINDOW, 1);
-	KEY->ReleaseSingleton();
-	RND->ReleaseSingleton();
-	if (managerInit)
-	{
-		IMG->Release();
-		IMG->ReleaseSingleton();
-	}
-	ReleaseDC(HANDLE_WINDOW, nodeHdc);
-}
+Image* GameNode::GetBackBuffer() { return backBuffer; }
 
-void GameNode::Update(HWND _hWnd) { InvalidateRect(_hWnd, NULL, true); }
+void GameNode::SetBackBuffer(Image* _image) { backBuffer = _image; }
 
-void GameNode::Render(HDC _hdc) { }
+HDC GameNode::GetMemDC() { return backBuffer->GetMemDC(); }
+
+HDC GameNode::GetHDC() { return nodeHdc; }
 
 LRESULT GameNode::MainProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)
 {

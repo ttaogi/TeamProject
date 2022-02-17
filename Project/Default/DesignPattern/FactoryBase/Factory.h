@@ -1,11 +1,11 @@
 #pragma once
 
-#include "DesignPattern/ComponentBase/GameObject/GameObject.h"
-#include "DesignPattern/ComponentBase/Component/Button/Button.h"
-#include "DesignPattern/ComponentBase/Component/RectTransform/RectTransform.h"
-#include "DesignPattern/ComponentBase/Component/Rendered/RenderedImage/RenderedImage.h"
-#include "DesignPattern/ComponentBase/Component/Transform/Transform.h"
+#include <functional>
+
 #include "DesignPattern/SingletonBase/SingletonBase.h"
+
+class GameObject;
+class Image;
 
 #pragma region ButtonFactory
 class ButtonFactory : public SingletonBase<ButtonFactory>

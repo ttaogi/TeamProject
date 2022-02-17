@@ -78,9 +78,27 @@ int APIENTRY wWinMain(
 
 	MSG message;
 
-	while (GetMessage(&message, 0, 0, 0)) {
+	/*while (GetMessage(&message, 0, 0, 0)) {
 		TranslateMessage(&message);
 		DispatchMessage(&message);
+	}*/
+
+	while (true) {
+		if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE)) {
+			if (message.message == WM_QUIT) break;
+			TranslateMessage(&message);
+			DispatchMessage(&message);
+		}
+		else {
+			TIME->Update(60.0f);
+			MAIN_GAME->Update();
+
+			HDC hdc;
+			PAINTSTRUCT ps;
+			hdc = BeginPaint(HANDLE_WINDOW, &ps);
+			MAIN_GAME->Render();
+			EndPaint(HANDLE_WINDOW, &ps);
+		}
 	}
 
 	return (int)message.wParam;
@@ -101,6 +119,9 @@ LRESULT CALLBACK WndProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lPar
 }
 
 void LoadResources() {
+	// backbuffer.
+	IMG->AddImage(KEY_BACKGROUND_BACKBUFFER, BACKGROUND_BACKBUFFER, WINSIZE_X, WINSIZE_Y);
+
 	// background.
 	IMG->AddImage(KEY_BACKGROUND_ENDSCENE, BACKGROUND_ENDSCENE, 1280, 800, false, MAGENTA);
 	IMG->FindImage(KEY_BACKGROUND_ENDSCENE)->InitForAlphaBlend();

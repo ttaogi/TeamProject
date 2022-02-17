@@ -14,29 +14,20 @@ class SceneManager
 {
 protected:
 	SCENE_TYPE scnType;
-	Image* backBuffer;
 	Image* backgroundImage;
-	MainGame* mg;
 	std::vector<GameObject*> gameObjects;
-
-	virtual void SetBackBuffer() = 0;
 public:
-	SceneManager(SCENE_TYPE _scnType, MainGame* _mg)
+	SceneManager(SCENE_TYPE _scnType)
 	{
 		scnType = _scnType;
-		backBuffer = NULL;
 		backgroundImage = NULL;
-		mg = _mg;
 	}
 	~SceneManager() {}
 
-	virtual void Init(MainGame* _mg) = 0;
-	virtual void Update(HWND _hWnd) = 0;
-	virtual void LateUpdate() = 0;
+	virtual void Init() = 0;
 	virtual void Release() = 0;
-	virtual void Render(HDC _hdc) = 0;
+	virtual void Update() = 0;
+	virtual void Render() = 0;
 
 	virtual SCENE_TYPE GetSceneType() { return scnType; }
-
-	Image* GetBackBuffer() { return backBuffer; }
 };

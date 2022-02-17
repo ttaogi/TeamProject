@@ -15,9 +15,9 @@ public:
 
 	virtual void Operation() override;
 
-	void Init();
-	void Update(HWND _hWnd);
-	void LateUpdate();
+	void Init() override;
+	void Update() override;
+	void LateUpdate() override;
 
 	void SetCallBack_v_CB_v(std::function<void()> _callBack);
 	std::wstring	GetString() const { return str; }

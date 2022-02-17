@@ -1,11 +1,36 @@
 #include "Stdafx/stdafx.h"
 
-#include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
 #include "OnGameSceneManager.h"
 
-OnGameSceneManager::OnGameSceneManager(MainGame* _mg)
-	: SceneManager(SCENE_TYPE::ONGAME, _mg)
+#include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
+#include "DesignPattern/ComponentBase/Component/Button/Button.h"
+#include "DesignPattern/ComponentBase/Component/Rendered/RenderedImage/RenderedImage.h"
+#include "DesignPattern/ComponentBase/Component/Transform/Transform.h"
+#include "DesignPattern/ComponentBase/GameObject/GameObject.h"
+
+#define BUTTON_WIDTH	200
+#define BUTTON_HEIGHT	150
+
+OnGameSceneManager::OnGameSceneManager()
+	: SceneManager(SCENE_TYPE::ONGAME) { }
+
+OnGameSceneManager::~OnGameSceneManager() { }
+
+void OnGameSceneManager::Init()
 {
+	backgroundImage = IMG->FindImage(KEY_BACKGROUND_ONGAMESCENE);
+
+	RECT quitBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
+	GameObject* quitBtn = AbstractFactoryButton::GetSingleton()
+		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
+			std::bind(&MainGame::SetNextScene_END, MAIN_GAME),
+			&quitBtnRc,
+			IMG->FindImage(KEY_UI_QUIT_BUTTON_STRIPE));
+	quitBtn->SetTag(QUIT_BUTTON_TAG);
+	quitBtn->GetComponent<Transform>()
+		->SetPosition(F_POINT{ WINSIZE_X / 2, WINSIZE_Y / 2 });
+	gameObjects.push_back(quitBtn);
+
 	msg = L"";
 
 	alpha = 0;
@@ -14,35 +39,7 @@ OnGameSceneManager::OnGameSceneManager(MainGame* _mg)
 	bgOffsetY = 0;
 }
 
-OnGameSceneManager::~OnGameSceneManager() { }
-
-void OnGameSceneManager::SetBackBuffer()
-{
-	SAFE_RELEASE(backBuffer);
-	SAFE_DELETE(backBuffer);
-	backBuffer = new Image;
-	backBuffer->Init(WINSIZE_X, WINSIZE_Y);
-}
-
-void OnGameSceneManager::Init(MainGame* _mg)
-{
-	SetBackBuffer();
-
-	backgroundImage = IMG->FindImage(KEY_BACKGROUND_ONGAMESCENE);
-
-	RECT quitBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
-	GameObject* quitBtn = AbstractFactoryButton::GetSingleton()
-		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
-			std::bind(&MainGame::SetNextScene_END, _mg),
-			&quitBtnRc,
-			IMG->FindImage(KEY_UI_QUIT_BUTTON_STRIPE));
-	quitBtn->SetTag(QUIT_BUTTON_TAG);
-	quitBtn->GetComponent<Transform>()
-		->SetPosition(F_POINT{ WINSIZE_X / 2, WINSIZE_Y / 2 });
-	gameObjects.push_back(quitBtn);
-}
-
-void OnGameSceneManager::Update(HWND _hWnd)
+void OnGameSceneManager::Update()
 {
 	if (KEY->IsOnceKeyDown('Q'))
 		for (GameObject* go : gameObjects)
@@ -54,24 +51,18 @@ void OnGameSceneManager::Update(HWND _hWnd)
 			for (Component* c : go->cList)
 			{
 				MonoBehaviour* m = IsDerivedFromMonoBehaviour(c);
-				if (m != NULL) m->Update(_hWnd);
+				if (m != NULL) m->Update();
 			}
 
 	bgOffsetX = (bgOffsetX + bgSpeed) % WINSIZE_X;
 	alpha = (alpha + 5) % 255;
 }
 
-void OnGameSceneManager::LateUpdate() { }
+void OnGameSceneManager::Release() { }
 
-void OnGameSceneManager::Release()
+void OnGameSceneManager::Render()
 {
-	SAFE_RELEASE(backBuffer);
-	SAFE_DELETE(backBuffer);
-}
-
-void OnGameSceneManager::Render(HDC _hdc)
-{
-	HDC memDC = GetBackBuffer()->GetMemDC();
+	HDC memDC = MAIN_GAME->GetBackBuffer()->GetMemDC();
 
 	PatBlt(memDC, 0, 0, WINSIZE_X, WINSIZE_Y, BLACKNESS);
 
@@ -85,6 +76,4 @@ void OnGameSceneManager::Render(HDC _hdc)
 		}
 
 	//TextOut(memDC, 50, 70, NOTICE.c_str(), (int)NOTICE.length());
-
-	GetBackBuffer()->Render(_hdc, 0, 0);
 }

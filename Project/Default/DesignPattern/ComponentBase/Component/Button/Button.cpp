@@ -16,7 +16,7 @@ void Button::Operation() { }
 
 void Button::Init() { }
 
-void Button::Update(HWND _hWnd)
+void Button::Update()
 {
 	if (enabled && MOUSE_CLICKED)
 	{

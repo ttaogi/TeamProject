@@ -56,6 +56,7 @@ using namespace std;
 extern HINSTANCE				HANDLE_INSTANCE;
 extern HWND						HANDLE_WINDOW;
 extern POINT					POINT_MOUSE;
+extern MainGame*				MAIN_GAME;
 extern bool						MOUSE_CLICKED;
 
 const COLORREF MAGENTA			RGB(255, 0, 255);
