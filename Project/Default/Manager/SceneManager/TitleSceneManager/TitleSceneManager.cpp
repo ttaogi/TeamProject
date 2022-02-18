@@ -26,10 +26,13 @@ void TitleSceneManager::Init()
 			IMG->FindImage(KEY_UI_START_BUTTON_STRIPE));
 	gameStartBtn->GetComponent<Transform>()->SetPosition(F_POINT{WINSIZE_X / 2, WINSIZE_Y / 2});
 	gameObjects.push_back(gameStartBtn);
+
+	SOUND->Play(KEY_SOUND_EXAMPLE, 1.0f);
 }
 
 void TitleSceneManager::Update()
 {
+	SOUND->Update();
 	for (GameObject* go : gameObjects)
 		if(go->GetActive())
 			for (Component* c : go->cList)
@@ -39,7 +42,9 @@ void TitleSceneManager::Update()
 			}
 }
 
-void TitleSceneManager::Release() { }
+void TitleSceneManager::Release() {
+	SOUND->AllStop();
+}
 
 void TitleSceneManager::Render()
 {

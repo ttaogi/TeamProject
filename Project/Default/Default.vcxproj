@@ -43,6 +43,7 @@
     <ClCompile Include="Manager\SceneManager\TitleSceneManager\TitleSceneManager.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Button\Button.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Behaviour\MonoBehaviour\MonoBehaviour.cpp" />
+    <ClCompile Include="Manager\SoundManager\SoundManager.cpp" />
     <ClCompile Include="Manager\TimeManager\TimeManager.cpp" />
     <ClCompile Include="Manager\TimeManager\Timer\Timer.cpp" />
     <ClCompile Include="Player\Player.cpp" />
@@ -68,6 +69,7 @@
     <ClInclude Include="DesignPattern\FactoryBase\Factory.h" />
     <ClInclude Include="DesignPattern\SingletonBase\SingletonBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\GameObject\GameObject.h" />
+    <ClInclude Include="Manager\SoundManager\SoundManager.h" />
     <ClInclude Include="Manager\TimeManager\TimeManager.h" />
     <ClInclude Include="Manager\TimeManager\Timer\Timer.h" />
     <ClInclude Include="Utility\CommonClasses\CommonClasses.h" />
@@ -148,9 +150,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\BN927A\source\repos\TEAM_PROJECT\Project\Library\Fmod\inc;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\BN927A\source\repos\TEAM_PROJECT\Project\Library\Fmod\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>C:\Users\BN927A\source\repos\TEAM_PROJECT\Project\Library\Fmod\inc;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Users\BN927A\source\repos\TEAM_PROJECT\Project\Library\Fmod\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -172,6 +178,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -188,6 +195,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

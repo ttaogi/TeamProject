@@ -2,7 +2,8 @@
 
 #include "Constants.h"
 
-#pragma region background
+#pragma region Stripe
+#pragma region Background
 const std::wstring KEY_BACKGROUND_BACKBUFFER =
 	L"BACKGROUND_BACKBUFFER";
 const wchar_t* BACKGROUND_BACKBUFFER =
@@ -19,10 +20,10 @@ const std::wstring KEY_BACKGROUND_TITLESCENE =
 	L"BACKGROUND_TITLESCENE";
 const wchar_t* BACKGROUND_TITLESCENE =
 	L"Resources/Images/BackGround/Background_Title.bmp";
-#pragma endregion background
+#pragma endregion Background
 
 
-#pragma region player
+#pragma region Player
 const std::wstring KEY_PLAYER_IDLE_STRIPE =
 	L"PLAYER_IDLE_STRIPE";
 const wchar_t* PLAYER_IDLE_STRIPE =
@@ -39,10 +40,10 @@ const std::wstring KEY_PLAYER_DEFFENCE_STRIPE =
 	L"PLAYER_DEFFENCE_STRIPE";
 const wchar_t* PLAYER_DEFFENCE_STRIPE =
 	L"Resources/Images/Object/PLAYER/DEFFENCE/stripe.bmp";
-#pragma endregion player
+#pragma endregion Player
 
 
-#pragma region uiButton
+#pragma region UiButton
 const std::wstring KEY_UI_QUIT_BUTTON_STRIPE =
 	L"UI_QUIT_BUTTON_STRIPE";
 const wchar_t* UI_QUIT_BUTTON_STRIPE =
@@ -55,13 +56,26 @@ const std::wstring KEY_UI_START_BUTTON_STRIPE =
 	L"UI_START_BUTTON_STRIPE";
 const wchar_t* UI_START_BUTTON_STRIPE =
 	L"Resources/Images/UI/BUTTON/START_BUTTON.bmp";
-#pragma endregion uiButton
+#pragma endregion UiButton
+#pragma endregion Stripe
 
+///////////////////////
+///////////////////////
 
-
-
+#pragma region GameObject_Tag
 const std::wstring QUIT_BUTTON_TAG = L"QUIT_BUTTON";
 const std::wstring RETRY_BUTTON_TAG = L"RETRY_BUTTON";
+#pragma endregion GameObject_Tag
 
+///////////////////////
+///////////////////////
 
+#pragma region Sound
+const std::wstring KEY_SOUND_EXAMPLE =
+	L"SOUND_EXAMPLE";
+const std::wstring SOUND_EXAMPLE =
+	L"Resources/Sounds/SOUND_EX_¸ð»öÃ¢¿¬(ÙºßäóïæÔ).mp3";
+	//L"Resources/Sounds/SOUND_EX.mp3";
+	//L"Resources/Sounds/SOUND_EX_¸ð»öÃ¢¿¬.mp3";
+#pragma endregion Sound
 

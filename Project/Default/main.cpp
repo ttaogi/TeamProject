@@ -91,7 +91,6 @@ int APIENTRY wWinMain(
 			DispatchMessage(&message);
 		}
 		else {
-			TIME->Update(60.0f);
 			MAIN_GAME->Update();
 
 			HDC hdc;
@@ -123,7 +122,10 @@ void LoadResources() {
 	// singleton init.
 	IMG->init();
 	_wsetlocale(LC_ALL, L"Korean");
+	TIME->Init();
+	SOUND->Init();
 
+	////// image.
 	// backbuffer.
 	IMG->AddImage(KEY_BACKGROUND_BACKBUFFER, BACKGROUND_BACKBUFFER, WINSIZE_X, WINSIZE_Y);
 
@@ -144,11 +146,14 @@ void LoadResources() {
 	IMG->AddImage(KEY_UI_RETRY_BUTTON_STRIPE, UI_RETRY_BUTTON_STRIPE, 200, 150, false, MAGENTA);
 	IMG->AddImage(KEY_UI_START_BUTTON_STRIPE, UI_START_BUTTON_STRIPE, 200, 150, false, MAGENTA);
 
-	TIME->Init();
+	////// sound.
+	SOUND->AddSound(KEY_SOUND_EXAMPLE, SOUND_EXAMPLE, true, true);
 }
 
 void ReleaseResources() {
 	// singleton release.
+	SOUND->Release();
+	SOUND->ReleaseSingleton();
 	TIME->Release();
 	TIME->ReleaseSingleton();
 	FONT->ReleaseSingleton();

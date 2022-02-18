@@ -52,6 +52,8 @@ void MainGame::Release()
 
 void MainGame::Update()
 {
+	TIME->Update(60.0f);
+
 	if (quit == true)
 	{
 		Release();

@@ -112,6 +112,9 @@
     <Filter Include="API_Framework\Manager\TimeManager\Timer">
       <UniqueIdentifier>{e8a6a673-ab39-48a8-ba6c-9c7d45088563}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API_Framework\Manager\SoundManager">
+      <UniqueIdentifier>{ac54715c-c036-45b9-9f10-37d459e60d1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -210,6 +213,9 @@
     </ClCompile>
     <ClCompile Include="Manager\TimeManager\TimeManager.cpp">
       <Filter>API_Framework\Manager\TimeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\SoundManager\SoundManager.cpp">
+      <Filter>API_Framework\Manager\SoundManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -320,6 +326,9 @@
     </ClInclude>
     <ClInclude Include="Manager\TimeManager\TimeManager.h">
       <Filter>API_Framework\Manager\TimeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\SoundManager\SoundManager.h">
+      <Filter>API_Framework\Manager\SoundManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

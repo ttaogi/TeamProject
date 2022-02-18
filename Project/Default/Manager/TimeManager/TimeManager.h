@@ -12,7 +12,7 @@ public:
 
 	void Init();
 	void Release();
-	void Update(float l_ock = 0.0f);
+	void Update(float _lock = 0.0f);
 	void Render(HDC _hdc);
 
 	inline float GetWorldTime() const { return timer->GetWorldTime(); }
