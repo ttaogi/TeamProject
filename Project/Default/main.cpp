@@ -11,6 +11,7 @@ bool			MOUSE_CLICKED;
 void SetWindowSize(int _x, int _y, int _width, int _height);
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void LoadResources();
+void ReleaseResources();
 
 int APIENTRY wWinMain(
 	HINSTANCE _hInstance,
@@ -119,6 +120,10 @@ LRESULT CALLBACK WndProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lPar
 }
 
 void LoadResources() {
+	// singleton init.
+	IMG->init();
+	_wsetlocale(LC_ALL, L"Korean");
+
 	// backbuffer.
 	IMG->AddImage(KEY_BACKGROUND_BACKBUFFER, BACKGROUND_BACKBUFFER, WINSIZE_X, WINSIZE_Y);
 
@@ -138,4 +143,17 @@ void LoadResources() {
 	IMG->AddImage(KEY_UI_QUIT_BUTTON_STRIPE, UI_QUIT_BUTTON_STRIPE, 200, 150, false, MAGENTA);
 	IMG->AddImage(KEY_UI_RETRY_BUTTON_STRIPE, UI_RETRY_BUTTON_STRIPE, 200, 150, false, MAGENTA);
 	IMG->AddImage(KEY_UI_START_BUTTON_STRIPE, UI_START_BUTTON_STRIPE, 200, 150, false, MAGENTA);
+
+	TIME->Init();
+}
+
+void ReleaseResources() {
+	// singleton release.
+	TIME->Release();
+	TIME->ReleaseSingleton();
+	FONT->ReleaseSingleton();
+	IMG->Release();
+	IMG->ReleaseSingleton();
+	KEY->ReleaseSingleton();
+	RND->ReleaseSingleton();
 }

@@ -6,7 +6,7 @@ HRESULT ImageManager::init() { return S_OK; }
 
 void ImageManager::Release() { DeleteAll(); }
 
-Image * ImageManager::AddImage(std::wstring _strKey, int _width, int _height)
+Image* ImageManager::AddImage(std::wstring _strKey, int _width, int _height)
 {
 	Image* img = FindImage(_strKey);
 
@@ -24,7 +24,7 @@ Image * ImageManager::AddImage(std::wstring _strKey, int _width, int _height)
 	return img;
 }
 
-Image * ImageManager::AddImage(
+Image* ImageManager::AddImage(
 	wstring _strKey, const wchar_t* _fileName,
 	int _width, int _height,
 	bool _isTrans, COLORREF _transColor)
@@ -45,7 +45,7 @@ Image * ImageManager::AddImage(
 	return nullptr;
 }
 
-Image * ImageManager::AddImage(
+Image* ImageManager::AddImage(
 	wstring _strKey, const wchar_t* _fileName,
 	float _x, float _y, int _width, int _height,
 	bool _isTrans, COLORREF _transColor)
@@ -66,7 +66,7 @@ Image * ImageManager::AddImage(
 	return nullptr;
 }
 
-Image * ImageManager::AddFrameImage(
+Image* ImageManager::AddFrameImage(
 	wstring _strKey, const wchar_t* _fileName,
 	int _width, int _height, int _maxFrameX, int _maxFrameY, int _maxFrameIdx,
 	bool _isTrans, COLORREF _transColor)
@@ -88,7 +88,7 @@ Image * ImageManager::AddFrameImage(
 	return nullptr;
 }
 
-Image * ImageManager::AddFrameImage(
+Image* ImageManager::AddFrameImage(
 	wstring _strKey, const wchar_t* _fileName,
 	float _x, float _y, int _width, int _height,
 	int _maxFrameX, int _maxFrameY, int _maxFrameIdx,
@@ -111,7 +111,7 @@ Image * ImageManager::AddFrameImage(
 	return nullptr;
 }
 
-Image * ImageManager::FindImage(std::wstring _strKey)
+Image* ImageManager::FindImage(std::wstring _strKey)
 {
 	if (mImageList.find(_strKey) == mImageList.end())
 		return NULL;

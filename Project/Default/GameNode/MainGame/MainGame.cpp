@@ -23,11 +23,6 @@ HRESULT MainGame::Init()
 {
 	nodeHdc = GetDC(HANDLE_WINDOW);
 
-	// singleton init.
-	IMG->init();
-	_wsetlocale(LC_ALL, L"Korean");
-	TIME->Init();
-
 	SetBackBuffer(IMG->FindImage(KEY_BACKGROUND_BACKBUFFER));
 
 	if (scnMgr == NULL)
@@ -51,15 +46,6 @@ void MainGame::Release()
 		delete scnMgr;
 		scnMgr = NULL;
 	}
-
-	// singleton release.
-	TIME->Release();
-	TIME->ReleaseSingleton();
-	FONT->ReleaseSingleton();
-	IMG->Release();
-	IMG->ReleaseSingleton();
-	KEY->ReleaseSingleton();
-	RND->ReleaseSingleton();
 
 	ReleaseDC(HANDLE_WINDOW, nodeHdc);
 }
@@ -113,7 +99,7 @@ void MainGame::Update()
 
 	if (scnMgr != NULL) scnMgr->Update();
 
-	InvalidateRect(HANDLE_WINDOW, NULL, true);
+	//InvalidateRect(HANDLE_WINDOW, NULL, true);
 }
 
 void MainGame::Render()
