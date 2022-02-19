@@ -118,6 +118,12 @@
     <Filter Include="API_Framework\Scene\EndScene">
       <UniqueIdentifier>{4b1c4a3f-ff23-4bc9-a5be-84f92b2f4cba}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API_Framework\Manager\XmlManager">
+      <UniqueIdentifier>{9dc237ac-7ace-4144-b93b-79b0a0659635}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\Manager\XmlManager\TinyXml">
+      <UniqueIdentifier>{c6b07a7b-9c74-430a-b792-266b65c4ec28}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -222,6 +228,21 @@
     </ClCompile>
     <ClCompile Include="Manager\SceneManager\SceneManager.cpp">
       <Filter>API_Framework\Manager\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinyxmlparser.cpp">
+      <Filter>API_Framework\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinystr.cpp">
+      <Filter>API_Framework\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinyxml.cpp">
+      <Filter>API_Framework\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinyxmlerror.cpp">
+      <Filter>API_Framework\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\XmlManager.cpp">
+      <Filter>API_Framework\Manager\XmlManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -338,6 +359,15 @@
     </ClInclude>
     <ClInclude Include="Manager\SceneManager\SceneManager.h">
       <Filter>API_Framework\Manager\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\XmlManager\TinyXml\tinystr.h">
+      <Filter>API_Framework\Manager\XmlManager\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\XmlManager\TinyXml\tinyxml.h">
+      <Filter>API_Framework\Manager\XmlManager\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\XmlManager\XmlManager.h">
+      <Filter>API_Framework\Manager\XmlManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

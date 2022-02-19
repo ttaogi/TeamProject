@@ -61,3 +61,10 @@ extern const std::wstring KEY_ONGAME_SCENE;
 extern const std::wstring KEY_END_SCENE;
 #pragma endregion Scene
 
+///////////////////////
+///////////////////////
+
+#pragma region XmlDocument
+extern const std::wstring XML_DOC_EXAMPLE;
+#pragma endregion XmlDocument
+

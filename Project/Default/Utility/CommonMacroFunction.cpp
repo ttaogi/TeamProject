@@ -12,6 +12,7 @@ MonoBehaviour* IsDerivedFromMonoBehaviour(Component* _c)
 	return dynamic_cast<MonoBehaviour*>(_c);
 }
 
+// unicode to ansi.
 string WcsToMbsKorean(wstring const& _wstr)
 {
 	typedef codecvt<wchar_t, char, mbstate_t> codecvt_t;
@@ -35,6 +36,7 @@ string WcsToMbsKorean(wstring const& _wstr)
 	return string(&buff[0]);
 }
 
+// unicode to utf8.
 string WcsToMbsUtf8(wstring const& _wstr)
 {
 	int utf8Size = 0;
@@ -53,4 +55,25 @@ string WcsToMbsUtf8(wstring const& _wstr)
 		static_cast<int>(utf8.size()), NULL, NULL);
 
 	return utf8;
+}
+
+// utf8 to unicode.
+wstring MbsUtf8ToWcs(string const& _str)
+{
+	int unicodeSize = 0;
+	int strSize = (int)(_str.size());
+	wstring unicode;
+
+	unicodeSize = MultiByteToWideChar(CP_UTF8,
+		MB_ERR_INVALID_CHARS, _str.c_str(),
+		strSize, NULL, 0);
+
+	unicode.resize(unicodeSize);
+
+	MultiByteToWideChar(CP_UTF8,
+		MB_ERR_INVALID_CHARS, _str.c_str(),
+		strSize, const_cast<wchar_t*>(unicode.c_str()),
+		static_cast<int>(unicode.size()));
+
+	return unicode;
 }

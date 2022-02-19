@@ -30,6 +30,7 @@
 #include "Manager/SceneManager/SceneManager.h"
 #include "Manager/SoundManager/SoundManager.h"
 #include "Manager/TimeManager/TimeManager.h"
+#include "Manager/XmlManager/XmlManager.h"
 #include "Utility/CommonMacroFunction.h"
 #include "Utility/Constants.h"
 #include "Utility/Enums.h"
@@ -52,6 +53,7 @@ using namespace std;
 #define TIME					TimeManager::GetSingleton()
 #define SCENE					SceneManager::GetSingleton()
 #define SOUND					SoundManager::GetSingleton()
+#define XML						XmlManager::GetSingleton()
 
 #define SAFE_RELEASE(p)			{if((p) != NULL) { (p)->Release();}}
 #define SAFE_DELETE(p)			{if((p) != NULL) { delete (p); (p) = NULL;}}

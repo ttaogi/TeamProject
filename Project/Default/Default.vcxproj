@@ -39,6 +39,19 @@
     <ClCompile Include="Manager\ImageManager\ImageManager.cpp" />
     <ClCompile Include="Manager\KeyManager\KeyManager.cpp" />
     <ClCompile Include="Manager\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="Manager\XmlManager\XmlManager.cpp" />
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinystr.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinyxml.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinyxmlerror.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Manager\XmlManager\TinyXml\tinyxmlparser.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Scene\EndScene\EndScene.cpp" />
     <ClCompile Include="Scene\OnGameScene\OnGameScene.cpp" />
     <ClCompile Include="Scene\TitleScene\TitleScene.cpp" />
@@ -71,9 +84,12 @@
     <ClInclude Include="DesignPattern\SingletonBase\SingletonBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\GameObject\GameObject.h" />
     <ClInclude Include="Manager\SceneManager\SceneManager.h" />
+    <ClInclude Include="Manager\XmlManager\XmlManager.h" />
     <ClInclude Include="Manager\SoundManager\SoundManager.h" />
     <ClInclude Include="Manager\TimeManager\TimeManager.h" />
     <ClInclude Include="Manager\TimeManager\Timer\Timer.h" />
+    <ClInclude Include="Manager\XmlManager\TinyXml\tinystr.h" />
+    <ClInclude Include="Manager\XmlManager\TinyXml\tinyxml.h" />
     <ClInclude Include="Utility\CommonClasses\CommonClasses.h" />
     <ClInclude Include="Utility\Enums.h" />
     <ClInclude Include="GameNode\GameNode.h" />

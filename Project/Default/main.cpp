@@ -127,6 +127,7 @@ void LoadResources() {
 	TIME->Init();
 	SCENE->Init();
 	SOUND->Init();
+	XML->Init();
 
 	////// image.
 	// backbuffer.
@@ -155,6 +156,8 @@ void LoadResources() {
 
 void ReleaseResources() {
 	// singleton release.
+	XML->Release();
+	XML->ReleaseSingleton();
 	SOUND->Release();
 	SOUND->ReleaseSingleton();
 	SCENE->Release();

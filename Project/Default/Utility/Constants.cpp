@@ -93,3 +93,11 @@ const std::wstring KEY_END_SCENE =
 	L"END_SCENE";
 #pragma endregion Scene
 
+///////////////////////
+///////////////////////
+
+#pragma region XmlDocument
+extern const std::wstring XML_DOC_EXAMPLE =
+	L"example document.txt";
+#pragma endregion XmlDocument
+
