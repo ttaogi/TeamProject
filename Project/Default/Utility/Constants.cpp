@@ -79,3 +79,17 @@ const std::wstring SOUND_EXAMPLE =
 	//L"Resources/Sounds/SOUND_EX_모색창연.mp3";
 #pragma endregion Sound
 
+///////////////////////
+///////////////////////
+
+#pragma region Scene
+const std::wstring KEY_NONE_SCENE =
+	L"NONE_SCENE";
+const std::wstring KEY_TITLE_SCENE =
+	L"TITLE_SCENE";
+const std::wstring KEY_ONGAME_SCENE =
+	L"ONGAME_SCENE";
+const std::wstring KEY_END_SCENE =
+	L"END_SCENE";
+#pragma endregion Scene
+

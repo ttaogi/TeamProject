@@ -38,9 +38,10 @@
     <ClCompile Include="Manager\FontManager\FontManager.cpp" />
     <ClCompile Include="Manager\ImageManager\ImageManager.cpp" />
     <ClCompile Include="Manager\KeyManager\KeyManager.cpp" />
-    <ClCompile Include="Manager\SceneManager\EndSceneManager\EndSceneManager.cpp" />
-    <ClCompile Include="Manager\SceneManager\OnGameSceneManager\OnGameSceneManager.cpp" />
-    <ClCompile Include="Manager\SceneManager\TitleSceneManager\TitleSceneManager.cpp" />
+    <ClCompile Include="Manager\SceneManager\SceneManager.cpp" />
+    <ClCompile Include="Scene\EndScene\EndScene.cpp" />
+    <ClCompile Include="Scene\OnGameScene\OnGameScene.cpp" />
+    <ClCompile Include="Scene\TitleScene\TitleScene.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Button\Button.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Behaviour\MonoBehaviour\MonoBehaviour.cpp" />
     <ClCompile Include="Manager\SoundManager\SoundManager.cpp" />
@@ -69,6 +70,7 @@
     <ClInclude Include="DesignPattern\FactoryBase\Factory.h" />
     <ClInclude Include="DesignPattern\SingletonBase\SingletonBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\GameObject\GameObject.h" />
+    <ClInclude Include="Manager\SceneManager\SceneManager.h" />
     <ClInclude Include="Manager\SoundManager\SoundManager.h" />
     <ClInclude Include="Manager\TimeManager\TimeManager.h" />
     <ClInclude Include="Manager\TimeManager\Timer\Timer.h" />
@@ -82,10 +84,10 @@
     <ClInclude Include="Manager\FontManager\FontManager.h" />
     <ClInclude Include="Manager\ImageManager\ImageManager.h" />
     <ClInclude Include="Manager\KeyManager\KeyManager.h" />
-    <ClInclude Include="Manager\SceneManager\EndSceneManager\EndSceneManager.h" />
-    <ClInclude Include="Manager\SceneManager\OnGameSceneManager\OnGameSceneManager.h" />
-    <ClInclude Include="Manager\SceneManager\SceneManager.h" />
-    <ClInclude Include="Manager\SceneManager\TitleSceneManager\TitleSceneManager.h" />
+    <ClInclude Include="Scene\EndScene\EndScene.h" />
+    <ClInclude Include="Scene\OnGameScene\OnGameScene.h" />
+    <ClInclude Include="Scene\Scene.h" />
+    <ClInclude Include="Scene\TitleScene\TitleScene.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Button\Button.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Behaviour\MonoBehaviour\MonoBehaviour.h" />
     <ClInclude Include="Player\Player.h" />

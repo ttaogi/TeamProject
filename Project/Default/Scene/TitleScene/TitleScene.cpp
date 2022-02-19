@@ -1,6 +1,8 @@
 #include "Stdafx/stdafx.h"
 
-#include "TitleSceneManager.h"
+#include "TitleScene.h"
+
+#include <functional>
 
 #include "DesignPattern/AbstractFactoryBase/AbstractFactoryBase.h"
 #include "DesignPattern/ComponentBase/Component/Button/Button.h"
@@ -11,26 +13,29 @@
 #define BUTTON_WIDTH	200
 #define BUTTON_HEIGHT	150
 
-TitleSceneManager::TitleSceneManager()
-	: SceneManager(SCENE_TYPE::TITLE) { }
+TitleScene::TitleScene() { }
 
-void TitleSceneManager::Init()
+TitleScene::~TitleScene() { }
+
+HRESULT TitleScene::Init()
 {
 	backgroundImage = IMG->FindImage(KEY_BACKGROUND_TITLESCENE);
 
 	RECT gameStartBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
 	GameObject* gameStartBtn = AbstractFactoryButton::GetSingleton()
 		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
-			std::bind(&MainGame::SetNextScene_ONGAME, MAIN_GAME),
+			std::bind(&SceneManager::SetNextSceneKeyOnGameScene, SCENE),
 			&gameStartBtnRc,
 			IMG->FindImage(KEY_UI_START_BUTTON_STRIPE));
 	gameStartBtn->GetComponent<Transform>()->SetPosition(F_POINT{WINSIZE_X / 2, WINSIZE_Y / 2});
 	gameObjects.push_back(gameStartBtn);
 
 	SOUND->Play(KEY_SOUND_EXAMPLE, 1.0f);
+
+	return S_OK;
 }
 
-void TitleSceneManager::Update()
+void TitleScene::Update()
 {
 	SOUND->Update();
 	for (GameObject* go : gameObjects)
@@ -42,11 +47,11 @@ void TitleSceneManager::Update()
 			}
 }
 
-void TitleSceneManager::Release() {
+void TitleScene::Release() {
 	SOUND->AllStop();
 }
 
-void TitleSceneManager::Render()
+void TitleScene::Render()
 {
 	HDC memDC = MAIN_GAME->GetMemDC();
 

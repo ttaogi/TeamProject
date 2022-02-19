@@ -1,10 +1,10 @@
 #pragma once
 
-#include "Manager/SceneManager/SceneManager.h"
+#include "Scene/Scene.h"
 
 const static std::wstring NOTICE = L"Press Q to quit.";
 
-class OnGameSceneManager : public SceneManager
+class OnGameScene : public Scene
 {
 private:
 	std::wstring msg;
@@ -14,10 +14,10 @@ private:
 	int bgOffsetX;
 	int bgOffsetY;
 public:
-	OnGameSceneManager();
-	~OnGameSceneManager();
+	OnGameScene();
+	~OnGameScene();
 
-	void Init();
+	HRESULT Init();
 	void Release();
 	void Update();
 	void Render();

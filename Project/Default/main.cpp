@@ -93,13 +93,15 @@ int APIENTRY wWinMain(
 		else {
 			MAIN_GAME->Update();
 
-			HDC hdc;
-			PAINTSTRUCT ps;
-			hdc = BeginPaint(HANDLE_WINDOW, &ps);
+			//HDC hdc;
+			//PAINTSTRUCT ps;
+			//hdc = BeginPaint(HANDLE_WINDOW, &ps);
 			MAIN_GAME->Render();
-			EndPaint(HANDLE_WINDOW, &ps);
+			//EndPaint(HANDLE_WINDOW, &ps);
 		}
 	}
+
+	ReleaseResources();
 
 	return (int)message.wParam;
 }
@@ -123,6 +125,7 @@ void LoadResources() {
 	IMG->init();
 	_wsetlocale(LC_ALL, L"Korean");
 	TIME->Init();
+	SCENE->Init();
 	SOUND->Init();
 
 	////// image.
@@ -154,6 +157,8 @@ void ReleaseResources() {
 	// singleton release.
 	SOUND->Release();
 	SOUND->ReleaseSingleton();
+	SCENE->Release();
+	SCENE->ReleaseSingleton();
 	TIME->Release();
 	TIME->ReleaseSingleton();
 	FONT->ReleaseSingleton();

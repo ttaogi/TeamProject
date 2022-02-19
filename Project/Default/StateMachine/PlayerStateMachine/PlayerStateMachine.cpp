@@ -1,7 +1,7 @@
 #include "Stdafx/stdafx.h"
 
 #include "DesignPattern/ComponentBase/Component/Button/Button.h"
-#include "Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
+#include "Scene/OnGameScene/OnGameScene.h"
 #include "Player/Player.h"
 #include "PlayerStateMachine.h"
 
@@ -20,10 +20,10 @@ void PlayerStateMachine::SetCallBack_v_CB_pMb(std::function<void(MonoBehaviour*)
 	callBack = std::move(_callBack);
 }
 
-void PlayerStateMachine::Update(MonoBehaviour* _mb, SceneManager* _scnMgr)
+void PlayerStateMachine::Update(MonoBehaviour* _mb, Scene* _scene)
 {
 	Player* player = (Player*)_mb;
-	OnGameSceneManager* scnMgr = (OnGameSceneManager*)_scnMgr;
+	OnGameScene* scene = (OnGameScene*)_scene;
 
 	//player->Move();
 

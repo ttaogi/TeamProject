@@ -3,21 +3,18 @@
 
 #include "MainGame.h"
 
-#include "Manager/SceneManager/EndSceneManager/EndSceneManager.h"
-#include "Manager/SceneManager/OnGameSceneManager/OnGameSceneManager.h"
-#include "Manager/SceneManager/TitleSceneManager/TitleSceneManager.h"
+#include "Manager/SceneManager/SceneManager.h"
+#include "Scene/EndScene/EndScene.h"
+#include "Scene/OnGameScene/OnGameScene.h"
+#include "Scene/TitleScene/TitleScene.h"
 
 MainGame::MainGame()
 {
 	quit = false;
-	scnMgr = NULL;
-	nextScnType = SCENE_TYPE::NONE;
+	nodeHdc = NULL;
 }
 
-MainGame::~MainGame()
-{
-	Release();
-}
+MainGame::~MainGame() { Release(); }
 
 HRESULT MainGame::Init()
 {
@@ -25,11 +22,14 @@ HRESULT MainGame::Init()
 
 	SetBackBuffer(IMG->FindImage(KEY_BACKGROUND_BACKBUFFER));
 
-	if (scnMgr == NULL)
-	{
-		scnMgr = new TitleSceneManager();
-		scnMgr->Init();
-	}
+	TitleScene* titleScene = new TitleScene();
+	SCENE->AddScene(KEY_TITLE_SCENE, titleScene);
+	OnGameScene* onGameScene = new OnGameScene();
+	SCENE->AddScene(KEY_ONGAME_SCENE, onGameScene);
+	EndScene* endScene = new EndScene();
+	SCENE->AddScene(KEY_END_SCENE, endScene);
+
+	SCENE->ChangeScene(KEY_TITLE_SCENE);
 
 	SetTimer(HANDLE_WINDOW, 1, 42, NULL);
 
@@ -39,13 +39,6 @@ HRESULT MainGame::Init()
 void MainGame::Release()
 { // reverse order of init.
 	KillTimer(HANDLE_WINDOW, 1);
-
-	if (scnMgr != NULL)
-	{
-		scnMgr->Release();
-		delete scnMgr;
-		scnMgr = NULL;
-	}
 
 	ReleaseDC(HANDLE_WINDOW, nodeHdc);
 }
@@ -69,52 +62,17 @@ void MainGame::Update()
 		MOUSE_CLICKED = true;
 	}
 
-	switch (nextScnType)
-	{
-	case SCENE_TYPE::TITLE:
-		nextScnType = SCENE_TYPE::NONE;
-		break;
-	case SCENE_TYPE::ONGAME:
-		nextScnType = SCENE_TYPE::NONE;
-		if (scnMgr != NULL)
-		{
-			scnMgr->Release();
-			delete scnMgr;
-			scnMgr = new OnGameSceneManager();
-			scnMgr->Init();
-		}
-		break;
-	case SCENE_TYPE::END:
-		nextScnType = SCENE_TYPE::NONE;
-		if (scnMgr != NULL)
-		{
-			scnMgr->Release();
-			delete scnMgr;
-			scnMgr = new EndSceneManager();
-			scnMgr->Init();
-		}
-		break;
-	default:
-		nextScnType = SCENE_TYPE::NONE;
-		break;
-	}
-
-	if (scnMgr != NULL) scnMgr->Update();
-
-	//InvalidateRect(HANDLE_WINDOW, NULL, true);
+	SCENE->Update();
 }
 
 void MainGame::Render()
 {
-	if (scnMgr != NULL) scnMgr->Render();
+	SCENE->Render();
 	GetBackBuffer()->Render(GetHDC());
 }
 
 LRESULT MainGame::MainProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lParam)
 {
-	HDC hdc;
-	PAINTSTRUCT ps;
-
 	switch (_message)
 	{
 	case WM_CREATE:
@@ -128,11 +86,7 @@ LRESULT MainGame::MainProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lP
 		}
 		break;
 	case WM_PAINT:
-		hdc = BeginPaint(_hWnd, &ps);
-
 		Render();
-
-		EndPaint(_hWnd, &ps);
 		break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
@@ -141,9 +95,5 @@ LRESULT MainGame::MainProc(HWND _hWnd, UINT _message, WPARAM _wParam, LPARAM _lP
 
 	return GameNode::MainProc(_hWnd, _message, _wParam, _lParam);
 }
-
-void MainGame::SetNextScene_ONGAME() { nextScnType = SCENE_TYPE::ONGAME; }
-
-void MainGame::SetNextScene_END() {	nextScnType = SCENE_TYPE::END; }
 
 void MainGame::QuitGame() {	quit = true; }

@@ -5,7 +5,7 @@
 #include "Image/Animator/Animator.h"
 
 class MonoBehaviour;
-class SceneManager;
+class Scene;
 
 class StateMachine
 {
@@ -19,5 +19,5 @@ public:
 	virtual void SetState(MonoBehaviour* _mb, CHARACTER_STATE _state) = 0;
 	virtual void SetCallBack_v_CB_pMb(std::function<void(MonoBehaviour*)> _callBack) = 0;
 
-	virtual void Update(MonoBehaviour* _mb, SceneManager* _scnMgr) = 0;
+	virtual void Update(MonoBehaviour* _mb, Scene* _scnMgr) = 0;
 };

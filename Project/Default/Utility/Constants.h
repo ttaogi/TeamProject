@@ -51,3 +51,13 @@ extern const std::wstring KEY_SOUND_EXAMPLE;
 extern const std::wstring SOUND_EXAMPLE;
 #pragma endregion Sound
 
+///////////////////////
+///////////////////////
+
+#pragma region Scene
+extern const std::wstring KEY_NONE_SCENE;
+extern const std::wstring KEY_TITLE_SCENE;
+extern const std::wstring KEY_ONGAME_SCENE;
+extern const std::wstring KEY_END_SCENE;
+#pragma endregion Scene
+

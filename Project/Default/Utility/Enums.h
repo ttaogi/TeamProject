@@ -7,11 +7,11 @@ enum class DIRECTION
 	DIRECTION_NUM
 };
 
-enum class SCENE_TYPE
-{
-	NONE = 0, TITLE, ONGAME, END,
-	SCENE_TYPE_NUM
-};
+//enum class SCENE_TYPE
+//{
+//	NONE = 0, TITLE, ONGAME, END,
+//	SCENE_TYPE_NUM
+//};
 
 enum class IMAGE_LOAD_KIND
 {

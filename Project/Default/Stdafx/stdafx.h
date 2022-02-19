@@ -27,6 +27,7 @@
 #include "Manager/ImageManager/ImageManager.h"
 #include "Manager/KeyManager/KeyManager.h"
 #include "Manager/FontManager/FontManager.h"
+#include "Manager/SceneManager/SceneManager.h"
 #include "Manager/SoundManager/SoundManager.h"
 #include "Manager/TimeManager/TimeManager.h"
 #include "Utility/CommonMacroFunction.h"
@@ -49,6 +50,7 @@ using namespace std;
 #define IMG						ImageManager::GetSingleton()
 #define FONT					FontManager::GetSingleton()
 #define TIME					TimeManager::GetSingleton()
+#define SCENE					SceneManager::GetSingleton()
 #define SOUND					SoundManager::GetSingleton()
 
 #define SAFE_RELEASE(p)			{if((p) != NULL) { (p)->Release();}}

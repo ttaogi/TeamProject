@@ -40,15 +40,6 @@
     <Filter Include="API_Framework\Manager\SceneManager">
       <UniqueIdentifier>{07359fe2-b7fe-4dc3-8aaa-68bfb983d865}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API_Framework\Manager\SceneManager\EndSceneManager">
-      <UniqueIdentifier>{4b1c4a3f-ff23-4bc9-a5be-84f92b2f4cba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API_Framework\Manager\SceneManager\OnGameSceneManager">
-      <UniqueIdentifier>{aa77e9ef-d16d-44e8-9372-5a6c289fd426}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API_Framework\Manager\SceneManager\TitleSceneManager">
-      <UniqueIdentifier>{92e11a76-8ba0-4ce3-a30d-1fb301647efd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API_Framework\StateMachine">
       <UniqueIdentifier>{28bb727e-7044-49ce-a50b-8ad1ee367719}</UniqueIdentifier>
     </Filter>
@@ -115,6 +106,18 @@
     <Filter Include="API_Framework\Manager\SoundManager">
       <UniqueIdentifier>{ac54715c-c036-45b9-9f10-37d459e60d1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API_Framework\Scene">
+      <UniqueIdentifier>{9e13517c-554f-4d70-a9fd-8d25df7b9b9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\Scene\OnGameScene">
+      <UniqueIdentifier>{aa77e9ef-d16d-44e8-9372-5a6c289fd426}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\Scene\TitleScene">
+      <UniqueIdentifier>{92e11a76-8ba0-4ce3-a30d-1fb301647efd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\Scene\EndScene">
+      <UniqueIdentifier>{4b1c4a3f-ff23-4bc9-a5be-84f92b2f4cba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -141,15 +144,6 @@
     </ClCompile>
     <ClCompile Include="Manager\KeyManager\KeyManager.cpp">
       <Filter>API_Framework\Manager\KeyManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager\SceneManager\EndSceneManager\EndSceneManager.cpp">
-      <Filter>API_Framework\Manager\SceneManager\EndSceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager\SceneManager\TitleSceneManager\TitleSceneManager.cpp">
-      <Filter>API_Framework\Manager\SceneManager\TitleSceneManager</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager\SceneManager\OnGameSceneManager\OnGameSceneManager.cpp">
-      <Filter>API_Framework\Manager\SceneManager\OnGameSceneManager</Filter>
     </ClCompile>
     <ClCompile Include="StateMachine\PlayerStateMachine\PlayerStateMachine.cpp">
       <Filter>API_Framework\StateMachine\PlayerStateMachine</Filter>
@@ -217,6 +211,18 @@
     <ClCompile Include="Manager\SoundManager\SoundManager.cpp">
       <Filter>API_Framework\Manager\SoundManager</Filter>
     </ClCompile>
+    <ClCompile Include="Scene\EndScene\EndScene.cpp">
+      <Filter>API_Framework\Scene\EndScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\OnGameScene\OnGameScene.cpp">
+      <Filter>API_Framework\Scene\OnGameScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene\TitleScene\TitleScene.cpp">
+      <Filter>API_Framework\Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\SceneManager\SceneManager.cpp">
+      <Filter>API_Framework\Manager\SceneManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DesignPattern\SingletonBase\SingletonBase.h">
@@ -245,18 +251,6 @@
     </ClInclude>
     <ClInclude Include="Manager\KeyManager\KeyManager.h">
       <Filter>API_Framework\Manager\KeyManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager\SceneManager\EndSceneManager\EndSceneManager.h">
-      <Filter>API_Framework\Manager\SceneManager\EndSceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager\SceneManager\SceneManager.h">
-      <Filter>API_Framework\Manager\SceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager\SceneManager\TitleSceneManager\TitleSceneManager.h">
-      <Filter>API_Framework\Manager\SceneManager\TitleSceneManager</Filter>
-    </ClInclude>
-    <ClInclude Include="Manager\SceneManager\OnGameSceneManager\OnGameSceneManager.h">
-      <Filter>API_Framework\Manager\SceneManager\OnGameSceneManager</Filter>
     </ClInclude>
     <ClInclude Include="StateMachine\PlayerStateMachine\PlayerStateMachine.h">
       <Filter>API_Framework\StateMachine\PlayerStateMachine</Filter>
@@ -329,6 +323,21 @@
     </ClInclude>
     <ClInclude Include="Manager\SoundManager\SoundManager.h">
       <Filter>API_Framework\Manager\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\EndScene\EndScene.h">
+      <Filter>API_Framework\Scene\EndScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\OnGameScene\OnGameScene.h">
+      <Filter>API_Framework\Scene\OnGameScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\TitleScene\TitleScene.h">
+      <Filter>API_Framework\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene\Scene.h">
+      <Filter>API_Framework\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\SceneManager\SceneManager.h">
+      <Filter>API_Framework\Manager\SceneManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
