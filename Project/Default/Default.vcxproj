@@ -173,8 +173,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\BN927A\source\repos\TEAM_PROJECT\Project\Library\Fmod\inc;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\BN927A\source\repos\TEAM_PROJECT\Project\Library\Fmod\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\Library\Fmod\inc;$(IncludePath)</IncludePath>
+    <LibraryPath>..\Library\Fmod\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
