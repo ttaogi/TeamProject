@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ROOT>
+    <!--This is a comment.-->
+    <list num="5">
+        <item_0 name="투구" value="1000" />
+        <item_1 name="갑옷" value="1000" />
+        <item_2 name="신발" value="1000" />
+        <item_3 name="검" value="2000" />
+        <item_4 name="방패" value="1000" />
+    </list>
+</ROOT>

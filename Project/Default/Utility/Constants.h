@@ -16,12 +16,6 @@ extern const wchar_t* BACKGROUND_ONGAMESCENE;
 #pragma region Player
 extern const std::wstring KEY_PLAYER_IDLE_STRIPE;
 extern const wchar_t* PLAYER_IDLE_STRIPE;
-extern const std::wstring KEY_PLAYER_ATTACK_STRIPE;
-extern const wchar_t* PLAYER_ATTACK_STRIPE;
-extern const std::wstring KEY_PLAYER_ATTACKED_STRIPE;
-extern const wchar_t* PLAYER_ATTACKED_STRIPE;
-extern const std::wstring KEY_PLAYER_DEFFENCE_STRIPE;
-extern const wchar_t* PLAYER_DEFFENCE_STRIPE;
 #pragma endregion Player
 
 
@@ -33,6 +27,12 @@ extern const wchar_t* UI_RETRY_BUTTON_STRIPE;
 extern const std::wstring KEY_UI_START_BUTTON_STRIPE;
 extern const wchar_t* UI_START_BUTTON_STRIPE;
 #pragma endregion UiButton
+
+
+#pragma region Tile
+extern const std::wstring KEY_TILE_DIRT;
+extern const wchar_t* TILE_DIRT;
+#pragma endregion Tile
 #pragma endregion Stripe
 
 ///////////////////////
@@ -66,5 +66,16 @@ extern const std::wstring KEY_END_SCENE;
 
 #pragma region XmlDocument
 extern const std::wstring XML_DOC_EXAMPLE;
+extern const std::wstring XML_DOC_ITEM_LIST;
+extern const std::wstring XML_DOC_EXAMPLE_MAP;
 #pragma endregion XmlDocument
 
+///////////////////////
+///////////////////////
+
+#pragma region Size
+extern const int TILE_SIZE;
+#pragma endregion Size
+
+
+extern const COLORREF MAGENTA;

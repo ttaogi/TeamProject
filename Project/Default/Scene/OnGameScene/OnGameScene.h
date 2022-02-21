@@ -8,6 +8,7 @@ class OnGameScene : public Scene
 {
 private:
 	std::wstring msg;
+	MapInfo* mapInfo;
 
 	int alpha;
 	int bgSpeed;

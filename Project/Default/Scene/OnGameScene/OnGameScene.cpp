@@ -33,6 +33,8 @@ HRESULT OnGameScene::Init()
 	gameObjects.push_back(quitBtn);
 
 	msg = L"";
+	mapInfo = MAP_INFO->GetMapInfo(MAP_ID::EXAMPLE_MAP);
+	if (mapInfo == NULL) return E_FAIL;
 
 	alpha = 0;
 	bgSpeed = 20;

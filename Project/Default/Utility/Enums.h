@@ -7,12 +7,6 @@ enum class DIRECTION
 	DIRECTION_NUM
 };
 
-//enum class SCENE_TYPE
-//{
-//	NONE = 0, TITLE, ONGAME, END,
-//	SCENE_TYPE_NUM
-//};
-
 enum class IMAGE_LOAD_KIND
 {
 	LOAD_RESOURCE = 0,
@@ -34,4 +28,16 @@ enum class BUTTON_FACTORY_TYPE
 {
 	DEFAULT = 0,
 	BUTTON_FACTORY_NUM
+};
+
+enum class TILE_TYPE
+{
+	DIRT = 0,
+	TILE_TYPE_NUM
+};
+
+enum class MAP_ID
+{
+	EXAMPLE_MAP = 0,
+	MAP_ID_NUM
 };

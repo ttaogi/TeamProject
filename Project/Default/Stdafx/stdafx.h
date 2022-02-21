@@ -27,6 +27,9 @@
 #include "Manager/ImageManager/ImageManager.h"
 #include "Manager/KeyManager/KeyManager.h"
 #include "Manager/FontManager/FontManager.h"
+#include "Manager/ItemInfoManager/ItemInfoManager.h"
+#include "Manager/MapInfoManager/MapInfoManager.h"
+#include "Manager/PlayerInfoManager/PlayerInfoManager.h"
 #include "Manager/SceneManager/SceneManager.h"
 #include "Manager/SoundManager/SoundManager.h"
 #include "Manager/TimeManager/TimeManager.h"
@@ -40,16 +43,19 @@ using namespace std;
 
 #define WINNAME				    L"WindowsAPI"
 
-#define WINSTART_X			    1180
-#define WINSTART_Y			    500
-#define WINSIZE_X				1280
-#define WINSIZE_Y				800
+#define WINSTART_X			    100
+#define WINSTART_Y			    100
+#define WINSIZE_X				1920
+#define WINSIZE_Y				1080
 #define WINSTYLE				WS_CAPTION | WS_SYSMENU
 
 #define RND						RandomFunction::GetSingleton()
 #define KEY						KeyManager::GetSingleton()
 #define IMG						ImageManager::GetSingleton()
 #define FONT					FontManager::GetSingleton()
+#define ITEM					ItemInfoManager::GetSingleton()
+#define MAP_INFO				MapInfoManager::GetSingleton()
+#define PLAYER_INFO				PlayerInfoManager::GetSingleton()
 #define TIME					TimeManager::GetSingleton()
 #define SCENE					SceneManager::GetSingleton()
 #define SOUND					SoundManager::GetSingleton()
@@ -64,5 +70,3 @@ extern HWND						HANDLE_WINDOW;
 extern POINT					POINT_MOUSE;
 extern MainGame*				MAIN_GAME;
 extern bool						MOUSE_CLICKED;
-
-const COLORREF MAGENTA			RGB(255, 0, 255);

@@ -124,6 +124,18 @@
     <Filter Include="API_Framework\Manager\XmlManager\TinyXml">
       <UniqueIdentifier>{c6b07a7b-9c74-430a-b792-266b65c4ec28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API_Framework\Manager\ItemInfoManager">
+      <UniqueIdentifier>{5e2e5eff-69bc-469f-9736-78afe9d289b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\Manager\PlayerInfoManager">
+      <UniqueIdentifier>{4f678819-bc0a-49a2-a81e-21d2f3b3e839}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\Manager\MapInfoManager">
+      <UniqueIdentifier>{7da24e62-b860-40ad-b706-5ba469076144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API_Framework\DesignPattern\ComponentBase\Component\Ma">
+      <UniqueIdentifier>{aef49f4c-6677-4cd9-85e5-b6eb07c90351}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -243,6 +255,15 @@
     </ClCompile>
     <ClCompile Include="Manager\XmlManager\XmlManager.cpp">
       <Filter>API_Framework\Manager\XmlManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\ItemInfoManager\ItemInfoManager.cpp">
+      <Filter>API_Framework\Manager\ItemInfoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\PlayerInfoManager\PlayerInfoManager.cpp">
+      <Filter>API_Framework\Manager\PlayerInfoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager\MapInfoManager\MapInfoManager.cpp">
+      <Filter>API_Framework\Manager\MapInfoManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -368,6 +389,15 @@
     </ClInclude>
     <ClInclude Include="Manager\XmlManager\XmlManager.h">
       <Filter>API_Framework\Manager\XmlManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\ItemInfoManager\ItemInfoManager.h">
+      <Filter>API_Framework\Manager\ItemInfoManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\PlayerInfoManager\PlayerInfoManager.h">
+      <Filter>API_Framework\Manager\PlayerInfoManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager\MapInfoManager\MapInfoManager.h">
+      <Filter>API_Framework\Manager\MapInfoManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

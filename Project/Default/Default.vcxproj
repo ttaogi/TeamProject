@@ -37,7 +37,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Manager\FontManager\FontManager.cpp" />
     <ClCompile Include="Manager\ImageManager\ImageManager.cpp" />
+    <ClCompile Include="Manager\ItemInfoManager\ItemInfoManager.cpp" />
     <ClCompile Include="Manager\KeyManager\KeyManager.cpp" />
+    <ClCompile Include="Manager\MapInfoManager\MapInfoManager.cpp" />
+    <ClCompile Include="Manager\PlayerInfoManager\PlayerInfoManager.cpp" />
     <ClCompile Include="Manager\SceneManager\SceneManager.cpp" />
     <ClCompile Include="Manager\XmlManager\XmlManager.cpp" />
     <ClCompile Include="Manager\XmlManager\TinyXml\tinystr.cpp">
@@ -83,6 +86,9 @@
     <ClInclude Include="DesignPattern\FactoryBase\Factory.h" />
     <ClInclude Include="DesignPattern\SingletonBase\SingletonBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\GameObject\GameObject.h" />
+    <ClInclude Include="Manager\ItemInfoManager\ItemInfoManager.h" />
+    <ClInclude Include="Manager\MapInfoManager\MapInfoManager.h" />
+    <ClInclude Include="Manager\PlayerInfoManager\PlayerInfoManager.h" />
     <ClInclude Include="Manager\SceneManager\SceneManager.h" />
     <ClInclude Include="Manager\XmlManager\XmlManager.h" />
     <ClInclude Include="Manager\SoundManager\SoundManager.h" />
