@@ -1,10 +1,10 @@
 ﻿#include "Stdafx.h"
 #include "MainGame.h"
 
-HINSTANCE _hInstance;
-HWND _hWnd;
-POINT _ptMouse = { 0, 0 };
-LPTSTR _lpszClass = TEXT("WindowsAPI");
+HINSTANCE	_hInstance;
+HWND		_hWnd;
+POINT		_ptMouse = { 0, 0 };
+LPTSTR		_lpszClass = TEXT("WindowsAPI");
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void setWindowSize(int x, int y, int width, int height);
@@ -33,27 +33,6 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	wndClass.style = CS_HREDRAW | CS_VREDRAW;
 	
 	RegisterClass(&wndClass);
-#ifdef FULLSCREEN
-	//디바이스 모드 구조체 (화면 디스플레이 관련 기능)
-	DEVMODE dm;
-
-	//ZeroMemory(&dm, sizeof(DEVMODE));
-
-	dm.dmBitsPerPel = 32;		//32비트 트루컬러
-	dm.dmPelsWidth = 1980;		//가로 해상도
-	dm.dmPelsHeight = 1020;		//세로 해상도
-	dm.dmDisplayFrequency = 60;	//재생빈도
-
-	//Fields: 다양한 디스플레이 정보중 우리가 사용한 정보값만 넘겨주겟다
-	dm.dmFields = DM_BITSPERPEL | DM_PELSWIDTH | DM_PELSHEIGHT | DM_DISPLAYFREQUENCY;
-
-	//화면이 종료되면 자동으로 원래 화면의 해상도로 복구
-	if (ChangeDisplaySettings(&dm, CDS_FULLSCREEN) != DISP_CHANGE_SUCCESSFUL)
-	{
-		ChangeDisplaySettings(&dm, 0);
-	}
-
-#else
 
 	_hWnd = CreateWindow
 	(
@@ -69,11 +48,10 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		hInstance,
 		NULL
 	);
-	setWindowSize(WINSTARTX, WINSTARTY, WINSIZEX, WINSIZEY);	
 
-#endif
-
+	setWindowSize(WINSTARTX, WINSTARTY, WINSIZEX, WINSIZEY);
 	ShowWindow(_hWnd, nCmdShow);
+
 	if (FAILED(_mg->init()))
 	{
 		return 0;
@@ -111,6 +89,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 	return (int)message.wParam;
 	*/
+	_mg->release();
 }
 
 //! 윈도우 프로시저

@@ -1,6 +1,8 @@
 #include "Stdafx.h"
 #include "StartScene.h"
 
+#include "MainGame.h"
+
 HRESULT StartScene::init(void)
 {
 	IMAGEMANAGER->addImage("시작화면", "Resources/Images/BackGround/startBack.bmp", WINSIZEX, WINSIZEY);
@@ -17,8 +19,11 @@ void StartScene::release(void)
 void StartScene::update(void)
 {
 	if (KEYMANAGER->isOnceKeyDown(VK_RBUTTON))
-	{
 		SCENEMANAGER->changeScene("슈팅");
+	if (KEYMANAGER->isOnceKeyDown('Q'))
+	{
+		_mg->quitGame();
+		return;
 	}
 }
 

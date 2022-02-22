@@ -1,8 +1,10 @@
 #pragma once
 #include "GameNode.h"
 
-class MainGame :public GameNode
+class MainGame : public GameNode
 {
+private:
+	bool quit;
 public:
 	HRESULT init(void);
 	void release(void);
@@ -11,5 +13,7 @@ public:
 
 	MainGame() {}
 	~MainGame() {}
+
+	void quitGame();
 };
 

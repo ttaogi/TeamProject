@@ -50,3 +50,4 @@ inline RECT CollisionAreaResizing(RECT &rcDest, int width, int height)
 	return rc;
 }
 
+

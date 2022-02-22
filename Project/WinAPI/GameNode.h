@@ -1,7 +1,9 @@
 #pragma once
+
 #include "Image.h"
 
 //백버퍼 이미지를 정적으로
+//static Image* _backBuffer;
 static Image* _backBuffer = IMAGEMANAGER->addImage("backBuffer", WINSIZEX, WINSIZEY);
 
 class GameNode

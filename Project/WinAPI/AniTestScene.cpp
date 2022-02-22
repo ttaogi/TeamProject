@@ -13,7 +13,6 @@ HRESULT AniTestScene::init(void)
 	_animationA->setDefPlayFrame(false, true);
 	_animationA->setFPS(12);
 
-
 	return S_OK;
 }
 

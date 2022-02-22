@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ANSI" ?>
+<ROOT>
+    <!--This is a comment.-->
+    <element1 attr1="int" attr2="123" />
+    <element2 attr1="float" attr2="45.599998">
+        <element2_1 attr1="string" attr2="ÇÑ±ÛÊ«" />
+    </element2>
+</ROOT>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ANSI" ?>
+<ROOT>
+    <!--This is a comment.-->
+    <list num="5">
+        <item_0 name="Åõ±¸" value="1000" />
+        <item_1 name="°©¿Ê" value="1000" />
+        <item_2 name="½Å¹ß" value="1000" />
+        <item_3 name="°Ë" value="2000" />
+        <item_4 name="¹æÆÐ" value="1000" />
+    </list>
+</ROOT>

@@ -31,15 +31,6 @@
     <Filter Include="API FrameWork\EaxmpleClasses\Scene">
       <UniqueIdentifier>{7eba4f0e-a635-4ea1-b107-73ee0f09df73}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API FrameWork\TempSound">
-      <UniqueIdentifier>{d5362e68-4a63-4bbf-8adb-d17ca26c3e88}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\TempSound\TempSoundManager">
-      <UniqueIdentifier>{127fda70-9121-4231-8b84-29b033676f7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\TempSound\TempSoundTest">
-      <UniqueIdentifier>{9907c12b-6c73-477e-9863-b7cee83038e9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API FrameWork\EaxmpleClasses\ShootingGame">
       <UniqueIdentifier>{f338c748-9fe2-45bb-915c-f299072f984c}</UniqueIdentifier>
     </Filter>
@@ -94,11 +85,26 @@
     <Filter Include="API FrameWork\Manager\SoundManager">
       <UniqueIdentifier>{2f23a2d4-3438-4e6a-ae3c-cbd5fc95f9d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Manager\TextDataManager">
+      <UniqueIdentifier>{0a8d884d-b76b-4cb9-bffe-43c5f16f142f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Manager\TempSoundManager">
+      <UniqueIdentifier>{127fda70-9121-4231-8b84-29b033676f7d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Manager\TempSoundManager\TempSoundTest">
+      <UniqueIdentifier>{9907c12b-6c73-477e-9863-b7cee83038e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Manager\XmlManager">
+      <UniqueIdentifier>{8b1b9345-9bbf-41a5-a8c3-5c9c736a2cd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Manager\XmlManager\TinyXml">
+      <UniqueIdentifier>{020391f1-f460-448b-b2e5-2ceee3fc1f7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\EaxmpleClasses\Pixel">
+      <UniqueIdentifier>{85f9211d-0f92-44cc-b195-5b8e5bfbbfe1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="WinMain.cpp">
-      <Filter>API FrameWork</Filter>
-    </ClCompile>
     <ClCompile Include="Stdafx.cpp">
       <Filter>API FrameWork\Stdafx</Filter>
     </ClCompile>
@@ -124,10 +130,10 @@
       <Filter>API FrameWork\Manager\FontManager</Filter>
     </ClCompile>
     <ClCompile Include="TempSoundManager.cpp">
-      <Filter>API FrameWork\TempSound\TempSoundManager</Filter>
+      <Filter>API FrameWork\Manager\TempSoundManager</Filter>
     </ClCompile>
     <ClCompile Include="TempSoundTest.cpp">
-      <Filter>API FrameWork\TempSound\TempSoundTest</Filter>
+      <Filter>API FrameWork\Manager\TempSoundManager\TempSoundTest</Filter>
     </ClCompile>
     <ClCompile Include="Flame.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Rocket</Filter>
@@ -168,17 +174,12 @@
     <ClCompile Include="ShootingEffect.cpp">
       <Filter>API FrameWork\Effect\ShootingEffect</Filter>
     </ClCompile>
-    <ClCompile Include="TextDataManager.cpp">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Scene</Filter>
     </ClCompile>
     <ClCompile Include="ShootingScene.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="PixelCollision.cpp" />
-    <ClCompile Include="PixelScene.cpp" />
     <ClCompile Include="KeyManager.cpp">
       <Filter>API FrameWork\Manager\KeyManager</Filter>
     </ClCompile>
@@ -187,6 +188,37 @@
     </ClCompile>
     <ClCompile Include="SoundManager.cpp">
       <Filter>API FrameWork\Manager\SoundManager</Filter>
+    </ClCompile>
+    <ClCompile Include="TextDataManager.cpp">
+      <Filter>API FrameWork\Manager\TextDataManager</Filter>
+    </ClCompile>
+    <ClCompile Include="tinystr.cpp">
+      <Filter>API FrameWork\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxml.cpp">
+      <Filter>API FrameWork\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlerror.cpp">
+      <Filter>API FrameWork\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="tinyxmlparser.cpp">
+      <Filter>API FrameWork\Manager\XmlManager\TinyXml</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlManager.cpp">
+      <Filter>API FrameWork\Manager\XmlManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Constants.cpp">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="CommonMacroFunction.cpp">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="PixelCollision.cpp">
+      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelScene.cpp">
+      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -224,10 +256,10 @@
       <Filter>API FrameWork\Manager\FontManager</Filter>
     </ClInclude>
     <ClInclude Include="TempSoundManager.h">
-      <Filter>API FrameWork\TempSound\TempSoundManager</Filter>
+      <Filter>API FrameWork\Manager\TempSoundManager</Filter>
     </ClInclude>
     <ClInclude Include="TempSoundTest.h">
-      <Filter>API FrameWork\TempSound\TempSoundTest</Filter>
+      <Filter>API FrameWork\Manager\TempSoundManager\TempSoundTest</Filter>
     </ClInclude>
     <ClInclude Include="Flame.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Rocket</Filter>
@@ -268,14 +300,9 @@
     <ClInclude Include="ShootingEffect.h">
       <Filter>API FrameWork\Effect\ShootingEffect</Filter>
     </ClInclude>
-    <ClInclude Include="TextDataManager.h">
-      <Filter>API FrameWork\Manager</Filter>
-    </ClInclude>
     <ClInclude Include="ShootingScene.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="PixelCollision.h" />
-    <ClInclude Include="PixelScene.h" />
     <ClInclude Include="KeyManager.h">
       <Filter>API FrameWork\Manager\KeyManager</Filter>
     </ClInclude>
@@ -284,6 +311,27 @@
     </ClInclude>
     <ClInclude Include="SoundManager.h">
       <Filter>API FrameWork\Manager\SoundManager</Filter>
+    </ClInclude>
+    <ClInclude Include="TextDataManager.h">
+      <Filter>API FrameWork\Manager\TextDataManager</Filter>
+    </ClInclude>
+    <ClInclude Include="tinystr.h">
+      <Filter>API FrameWork\Manager\XmlManager\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml.h">
+      <Filter>API FrameWork\Manager\XmlManager\TinyXml</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlManager.h">
+      <Filter>API FrameWork\Manager\XmlManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Constants.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelCollision.h">
+      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelScene.h">
+      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

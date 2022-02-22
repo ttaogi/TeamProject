@@ -6,7 +6,7 @@ class RandomFunction : public SingletonBase <RandomFunction>
 public:
 	RandomFunction()
 	{
-		srand(GetTickCount());
+		srand((unsigned int)GetTickCount());
 	}
 	~RandomFunction() {}
 

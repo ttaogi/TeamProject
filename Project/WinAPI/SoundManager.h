@@ -14,7 +14,7 @@ using namespace FMOD;
 
 class SoundManager : public SingletonBase<SoundManager> {
 private:
-	std::map<std::wstring, Sound**> m_totalSounds;
+	std::map<std::string, Sound**> m_totalSounds;
 
 	System* m_system;
 	Sound** m_sound;
@@ -23,20 +23,20 @@ public:
 	SoundManager();
 	~SoundManager();
 
-	HRESULT Init();
-	void Release();
-	void Update();
+	HRESULT init();
+	void release();
+	void update();
 
 	// bgm - true : bgm, false : sfx.
-	void AddSound(std::wstring _keyName, std::wstring _fileName, bool _bgm = FALSE, bool _loop = FALSE);
+	void addSound(std::string _keyName, std::string _fileName, bool _bgm = FALSE, bool _loop = FALSE);
 	// volume : 0.0f ~ 1.0f.
-	void Play(std::wstring _keyName, float _volume = 1.0f);
+	void play(std::string _keyName, float _volume = 1.0f);
 	// go to start point.
-	void Stop(std::wstring _keyName);
-	void AllStop();
-	void Pause(std::wstring _keyName);
-	void Resume(std::wstring _keyName);
+	void stop(std::string _keyName);
+	void allStop();
+	void pause(std::string _keyName);
+	void resume(std::string _keyName);
 
-	bool IsPlaySound(std::wstring _keyName);
-	bool isPauseSound(std::wstring _keyName);
+	bool isPlaySound(std::string _keyName);
+	bool isPauseSound(std::string _keyName);
 };
