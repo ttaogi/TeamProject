@@ -44,7 +44,10 @@ using namespace std;
 #pragma region Manager
 #include "FontManager.h"
 #include "ImageManager.h"
+#include "ItemInfoManager.h"
 #include "KeyManager.h"
+#include "MapInfoManager.h"
+#include "PlayerInfoManager.h"
 #include "SceneManager.h"
 #include "SoundManager.h"
 #include "TempSoundManager.h"
@@ -55,6 +58,7 @@ using namespace std;
 #pragma region Utility
 #include "CommonMacroFunction.h"
 #include "Constants.h"
+#include "Enums.h"
 #include "RandomFunction.h"
 #include "Utils.h"
 #pragma endregion Utility
@@ -67,7 +71,10 @@ using namespace MY_UTIL;
 #define RND						RandomFunction::getSingleton()
 #define FONTMANAGER				FontManager::getSingleton()
 #define IMAGEMANAGER			ImageManager::getSingleton()
+#define ITEMINFOMANAGER			ItemInfoManager::getSingleton()
 #define KEYMANAGER				KeyManager::getSingleton()
+#define MAPINFOMANAGER			MapInfoManager::getSingleton()
+#define PLAYERINFOMANAGER		PlayerInfoManager::getSingleton()
 #define SCENEMANAGER			SceneManager::getSingleton()
 #define SOUNDMANAGER			SoundManager::getSingleton()
 #define TEMPSOUNDMANAGER		TempSoundManager::getSingleton()

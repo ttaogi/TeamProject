@@ -103,6 +103,15 @@
     <Filter Include="API FrameWork\EaxmpleClasses\Pixel">
       <UniqueIdentifier>{85f9211d-0f92-44cc-b195-5b8e5bfbbfe1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Manager\MapInfoManager">
+      <UniqueIdentifier>{79f45f94-e239-4b28-a312-03956b1101ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Manager\PlayerInfoManager">
+      <UniqueIdentifier>{f4725d2c-54a8-485c-9535-dc809dd91dd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Manager\ItemInfoManager">
+      <UniqueIdentifier>{8f92d24e-71dc-4c70-a98d-de881351eda3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -220,6 +229,18 @@
     <ClCompile Include="PixelScene.cpp">
       <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
     </ClCompile>
+    <ClCompile Include="MapInfoManager.cpp">
+      <Filter>API FrameWork\Manager\MapInfoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Enums.cpp">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerInfoManager.cpp">
+      <Filter>API FrameWork\Manager\PlayerInfoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemInfoManager.cpp">
+      <Filter>API FrameWork\Manager\ItemInfoManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -332,6 +353,18 @@
     </ClInclude>
     <ClInclude Include="PixelScene.h">
       <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
+    </ClInclude>
+    <ClInclude Include="MapInfoManager.h">
+      <Filter>API FrameWork\Manager\MapInfoManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>API FrameWork\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerInfoManager.h">
+      <Filter>API FrameWork\Manager\PlayerInfoManager</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemInfoManager.h">
+      <Filter>API FrameWork\Manager\ItemInfoManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

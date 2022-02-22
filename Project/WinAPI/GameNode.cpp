@@ -23,6 +23,10 @@ HRESULT GameNode::init(bool managerInit)
 		TEXTDATAMANAGER->init();
 		TIMEMANAGER->init();
 		XMLMANAGER->init();
+
+		ITEMINFOMANAGER->init();
+		MAPINFOMANAGER->init();
+		PLAYERINFOMANAGER->init();
 	}
 
 	return S_OK;
@@ -32,6 +36,13 @@ void GameNode::release()
 {
 	if (_managerInit)
 	{
+		PLAYERINFOMANAGER->release();
+		PLAYERINFOMANAGER->releaseSingleton();
+		MAPINFOMANAGER->release();
+		MAPINFOMANAGER->releaseSingleton();
+		ITEMINFOMANAGER->release();
+		ITEMINFOMANAGER->releaseSingleton();
+
 		XMLMANAGER->release();
 		XMLMANAGER->releaseSingleton();
 		TIMEMANAGER->release();
@@ -43,6 +54,8 @@ void GameNode::release()
 		SOUNDMANAGER->releaseSingleton();
 		SCENEMANAGER->release();
 		SCENEMANAGER->releaseSingleton();
+		MAPINFOMANAGER->release();
+		MAPINFOMANAGER->releaseSingleton();
 		KEYMANAGER->releaseSingleton();
 		IMAGEMANAGER->release();
 		IMAGEMANAGER->releaseSingleton();

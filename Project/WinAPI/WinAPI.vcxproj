@@ -151,18 +151,22 @@
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="Enums.cpp" />
     <ClCompile Include="Flame.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="ImageManager.cpp" />
+    <ClCompile Include="ItemInfoManager.cpp" />
     <ClCompile Include="KeyManager.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Use</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="MainGame.cpp" />
+    <ClCompile Include="MapInfoManager.cpp" />
     <ClCompile Include="Minion.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
     <ClCompile Include="PixelScene.cpp" />
+    <ClCompile Include="PlayerInfoManager.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="SceneManager.cpp" />
@@ -206,16 +210,20 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="Enums.h" />
     <ClInclude Include="Flame.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageManager.h" />
+    <ClInclude Include="ItemInfoManager.h" />
     <ClInclude Include="KeyManager.h" />
     <ClInclude Include="MainGame.h" />
+    <ClInclude Include="MapInfoManager.h" />
     <ClInclude Include="Minion.h" />
     <ClInclude Include="PixelCollision.h" />
     <ClInclude Include="PixelScene.h" />
+    <ClInclude Include="PlayerInfoManager.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
     <ClInclude Include="Rocket.h" />
