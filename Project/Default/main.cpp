@@ -144,7 +144,7 @@ void LoadResources() {
 	IMG->FindImage(KEY_BACKGROUND_ONGAMESCENE)->InitForAlphaBlend();
 
 	// player.
-	IMG->AddFrameImage(KEY_PLAYER_IDLE_STRIPE, PLAYER_IDLE_STRIPE, 24, 48, 1, 1, 1, true, MAGENTA);
+	IMG->AddFrameImage(KEY_PLAYER_IDLE_STRIPE, PLAYER_IDLE_STRIPE, 48, 24, 2, 1, 2, true, MAGENTA);
 
 	// tile.
 	IMG->AddImage(KEY_TILE_DIRT, TILE_DIRT, TILE_SIZE, TILE_SIZE, false, MAGENTA);
