@@ -5,6 +5,7 @@
 
 class Component;
 class MonoBehaviour;
+class RenderedAnimator;
 class RenderedImage;
 
 inline RECT MakeRectCWH(POINT _pos, int _width, int _height)
@@ -31,6 +32,7 @@ inline void PrintPos(POINT _pos)
 
 
 MonoBehaviour* IsDerivedFromMonoBehaviour(Component* _c);
+RenderedAnimator* IsDerivedFromRenderedAnimator(Component* _c);
 
 
 std::string WcsToMbsKorean(std::wstring const& _wstr);

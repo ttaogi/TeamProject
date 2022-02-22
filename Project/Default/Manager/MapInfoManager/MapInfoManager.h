@@ -20,6 +20,7 @@ class MapInfo {
 private:
 	POINT startPos;
 	POINT size;
+	float turnInterval;
 	std::vector<std::vector<Tile*>> tileMap;
 public:
 	MapInfo();
@@ -31,6 +32,7 @@ public:
 	std::vector<std::vector<Tile*>>* GetTileMap() { return &tileMap; }
 	POINT GetStartPos() const { return startPos; }
 	POINT GetSize() const { return size; }
+	float GetTurnInterval() const { return turnInterval; }
 };
 
 class MapInfoManager : public SingletonBase<MapInfoManager> {

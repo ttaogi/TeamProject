@@ -7,8 +7,6 @@
 class RenderedAnimator : public Rendered, public MonoBehaviour {
 private:
 	Animator* animator;
-
-	virtual void Render(HDC _hdc) override { };
 protected:
 public:
 	RenderedAnimator();
@@ -16,9 +14,9 @@ public:
 
 	virtual void Operation() override;
 
-	void Render(HDC _hdc, POINT _pos);
+	void Render(HDC _hdc) override;
 	void Init();
-	void Update(HWND _hWnd);
+	void Update();
 	void LateUpdate();
 
 	void AddAnimation(CHARACTER_STATE _state, Animation* _animation);

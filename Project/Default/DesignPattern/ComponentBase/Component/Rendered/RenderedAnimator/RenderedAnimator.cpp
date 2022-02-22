@@ -2,6 +2,9 @@
 
 #include "RenderedAnimator.h"
 
+#include "DesignPattern/ComponentBase/Component/Transform/Transform.h"
+#include "DesignPattern/ComponentBase/GameObject/GameObject.h"
+
 RenderedAnimator::RenderedAnimator()
 	: Component((const Component_ID)typeid(RenderedAnimator).name())
 {
@@ -17,14 +20,15 @@ RenderedAnimator::~RenderedAnimator()
 
 void RenderedAnimator::Operation() { }
 
-void RenderedAnimator::Render(HDC _hdc, POINT _pos)
+void RenderedAnimator::Render(HDC _hdc)
 {
-	animator->AnimationRender(_hdc, _pos);
+	POINT pos = transform->GetPosition().ToPoint();
+	animator->AnimationRender(_hdc, pos);
 }
 
 void RenderedAnimator::Init() { }
 
-void RenderedAnimator::Update(HWND _hWnd)
+void RenderedAnimator::Update()
 {
 	animator->Update();
 }

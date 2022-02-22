@@ -22,6 +22,7 @@
     <ClCompile Include="DesignPattern\AbstractFactoryBase\AbstractFactoryBase.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Behaviour\Behaviour.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Component.cpp" />
+    <ClCompile Include="DesignPattern\ComponentBase\Component\Map\Map.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\RectTransform\RectTransform.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\Rendered.cpp" />
     <ClCompile Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.cpp" />
@@ -78,6 +79,7 @@
     <ClInclude Include="DesignPattern\AbstractFactoryBase\AbstractFactoryBase.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Behaviour\Behaviour.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Component.h" />
+    <ClInclude Include="DesignPattern\ComponentBase\Component\Map\Map.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\RectTransform\RectTransform.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\Rendered.h" />
     <ClInclude Include="DesignPattern\ComponentBase\Component\Rendered\RenderedAnimator\RenderedAnimator.h" />

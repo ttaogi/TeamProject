@@ -12,11 +12,17 @@ private:
 	bool active;
 public:
 	std::list<Component*> cList;
+	std::list<GameObject*> goList;
+	GameObject* parent;
 public:
 	GameObject();
 	~GameObject();
 
 	void Operation();
+
+	void Update();
+	void Render(HDC _hdc);
+	void RenderUI(HDC _hdc);
 
 	Component_ID GetComponentID();
 	void		AddComponent(Component* _c);
@@ -39,6 +45,12 @@ public:
 		delete c;
 		return NULL;
 	}
+	bool AddGameObject(GameObject* _go);
+	void RemoveGameObject(GameObject* _go);
+	void RemoveGameObject(std::wstring _tag);
+	GameObject* GetGameObject(std::wstring _tag);
+	GameObject* GetParent();
+	void SetParent(GameObject* _go);
 	std::wstring GetTag() const { return tag; }
 	void SetTag(std::wstring _tag) { tag = _tag; }
 	bool GetActive() const { return active; }

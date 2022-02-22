@@ -133,7 +133,7 @@
     <Filter Include="API_Framework\Manager\MapInfoManager">
       <UniqueIdentifier>{7da24e62-b860-40ad-b706-5ba469076144}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API_Framework\DesignPattern\ComponentBase\Component\Ma">
+    <Filter Include="API_Framework\DesignPattern\ComponentBase\Component\Map">
       <UniqueIdentifier>{aef49f4c-6677-4cd9-85e5-b6eb07c90351}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -264,6 +264,9 @@
     </ClCompile>
     <ClCompile Include="Manager\MapInfoManager\MapInfoManager.cpp">
       <Filter>API_Framework\Manager\MapInfoManager</Filter>
+    </ClCompile>
+    <ClCompile Include="DesignPattern\ComponentBase\Component\Map\Map.cpp">
+      <Filter>API_Framework\DesignPattern\ComponentBase\Component\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +401,9 @@
     </ClInclude>
     <ClInclude Include="Manager\MapInfoManager\MapInfoManager.h">
       <Filter>API_Framework\Manager\MapInfoManager</Filter>
+    </ClInclude>
+    <ClInclude Include="DesignPattern\ComponentBase\Component\Map\Map.h">
+      <Filter>API_Framework\DesignPattern\ComponentBase\Component\Map</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

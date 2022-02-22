@@ -21,6 +21,15 @@ HRESULT OnGameScene::Init()
 {
 	backgroundImage = IMG->FindImage(KEY_BACKGROUND_ONGAMESCENE);
 
+	msg = L"";
+	mapInfo = MAP_INFO->GetMapInfo(MAP_ID::EXAMPLE_MAP);
+	if (mapInfo == NULL) return E_FAIL;
+
+	alpha = 0;
+	bgSpeed = 20;
+	bgOffsetX = 0;
+	bgOffsetY = 0;
+
 	RECT quitBtnRc{ 0, 0, BUTTON_WIDTH, BUTTON_HEIGHT };
 	GameObject* quitBtn = AbstractFactoryButton::GetSingleton()
 		->GetObject(BUTTON_FACTORY_TYPE::DEFAULT,
@@ -31,15 +40,6 @@ HRESULT OnGameScene::Init()
 	quitBtn->GetComponent<Transform>()
 		->SetPosition(F_POINT{ WINSIZE_X / 2, WINSIZE_Y / 2 });
 	gameObjects.push_back(quitBtn);
-
-	msg = L"";
-	mapInfo = MAP_INFO->GetMapInfo(MAP_ID::EXAMPLE_MAP);
-	if (mapInfo == NULL) return E_FAIL;
-
-	alpha = 0;
-	bgSpeed = 20;
-	bgOffsetX = 0;
-	bgOffsetY = 0;
 
 	return S_OK;
 }
@@ -52,12 +52,7 @@ void OnGameScene::Update()
 				go->SetActive(!go->GetActive());
 
 	for (GameObject* go : gameObjects)
-		if (go->GetActive())
-			for (Component* c : go->cList)
-			{
-				MonoBehaviour* m = IsDerivedFromMonoBehaviour(c);
-				if (m != NULL) m->Update();
-			}
+		go->Update();
 
 	bgOffsetX = (bgOffsetX + bgSpeed) % WINSIZE_X;
 	alpha = (alpha + 5) % 255;
