@@ -88,8 +88,8 @@ using namespace MY_UTIL;
 #define WINNAME		 (LPTSTR)(TEXT("WindowsAPI"))
 #define WINSTARTX	 200
 #define WINSTARTY	 100
-#define WINSIZEX	 1920
-#define WINSIZEY	 1080
+#define WINSIZEX	 1280
+#define WINSIZEY	 720
 #define WINSTYLE	 WS_CAPTION | WS_SYSMENU
 
 //=========================
