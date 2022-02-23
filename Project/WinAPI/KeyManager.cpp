@@ -53,3 +53,16 @@ bool KeyManager::isToggleKey(int key)
 	if (GetKeyState(key) & 0x0001)return true;
 	return false;
 }
+
+// a-z, space, enter, 0-9.
+bool KeyManager::isOnceAnyKeyDown()
+{
+	for (int i = 'A'; i <= 'Z'; ++i)
+		if (isOnceKeyDown(i)) return true;
+	for (int i = 0x30; i <= 0x39; ++i)
+		if (isOnceKeyDown(i)) return true;
+	if (isOnceKeyDown(VK_SPACE)) return true;
+	if (isOnceKeyDown(VK_RETURN)) return true;
+
+	return false;
+}

@@ -60,7 +60,7 @@ void TextDataManager::save(const char* fileName, vector<string> vStr)
 	4. 얼마나 일고 쓿것인지에 대한 결과값이 저장된다(주소)
 얼마나 릭고 쓸거신지대ㅔ대한 논문
 	*/
-		WriteFile(file, str, strlen(str), &write, NULL);
+		WriteFile(file, str, (DWORD)strlen(str), &write, NULL);
 		CloseHandle (file);
 }
 //한줄짜리 데이터ㅡㄹ 루심표역할로 저장하ㅡㄴ것이 처ㅣㅈㅇ가 빠르다
@@ -103,7 +103,7 @@ vector<string> TextDataManager::load(const char * fileName)
 vector<string> TextDataManager::charArrySeparation(char charArray[])
 {
 	vector<string> vArray;
-	char* temp;
+	//char* temp;
 	char* separator = ",";
 	//token: 컴파일러가 인식 할 수 있는 기본 요소
 	//       연산자, 식별, 문장 부호 등등...

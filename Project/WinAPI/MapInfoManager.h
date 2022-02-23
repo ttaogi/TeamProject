@@ -16,6 +16,7 @@ public:
 
 	HRESULT init(TILE_TYPE _type, POINT _pos);
 	void release();
+	void render(HDC _hdc);
 };
 
 class MapInfo {
@@ -30,6 +31,7 @@ public:
 
 	HRESULT init(const std::string _fileName);
 	void release();
+	void render(HDC _hdc);
 
 	std::vector<std::vector<Tile*>>* getTileMap() { return &tileMap; }
 	POINT getStartPos() const { return startPos; }

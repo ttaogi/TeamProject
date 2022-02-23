@@ -87,13 +87,13 @@ void EnemyManager::minionBulletFire(void)
 			RECT rc = (*_viMinion)->getRect();
 
 			//받아들이는데 시간이 필요할 것 같다..
-			_bullet->fire(rc.left + (rc.right - rc.left) / 2,
-				rc.bottom + (rc.top - rc.bottom) / 2 + 30,
-				getAngle(rc.left + (rc.right - rc.left) / 2,
-					rc.bottom + (rc.top - rc.bottom) / 2,
-					_rocket->getPosition().x,
-					_rocket->getPosition().y),
-					RND->getFromFloatTo(2.0f, 4.0f));
+			_bullet->fire((float)(rc.left + (rc.right - rc.left) / 2),
+				(float)(rc.bottom + (rc.top - rc.bottom) / 2 + 30),
+				getAngle((float)(rc.left + (rc.right - rc.left) / 2),
+					(float)(rc.bottom + (rc.top - rc.bottom) / 2),
+					(float)_rocket->getPosition().x,
+					(float)_rocket->getPosition().y),
+				RND->getFromFloatTo(2.0f, 4.0f));
 		}
 	}
 }

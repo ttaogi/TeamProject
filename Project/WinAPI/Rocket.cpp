@@ -17,7 +17,7 @@ HRESULT Rocket::init(void)
 	//코드 재사용성 또한 매우 별로
 	// ㄴ 살-> 클래스 + 함수 + 기능
 
-	_rc = RectMakeCenter(_x, _y, _image->getWidth(), _image->getHeight()); 
+	_rc = RectMakeCenter((int)_x, (int)_y, _image->getWidth(), _image->getHeight());
 	//(참조한 이유)아직은 없지만 ->충돌 되었을때 사용할수 있게
 	
 	_flame = new Flame;
@@ -36,7 +36,7 @@ HRESULT Rocket::init(void)
 	_maxHp = 10;
 
 	_hpBar = new ProgressBar;
-	_hpBar->init(_x, _y, 52 , 4 );
+	_hpBar->init((int)_x, (int)_y, 52 , 4 );
 
 	return S_OK;
 }
@@ -60,31 +60,32 @@ void Rocket::update(void)
 {
 	if (KEYMANAGER->isOnceKeyDown(VK_F8))
 	{
-		char temp[32];
+		//char temp[32];
 		vector<string> data;
 
 		//itoa:인티저 투 아스키 (정수형을 문자열로 반환)
 
-		data.push_back(itoa((int)_x, temp, 10));
+		/*data.push_back(itoa((int)_x, temp, 10));
 		data.push_back(itoa((int)_y, temp, 10));
 		data.push_back(itoa((int)_currentHp, temp, 10));
-		data.push_back(itoa((int)_maxHp, temp, 10));
+		data.push_back(itoa((int)_maxHp, temp, 10));*/
+
+		data.push_back(to_string((int)_x));
+		data.push_back(to_string((int)_y));
+		data.push_back(to_string((int)_currentHp));
+		data.push_back(to_string((int)_maxHp));
 
 		TEXTDATAMANAGER->save("플레이어 상태.txt", data);
-
 	}
 
 	if (KEYMANAGER->isOnceKeyDown(VK_F9))
 	{
 		vector<string> vData = TEXTDATAMANAGER->load("플레이어 상태.txt");
-		_x = atoi(vData[0].c_str());
-		_y = atoi(vData[1].c_str());
-		_currentHp = atoi(vData[2].c_str());
-		_maxHp = atoi(vData[3].c_str());
-
-
+		_x = (float)atoi(vData[0].c_str());
+		_y = (float)atoi(vData[1].c_str());
+		_currentHp = (float)atoi(vData[2].c_str());
+		_maxHp = (float)atoi(vData[3].c_str());
 	}
-
 
 	if (KEYMANAGER->isOnceKeyDown('1')) hitDamage(1.0f);
 	if (KEYMANAGER->isOnceKeyDown('2')) hitDamage(-1.0f);
@@ -138,7 +139,7 @@ void Rocket::update(void)
 		break;
 	}
 	
-	_rc = RectMakeCenter(_x, _y, _image->getWidth(), _image->getHeight());
+	_rc = RectMakeCenter((int)_x, (int)_y, _image->getWidth(), _image->getHeight());
 
 	_flame->update();
 	_missile->update();
@@ -146,8 +147,8 @@ void Rocket::update(void)
 
 	//collision();
 
-	_hpBar->setX(_x - (_rc.right - _rc.left) / 2);
-	_hpBar->setY(_y - 10 - (_rc.bottom - _rc.top) / 2);
+	_hpBar->setX((int)(_x - (_rc.right - _rc.left) / 2));
+	_hpBar->setY((int)(_y - 10 - (_rc.bottom - _rc.top) / 2));
 	_hpBar->update();
 	_hpBar->setGauge(_currentHp, _maxHp);
 }

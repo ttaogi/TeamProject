@@ -1,8 +1,9 @@
 #include "Stdafx.h"
+
 #include "MainGame.h"
+
+#include "LobbyScene.h"
 #include "StartScene.h"
-#include "ShootingScene.h"
-#include "PixelScene.h"
 
 HRESULT MainGame::init(void)
 {
@@ -10,10 +11,9 @@ HRESULT MainGame::init(void)
 
 	quit = false;
 
-	SCENEMANAGER->addScene("½´ÆÃ", new ShootingScene);
-	SCENEMANAGER->addScene("½ÃÀÛ", new StartScene);
-	SCENEMANAGER->addScene("ÇÈ¼¿Ãæµ¹", new PixelScene);
-	SCENEMANAGER->changeScene("½´ÆÃ");
+	SCENEMANAGER->addScene(KEY_SCENE_START, new StartScene);
+	SCENEMANAGER->addScene(KEY_SCENE_LOBBY, new LobbyScene);
+	SCENEMANAGER->changeScene(KEY_SCENE_START);
 
 	return S_OK;
 }

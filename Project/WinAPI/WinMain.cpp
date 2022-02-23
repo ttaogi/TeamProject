@@ -90,6 +90,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	return (int)message.wParam;
 	*/
 	_mg->release();
+
+	return (int)message.wParam;
 }
 
 //! 윈도우 프로시저

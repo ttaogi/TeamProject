@@ -72,8 +72,8 @@ void GameNode::render(void) { }
 
 LRESULT GameNode::MainProc(HWND hWnd, UINT imessage, WPARAM wParam, LPARAM lParam)
 {
-	HDC hdc;
-	PAINTSTRUCT ps;
+	//HDC hdc;
+	//PAINTSTRUCT ps;
 	
 	switch (imessage)
 	{

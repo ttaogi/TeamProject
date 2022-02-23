@@ -8,10 +8,10 @@ HRESULT PixelCollision::init(void)
 
 	_x = CENTER_X + 250;
 	_y = CENTER_Y + 100;
-	_rc = RectMakeCenter(_x, _y, _pixelTank->getWidth(), _pixelTank->getHeight());
+	_rc = RectMakeCenter((int)(_x), (int)(_y), _pixelTank->getWidth(), _pixelTank->getHeight());
 
 	//YÃà Å½Áö
-	_probeY = _y + _pixelTank->getHeight() / 2;
+	_probeY = (int)(_y + _pixelTank->getHeight() / 2);
 
 	return S_OK;
 }
@@ -27,24 +27,24 @@ void PixelCollision::update(void)
 	if (KEYMANAGER->isStayKeyDown(VK_LEFT)) _x -= 1.0f;
 
 	//YÃà Å½Áö
-	_probeY = _y + _pixelTank->getHeight() / 2;
+	_probeY = (int)(_y + _pixelTank->getHeight() / 2);
 
 	//°Ë»ç¸¦À§ÇØ¼­ ¹Ýº¹¹®
 	for (int i = _probeY - 30; i < _probeY + 30; i++)
 	{
-		COLORREF color = GetPixel(IMAGEMANAGER->findImage("¿ïÅüºÒÅü")->getMemDC(), _x, i);
+		COLORREF color = GetPixel(IMAGEMANAGER->findImage("¿ïÅüºÒÅü")->getMemDC(), (int)(_x), i);
 		int r = GetRValue(color);
 		int g = GetGValue(color);
 		int b = GetBValue(color);
 
 		if (!(r == 255 && g == 0 && b == 255))
 		{
-			_y = i - _pixelTank->getHeight() / 2;
+			_y = (float)(i - _pixelTank->getHeight() / 2);
 			break;
 		}
 	}
 
-	_rc = RectMakeCenter(_x, _y, _pixelTank->getWidth(), _pixelTank->getHeight());
+	_rc = RectMakeCenter((int)(_x), (int)(_y), _pixelTank->getWidth(), _pixelTank->getHeight());
 }
 
 void PixelCollision::render(void)
@@ -53,6 +53,6 @@ void PixelCollision::render(void)
 
 	if (KEYMANAGER->isToggleKey(VK_F1))
 	{
-		Rectangle(getMemDC(), _x, _probeY, _x + 10, _probeY + 10);
+		Rectangle(getMemDC(), (int)_x, _probeY, (int)_x + 10, _probeY + 10);
 	}
 }

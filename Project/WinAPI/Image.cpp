@@ -134,7 +134,7 @@ HRESULT Image::init(const char* fileName, int width, int height, BOOL isTrans, C
 	_imageInfo->width = width;
 	_imageInfo->height = height;
 
-	int len = strlen(fileName);
+	int len = (int)strlen(fileName);
 
 	_fileName = new CHAR[len + 1]; // +1 하는이유는 white space 실수 오류 방지하기위해 안전하게
 	strcpy_s(_fileName, len + 1, fileName);

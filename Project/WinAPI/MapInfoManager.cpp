@@ -26,6 +26,14 @@ HRESULT Tile::init(TILE_TYPE _type, POINT _pos)
 
 void Tile::release() { }
 
+void Tile::render(HDC _hdc)
+{
+	if (stripe)
+	{
+		stripe->render(_hdc, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+	}
+}
+
 ///////////////////////////////
 ///////////////////////////////
 
@@ -132,14 +140,25 @@ void MapInfo::release()
 	size = POINT{ 0, 0 };
 }
 
+void MapInfo::render(HDC _hdc)
+{
+	for (int y = 0; y < size.y; ++y)
+	{
+		for (int x = 0; x < size.x; ++x)
+		{
+			tileMap[x][y]->render(_hdc);
+		}
+	}
+}
+
 ///////////////////////////////
 ///////////////////////////////
 
 HRESULT MapInfoManager::init()
 {
-	IMAGEMANAGER->addImage(KEY_TILE_DIRT, TILE_DIRT, TILE_SIZE, TILE_SIZE, false, MAGENTA);
+	IMAGEMANAGER->addImage(KEY_TILE_DIRT, DIR_TILE_DIRT, TILE_SIZE, TILE_SIZE, false, MAGENTA);
 	IMAGEMANAGER->findImage(KEY_TILE_DIRT)->initForAlphaBlend();
-
+	cout << "TILE DIRT : " << IMAGEMANAGER->findImage(KEY_TILE_DIRT) << endl;
 	MapInfo* exampleMap = new MapInfo();
 
 	if (FAILED(exampleMap->init(XML_DOC_EXAMPLE_MAP))) return E_FAIL;

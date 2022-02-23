@@ -19,7 +19,7 @@ HRESULT Flame::init(const char* fileName, float* x, float* y)
 	_x = x;
 	_y = y;
 
-	_rc = RectMakeCenter((int)_x, (int)_y, _image->getFrameWidth(), _image->getFrameHeight());
+	_rc = RectMakeCenter((int)(*_x), (int)(*_y), _image->getFrameWidth(), _image->getFrameHeight());
 
 	return S_OK;
 }
@@ -44,7 +44,7 @@ void Flame::update(void)
 	*/
 	if (FLAME_COUNT + _flameTick <= GetTickCount())
 	{
-		_flameTick = GetTickCount();
+		_flameTick = (float)GetTickCount();
 		_image->setFrameX(_image->getFrameX() + 1);
 
 		if (_image->getFrameX() >= _image->getMaxFrameX())
@@ -53,7 +53,7 @@ void Flame::update(void)
 		}
 	}
 
-	_rc = RectMakeCenter(*_x, *_y + 180,
+	_rc = RectMakeCenter((int)(*_x), (int)(*_y) + 180,
 		_image->getFrameWidth(),
 		_image->getFrameHeight());
 }

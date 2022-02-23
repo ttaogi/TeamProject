@@ -23,7 +23,6 @@ private:
 	bool _isPlay;
 	bool _loop;
 	DWORD _nowPlayIdx;
-
 public:
 
 	HRESULT init(int totalW, int totalH, int frameW, int frameH);

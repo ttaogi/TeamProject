@@ -1,5 +1,12 @@
 #pragma once
 
+enum class DIRECTION
+{
+	LEFT = 0, TOP, RIGHT, BOTTOM,
+	LEFT_TOP, LEFT_BOTTOM, RIGHT_TOP, RIGHT_BOTTOM,
+	DIRECTION_NUM
+};
+
 enum class TILE_TYPE
 {
 	DIRT = 0,

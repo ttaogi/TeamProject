@@ -67,7 +67,7 @@ void ShootingScene::render(void)
 
 	//IMAGEMANAGER->findImage("½´ÆÃ ¸Ê")->render(getMemDC());
 	RECT rc = { 0,0,WINSIZEX,WINSIZEY };
-	IMAGEMANAGER->findImage("ÀüÀå")->loopRender(getMemDC(), &rc, _x, _y);
+	IMAGEMANAGER->findImage("ÀüÀå")->loopRender(getMemDC(), &rc, (int)_x, (int)_y);
 
 	_rocket->render();
 
@@ -77,5 +77,5 @@ void ShootingScene::render(void)
 
 	_beamEffect->render();
 
-	TextOut(getMemDC(), CENTER_X, CENTER_Y, _text, strlen(_text));
+	TextOut(getMemDC(), CENTER_X, CENTER_Y, _text, (int)strlen(_text));
 }

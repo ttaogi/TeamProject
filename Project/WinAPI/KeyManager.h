@@ -13,6 +13,8 @@ public:
 	bool inOnceKeyUp(int key);
 	bool isStayKeyDown(int key);
 	bool isToggleKey(int key);
+	// a-z, space, enter, 0-9.
+	bool isOnceAnyKeyDown();
 
 	bitset<KEY_MAX> getKeyUp(void) { return _keyUp; }
 	bitset<KEY_MAX> getKeyDown(void) { return _keyDown; }

@@ -37,7 +37,7 @@ void Bullet::fire(float x, float y, float angle, float speed)
 	bullet.angle = angle;
 	bullet.x = bullet.fireX = x;
 	bullet.y = bullet.fireY = y;
-	bullet.rc = RectMakeCenter(bullet.x, bullet.y,
+	bullet.rc = RectMakeCenter((int)bullet.x, (int)bullet.y,
 		bullet.img->getWidth(), bullet.img->getHeight());
 
 	_vBullet.push_back(bullet);
@@ -59,7 +59,7 @@ void Bullet::move(void)
 		_viBullet->x += cosf(_viBullet->angle) * _viBullet->speed;
 		_viBullet->y += -sinf(_viBullet->angle) * _viBullet->speed;
 		
-		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y,
+		_viBullet->rc = RectMakeCenter((int)_viBullet->x, (int)_viBullet->y,
 			_viBullet->img->getWidth(), _viBullet->img->getHeight());
 		
 		//사거리 밖으로 나갔다.
@@ -130,7 +130,7 @@ void Missile::fire(float x, float y)
 		_viBullet->fire = true;
 		_viBullet->x = _viBullet->fireX = x;
 		_viBullet->y = _viBullet->fireY = y;
-		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y,
+		_viBullet->rc = RectMakeCenter((int)_viBullet->x, (int)_viBullet->y,
 			_viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 
 		break;
@@ -166,7 +166,7 @@ void Missile::move(void)
 		if (!_viBullet->fire) continue;
 		
 		_viBullet->y -= _viBullet->speed;
-		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y,
+		_viBullet->rc = RectMakeCenter((int)_viBullet->x, (int)_viBullet->y,
 			_viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 
 		//사거리 밖으로 나갔다
@@ -225,7 +225,7 @@ void MissileM1::fire(float x, float y)
 	bullet.speed = 4.0f;
 	bullet.x = bullet.fireX = x;
 	bullet.y = bullet.fireY = y;
-	bullet.rc = RectMakeCenter(bullet.x, bullet.y,
+	bullet.rc = RectMakeCenter((int)bullet.x, (int)bullet.y,
 		bullet.img->getFrameWidth(), bullet.img->getFrameHeight());
 
 	_vBullet.push_back(bullet);
@@ -257,7 +257,7 @@ void MissileM1::move(void)
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
 	{
 		_viBullet->y -= _viBullet->speed;
-		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y,
+		_viBullet->rc = RectMakeCenter((int)_viBullet->x, (int)_viBullet->y,
 			_viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 
 		//사거리 밖으로 나갔다
@@ -402,7 +402,7 @@ void Beam::fire(float x, float y)
 	bullet.speed = 0.1f;
 	bullet.x = bullet.fireX = x;
 	bullet.y = bullet.fireY = y;
-	bullet.rc = RectMakeCenter(bullet.x, bullet.y,
+	bullet.rc = RectMakeCenter((int)bullet.x, (int)bullet.y,
 		bullet.img->getFrameWidth(), bullet.img->getFrameHeight());
 
 	_vBullet.push_back(bullet);
@@ -433,7 +433,7 @@ void Beam::move(void)
 	for (_viBullet = _vBullet.begin(); _viBullet != _vBullet.end();)
 	{
 		_viBullet->y -= _viBullet->speed;
-		_viBullet->rc = RectMakeCenter(_viBullet->x, _viBullet->y,
+		_viBullet->rc = RectMakeCenter((int)_viBullet->x, (int)_viBullet->y,
 			_viBullet->img->getFrameWidth(), _viBullet->img->getFrameHeight());
 
 		//사거리 밖으로 나갔다

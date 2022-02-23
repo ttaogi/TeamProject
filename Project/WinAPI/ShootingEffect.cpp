@@ -34,9 +34,9 @@ void MissileEffect::show(RECT rc)
 	effect.img->init("Resources/Images/Object/MissileEffect.bmp", 0.0f, 0.0f,
 		390, 63, 6, 1, true, RGB(50, 150, 200));
 
-	effect.x = rc.left + (rc.right - rc.left) / 2;
-	effect.y = rc.top;
-	effect.rc = RectMakeCenter(effect.x, effect.y,
+	effect.x = (float)(rc.left + (rc.right - rc.left) / 2);
+	effect.y = (float)(rc.top);
+	effect.rc = RectMakeCenter((int)effect.x, (int)effect.y,
 		effect.img->getFrameWidth(), effect.img->getFrameHeight());
 
 	_vEffect.push_back(effect);
@@ -101,9 +101,9 @@ void BeamEffect::show(RECT rc)
 	effect.img->init("Resources/Images/Object/Beameffect.bmp", 0.0f, 0.0f,
 		96, 128, 4, 1, true, RGB(255, 0, 255));
 
-	effect.x = rc.left + (rc.right - rc.left) / 2;
-	effect.y = rc.top;
-	effect.rc = RectMakeCenter(effect.x, effect.y,
+	effect.x = (float)(rc.left + (rc.right - rc.left) / 2);
+	effect.y = (float)(rc.top);
+	effect.rc = RectMakeCenter((int)effect.x, (int)effect.y,
 		effect.img->getFrameWidth(), effect.img->getFrameHeight());
 
 	_vEffect.push_back(effect);

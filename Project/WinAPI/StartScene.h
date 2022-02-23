@@ -5,7 +5,8 @@ class StartScene : public GameNode
 {
 private:
 	char _text[64];
-
+	Image* background;
+	Image* pressAnyKey;
 public:
 	HRESULT init(void);
 	void release(void);
