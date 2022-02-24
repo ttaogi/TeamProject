@@ -8,6 +8,7 @@
 #include "MainGame.h"
 #include "Player.h"
 #include "Wall.h"
+#include "Slime.h"
 
 HRESULT LobbyScene::init(void)
 {
@@ -18,6 +19,10 @@ HRESULT LobbyScene::init(void)
 	player = new Player();
 	player->init();
 	player->Move(mapInfo->getStartPos());
+
+	slime = new Slime();
+	slime->init();
+
 
 	return S_OK;
 }

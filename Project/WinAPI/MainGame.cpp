@@ -13,7 +13,7 @@ HRESULT MainGame::init(void)
 
 	SCENEMANAGER->addScene(KEY_SCENE_START, new StartScene);
 	SCENEMANAGER->addScene(KEY_SCENE_LOBBY, new LobbyScene);
-	SCENEMANAGER->changeScene(KEY_SCENE_START);
+	SCENEMANAGER->changeScene(KEY_SCENE_LOBBY);
 
 	return S_OK;
 }

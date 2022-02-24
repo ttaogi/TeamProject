@@ -40,11 +40,23 @@ const char* DIR_UI_PRESS_ANY_KEY =
 #pragma endregion UI
 
 #pragma region Player
-const std::string KEY_PLAYER_TMP =
-	"PLAYER_TMP";
-const char* DIR_PLAYER_TMP =
-	"Resources/Images/tmpBody.bmp";
+const std::string KEY_PLAYER =
+	"PLAYER";
+const char* DIR_PLAYER =
+	"Resources/Images/entities/player1_heads.bmp";
+const std::string KEY_PLAYER2 =
+	"PLAYER_TMP2";
+const char* DIR_PLAYER2 =
+	"Resources/Images/entities/player1_armor_body_xmas.bmp";
 #pragma endregion Player
+
+#pragma region Slime
+const std::string KEY_SLIME =
+	"SLIME";
+const char* DIR_SLIME =
+	"Resources/Images/entities/slime_green.bmp";
+#pragma endregion Slime
+
 #pragma endregion Stripe
 
 ///////////////////////

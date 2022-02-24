@@ -11,6 +11,9 @@ private:
 	RECT rc;
 	Image* head;
 	Image* body;
+
+	int count;
+	int playerIndex;
 public:
 	HRESULT init(void);
 	void release(void);
