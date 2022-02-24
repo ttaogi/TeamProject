@@ -21,9 +21,9 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 		anim->init(
 			KEY_WALL_UNBREAKABLE,
 			POINT{ TILE_SIZE / -2, TILE_SIZE * -1 },
-			CHARACTER_STATE::IDLE, false, false, 1
+			CHARACTER_STATE::IDLE_RIGHT, false, false, 1
 		);
-		animator->addAnimation(CHARACTER_STATE::IDLE, anim);
+		animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, anim);
 		animator->aniPause();
 		break;
 	case OBJECT_TYPE::WALL_DIRT:
@@ -33,11 +33,11 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 		anim->init(
 			KEY_WALL_DIRT,
 			POINT{ TILE_SIZE / -2, TILE_SIZE * -1 },
-			CHARACTER_STATE::IDLE, false, false, 1
+			CHARACTER_STATE::IDLE_RIGHT, false, false, 1
 		);
 		anim->setFrameIdx(RND->getInt(
 			IMAGEMANAGER->findImage(KEY_WALL_DIRT)->getMaxFrameIdx()));
-		animator->addAnimation(CHARACTER_STATE::IDLE, anim);
+		animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, anim);
 		animator->aniPause();
 		break;
 	case OBJECT_TYPE::WALL_SHOP:
@@ -47,9 +47,9 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 		anim->init(
 			KEY_WALL_SHOP,
 			POINT{ TILE_SIZE / -2, TILE_SIZE * -1 },
-			CHARACTER_STATE::IDLE, false, false, 1
+			CHARACTER_STATE::IDLE_RIGHT, false, false, 1
 		);
-		animator->addAnimation(CHARACTER_STATE::IDLE, anim);
+		animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, anim);
 		animator->aniPause();
 		break;
 	case OBJECT_TYPE::NONE:

@@ -4,11 +4,10 @@
 
 #include <queue>
 
-#include "GameNode.h"
 #include "MainGame.h"
 #include "Player.h"
-#include "Wall.h"
 #include "Slime.h"
+#include "Wall.h"
 
 HRESULT LobbyScene::init(void)
 {

@@ -1,8 +1,9 @@
 #pragma once
+
 #include "GameNode.h"
 
-class Player;
 class Object;
+class Player;
 class Slime;
 
 class LobbyScene : public GameNode
@@ -10,8 +11,8 @@ class LobbyScene : public GameNode
 private:
 	MapInfo* mapInfo;
 	Player* player;
-	std::vector<Object*> objectVec;
 	Slime* slime;
+	std::vector<Object*> objectVec;
 public:
 	HRESULT init(void);
 	void release(void);

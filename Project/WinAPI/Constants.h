@@ -26,10 +26,32 @@ extern const char* DIR_UI_PRESS_ANY_KEY;
 #pragma endregion UI
 
 #pragma region Player
-extern const std::string KEY_PLAYER;
-extern const char* DIR_PLAYER;
-extern const std::string KEY_PLAYER2;
-extern const char* DIR_PLAYER2;
+extern const std::string KEY_PLAYER_HEAD_IDLE_RIGHT;
+extern const char* DIR_PLAYER_HEAD_IDLE_RIGHT;
+extern const std::string KEY_PLAYER_BODY_IDLE_RIGHT;
+extern const char* DIR_PLAYER_BODY_IDLE_RIGHT;
+extern const std::string KEY_PLAYER_HEAD_IDLE_LEFT;
+extern const char* DIR_PLAYER_HEAD_IDLE_LEFT;
+extern const std::string KEY_PLAYER_BODY_IDLE_LEFT;
+extern const char* DIR_PLAYER_BODY_IDLE_LEFT;
+
+extern const std::string KEY_PLAYER_HEAD_JUMP_RIGHT;
+extern const char* DIR_PLAYER_HEAD_JUMP_RIGHT;
+extern const std::string KEY_PLAYER_BODY_JUMP_RIGHT;
+extern const char* DIR_PLAYER_BODY_JUMP_RIGHT;
+extern const std::string KEY_PLAYER_HEAD_JUMP_LEFT;
+extern const char* DIR_PLAYER_HEAD_JUMP_LEFT;
+extern const std::string KEY_PLAYER_BODY_JUMP_LEFT;
+extern const char* DIR_PLAYER_BODY_JUMP_LEFT;
+
+extern const std::string KEY_PLAYER_HEAD_JUMP_TOP;
+extern const char* DIR_PLAYER_HEAD_JUMP_TOP;
+extern const std::string KEY_PLAYER_BODY_JUMP_TOP;
+extern const char* DIR_PLAYER_BODY_JUMP_TOP;
+extern const std::string KEY_PLAYER_HEAD_JUMP_BOTTOM;
+extern const char* DIR_PLAYER_HEAD_JUMP_BOTTOM;
+extern const std::string KEY_PLAYER_BODY_JUMP_BOTTOM;
+extern const char* DIR_PLAYER_BODY_JUMP_BOTTOM;
 #pragma endregion Player
 
 #pragma region Slime

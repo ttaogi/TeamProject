@@ -19,6 +19,8 @@ public:
 	void release();
 	void update();
 
+	CHARACTER_STATE getCurrentState() const { return curState; }
+
 	void addAnimation(CHARACTER_STATE _state, Animation* _animation);
 	bool changeAnimation(CHARACTER_STATE _state);
 	void animationRender(HDC _hdc, POINT _pos);

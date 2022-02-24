@@ -1,6 +1,8 @@
 #pragma once
 #include "GameNode.h"
 
+class Animator;
+
 class Player : public GameNode
 {
 private:
@@ -9,11 +11,8 @@ private:
 	float turnCount;
 	DIRECTION command;
 	RECT rc;
-	Image* head;
-	Image* body;
-
-	int count;
-	int playerIndex;
+	Animator* headAnimator;
+	Animator* bodyAnimator;
 public:
 	HRESULT init(void);
 	void release(void);
