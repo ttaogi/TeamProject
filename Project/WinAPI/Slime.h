@@ -16,6 +16,10 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+
+	void move(void);
+	void draw(void);
+	void animation(void);
 	
 	Slime();
 	~Slime() {};
