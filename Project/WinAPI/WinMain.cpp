@@ -57,6 +57,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		return 0;
 	}
 
+
 	MSG message;
 
 	//게임 프로그래밍
@@ -93,13 +94,13 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 
 	return (int)message.wParam;
 }
-
-//! 윈도우 프로시저
+       
+//! 윈도우 프로시저 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT imessage, WPARAM wParam, LPARAM lParam)
 {
 	return _mg->MainProc(hWnd, imessage, wParam, lParam);
 }
-
+         
 void setWindowSize(int x, int y, int width, int height)
 {
 	RECT rc = { 0, 0, width, height };
