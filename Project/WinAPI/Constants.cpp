@@ -17,6 +17,21 @@ const char* DIR_TILE_DIRT =
 	"Resources/Images/Object/TILE/DIRT/dirt.bmp";
 #pragma endregion Tile
 
+#pragma region Wall
+const std::string KEY_WALL_UNBREAKABLE =
+	"WALL_UNBREAKABLE";
+const char* DIR_WALL_UNBREAKABLE =
+	"Resources/Images/level/TEMP_wall_unbreakable.bmp";
+const std::string KEY_WALL_DIRT =
+	"WALL_DIRT";
+const char* DIR_WALL_DIRT =
+	"Resources/Images/level/wall_dirt_crypt.bmp";
+const std::string KEY_WALL_SHOP =
+	"WALL_SHOP";
+const char* DIR_WALL_SHOP =
+	"Resources/Images/level/wall_shop_crypt.bmp";
+#pragma endregion Wall
+
 #pragma region UI
 const std::string KEY_UI_PRESS_ANY_KEY =
 	"PRESS_ANY_KEY";

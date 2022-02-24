@@ -11,6 +11,15 @@ extern const std::string KEY_TILE_DIRT;
 extern const char* DIR_TILE_DIRT;
 #pragma endregion Tile
 
+#pragma region Wall
+extern const std::string KEY_WALL_UNBREAKABLE;
+extern const char* DIR_WALL_UNBREAKABLE;
+extern const std::string KEY_WALL_DIRT;
+extern const char* DIR_WALL_DIRT;
+extern const std::string KEY_WALL_SHOP;
+extern const char* DIR_WALL_SHOP;
+#pragma endregion Wall
+
 #pragma region UI
 extern const std::string KEY_UI_PRESS_ANY_KEY;
 extern const char* DIR_UI_PRESS_ANY_KEY;

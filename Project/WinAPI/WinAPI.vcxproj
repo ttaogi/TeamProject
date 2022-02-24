@@ -144,6 +144,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Animator.cpp" />
     <ClCompile Include="AniTestScene.cpp" />
     <ClCompile Include="Bullets.cpp" />
     <ClCompile Include="Collision.cpp" />
@@ -165,6 +166,7 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapInfoManager.cpp" />
     <ClCompile Include="Minion.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="PixelCollision.cpp" />
     <ClCompile Include="PixelScene.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -199,6 +201,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Wall.cpp" />
     <ClCompile Include="WinMain.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
     </ClCompile>
@@ -206,6 +209,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Animator.h" />
     <ClInclude Include="AniTestScene.h" />
     <ClInclude Include="Bullets.h" />
     <ClInclude Include="CommonMacroFunction.h" />
@@ -224,6 +228,7 @@
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapInfoManager.h" />
     <ClInclude Include="Minion.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="PixelCollision.h" />
     <ClInclude Include="PixelScene.h" />
     <ClInclude Include="Player.h" />
@@ -247,6 +252,7 @@
     <ClInclude Include="tinystr.h" />
     <ClInclude Include="tinyxml.h" />
     <ClInclude Include="Utils.h" />
+    <ClInclude Include="Wall.h" />
     <ClInclude Include="XmlManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

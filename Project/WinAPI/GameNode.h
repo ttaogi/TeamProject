@@ -11,7 +11,8 @@ class GameNode
 private:
 	HDC _hdc;
 	bool _managerInit;
-
+protected:
+	POINT pos;
 public:
 	virtual HRESULT init(void);
 	virtual HRESULT init(bool managerInit);
@@ -24,10 +25,27 @@ public:
 
 	HDC getMemDC(){ return _backBuffer->getMemDC(); }
 	HDC getHDC() { return _hdc; }
+	POINT getPos() const { return pos; }
 
 	LRESULT MainProc(HWND hWnd, UINT imessage, WPARAM wParam, LPARAM lParam);
+
+	bool operator<(const GameNode gn) const {
+		if (pos.y != gn.pos.y)
+			return pos.y > gn.pos.y;
+		else
+			return pos.x > gn.pos.x;
+	}
 
 	GameNode() {}
 	virtual ~GameNode() {}
 };
 
+// reference.
+// https://stackoverflow.com/questions/23997104/priority-queue-with-pointers-and-comparator-c
+struct CmpGameNodePtrs
+{
+	bool operator()(const GameNode* lhs, const GameNode* rhs) const
+	{
+		return *lhs < *rhs;
+	}
+};

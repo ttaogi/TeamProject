@@ -71,7 +71,9 @@ Image* ImageManager::addImage(string strKey, const char * fileName, float x, flo
 	return img;
 }
 
-Image* ImageManager::addFrameImage(string strKey, const char * fileName, int width, int height, int maxFrameX, int maxFrameY, BOOL isTrans, COLORREF transColor)
+Image* ImageManager::addFrameImage(string strKey, const char* fileName,
+	int width, int height, int maxFrameX, int maxFrameY, int maxFrameIdx,
+	BOOL isTrans, COLORREF transColor)
 {
 	//추가하려는 이미지가 존재하는지 키값으로 확인
 	Image* img = findImage(strKey);
@@ -79,7 +81,8 @@ Image* ImageManager::addFrameImage(string strKey, const char * fileName, int wid
 	if (img) return img;
 
 	img = new Image;
-	if (FAILED(img->init(fileName, width, height, maxFrameX, maxFrameY, isTrans, transColor)))
+	if (FAILED(img->init(fileName, width, height, maxFrameX, maxFrameY,
+		maxFrameIdx, isTrans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;
@@ -91,7 +94,10 @@ Image* ImageManager::addFrameImage(string strKey, const char * fileName, int wid
 	return img;
 }
 
-Image* ImageManager::addFrameImage(string strKey, const char * fileName, float x, float y, int width, int height, int maxFrameX, int maxFrameY, BOOL isTrans, COLORREF transColor)
+Image* ImageManager::addFrameImage(string strKey, const char* fileName,
+	float x, float y, int width, int height,
+	int maxFrameX, int maxFrameY, int maxFrameIdx,
+	BOOL isTrans, COLORREF transColor)
 {
 	//추가하려는 이미지가 존재하는지 키값으로 확인
 	Image* img = findImage(strKey);
@@ -99,7 +105,8 @@ Image* ImageManager::addFrameImage(string strKey, const char * fileName, float x
 	if (img) return img;
 
 	img = new Image;
-	if (FAILED(img->init(fileName, x, y, width, height, maxFrameX, maxFrameY, isTrans, transColor)))
+	if (FAILED(img->init(fileName, x, y, width, height,
+		maxFrameX, maxFrameY, maxFrameIdx, isTrans, transColor)))
 	{
 		SAFE_DELETE(img);
 		return NULL;

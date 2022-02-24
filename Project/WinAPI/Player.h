@@ -8,7 +8,6 @@ private:
 	float initTime;
 	float turnCount;
 	DIRECTION command;
-	POINT pos;
 	RECT rc;
 	Image* head;
 	Image* body;

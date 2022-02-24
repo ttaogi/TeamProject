@@ -1,28 +1,4 @@
 #pragma once
-//명시적 참조.. 논리오류가 발생해도 못찾음!
-//잘 써야 된다 -> 판단하면 된다
-class Animation;
-
-//include "Animation.h"
-// 둘중에 멀쓸지
-
-/*
-클래스 전방선언 (clas forward Declaration)
-전방 선언, 전처리문 #include 
-
-1. is a 관계	: 제네시스는 차다 -> 전처리기 #include
-2. has a 관계	: 제네시스는 바퀴를 가지고 있다(부품언급) -> 전방선언 필요
-
-클래스 전방선언은 함수 전방선언과 비슷하면서도 다른 점이 있따.
--#include 전처리기를 많이 사용할 경우에는 전처리기 단계가 길어지게 된다.
-ㄴ컴파일 시간또한증가
-
-이를 해결하기 위해 전방 선언을 이용할 수도 있다.
-1. 클래스의 포인터 / 참조형식으로 이름만 참조할 경우
-2. 매개 변수나 리턴 타입을 위한 이름만 참조할 경우
-3. 메모리절약
-
-*/
 
 class Image
 {
@@ -34,9 +10,6 @@ public:
 		LOAD_EMPTY,
 		LOAD_END
 	};
-	//DWORD: unsigned long;
-	//WORD: unsigned short;
-	//BYTE: unsigned char;
 
 	typedef struct tagImage
 	{
@@ -52,6 +25,7 @@ public:
 		int			currentFrameY;
 		int			maxFrameX;
 		int			maxFrameY;
+		int			maxFrameIdx;
 		int			frameWidth;
 		int			frameHeight;
 		BYTE		LoadType;	//로드맵 타입
@@ -70,6 +44,7 @@ public:
 			currentFrameY = 0;
 			maxFrameX = 0;
 			maxFrameY = 0;
+			maxFrameIdx = 0;
 			frameWidth = 0;
 			frameHeight = 0;
 			LoadType = LOAD_RESOURCE;
@@ -101,17 +76,23 @@ public:
 	HRESULT init(const char* fileName, float x, float y, int width, int height, BOOL isTrans = FALSE,
 		COLORREF transColor = RGB(0, 0, 0));
 
-	HRESULT init(const char* fileName, int width, int height, int maxFrameX, int maxFrameY,
+	HRESULT init(const char* fileName, int width, int height,
+		int maxFrameX, int maxFrameY, int maxFrameIdx,
 		BOOL isTrans = FALSE, COLORREF transColor = RGB(0, 0, 0));
 
-	HRESULT init(const char* fileName, float x, float y, int width, int height, int maxFrameX, int maxFrameY,
+	HRESULT init(const char* fileName, float x, float y, int width,
+		int height, int maxFrameX, int maxFrameY, int maxFrameIdx,
 		BOOL isTrans = FALSE, COLORREF transColor = RGB(0, 0, 0));
 
 	//알파 블랜드 초기화
 	HRESULT initForAlphaBlend(void); //무한이 이미지 클래스에서 번진다
 	
 	//투명 컬러키 셋팅 (배경색 날릴건지, 어떤 색깔)
+	LPIMAGE_INFO getImageInfo() { return _imageInfo; }
+	bool getIsTrans() const { return _isTrans; }
+	COLORREF getTransColor() const { return _transColor; }
 	void setTransColor(BOOL isTrans, COLORREF transColor);
+	LPIMAGE_INFO getBlendImageInfo() { return _blendImage; }
 
 	//해제
 	void release(void);
@@ -128,21 +109,13 @@ public:
 	void alphaRender(HDC hdc, int destX, int destY, int sourX, int sourY,
 			int sourWidth, int sourHeight, BYTE alpha);		//클리핑(자르기) 알파랜더
 
-	//프레임 렌더
+	//프레임 렌더 - deprecated.
 	void frameRender(HDC hdc, int destX, int destY);
 	void frameRender(HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY);
 
 	//루프 렌더
 	void loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY);
 	void loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha);
-	
-	//애니 렌더
-	void aniRender(HDC hdc, int destX, int destY, Animation* ani);
-
-
-	//=================
-	//#인라인 함수#
-	//=================
 
 	//DC얻기
 	inline HDC getMemDC(void) { return _imageInfo->hMemDC; }
@@ -221,7 +194,7 @@ public:
 	//최대 프레임 x, y 갯수
 	inline int getMaxFrameX(void) { return _imageInfo->maxFrameX; }
 	inline int getMaxFrameY(void) { return _imageInfo->maxFrameY; }
-
+	inline int getMaxFrameIdx(void) { return _imageInfo->maxFrameIdx; }
 
 	Image();
 	~Image() {}
