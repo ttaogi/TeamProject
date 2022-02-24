@@ -17,6 +17,21 @@ const char* DIR_TILE_DIRT =
 	"Resources/Images/Object/TILE/DIRT/dirt.bmp";
 #pragma endregion Tile
 
+#pragma region Wall
+const std::string KEY_WALL_UNBREAKABLE =
+	"WALL_UNBREAKABLE";
+const char* DIR_WALL_UNBREAKABLE =
+	"Resources/Images/level/TEMP_wall_unbreakable.bmp";
+const std::string KEY_WALL_DIRT =
+	"WALL_DIRT";
+const char* DIR_WALL_DIRT =
+	"Resources/Images/level/wall_dirt_crypt.bmp";
+const std::string KEY_WALL_SHOP =
+	"WALL_SHOP";
+const char* DIR_WALL_SHOP =
+	"Resources/Images/level/wall_shop_crypt.bmp";
+#pragma endregion Wall
+
 #pragma region UI
 const std::string KEY_UI_PRESS_ANY_KEY =
 	"PRESS_ANY_KEY";
@@ -25,14 +40,59 @@ const char* DIR_UI_PRESS_ANY_KEY =
 #pragma endregion UI
 
 #pragma region Player
-const std::string KEY_PLAYER =
-	"PLAYER";
-const char* DIR_PLAYER =
-	"Resources/Images/entities/player1_heads.bmp";
-const std::string KEY_PLAYER2 =
-	"PLAYER_TMP2";
-const char* DIR_PLAYER2 =
-	"Resources/Images/entities/player1_armor_body_xmas.bmp";
+const std::string KEY_PLAYER_HEAD_IDLE_RIGHT =
+	"PLAYER_HEAD_IDLE_RIGHT";
+const char* DIR_PLAYER_HEAD_IDLE_RIGHT =
+	"Resources/Images/entities/player1_heads_idle_right.bmp";
+const std::string KEY_PLAYER_BODY_IDLE_RIGHT =
+	"PLAYER_BODY_IDLE_RIGHT";
+const char* DIR_PLAYER_BODY_IDLE_RIGHT =
+	"Resources/Images/entities/player1_armor_body_xmas_idle_right.bmp";
+
+const std::string KEY_PLAYER_HEAD_IDLE_LEFT =
+	"PLAYER_HEAD_IDLE_LEFT";
+const char* DIR_PLAYER_HEAD_IDLE_LEFT =
+	"Resources/Images/entities/player1_heads_idle_left.bmp";
+const std::string KEY_PLAYER_BODY_IDLE_LEFT =
+	"PLAYER_BODY_IDLE_LEFT";
+const char* DIR_PLAYER_BODY_IDLE_LEFT =
+	"Resources/Images/entities/player1_armor_body_xmas_idle_left.bmp";
+
+const std::string KEY_PLAYER_HEAD_JUMP_RIGHT =
+	"PLAYER_HEAD_JUMP_RIGHT";
+const char* DIR_PLAYER_HEAD_JUMP_RIGHT =
+	"Resources/Images/entities/player1_heads_jump_right.bmp";
+const std::string KEY_PLAYER_BODY_JUMP_RIGHT =
+	"PLAYER_BODY_JUMP_RIGHT";
+const char* DIR_PLAYER_BODY_JUMP_RIGHT =
+	"Resources/Images/entities/player1_armor_body_xmas_jump_right.bmp";
+
+const std::string KEY_PLAYER_HEAD_JUMP_LEFT =
+	"PLAYER_HEAD_JUMP_LEFT";
+const char* DIR_PLAYER_HEAD_JUMP_LEFT =
+	"Resources/Images/entities/player1_heads_jump_left.bmp";
+const std::string KEY_PLAYER_BODY_JUMP_LEFT =
+	"PLAYER_BODY_JUMP_LEFT";
+const char* DIR_PLAYER_BODY_JUMP_LEFT =
+	"Resources/Images/entities/player1_armor_body_xmas_jump_left.bmp";
+
+const std::string KEY_PLAYER_HEAD_JUMP_TOP =
+"PLAYER_HEAD_JUMP_TOP";
+const char* DIR_PLAYER_HEAD_JUMP_TOP =
+"Resources/Images/entities/player1_heads_jump_top.bmp";
+const std::string KEY_PLAYER_BODY_JUMP_TOP =
+"PLAYER_BODY_JUMP_TOP";
+const char* DIR_PLAYER_BODY_JUMP_TOP =
+"Resources/Images/entities/player1_armor_body_xmas_jump_top.bmp";
+
+const std::string KEY_PLAYER_HEAD_JUMP_BOTTOM =
+"PLAYER_HEAD_JUMP_BOTTOM";
+const char* DIR_PLAYER_HEAD_JUMP_BOTTOM =
+"Resources/Images/entities/player1_heads_jump_bottom.bmp";
+const std::string KEY_PLAYER_BODY_JUMP_BOTTOM =
+"PLAYER_BODY_JUMP_BOTTOM";
+const char* DIR_PLAYER_BODY_JUMP_BOTTOM =
+"Resources/Images/entities/player1_armor_body_xmas_jump_bottom.bmp";
 #pragma endregion Player
 
 #pragma region Slime

@@ -2,6 +2,9 @@
 
 #include "MapInfoManager.h"
 
+#include "Object.h"
+#include "Wall.h"
+
 Tile::Tile() { }
 
 Tile::~Tile() { release(); }
@@ -9,6 +12,10 @@ Tile::~Tile() { release(); }
 HRESULT Tile::init(TILE_TYPE _type, POINT _pos)
 {
 	switch (_type) {
+	case TILE_TYPE::EMPTY:
+		isBlocked = true;
+		stripe = NULL;
+		break;
 	case TILE_TYPE::DIRT:
 		isBlocked = false;
 		stripe = IMAGEMANAGER->findImage(KEY_TILE_DIRT);
@@ -53,13 +60,9 @@ HRESULT MapInfo::init(const std::string _fileName)
 	if (XmlManager::loadFile(doc, XML_DOC_EXAMPLE_MAP))
 	{
 		TiXmlElement* root = XmlManager::firstChildElement(doc, "ROOT");
-		cout << "ROOT." << endl;
 		TiXmlElement* interval = XmlManager::firstChildElement(root, "turnInterval");
-		cout << "turnInterval." << endl;
 		TiXmlElement* startPosInfo = XmlManager::firstChildElement(root, "startPos");
-		cout << "startPos." << endl;
 		TiXmlElement* map = XmlManager::firstChildElement(root, "map");
-		cout << "map." << endl;
 		int mapSizeX = 0;
 		int mapSizeY = 0;
 		int startX = 0;
@@ -94,39 +97,47 @@ HRESULT MapInfo::init(const std::string _fileName)
 				if (data == NULL) return E_FAIL;
 
 				int tileType = 0;
+				int objectType = 0;
 				Tile* tile = new Tile();
 				XmlManager::getAttributeValueInt(data, "type", &tileType);
 				tile->init((TILE_TYPE)tileType, POINT{ i, j });
 				vec.push_back(tile);
+				XmlManager::getAttributeValueInt(data, "object", &objectType);
+				if (objectType == (int)OBJECT_TYPE::WALL_UNBREAKABLE ||
+					objectType == (int)OBJECT_TYPE::WALL_DIRT ||
+					objectType == (int)OBJECT_TYPE::WALL_SHOP)
+				{
+					Wall* wall = new Wall();
+					wall->init((OBJECT_TYPE)objectType, POINT{ i, j });
+					objectVec.push_back(wall);
+				}
 			}
 
 			tileMap.push_back(vec);
 		}
 
 		cout << "********************" << endl;
-		cout << "MapInfo Init : " << _fileName << endl;
-		cout << "map size : " << size.x << " : " << size.y << endl;
-		cout << "start pos : " << startPos.x << " : " << startPos.y << endl;
+		cout << "MapInfo file : " << _fileName << endl;
 		cout << "tile map" << endl;
 		for (int y = 0; y < mapSizeY; ++y)
 		{
 			for (int x = 0; x < mapSizeX; ++x)
-			{
-				cout << x << ":" << y << "-"
-					<< (int)(tileMap[x][y]->type) << "\t";
-			}
+				cout << (int)(tileMap[x][y]->type) << "\t";
 			cout << endl;
 		}
 		cout << "tile map" << endl;
-		cout << "####################" << endl;
+		cout << "********************" << endl;
 	}
 	else return E_FAIL;
+
+	cout << "####################" << endl;
 
 	return S_OK;
 }
 
 void MapInfo::release()
 {
+	cout << "MapInfo release." << endl;
 	for (auto iter = tileMap.begin(); iter != tileMap.end(); ++iter)
 	{
 		for (auto iter2 = iter->begin(); iter2 != iter->end(); ++iter2)
@@ -136,6 +147,12 @@ void MapInfo::release()
 		}
 	}
 	tileMap.clear();
+	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
+	{
+		SAFE_RELEASE((*iter));
+		SAFE_DELETE((*iter));
+	}
+	objectVec.clear();
 	startPos = POINT{ 0, 0 };
 	size = POINT{ 0, 0 };
 }
@@ -156,9 +173,20 @@ void MapInfo::render(HDC _hdc)
 
 HRESULT MapInfoManager::init()
 {
-	IMAGEMANAGER->addImage(KEY_TILE_DIRT, DIR_TILE_DIRT, TILE_SIZE, TILE_SIZE, false, MAGENTA);
+	cout << "MapInfoManager init." << endl;
+	IMAGEMANAGER->addImage(KEY_TILE_DIRT, DIR_TILE_DIRT, TILE_SIZE, TILE_SIZE, true, MAGENTA);
 	IMAGEMANAGER->findImage(KEY_TILE_DIRT)->initForAlphaBlend();
 	cout << "TILE DIRT : " << IMAGEMANAGER->findImage(KEY_TILE_DIRT) << endl;
+	IMAGEMANAGER->addFrameImage(KEY_WALL_UNBREAKABLE, DIR_WALL_UNBREAKABLE, TILE_SIZE, TILE_SIZE * 2, 1, 1, 1, true, MAGENTA);
+	IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE)->initForAlphaBlend();
+	cout << "WALL UNBREAKABLE : " << IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE) << endl;
+	IMAGEMANAGER->addFrameImage(KEY_WALL_DIRT, DIR_WALL_DIRT, TILE_SIZE * 16, TILE_SIZE * 2, 16, 1, 16, true, MAGENTA);
+	IMAGEMANAGER->findImage(KEY_WALL_DIRT)->initForAlphaBlend();
+	cout << "WALL DIRT : " << IMAGEMANAGER->findImage(KEY_WALL_DIRT) << endl;
+	IMAGEMANAGER->addFrameImage(KEY_WALL_SHOP, DIR_WALL_SHOP, TILE_SIZE, TILE_SIZE * 2, 1, 1, 1, true, MAGENTA);
+	IMAGEMANAGER->findImage(KEY_WALL_SHOP)->initForAlphaBlend();
+	cout << "WALL SHOP : " << IMAGEMANAGER->findImage(KEY_WALL_SHOP) << endl;
+
 	MapInfo* exampleMap = new MapInfo();
 
 	if (FAILED(exampleMap->init(XML_DOC_EXAMPLE_MAP))) return E_FAIL;
@@ -170,6 +198,7 @@ HRESULT MapInfoManager::init()
 
 void MapInfoManager::release()
 {
+	cout << "MapInfoManager release." << endl;
 	for (auto iter = mapInfoMap.begin(); iter != mapInfoMap.end(); ++iter)
 	{
 		iter->second->release();

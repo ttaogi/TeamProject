@@ -1,6 +1,8 @@
 #pragma once
+
 #include "GameNode.h"
 
+class Object;
 class Player;
 class Slime;
 
@@ -10,6 +12,7 @@ private:
 	MapInfo* mapInfo;
 	Player* player;
 	Slime* slime;
+	std::vector<Object*> objectVec;
 public:
 	HRESULT init(void);
 	void release(void);

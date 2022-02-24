@@ -90,7 +90,7 @@ using namespace MY_UTIL;
 #define WINSTARTY	 100
 #define WINSIZEX	 960
 #define WINSIZEY	 540
-#define WINSTYLE	 WS_CAPTION | WS_SYSMENU  
+#define WINSTYLE	 WS_CAPTION | WS_SYSMENU
 
 //=========================
 // # 매크로 # (기능 및 효율)

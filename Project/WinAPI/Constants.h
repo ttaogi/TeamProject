@@ -11,16 +11,47 @@ extern const std::string KEY_TILE_DIRT;
 extern const char* DIR_TILE_DIRT;
 #pragma endregion Tile
 
+#pragma region Wall
+extern const std::string KEY_WALL_UNBREAKABLE;
+extern const char* DIR_WALL_UNBREAKABLE;
+extern const std::string KEY_WALL_DIRT;
+extern const char* DIR_WALL_DIRT;
+extern const std::string KEY_WALL_SHOP;
+extern const char* DIR_WALL_SHOP;
+#pragma endregion Wall
+
 #pragma region UI
 extern const std::string KEY_UI_PRESS_ANY_KEY;
 extern const char* DIR_UI_PRESS_ANY_KEY;
 #pragma endregion UI
 
 #pragma region Player
-extern const std::string KEY_PLAYER;
-extern const char* DIR_PLAYER;
-extern const std::string KEY_PLAYER2;
-extern const char* DIR_PLAYER2;
+extern const std::string KEY_PLAYER_HEAD_IDLE_RIGHT;
+extern const char* DIR_PLAYER_HEAD_IDLE_RIGHT;
+extern const std::string KEY_PLAYER_BODY_IDLE_RIGHT;
+extern const char* DIR_PLAYER_BODY_IDLE_RIGHT;
+extern const std::string KEY_PLAYER_HEAD_IDLE_LEFT;
+extern const char* DIR_PLAYER_HEAD_IDLE_LEFT;
+extern const std::string KEY_PLAYER_BODY_IDLE_LEFT;
+extern const char* DIR_PLAYER_BODY_IDLE_LEFT;
+
+extern const std::string KEY_PLAYER_HEAD_JUMP_RIGHT;
+extern const char* DIR_PLAYER_HEAD_JUMP_RIGHT;
+extern const std::string KEY_PLAYER_BODY_JUMP_RIGHT;
+extern const char* DIR_PLAYER_BODY_JUMP_RIGHT;
+extern const std::string KEY_PLAYER_HEAD_JUMP_LEFT;
+extern const char* DIR_PLAYER_HEAD_JUMP_LEFT;
+extern const std::string KEY_PLAYER_BODY_JUMP_LEFT;
+extern const char* DIR_PLAYER_BODY_JUMP_LEFT;
+
+extern const std::string KEY_PLAYER_HEAD_JUMP_TOP;
+extern const char* DIR_PLAYER_HEAD_JUMP_TOP;
+extern const std::string KEY_PLAYER_BODY_JUMP_TOP;
+extern const char* DIR_PLAYER_BODY_JUMP_TOP;
+extern const std::string KEY_PLAYER_HEAD_JUMP_BOTTOM;
+extern const char* DIR_PLAYER_HEAD_JUMP_BOTTOM;
+extern const std::string KEY_PLAYER_BODY_JUMP_BOTTOM;
+extern const char* DIR_PLAYER_BODY_JUMP_BOTTOM;
 #pragma endregion Player
 
 #pragma region Slime

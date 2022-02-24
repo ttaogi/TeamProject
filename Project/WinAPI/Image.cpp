@@ -190,7 +190,9 @@ HRESULT Image::init(const char* fileName, float x, float y, int width, int heigh
 	return S_OK;
 }
 
-HRESULT Image::init(const char* fileName, int width, int height, int maxFrameX, int maxFrameY, BOOL isTrans, COLORREF transColor)
+HRESULT Image::init(const char* fileName, int width, int height,
+	int maxFrameX, int maxFrameY, int maxFrameIdx,
+	BOOL isTrans, COLORREF transColor)
 {
 	if (_imageInfo != NULL) this->release();
 
@@ -208,8 +210,9 @@ HRESULT Image::init(const char* fileName, int width, int height, int maxFrameX, 
 	_imageInfo->height = height;
 	_imageInfo->currentFrameX = 0;
 	_imageInfo->currentFrameY = 0;
-	_imageInfo->maxFrameX = maxFrameX - 1;
-	_imageInfo->maxFrameY = maxFrameY - 1;
+	_imageInfo->maxFrameX = maxFrameX;
+	_imageInfo->maxFrameY = maxFrameY;
+	_imageInfo->maxFrameIdx = maxFrameIdx;
 	_imageInfo->frameWidth = width / maxFrameX;
 	_imageInfo->frameHeight = height / maxFrameY;
 
@@ -231,7 +234,9 @@ HRESULT Image::init(const char* fileName, int width, int height, int maxFrameX, 
 	return S_OK;
 }
 
-HRESULT Image::init(const char* fileName, float x, float y, int width, int height, int maxFrameX, int maxFrameY, BOOL isTrans, COLORREF transColor)
+HRESULT Image::init(const char* fileName, float x, float y,
+	int width, int height, int maxFrameX, int maxFrameY, int maxFrameIdx,
+	BOOL isTrans, COLORREF transColor)
 {
 	if (_imageInfo != NULL) this->release();
 
@@ -249,8 +254,9 @@ HRESULT Image::init(const char* fileName, float x, float y, int width, int heigh
 	_imageInfo->height = height;
 	_imageInfo->currentFrameX = 0;
 	_imageInfo->currentFrameY = 0;
-	_imageInfo->maxFrameX = maxFrameX - 1;
-	_imageInfo->maxFrameY = maxFrameY - 1;
+	_imageInfo->maxFrameX = maxFrameX;
+	_imageInfo->maxFrameY = maxFrameY;
+	_imageInfo->maxFrameIdx = maxFrameIdx;
 	_imageInfo->frameWidth = width / maxFrameX;
 	_imageInfo->frameHeight = height / maxFrameY;
 	_imageInfo->x = x;
@@ -579,10 +585,9 @@ void Image::alphaRender(HDC hdc, int destX, int destY, int sourX, int sourY, int
 	}
 }
 
+// deprecated.
 void Image::frameRender(HDC hdc, int destX, int destY)
 {
-	//이미지 예외처리
-
 	if (_isTrans)
 	{
 		GdiTransparentBlt
@@ -610,6 +615,7 @@ void Image::frameRender(HDC hdc, int destX, int destY)
 	}
 }
 
+// deprecated.
 void Image::frameRender(HDC hdc, int destX, int destY, int currentFrameX, int currentFrameY)
 {
 	//이미지 예외처리
@@ -713,10 +719,4 @@ void Image::loopRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY)
 
 void Image::loopAlphaRender(HDC hdc, const LPRECT drawArea, int offsetX, int offsetY, BYTE alpha)
 {
-}
-
-void Image::aniRender(HDC hdc, int destX, int destY, Animation * ani)
-{
-	render(hdc, destX, destY, ani->getFramePos().x, ani->getFramePos().y,
-		ani->getFrameWidth(), ani->getFrameHeight());
 }

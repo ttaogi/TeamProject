@@ -41,7 +41,7 @@ void ProgressBar::render(void)
 	_progressBarUp->render(getMemDC(), _rc.left + _progressBarDown->getWidth() / 2,
 		_y + _progressBarDown->getHeight() / 2,
 		0, 0,
-		_width,
+		(int)_width,
 		_progressBarDown->getHeight());
 }
 

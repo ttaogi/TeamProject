@@ -115,6 +115,15 @@
     <Filter Include="API FrameWork\Player">
       <UniqueIdentifier>{098fc220-f359-4c54-9d99-8a55090d180c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Object">
+      <UniqueIdentifier>{5670c0ee-3757-40ef-ac63-1ab5c44210c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Object\Wall">
+      <UniqueIdentifier>{dcf9a4fe-0e69-4603-9bb3-d0a60850c218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Animator">
+      <UniqueIdentifier>{18e9d8b0-3576-4177-8371-8d213bbc871c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -250,6 +259,15 @@
     <ClCompile Include="Player.cpp">
       <Filter>API FrameWork\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Object.cpp">
+      <Filter>API FrameWork\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>API FrameWork\Object\Wall</Filter>
+    </ClCompile>
+    <ClCompile Include="Animator.cpp">
+      <Filter>API FrameWork\Animator</Filter>
+    </ClCompile>
     <ClCompile Include="Slime.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
     </ClCompile>
@@ -383,6 +401,15 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>API FrameWork\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>API FrameWork\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>API FrameWork\Object\Wall</Filter>
+    </ClInclude>
+    <ClInclude Include="Animator.h">
+      <Filter>API FrameWork\Animator</Filter>
     </ClInclude>
     <ClInclude Include="Slime.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
