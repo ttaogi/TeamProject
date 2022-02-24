@@ -19,7 +19,10 @@ HRESULT Slime::init(const char * imageName, POINT position)
 
 
 	_image = IMAGEMANAGER->findImage(imageName);
+
+	 slime = IMAGEMANAGER->addFrameImage(KEY_SLIME, DIR_SLIME, 208, 104, 4, 2, true, MAGENTA);
 	_rc = RectMakeCenter(position.x, position.y, _image->getFrameWidth(), _image->getFrameHeight());
+
 	return S_OK;
 }
 
@@ -37,28 +40,28 @@ void Slime::render(void)
 	draw();
 	animation();
 }
-//
-////´Ë
-//void Slime::move(void)
-//{
-//}
-//
-//void Slime::draw(void)
-//{
-//	_image->frameRender(getMemDC(), _rc.left, _rc.top,
-//		_currentFrameX, _currentFrameY);
-//}
-//
-//void Slime::animation(void)
-//{
-//	//¹¬¾ð ¼öÇà
-//	if (_rndTimeCount + _worldTimeCount <= TIMEMANAGER->getWorldTime())
-//	{
-//		_worldTimeCount = TIMEMANAGER->getWorldTime();
-//		_currentFrameX++;
-//		if (_image->getMaxFrameX() < _currentFrameX)
-//		{
-//			_currentFrameX = 0;
-//		}
-//	}
-//}
+
+
+void Slime::move(void)
+{
+}
+
+void Slime::draw(void)
+{
+	_image->frameRender(getMemDC(), _rc.left, _rc.top,
+		_currentFrameX, _currentFrameY);
+}
+
+void Slime::animation(void)
+{
+	
+	if (_rndTimeCount + _worldTimeCount <= TIMEMANAGER->getWorldTime())
+	{
+		_worldTimeCount = TIMEMANAGER->getWorldTime();
+		_currentFrameX++;
+		if (_image->getMaxFrameX() < _currentFrameX)
+		{
+			_currentFrameX = 0;
+		}
+	}
+}
