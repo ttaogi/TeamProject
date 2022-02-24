@@ -9,8 +9,11 @@ HRESULT Player::init(void)
 	turnCount = 0;
 	command = DIRECTION::DIRECTION_NUM;
 	Move(POINT{ 0, 0 });
-	body = IMAGEMANAGER->addImage(KEY_PLAYER_TMP, DIR_PLAYER_TMP, 48, 48, true, MAGENTA);
 
+	head = IMAGEMANAGER->addFrameImage(KEY_PLAYER, DIR_PLAYER, 192, 96, 4, 2, true, MAGENTA);
+	body = IMAGEMANAGER->addFrameImage(KEY_PLAYER2, DIR_PLAYER2, 192, 28, 4, 1, true, MAGENTA);
+
+	playerIndex = 0;
 	return S_OK;
 }
 
@@ -52,18 +55,36 @@ void Player::update(void)
 		}
 		command = DIRECTION::DIRECTION_NUM;
 	}
+	
+	count++;
+	if (count % 3 == 0)
+	{
+		playerIndex++;
+		if (playerIndex >= 4)
+		{
+			playerIndex = 0;
+		}
+	}
 }
 
 void Player::render(void)
 {
-	body->render(getMemDC(), rc.left, rc.top);
+
+	head->frameRender(getMemDC(), rc.left, rc.top - 20, playerIndex, 0);
+	body->frameRender(getMemDC(), rc.left, rc.top, playerIndex, 0);
+
 	if(turnCount >= 0.4f)
 		RectangleMake(getMemDC(), 0, 0, 100, 100);
+
+	if (KEYMANAGER->isToggleKey(VK_F1))
+	{
+		Rectangle(getMemDC(), rc.left, rc.top, rc.right, rc.bottom);
+	}
 }
 
 void Player::Move(POINT _pos)
 {
 	pos = _pos;
 	rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
-		pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
+						pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
 }

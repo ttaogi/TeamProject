@@ -17,9 +17,16 @@ extern const char* DIR_UI_PRESS_ANY_KEY;
 #pragma endregion UI
 
 #pragma region Player
-extern const std::string KEY_PLAYER_TMP;
-extern const char* DIR_PLAYER_TMP;
+extern const std::string KEY_PLAYER;
+extern const char* DIR_PLAYER;
+extern const std::string KEY_PLAYER2;
+extern const char* DIR_PLAYER2;
 #pragma endregion Player
+
+#pragma region Slime
+extern const std::string KEY_SLIME;
+extern const char* DIR_SLIME;
+#pragma endregion Slime
 #pragma endregion Stripe
 
 ///////////////////////
