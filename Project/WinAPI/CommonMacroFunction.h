@@ -51,6 +51,6 @@ inline RECT CollisionAreaResizing(RECT &rcDest, int width, int height)
 }
 
 
-POINT GripPointToPixelPointCenter(POINT pos);
-POINT GripPointToPixelPointLeftTop(POINT pos);
+POINT GridPointToPixelPointCenter(POINT pos);
+POINT GridPointToPixelPointLeftTop(POINT pos);
 

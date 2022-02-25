@@ -16,12 +16,11 @@ HRESULT LobbyScene::init(void)
 	objectVec = mapInfo->getObjectVec();
 
 	player = new Player();
-	player->init();
+	player->init(this);
 	player->Move(mapInfo->getStartPos());
 
 	slime = new Slime();
 	slime->init();
-
 
 	return S_OK;
 }
@@ -48,15 +47,21 @@ void LobbyScene::update(void)
 	player->update();
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();
+	for (auto iter = objectVec.begin(); iter != objectVec.end();)
+	{
+		if ((*iter)->getDestroyed())
+		{
+			SAFE_RELEASE((*iter));
+			SAFE_DELETE((*iter));
+			iter = objectVec.erase(iter);
+		}
+		else ++iter;
+	}
 }
 
 void LobbyScene::render(void)
 {
 	mapInfo->render(getMemDC());
-
-	/*player->render();
-	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
-		(*iter)->render();*/
 
 	priority_queue<GameNode*, vector<GameNode*>, CmpGameNodePtrs> pQue;
 

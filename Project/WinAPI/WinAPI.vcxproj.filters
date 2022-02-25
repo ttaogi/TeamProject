@@ -271,6 +271,9 @@
     <ClCompile Include="Slime.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>API FrameWork\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -413,6 +416,9 @@
     </ClInclude>
     <ClInclude Include="Slime.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

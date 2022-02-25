@@ -4,9 +4,11 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Player.h"
 
 HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 {
+	destroyed = false;
 	type = _type;
 	pos = _pos;
 
@@ -15,6 +17,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 	switch (_type)
 	{
 	case OBJECT_TYPE::WALL_UNBREAKABLE:
+		hp = INT_MAX;
 		animator = new Animator();
 		animator->init();
 		anim = new Animation();
@@ -27,6 +30,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 		animator->aniPause();
 		break;
 	case OBJECT_TYPE::WALL_DIRT:
+		hp = 1;
 		animator = new Animator();
 		animator->init();
 		anim = new Animation();
@@ -41,6 +45,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 		animator->aniPause();
 		break;
 	case OBJECT_TYPE::WALL_SHOP:
+		hp = INT_MAX;
 		animator = new Animator();
 		animator->init();
 		anim = new Animation();
@@ -54,6 +59,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 		break;
 	case OBJECT_TYPE::NONE:
 	default:
+		hp = 0;
 		animator = NULL;
 		break;
 	}
@@ -69,15 +75,23 @@ void Wall::release(void)
 
 void Wall::update(void)
 {
-	if (animator)
+	if (animator && !destroyed)
 		animator->update();
 }
 
 void Wall::render(void)
 {
-	POINT p = GripPointToPixelPointCenter(pos);
-	if (animator)
+	POINT p = GridPointToPixelPointCenter(pos);
+	if (animator && !destroyed)
 		animator->animationRender(getMemDC(), p);
+}
+
+bool Wall::interact(Player* player)
+{
+	hp--;
+	if (hp <= 0) destroyed = true;
+
+	return false;
 }
 
 Wall::Wall() {

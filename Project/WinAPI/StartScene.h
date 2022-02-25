@@ -1,7 +1,8 @@
 #pragma once
-#include "GameNode.h"
 
-class StartScene : public GameNode
+#include "Scene.h"
+
+class StartScene : public Scene
 {
 private:
 	char _text[64];
