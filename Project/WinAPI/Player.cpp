@@ -337,6 +337,10 @@ void Player::update(void)
 
 void Player::render(void)
 {
+	if (KEYMANAGER->isToggleKey(VK_F1))
+	{
+		Rectangle(getMemDC(), rc.left, rc.top, rc.right, rc.bottom);
+	}
 	headAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 	bodyAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 

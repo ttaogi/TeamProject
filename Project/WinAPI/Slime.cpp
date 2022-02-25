@@ -36,7 +36,7 @@ HRESULT Slime::init(const char * imageName, POINT position)
 
 	slimeJump->init(
 		KEY_SLIME_JUMP,
-		POINT{ -26, -64 }, CHARACTER_STATE::IDLE_RIGHT,
+		POINT{ -26, -80 }, CHARACTER_STATE::IDLE_RIGHT,
 		true, false, 16
 	);
 

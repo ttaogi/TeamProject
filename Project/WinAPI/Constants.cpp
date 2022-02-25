@@ -106,6 +106,16 @@ const char* DIR_SLIME_JUMP =
 	"Resources/Images/entities/slime_green_jump.bmp";
 #pragma endregion Slime
 
+#pragma region SlimeBlue
+const std::string KEY_SLIME_BLUE =
+"SLIME_BLUE";
+const char* DIR_SLIME_BLUE =
+"Resources/Images/entities/slime_ice.bmp";
+const std::string KEY_SLIME_BLUE_JUMP =
+"SLIME_BLUE_JUMP";
+const char* DIR_SLIME_BLUE_JUMP =
+"Resources/Images/entities/slime_ice_jump.bmp";
+#pragma endregion SlimeBlue
 #pragma endregion Stripe
 
 ///////////////////////
