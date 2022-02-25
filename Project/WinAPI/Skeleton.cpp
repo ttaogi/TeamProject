@@ -1,8 +1,11 @@
 #include "stdafx.h"
+
 #include "Skeleton.h"
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Player.h"
+#include "Scene.h"
 
 HRESULT Skeleton::init(Scene* scenePtr, POINT position)
 {

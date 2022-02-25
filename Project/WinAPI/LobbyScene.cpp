@@ -23,10 +23,11 @@ HRESULT LobbyScene::init(void)
 	slime = new Slime();
 	slime->init(this, POINT{ 15, 8 });
 
-	/*slimeBlue = new SlimeBlue();
-	slimeBlue->init(this, POINT{ 15, 10 });*/
+	slimeBlue = new SlimeBlue();
+	slimeBlue->init(this, POINT{ 15, 10 });
 
 	objectVec.push_back(slime);
+	objectVec.push_back(slimeBlue);
 	
 	_plEquip = new PlEquip;
 	_plEquip->init();

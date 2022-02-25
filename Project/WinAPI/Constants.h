@@ -100,6 +100,12 @@ extern const std::string KEY_SLIME_BLUE_JUMP;
 extern const char* DIR_SLIME_BLUE_JUMP;
 #pragma endregion SlimeBlue
 
+#pragma region skeleton
+extern const std::string KEY_SKELETON_RIGHT;
+extern const char* DIR_SKELETON_RIGHT;
+extern const std::string KEY_SKELETON_LEFT;
+extern const char* DIR_SKELETON_LEFT;
+#pragma endregion skeleton
 #pragma endregion Stripe
 
 ///////////////////////

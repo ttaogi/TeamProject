@@ -177,6 +177,17 @@ const std::string KEY_SLIME_BLUE_JUMP =
 const char* DIR_SLIME_BLUE_JUMP =
 "Resources/Images/entities/slime_ice_jump.bmp";
 #pragma endregion SlimeBlue
+
+#pragma region Skeleton
+const std::string KEY_SKELETON_RIGHT =
+"SKELETON_RIGHT";
+const char* DIR_SKELETON_RIGHT =
+"Resources/Images/entities/skeleton_right";
+const std::string KEY_SKELETON_LEFT =
+"SKELETON_LEFT";
+const char* DIR_SKELETON_LEFT =
+"Resources/Images/entities/skeleton_left.bmp";
+#pragma endregion Skeleton
 #pragma endregion Stripe
 
 ///////////////////////

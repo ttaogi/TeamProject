@@ -20,7 +20,6 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 	Enemy::move(position); // set pos(gameNode) and _rc.
 	// SlimeBlue.
 	turnCount = 0;
-	count = 0;
 	posCheck = true;
 
 	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE, DIR_SLIME_BLUE, 208, 104, 4, 2, 4, true, MAGENTA);
@@ -94,9 +93,6 @@ void SlimeBlue::move(void)
 			pos.y -= 1;
 
 			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
-			//������ ��ġ���ٲ��ְ� ���ÿ� �ִϸ��̼��� �ٲ��شٰ�?
-			//������ ���� �ִϸ�����->ü�����ִϸ��̼� �̷� �Լ��� ��������
-			//���� ž���� �ٲ��ִ���...
 
 			turnCount -= 0.4f;
 			posCheck = false;
