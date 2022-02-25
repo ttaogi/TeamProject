@@ -91,8 +91,8 @@ HRESULT RhythmNote::init(void)
 	
 	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 420, heart->getFrameX(), heart->getFrameY());
 
-	Note_rc_L	 = RectMakeCenter(WINSIZEX / 2 - 50, 420, Note_Green_L->getFrameX(), Note_Green_L->getFrameY());
-	Note_rc_R    = RectMakeCenter(WINSIZEX / 2 - 50, 420, Note_Green_R->getFrameX(), Note_Green_R->getFrameY());
+	Note_rc_L	 = RectMakeCenter(0, 420, Note_Green_L->getFrameX(), Note_Green_L->getFrameY());
+	Note_rc_R    = RectMakeCenter(960, 420, Note_Green_R->getFrameX(), Note_Green_R->getFrameY());
 	
 	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 420, 150, heart->getHeight());
 
@@ -108,7 +108,10 @@ void RhythmNote::release(void)
 
 void RhythmNote::update(void)
 {
-	
+	Note_rc_L.left += 7;
+	Note_rc_L.right += 7;
+	Note_rc_R.left -= 7;
+	Note_rc_R.right -= 7;
 }
 
 void RhythmNote::render(void)
@@ -118,6 +121,9 @@ void RhythmNote::render(void)
 		Rectangle(getMemDC(), HeatBox.left, HeatBox.top, HeatBox.right, HeatBox.bottom);
 	}
 	
+	Note_Green_L->render(getMemDC(), Note_rc_L.left, Note_rc_L.top);
+	Note_Green_R->render(getMemDC(), Note_rc_R.left, Note_rc_R.top);
+
 	//animation();
 	heart->frameRender(getMemDC(), Heart_rc.left, Heart_rc.top, heart->getFrameX(), heart->getFrameY());
 }
