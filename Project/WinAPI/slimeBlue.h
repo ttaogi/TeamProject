@@ -2,7 +2,7 @@
 #include "Enemy.h"
 #include "Animator.h"
 
-class slimeBlue : public Enemy
+class SlimeBlue : public Enemy
 {
 private:
 	float turnCount;
@@ -15,7 +15,7 @@ private:
 	RECT rc;
 public:
 	HRESULT init(void);
-	HRESULT slimeBlue::init(const char * imageName, POINT position);
+	HRESULT init(const char * imageName, POINT position);
 	void release(void);
 	void update(void);
 	void render(void);
@@ -24,8 +24,8 @@ public:
 	void draw(void);
 	void animation(void);
 
-	slimeBlue();
-	~slimeBlue() {};
+	SlimeBlue();
+	~SlimeBlue() {};
 
 };
 

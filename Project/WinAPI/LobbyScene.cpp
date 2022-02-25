@@ -23,8 +23,8 @@ HRESULT LobbyScene::init(void)
 	slime = new Slime();
 	slime->init("KEY_SLIME", POINT{ 15, 8 });
 
-	slimeBlue = new slimeBlue();
-	slimeBlue->init("KEY_SLIME", POINT{ 16, 8 });
+	slimeBlue = new SlimeBlue();
+	slimeBlue->init("KEY_SLIME", POINT{ 15, 10 });
 
 	return S_OK;
 }

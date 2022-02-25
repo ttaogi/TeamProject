@@ -5,13 +5,13 @@
 class Object;
 class Player;
 class Slime;
-class slimeBlue;
+class SlimeBlue;
 
 class LobbyScene : public Scene
 {
 private:
 	Slime* slime;
-	Slime* slimeBlue;
+	SlimeBlue* slimeBlue;
 public:
 	HRESULT init(void);
 	void release(void);
