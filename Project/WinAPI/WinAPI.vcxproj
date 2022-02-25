@@ -167,6 +167,7 @@
     <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
     <ClCompile Include="Slime.cpp" />
     <ClCompile Include="slimeBlue.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -222,6 +223,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="SingletonBase.h" />
+    <ClInclude Include="Skeleton.h" />
     <ClInclude Include="Slime.h" />
     <ClInclude Include="slimeBlue.h" />
     <ClInclude Include="SoundManager.h" />

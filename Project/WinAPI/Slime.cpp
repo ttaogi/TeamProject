@@ -25,7 +25,7 @@ HRESULT Slime::init(Scene* scenePtr, POINT position)
 	Animation* slimeJump = new Animation();
 	slimeJump->init(
 		KEY_SLIME_JUMP,
-		POINT{ -26, -64 }, CHARACTER_STATE::IDLE_RIGHT, // change jump state.
+		POINT{ -26, -80 }, CHARACTER_STATE::IDLE_RIGHT, // change jump state.
 		true, false, 16
 	);
 

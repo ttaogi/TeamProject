@@ -83,6 +83,8 @@ void LobbyScene::update(void)
 
 void LobbyScene::render(void)
 {
+
+
 	mapInfo->render(getMemDC());
 
 	priority_queue<GameNode*, vector<GameNode*>, CmpGameNodePtrs> pQue;

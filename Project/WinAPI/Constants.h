@@ -92,6 +92,14 @@ extern const char* DIR_SLIME;
 extern const std::string KEY_SLIME_JUMP;
 extern const char* DIR_SLIME_JUMP;
 #pragma endregion Slime
+
+#pragma region SlimeBlue
+extern const std::string KEY_SLIME_BLUE;
+extern const char* DIR_SLIME_BLUE;
+extern const std::string KEY_SLIME_BLUE_JUMP;
+extern const char* DIR_SLIME_BLUE_JUMP;
+#pragma endregion SlimeBlue
+
 #pragma endregion Stripe
 
 ///////////////////////

@@ -1,13 +1,11 @@
 #pragma once
-
 #include "Enemy.h"
+#include "Animator.h"
 
-class SlimeBlue : public Enemy
+class Skeleton : public Enemy
 {
 private:
 	float turnCount;
-	int count;
-	bool posCheck;
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
 	void release(void);
@@ -15,9 +13,10 @@ public:
 	void render(void);
 
 	bool interact(Player* player);
+
 	void move(void);
 
-	SlimeBlue() { }
-	~SlimeBlue() { }
+	Skeleton() { }
+	~Skeleton() { }
 };
 
