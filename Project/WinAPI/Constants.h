@@ -23,6 +23,38 @@ extern const char* DIR_WALL_SHOP;
 #pragma region UI
 extern const std::string KEY_UI_PRESS_ANY_KEY;
 extern const char* DIR_UI_PRESS_ANY_KEY;
+
+extern const std::string KEY_UI_SLOT_1;
+extern const char* DIR_UI_SLOT_1;
+extern const std::string KEY_UI_SLOT_2;
+extern const char* DIR_UI_SLOT_2;
+extern const std::string KEY_UI_SLOT_3;
+extern const char* DIR_UI_SLOT_3;
+extern const std::string KEY_UI_SLOT_4;
+extern const char* DIR_UI_SLOT_4;
+extern const std::string KEY_UI_SLOT_5;
+extern const char* DIR_UI_SLOT_5;
+extern const std::string KEY_UI_ACTION_1;
+extern const char* DIR_UI_ACTION_1;
+extern const std::string KEY_UI_ACTION_2;
+extern const char* DIR_UI_ACTION_2;
+
+extern const std::string KEY_UI_HP;
+extern const char* DIR_UI_HP;
+
+extern const std::string KEY_UI_HEART;
+extern const char* DIR_UI_HEART;
+extern const std::string KEY_UI_NOTE_GREEN_L;
+extern const char* DIR_UI_NOTE_GREEN_L;
+extern const std::string KEY_UI_NOTE_GREEN_R;
+extern const char* DIR_UI_NOTE_GREEN_R;
+extern const std::string KEY_UI_NOTE_RED_L;
+extern const char* DIR_UI_NOTE_RED_L;
+extern const std::string KEY_UI_NOTE_RED_R;
+extern const char* DIR_UI_NOTE_RED_R;
+
+extern const std::string KEY_UI_GOLD;
+extern const char* DIR_UI_GOLD;
 #pragma endregion UI
 
 #pragma region Player

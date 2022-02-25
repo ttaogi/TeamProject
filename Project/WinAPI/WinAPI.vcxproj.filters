@@ -124,6 +124,9 @@
     <Filter Include="API FrameWork\Animator">
       <UniqueIdentifier>{18e9d8b0-3576-4177-8371-8d213bbc871c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\GameUI">
+      <UniqueIdentifier>{4908fd4f-213c-4dba-bce8-37c5d8ca5db2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -277,6 +280,9 @@
     <ClCompile Include="slimeBlue.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="GameUI.cpp">
+      <Filter>API FrameWork\GameUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -408,6 +414,7 @@
     <ClInclude Include="Player.h">
       <Filter>API FrameWork\Player</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="Object.h">
       <Filter>API FrameWork\Object</Filter>
     </ClInclude>
@@ -425,6 +432,10 @@
     </ClInclude>
     <ClInclude Include="slimeBlue.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+=======
+    <ClInclude Include="GameUI.h">
+      <Filter>API FrameWork\GameUI</Filter>
+>>>>>>> origin/main
     </ClInclude>
   </ItemGroup>
 </Project>
