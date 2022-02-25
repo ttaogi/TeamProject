@@ -414,7 +414,6 @@
     <ClInclude Include="Player.h">
       <Filter>API FrameWork\Player</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Object.h">
       <Filter>API FrameWork\Object</Filter>
     </ClInclude>
@@ -432,10 +431,9 @@
     </ClInclude>
     <ClInclude Include="slimeBlue.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
-=======
+    </ClInclude>
     <ClInclude Include="GameUI.h">
       <Filter>API FrameWork\GameUI</Filter>
->>>>>>> origin/main
     </ClInclude>
   </ItemGroup>
 </Project>
