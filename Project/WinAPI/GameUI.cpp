@@ -79,39 +79,42 @@ PlHp::~PlHp()
 
 //====================================================================================
 //리듬노트
-HRESULT RhythmNote::init(void)
+HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 {
 	heart		 = IMAGEMANAGER->addFrameImage(KEY_UI_HEART, DIR_UI_HEART, 164, 104, 2, 1, 2, true, MAGENTA);
-	
-	Note_Green_L = IMAGEMANAGER->addImage(KEY_UI_NOTE_GREEN_L, DIR_UI_NOTE_GREEN_L, 12, 64, true, MAGENTA);
-	Note_Green_R = IMAGEMANAGER->addImage(KEY_UI_NOTE_GREEN_R, DIR_UI_NOTE_GREEN_R, 12, 64, true, MAGENTA);
-	
-	Note_Red_L	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_RED_L, DIR_UI_NOTE_RED_L, 12, 64, true, MAGENTA);
-	Note_Red_R	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_RED_R, DIR_UI_NOTE_RED_R, 12, 64, true, MAGENTA);
-	
-	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 420, heart->getFrameX(), heart->getFrameY());
-
-	Note_rc_L	 = RectMakeCenter(0, 420, Note_Green_L->getFrameX(), Note_Green_L->getFrameY());
-	Note_rc_R    = RectMakeCenter(960, 420, Note_Green_R->getFrameX(), Note_Green_R->getFrameY());
-	
-	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 420, 150, heart->getHeight());
+	Note_Green	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_GREEN, DIR_UI_NOTE_GREEN, 12, 64, true, MAGENTA);
+	Note_Red	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_RED, DIR_UI_NOTE_RED, 12, 64, true, MAGENTA);
+		
+	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 480, heart->getFrameWidth(), heart->getFrameHeight());
+	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 480, 150, heart->getHeight());
 
 	_worldTimeCount = TIMEMANAGER->getWorldTime();
-	_rndTimeCount = RND->getFromFloatTo(0.04f, 0.1f);
+	_SceneStartTime = TIMEMANAGER->getWorldTime();
+	
+	_count = 0;
+	_imageName = imageName;
+	_range = range;
+	_NoteMax = NoteMax;
 
 	return S_OK;
 }
 
 void RhythmNote::release(void)
 {
+	_vNote.clear();
 }
 
 void RhythmNote::update(void)
 {
-	Note_rc_L.left += 7;
-	Note_rc_L.right += 7;
-	Note_rc_R.left -= 7;
-	Note_rc_R.right -= 7;
+	_count += TIMEMANAGER->getElapsedTime();
+	if (_count > 0.5f)
+	{
+		_count -= 0.5f;
+		NoteCreate(0, 480, 1, 7);
+		NoteCreate(WINSIZEX, 480, -1, 7);
+	}
+
+	NoteMove();
 }
 
 void RhythmNote::render(void)
@@ -120,11 +123,10 @@ void RhythmNote::render(void)
 	{
 		Rectangle(getMemDC(), HeatBox.left, HeatBox.top, HeatBox.right, HeatBox.bottom);
 	}
-	
-	Note_Green_L->render(getMemDC(), Note_rc_L.left, Note_rc_L.top);
-	Note_Green_R->render(getMemDC(), Note_rc_R.left, Note_rc_R.top);
-
+		
 	//animation();
+
+	Notedraw();
 	heart->frameRender(getMemDC(), Heart_rc.left, Heart_rc.top, heart->getFrameX(), heart->getFrameY());
 }
 
@@ -140,6 +142,57 @@ void RhythmNote::animation(void)
 		}
 	}*/
 }
+
+void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
+{
+	if (_NoteMax <= _vNote.size()) return;
+
+	tagNote Note;
+	ZeroMemory(&Note, sizeof(tagNote));
+	Note.img = Note_Green;
+	/*
+	if(TIMEMANAGER->getWorldTime() - _SceneStartTime < 150)
+	Note.img = Note_Green;
+	시간여유가 있으면 초록색 출력
+	else
+	남은 시간이 30초이하이면 빨강색 출력
+	
+	_worldTimeCount = TIMEMANAGER->getWorldTime();
+	_SceneStartTime = TIMEMANAGER->getWorldTime();
+	*/
+
+	Note.speed	= speed;
+	Note.angle	= angle;
+	Note.x = Note.HeartX = x;
+	Note.y = Note.HeartY = y;
+	Note.rc = RectMakeCenter(Note.x, Note.y, Note.img->getWidth(), Note.img->getHeight());
+
+	_vNote.push_back(Note);
+	cout << "NoteCreate" << endl;
+	cout << "이미지" << IMAGEMANAGER->findImage(_imageName) << endl;
+}
+
+void RhythmNote::NoteMove(void)
+{
+	for (_viNote = _vNote.begin(); _viNote != _vNote.end(); ++_viNote)
+	{
+		_viNote->x += _viNote->angle * _viNote->speed;
+		
+		_viNote->rc = RectMakeCenter(_viNote->x, _viNote->y, _viNote->img->getWidth(), _viNote->img->getHeight());
+	}
+	
+	cout << "NoteMove" << endl;
+}
+
+void RhythmNote::Notedraw(void)
+{
+	for (_viNote = _vNote.begin(); _viNote != _vNote.end(); ++_viNote)
+	{
+		_viNote->img->render(getMemDC(), _viNote->rc.left, _viNote->rc.top);
+	}
+	cout << "Notedraw" << endl;
+}
+
 
 //====================================================================================
 //재화

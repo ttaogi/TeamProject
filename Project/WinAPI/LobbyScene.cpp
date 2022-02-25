@@ -36,8 +36,8 @@ HRESULT LobbyScene::init(void)
 	_plHp->init();
 	
 	_Note = new RhythmNote;
-	_Note->init();
-
+	_Note->init("", 300, 1000);
+	
 	return S_OK;
 }
 
@@ -64,6 +64,7 @@ void LobbyScene::update(void)
 	player->update();
 	slime->update();
 	slimeBlue->update();
+	_Note->update();
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();
