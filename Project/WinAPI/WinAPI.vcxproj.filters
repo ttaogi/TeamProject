@@ -283,6 +283,9 @@
     <ClCompile Include="GameUI.cpp">
       <Filter>API FrameWork\GameUI</Filter>
     </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -434,6 +437,9 @@
     </ClInclude>
     <ClInclude Include="GameUI.h">
       <Filter>API FrameWork\GameUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,15 +2,14 @@
 #include "Enemy.h"
 #include "Animator.h"
 
-class SlimeBlue : public Enemy
+class Skeleton : public Enemy
 {
 private:
 	float turnCount;
-	int count;
 
-	bool posCheck;
-
-	Animator* slimeBlueAnimator;
+	Animator* SkeletonAnimator;
+	Animator* SkeletonAttakAnimator;
+	Animator* SkeletonMoveAnimator;
 
 	RECT rc;
 public:
@@ -21,11 +20,8 @@ public:
 	void render(void);
 
 	void move(void);
-	void draw(void);
-	void animation(void);
 
-	SlimeBlue();
-	~SlimeBlue() {};
-
+	Skeleton();
+	~Skeleton() {};
 };
 
