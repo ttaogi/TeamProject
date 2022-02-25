@@ -8,7 +8,6 @@
 HRESULT Player::init(void)
 {
 	hp = 6;
-	tileEmpty = true;
 	initTime = TIMEMANAGER->getWorldTime();
 	turnCount = 0;
 	command = DIRECTION::DIRECTION_NUM;

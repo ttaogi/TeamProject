@@ -2,7 +2,7 @@
 #include "Enemy.h"
 #include "Animator.h"
 
-class Slime : public Enemy
+class slimeBlue : public Enemy
 {
 private:
 	float turnCount;
@@ -10,12 +10,12 @@ private:
 
 	bool posCheck;
 
-	Animator* slimeJumpAnimator;
+	Animator* slimeBlueJumpAnimator;
 
 	RECT rc;
 public:
 	HRESULT init(void);
-	HRESULT Slime::init(const char * imageName, POINT position);
+	HRESULT slimeBlue::init(const char * imageName, POINT position);
 	void release(void);
 	void update(void);
 	void render(void);
@@ -23,9 +23,9 @@ public:
 	void move(void);
 	void draw(void);
 	void animation(void);
-	
-	Slime();
-	~Slime() {};
+
+	slimeBlue();
+	~slimeBlue() {};
 
 };
 
