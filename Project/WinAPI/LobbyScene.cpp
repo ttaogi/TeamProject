@@ -25,6 +25,18 @@ HRESULT LobbyScene::init(void)
 
 	slimeBlue = new SlimeBlue();
 	slimeBlue->init("KEY_SLIME", POINT{ 15, 10 });
+	
+	_plEquip = new PlEquip;
+	_plEquip->init();
+
+	_plGold = new PlGold;
+	_plGold->init();
+
+	_plHp = new PlHp;
+	_plHp->init();
+	
+	_Note = new RhythmNote;
+	_Note->init();
 
 	return S_OK;
 }
@@ -85,4 +97,9 @@ void LobbyScene::render(void)
 
 	slime->render();
 	slimeBlue->render();
+
+	_plEquip->render();
+	_plGold->render();
+	_plHp->render();
+	_Note->render();
 }
