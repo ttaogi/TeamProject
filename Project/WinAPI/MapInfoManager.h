@@ -4,6 +4,8 @@
 
 #include "Enums.h"
 
+class Object;
+
 class Tile {
 public:
 	bool isBlocked;
@@ -25,6 +27,7 @@ private:
 	POINT size;
 	float turnInterval;
 	std::vector<std::vector<Tile*>> tileMap;
+	std::vector<Object*> objectVec;
 public:
 	MapInfo();
 	~MapInfo();
@@ -33,10 +36,11 @@ public:
 	void release();
 	void render(HDC _hdc);
 
-	std::vector<std::vector<Tile*>>* getTileMap() { return &tileMap; }
 	POINT getStartPos() const { return startPos; }
 	POINT getSize() const { return size; }
 	float getTurnInterval() const { return turnInterval; }
+	std::vector<std::vector<Tile*>>* getTileMap() { return &tileMap; }
+	std::vector<Object*> getObjectVec() const { return objectVec; }
 };
 
 class MapInfoManager : public SingletonBase<MapInfoManager> {

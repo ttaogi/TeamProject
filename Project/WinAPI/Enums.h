@@ -1,5 +1,16 @@
 #pragma once
 
+enum class CHARACTER_STATE
+{
+	IDLE_RIGHT = 0, IDLE_LEFT,
+	JUMP_RIGHT, JUMP_LEFT,
+	JUMP_TOP, JUMP_BOTTOM,
+	ATTACK, ATTACKED,
+	CHARACTER_STATE_NUM
+};
+
+std::string CharacterStateToWString(CHARACTER_STATE _state);
+
 enum class DIRECTION
 {
 	LEFT = 0, TOP, RIGHT, BOTTOM,
@@ -9,8 +20,18 @@ enum class DIRECTION
 
 enum class TILE_TYPE
 {
-	DIRT = 0,
+	EMPTY = 0,
+	DIRT,
 	TILE_TYPE_NUM
+};
+
+enum class OBJECT_TYPE
+{
+	NONE = 0,
+	WALL_UNBREAKABLE,
+	WALL_DIRT,
+	WALL_SHOP,
+	OBJECT_TYPE_NUM
 };
 
 enum class MAP_ID
