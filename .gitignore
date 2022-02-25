@@ -38,3 +38,5 @@ Project/Default/Debug
 Project/Default/x64
 Project/WinAPI/Debug
 Project/WinAPI/x64
+Project/WinAPI/x64/WinAPI.ilk
+Project/WinAPI/x64/WinAPI.pdb
