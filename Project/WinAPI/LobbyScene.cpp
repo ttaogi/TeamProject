@@ -20,7 +20,7 @@ HRESULT LobbyScene::init(void)
 	player->Move(mapInfo->getStartPos());
 
 	slime = new Slime();
-	slime->init();
+	slime->init("KEY_SLIME", POINT{ 15, 8 });
 
 	return S_OK;
 }
@@ -44,7 +44,10 @@ void LobbyScene::update(void)
 		_mg->quitGame();
 		return;
 	}
+
 	player->update();
+	slime->update();
+
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();
 	for (auto iter = objectVec.begin(); iter != objectVec.end();)
@@ -74,4 +77,6 @@ void LobbyScene::render(void)
 		pQue.top()->render();
 		pQue.pop();
 	}
+
+	slime->render();
 }

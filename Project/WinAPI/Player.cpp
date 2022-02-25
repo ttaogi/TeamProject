@@ -342,11 +342,6 @@ void Player::render(void)
 
 	if(turnCount >= 0.4f)
 		RectangleMake(getMemDC(), 0, 0, 100, 100);
-
-	if (KEYMANAGER->isToggleKey(VK_F1))
-	{
-		Rectangle(getMemDC(), rc.left, rc.top, rc.right, rc.bottom);
-	}
 }
 
 void Player::Move(POINT _pos)
