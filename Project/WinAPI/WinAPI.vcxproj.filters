@@ -22,29 +22,8 @@
     <Filter Include="API FrameWork\image">
       <UniqueIdentifier>{6c6bd120-7c5f-439d-a83a-3bf94f0e013f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses">
-      <UniqueIdentifier>{faab0b5e-20f4-4bdf-8c7a-9f3d0b28e232}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\ShootingGame">
-      <UniqueIdentifier>{f338c748-9fe2-45bb-915c-f299072f984c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\ShootingGame\Rocket">
-      <UniqueIdentifier>{1402fe44-88f1-46ba-80f0-975e8ab50a49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\ShootingGame\Enemy">
-      <UniqueIdentifier>{f88d06a2-9dfe-4696-93ee-fcc462967c60}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\ShootingGame\Bullets">
-      <UniqueIdentifier>{a90bfb11-9616-4223-9a8f-a3c14f4897f2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\ShootingGame\AniScene">
-      <UniqueIdentifier>{615e61b3-81b5-44d7-b868-80ba0fa7601b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API FrameWork\Manager">
       <UniqueIdentifier>{fe345b9e-1bff-417c-a879-8e4cd2a1e31a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\ShootingGame\Scene">
-      <UniqueIdentifier>{cb504ae6-738e-4f8b-86db-652de0af7aaa}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\Manager\ImageManager">
       <UniqueIdentifier>{b45b7ffd-04d7-4841-b325-e1bb509645e8}</UniqueIdentifier>
@@ -70,20 +49,11 @@
     <Filter Include="API FrameWork\Manager\TextDataManager">
       <UniqueIdentifier>{0a8d884d-b76b-4cb9-bffe-43c5f16f142f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="API FrameWork\Manager\TempSoundManager">
-      <UniqueIdentifier>{127fda70-9121-4231-8b84-29b033676f7d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\Manager\TempSoundManager\TempSoundTest">
-      <UniqueIdentifier>{9907c12b-6c73-477e-9863-b7cee83038e9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="API FrameWork\Manager\XmlManager">
       <UniqueIdentifier>{8b1b9345-9bbf-41a5-a8c3-5c9c736a2cd0}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\Manager\XmlManager\TinyXml">
       <UniqueIdentifier>{020391f1-f460-448b-b2e5-2ceee3fc1f7b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\Pixel">
-      <UniqueIdentifier>{85f9211d-0f92-44cc-b195-5b8e5bfbbfe1}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\Manager\MapInfoManager">
       <UniqueIdentifier>{79f45f94-e239-4b28-a312-03956b1101ce}</UniqueIdentifier>
@@ -99,15 +69,6 @@
     </Filter>
     <Filter Include="API FrameWork\Scene">
       <UniqueIdentifier>{7eba4f0e-a635-4ea1-b107-73ee0f09df73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\Effect">
-      <UniqueIdentifier>{8d2b6a4d-bff7-447c-860a-053dc95d9cb4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\Effect\ShootingEffect">
-      <UniqueIdentifier>{2d848f55-0d77-4ee4-a6c4-8cd95f5c83eb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="API FrameWork\EaxmpleClasses\ProgressBar">
-      <UniqueIdentifier>{ed7ec1e4-8683-44ea-89a7-d7174370c92f}</UniqueIdentifier>
     </Filter>
     <Filter Include="API FrameWork\MainGame">
       <UniqueIdentifier>{11d6f2db-5a8c-4240-91f6-34d85bc14363}</UniqueIdentifier>
@@ -127,6 +88,12 @@
     <Filter Include="API FrameWork\GameUI">
       <UniqueIdentifier>{4908fd4f-213c-4dba-bce8-37c5d8ca5db2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Enemy">
+      <UniqueIdentifier>{f88d06a2-9dfe-4696-93ee-fcc462967c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\ProgressBar">
+      <UniqueIdentifier>{ed7ec1e4-8683-44ea-89a7-d7174370c92f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -144,41 +111,17 @@
     <ClCompile Include="ImageManager.cpp">
       <Filter>API FrameWork\Manager\ImageManager</Filter>
     </ClCompile>
-    <ClCompile Include="SecondScene.cpp">
-      <Filter>API FrameWork\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="StartScene.cpp">
       <Filter>API FrameWork\Scene</Filter>
     </ClCompile>
     <ClCompile Include="FontManager.cpp">
       <Filter>API FrameWork\Manager\FontManager</Filter>
     </ClCompile>
-    <ClCompile Include="TempSoundManager.cpp">
-      <Filter>API FrameWork\Manager\TempSoundManager</Filter>
-    </ClCompile>
-    <ClCompile Include="TempSoundTest.cpp">
-      <Filter>API FrameWork\Manager\TempSoundManager\TempSoundTest</Filter>
-    </ClCompile>
-    <ClCompile Include="Flame.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Rocket</Filter>
-    </ClCompile>
-    <ClCompile Include="Rocket.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Rocket</Filter>
-    </ClCompile>
     <ClCompile Include="Utils.cpp">
       <Filter>API FrameWork\Utility</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyManager.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="Bullets.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Bullets</Filter>
-    </ClCompile>
-    <ClCompile Include="Minion.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>API FrameWork\Manager\TimeManager\Timer</Filter>
@@ -187,22 +130,10 @@
       <Filter>API FrameWork\Manager\TimeManager</Filter>
     </ClCompile>
     <ClCompile Include="ProgressBar.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ProgressBar</Filter>
+      <Filter>API FrameWork\ProgressBar</Filter>
     </ClCompile>
     <ClCompile Include="Animation.cpp">
       <Filter>API FrameWork\Animation</Filter>
-    </ClCompile>
-    <ClCompile Include="AniTestScene.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\AniScene</Filter>
-    </ClCompile>
-    <ClCompile Include="ShootingEffect.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\Effect\ShootingEffect</Filter>
-    </ClCompile>
-    <ClCompile Include="Collision.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="ShootingScene.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Scene</Filter>
     </ClCompile>
     <ClCompile Include="KeyManager.cpp">
       <Filter>API FrameWork\Manager\KeyManager</Filter>
@@ -238,12 +169,6 @@
       <Filter>API FrameWork\Utility</Filter>
     </ClCompile>
     <ClCompile Include="WinMain.cpp" />
-    <ClCompile Include="PixelCollision.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
-    </ClCompile>
-    <ClCompile Include="PixelScene.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
-    </ClCompile>
     <ClCompile Include="MapInfoManager.cpp">
       <Filter>API FrameWork\Manager\MapInfoManager</Filter>
     </ClCompile>
@@ -272,13 +197,13 @@
       <Filter>API FrameWork\Animator</Filter>
     </ClCompile>
     <ClCompile Include="Slime.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>API FrameWork\Scene</Filter>
     </ClCompile>
     <ClCompile Include="slimeBlue.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClCompile>
     <ClCompile Include="GameUI.cpp">
       <Filter>API FrameWork\GameUI</Filter>
@@ -309,41 +234,17 @@
     <ClInclude Include="ImageManager.h">
       <Filter>API FrameWork\Manager\ImageManager</Filter>
     </ClInclude>
-    <ClInclude Include="SecondScene.h">
-      <Filter>API FrameWork\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="StartScene.h">
       <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
     <ClInclude Include="FontManager.h">
       <Filter>API FrameWork\Manager\FontManager</Filter>
     </ClInclude>
-    <ClInclude Include="TempSoundManager.h">
-      <Filter>API FrameWork\Manager\TempSoundManager</Filter>
-    </ClInclude>
-    <ClInclude Include="TempSoundTest.h">
-      <Filter>API FrameWork\Manager\TempSoundManager\TempSoundTest</Filter>
-    </ClInclude>
-    <ClInclude Include="Flame.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Rocket</Filter>
-    </ClInclude>
-    <ClInclude Include="Rocket.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Rocket</Filter>
-    </ClInclude>
     <ClInclude Include="Utils.h">
       <Filter>API FrameWork\Utility</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyManager.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullets.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Bullets</Filter>
-    </ClInclude>
-    <ClInclude Include="Minion.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>API FrameWork\Manager\TimeManager\Timer</Filter>
@@ -352,19 +253,10 @@
       <Filter>API FrameWork\Manager\TimeManager</Filter>
     </ClInclude>
     <ClInclude Include="ProgressBar.h">
-      <Filter>API FrameWork\EaxmpleClasses\ProgressBar</Filter>
+      <Filter>API FrameWork\ProgressBar</Filter>
     </ClInclude>
     <ClInclude Include="Animation.h">
       <Filter>API FrameWork\Animation</Filter>
-    </ClInclude>
-    <ClInclude Include="AniTestScene.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\AniScene</Filter>
-    </ClInclude>
-    <ClInclude Include="ShootingEffect.h">
-      <Filter>API FrameWork\EaxmpleClasses\Effect\ShootingEffect</Filter>
-    </ClInclude>
-    <ClInclude Include="ShootingScene.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Scene</Filter>
     </ClInclude>
     <ClInclude Include="KeyManager.h">
       <Filter>API FrameWork\Manager\KeyManager</Filter>
@@ -389,12 +281,6 @@
     </ClInclude>
     <ClInclude Include="Constants.h">
       <Filter>API FrameWork\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelCollision.h">
-      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelScene.h">
-      <Filter>API FrameWork\EaxmpleClasses\Pixel</Filter>
     </ClInclude>
     <ClInclude Include="MapInfoManager.h">
       <Filter>API FrameWork\Manager\MapInfoManager</Filter>
@@ -424,13 +310,13 @@
       <Filter>API FrameWork\Animator</Filter>
     </ClInclude>
     <ClInclude Include="Slime.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
     <ClInclude Include="slimeBlue.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClInclude>
     <ClInclude Include="GameUI.h">
       <Filter>API FrameWork\GameUI</Filter>

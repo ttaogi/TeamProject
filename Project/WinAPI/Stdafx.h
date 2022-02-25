@@ -50,7 +50,6 @@ using namespace std;
 #include "PlayerInfoManager.h"
 #include "SceneManager.h"
 #include "SoundManager.h"
-#include "TempSoundManager.h"
 #include "TextDataManager.h"
 #include "TimeManager.h"
 #include "XmlManager.h"
@@ -77,7 +76,6 @@ using namespace MY_UTIL;
 #define PLAYERINFOMANAGER		PlayerInfoManager::getSingleton()
 #define SCENEMANAGER			SceneManager::getSingleton()
 #define SOUNDMANAGER			SoundManager::getSingleton()
-#define TEMPSOUNDMANAGER		TempSoundManager::getSingleton()
 #define TEXTDATAMANAGER			TextDataManager::getSingleton()
 #define TIMEMANAGER				TimeManager::getSingleton()
 #define XMLMANAGER				XmlManager::getSingleton()

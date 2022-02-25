@@ -145,15 +145,10 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Animator.cpp" />
-    <ClCompile Include="AniTestScene.cpp" />
-    <ClCompile Include="Bullets.cpp" />
-    <ClCompile Include="Collision.cpp" />
     <ClCompile Include="CommonMacroFunction.cpp" />
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Enemy.cpp" />
-    <ClCompile Include="EnemyManager.cpp" />
     <ClCompile Include="Enums.cpp" />
-    <ClCompile Include="Flame.cpp" />
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="GameUI.cpp" />
@@ -166,19 +161,12 @@
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapInfoManager.cpp" />
-    <ClCompile Include="Minion.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="PixelCollision.cpp" />
-    <ClCompile Include="PixelScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInfoManager.cpp" />
     <ClCompile Include="ProgressBar.cpp" />
-    <ClCompile Include="Rocket.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="SecondScene.cpp" />
-    <ClCompile Include="ShootingEffect.cpp" />
-    <ClCompile Include="ShootingScene.cpp" />
     <ClCompile Include="Slime.cpp" />
     <ClCompile Include="slimeBlue.cpp" />
     <ClCompile Include="SoundManager.cpp" />
@@ -187,8 +175,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="TempSoundManager.cpp" />
-    <ClCompile Include="TempSoundTest.cpp" />
     <ClCompile Include="TextDataManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -214,14 +200,10 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Animator.h" />
-    <ClInclude Include="AniTestScene.h" />
-    <ClInclude Include="Bullets.h" />
     <ClInclude Include="CommonMacroFunction.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Enemy.h" />
-    <ClInclude Include="EnemyManager.h" />
     <ClInclude Include="Enums.h" />
-    <ClInclude Include="Flame.h" />
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="GameUI.h" />
@@ -232,28 +214,19 @@
     <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapInfoManager.h" />
-    <ClInclude Include="Minion.h" />
     <ClInclude Include="Object.h" />
-    <ClInclude Include="PixelCollision.h" />
-    <ClInclude Include="PixelScene.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerInfoManager.h" />
     <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="RandomFunction.h" />
-    <ClInclude Include="Rocket.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="SecondScene.h" />
-    <ClInclude Include="ShootingEffect.h" />
-    <ClInclude Include="ShootingScene.h" />
     <ClInclude Include="SingletonBase.h" />
     <ClInclude Include="Slime.h" />
     <ClInclude Include="slimeBlue.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
-    <ClInclude Include="TempSoundManager.h" />
-    <ClInclude Include="TempSoundTest.h" />
     <ClInclude Include="TextDataManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />
