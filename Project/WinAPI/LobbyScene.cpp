@@ -7,6 +7,7 @@
 #include "MainGame.h"
 #include "Player.h"
 #include "Slime.h"
+#include "slimeBlue.h"
 #include "Wall.h"
 
 HRESULT LobbyScene::init(void)
@@ -21,6 +22,9 @@ HRESULT LobbyScene::init(void)
 
 	slime = new Slime();
 	slime->init("KEY_SLIME", POINT{ 15, 8 });
+
+	slimeBlue = new slimeBlue();
+	slimeBlue->init("KEY_SLIME", POINT{ 16, 8 });
 
 	return S_OK;
 }
@@ -49,6 +53,7 @@ void LobbyScene::update(void)
 
 	player->update();
 	slime->update();
+	slimeBlue->update();
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();
@@ -75,4 +80,5 @@ void LobbyScene::render(void)
 	}
 
 	slime->render();
+	slimeBlue->render();
 }
