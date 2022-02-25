@@ -22,8 +22,8 @@ HRESULT SlimeBlue::init(const char * imageName, POINT position)
 
 	_image = IMAGEMANAGER->findImage(imageName);
 
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE, DIR_SLIME_BLUE, 208, 104, 4, 2, 8, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP, DIR_SLIME_BLUE_JUMP, 208, 104, 4, 2, 8, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE, DIR_SLIME_BLUE, 208, 104, 4, 2, 4, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP, DIR_SLIME_BLUE_JUMP, 208, 104, 4, 2, 4, true, MAGENTA);
 
 	pos = position;
 	_rc = RectMakeCenter(position.x * TILE_SIZE + TILE_SIZE / 2,
