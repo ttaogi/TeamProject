@@ -209,7 +209,7 @@
       <Filter>API FrameWork\GameUI</Filter>
     </ClCompile>
     <ClCompile Include="Skeleton.cpp">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -325,7 +325,7 @@
       <Filter>API FrameWork\GameUI</Filter>
     </ClInclude>
     <ClInclude Include="Skeleton.h">
-      <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+      <Filter>API FrameWork\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

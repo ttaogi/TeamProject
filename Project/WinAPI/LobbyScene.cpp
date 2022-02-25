@@ -65,14 +65,7 @@ void LobbyScene::update(void)
 	}
 
 	player->update();
-<<<<<<< HEAD
-	/*slime->update();
-	slimeBlue->update();*/
-=======
-	slime->update();
-	slimeBlue->update();
 	_Note->update();
->>>>>>> origin/UI
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();
