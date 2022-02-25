@@ -1,20 +1,17 @@
 #pragma once
 
-#include "GameNode.h"
+#include "Scene.h"
 
 class Object;
 class Player;
 class Slime;
 class slimeBlue;
 
-class LobbyScene : public GameNode
+class LobbyScene : public Scene
 {
 private:
-	MapInfo* mapInfo;
-	Player* player;
 	Slime* slime;
 	Slime* slimeBlue;
-	std::vector<Object*> objectVec;
 public:
 	HRESULT init(void);
 	void release(void);

@@ -271,6 +271,9 @@
     <ClCompile Include="Slime.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>API FrameWork\Scene</Filter>
+    </ClCompile>
     <ClCompile Include="slimeBlue.cpp">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
     </ClCompile>
@@ -416,6 +419,9 @@
     </ClInclude>
     <ClInclude Include="Slime.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
     <ClInclude Include="slimeBlue.h">
       <Filter>API FrameWork\EaxmpleClasses\ShootingGame\Enemy</Filter>

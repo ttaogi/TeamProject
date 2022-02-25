@@ -68,7 +68,7 @@ void Slime::render(void)
 	{
 		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
 	}
-	slimeJumpAnimator->animationRender(getMemDC(), GripPointToPixelPointCenter(pos));
+	slimeJumpAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 }
 
 
