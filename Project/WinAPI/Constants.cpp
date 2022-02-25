@@ -100,6 +100,10 @@ const std::string KEY_SLIME =
 	"SLIME";
 const char* DIR_SLIME =
 	"Resources/Images/entities/slime_green.bmp";
+const std::string KEY_SLIME_JUMP =
+	"SLIME_JUMP";
+const char* DIR_SLIME_JUMP =
+	"Resources/Images/entities/slime_green_jump.bmp";
 #pragma endregion Slime
 
 #pragma endregion Stripe

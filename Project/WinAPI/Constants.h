@@ -57,6 +57,8 @@ extern const char* DIR_PLAYER_BODY_JUMP_BOTTOM;
 #pragma region Slime
 extern const std::string KEY_SLIME;
 extern const char* DIR_SLIME;
+extern const std::string KEY_SLIME_JUMP;
+extern const char* DIR_SLIME_JUMP;
 #pragma endregion Slime
 #pragma endregion Stripe
 

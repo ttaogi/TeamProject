@@ -8,6 +8,7 @@
 HRESULT Player::init(void)
 {
 	hp = 6;
+	tileEmpty = true;
 	initTime = TIMEMANAGER->getWorldTime();
 	turnCount = 0;
 	command = DIRECTION::DIRECTION_NUM;
@@ -217,7 +218,6 @@ void Player::render(void)
 
 	if(turnCount >= 0.4f)
 		RectangleMake(getMemDC(), 0, 0, 100, 100);
-
 
 }
 

@@ -19,14 +19,11 @@ HRESULT Slime::init(const char * imageName, POINT position)
 
 	_image = IMAGEMANAGER->findImage(imageName);
 	
-	slime = IMAGEMANAGER->addFrameImage(KEY_SLIME, DIR_SLIME, 208, 104, 4, 2, 8, true, MAGENTA);
+	//slime = IMAGEMANAGER->addFrameImage(KEY_SLIME, DIR_SLIME, 208, 104, 4, 2, 8, true, MAGENTA);
+	slime = IMAGEMANAGER->addFrameImage(KEY_SLIME_JUMP, DIR_SLIME_JUMP, 208, 82, 4, 1, 4, true, MAGENTA);
 
-	_rc = RectMakeCenter(position.x, position.y, slime->getFrameWidth(), slime->getFrameHeight());
-
-	cout << "getFrameWidth: " << slime->getFrameWidth() <<endl;
-	cout << "getFrameHeight: " << slime->getFrameHeight() <<endl;
-
-
+	_rc = RectMakeCenter(position.x * TILE_SIZE + TILE_SIZE / 2, 
+						 position.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
 	return S_OK;
 }
 
@@ -52,13 +49,13 @@ void Slime::move(void)
 
 void Slime::draw(void)
 {
-	Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
+	if (KEYMANAGER->isToggleKey(VK_F1))
+	{
+		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
+	}
 
-
-	slime->frameRender(getMemDC(), _rc.left, _rc.top,
+	slime->frameRender(getMemDC(), _rc.left, _rc.top-45,
 		_currentFrameX, _currentFrameY);
-
-
 }
 
 void Slime::animation(void)

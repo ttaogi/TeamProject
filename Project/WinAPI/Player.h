@@ -11,6 +11,7 @@ private:
 	float turnCount;
 	DIRECTION command;
 	RECT rc;
+	bool tileEmpty;
 	Animator* headAnimator;
 	Animator* bodyAnimator;
 public:

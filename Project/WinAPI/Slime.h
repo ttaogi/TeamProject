@@ -5,6 +5,7 @@ class Slime : public Enemy
 {
 private:
 	Image* slime;
+	Image* slimeJump;
 	RECT rc;
 public:
 	HRESULT init(void);

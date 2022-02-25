@@ -20,7 +20,7 @@ HRESULT LobbyScene::init(void)
 	player->Move(mapInfo->getStartPos());
 
 	slime = new Slime();
-	slime->init("KEY_SLIME", POINT{200, 300});
+	slime->init("KEY_SLIME", POINT{ 15, 8 });
 
 	return S_OK;
 }
@@ -44,6 +44,8 @@ void LobbyScene::update(void)
 		_mg->quitGame();
 		return;
 	}
+
+
 
 	player->update();
 	slime->update();
