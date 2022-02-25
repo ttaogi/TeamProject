@@ -3,7 +3,18 @@
 
 enum Note
 {
-	Heat, Miss, Dungeon
+	Heat, Miss,
+};
+
+struct tagNote
+{
+	Image* img;
+	RECT rc;
+	float x, y;
+	float HeartX, HeartY;
+	float angle;
+	float speed;
+	bool fire;
 };
 
 //¿Â∫Ò√¢
@@ -62,33 +73,35 @@ public:
 class RhythmNote : public GameNode
 {
 private:
-	float Bpm;
-	float* _x;
-	float* _y;
-	float _rndTimeCount;
-	float _worldTimeCount;
+	vector<tagNote> _vNote;
+	vector<tagNote> ::iterator _viNote;
+	
+	const char* _imageName;
+	int _NoteMax;
+	float _range;
+	float _count;
 
-	int _currentFrameX;
-	int _currentFrameY;
-		
+	float _worldTimeCount;
+	float _SceneStartTime;
+			
 	RECT Heart_rc;
 	RECT HeatBox;
-	RECT Note_rc_L;
-	RECT Note_rc_R;
-
+	
 	Image* heart;
-	Image* Note_Green_L;
-	Image* Note_Green_R;
-	Image* Note_Red_L;
-	Image* Note_Red_R;
-
+	Image* Note_Green;
+	Image* Note_Red;
+	
 public:
-	HRESULT init(void);
+	HRESULT init(const char* imageName, int _NoteMax, float range);
 	void release(void);
 	void update(void);
 	void render(void);
 
 	void animation(void);
+	
+	void NoteCreate(float x, float y, float angle, float speed);
+	void NoteMove(void);
+	void Notedraw(void);
 
 	RhythmNote() {}
 	~RhythmNote() {}

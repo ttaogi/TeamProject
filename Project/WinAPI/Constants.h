@@ -44,14 +44,11 @@ extern const char* DIR_UI_HP;
 
 extern const std::string KEY_UI_HEART;
 extern const char* DIR_UI_HEART;
-extern const std::string KEY_UI_NOTE_GREEN_L;
-extern const char* DIR_UI_NOTE_GREEN_L;
-extern const std::string KEY_UI_NOTE_GREEN_R;
-extern const char* DIR_UI_NOTE_GREEN_R;
-extern const std::string KEY_UI_NOTE_RED_L;
-extern const char* DIR_UI_NOTE_RED_L;
-extern const std::string KEY_UI_NOTE_RED_R;
-extern const char* DIR_UI_NOTE_RED_R;
+extern const std::string KEY_UI_NOTE_GREEN;
+extern const char* DIR_UI_NOTE_GREEN;
+extern const std::string KEY_UI_NOTE_RED;
+extern const char* DIR_UI_NOTE_RED;
+
 
 extern const std::string KEY_UI_GOLD;
 extern const char* DIR_UI_GOLD;
