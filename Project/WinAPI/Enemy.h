@@ -1,39 +1,26 @@
 #pragma once
-#include "GameNode.h"
+
+#include "Object.h"
 
 //Enemy (부모 클래스): 이 클래스를 기반으로 보스, 일반 몬스터등을 만든다고 했을때 문제가 없는지 설계할때 생각하고 만드는게 좋다
-class Enemy : public GameNode
+class Enemy : public Object
 {
 protected:
-	Image* _image;
+	int hp;
 	RECT _rc;
-
-	int _currentFrameX;
-	int _currentFrameY;
-
-	float _x, _y;
-	float _rndTimeCount;
-	float _worldTimeCount;
-
-	float _rndFireCount;
-	float _bulletFireCount;
-
 public:
-	HRESULT init(void);
-	HRESULT init(const char* imageName, POINT position);
-	void release(void);
-	void update(void);
-	void render(void);
+	virtual HRESULT init(Scene* scenePtr, POINT position) = 0;
+	virtual void release(void) = 0;
+	virtual void update(void) = 0;
+	virtual void render(void) = 0;
 
-	void move(void);
-	void draw(void);
-	void animation(void);
+	virtual bool interact(Player* player) = 0;
 
-	bool bulletCountFire(void);
+	void move(POINT _pos);
 
 	RECT getRect(void) { return _rc; }
 
-	Enemy(void);
-	~Enemy(void) {}
+	Enemy(void) { }
+	~Enemy(void) { }
 };
 

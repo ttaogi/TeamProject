@@ -224,28 +224,37 @@ void Player::update(void)
 			break;
 		}
 
-		//////////////////////////////
+		// searching.
 		for(auto areaIter = searchArea.begin();
 			areaIter != searchArea.end(); ++areaIter)
 		{
 			POINT searchPos = POINT{ pos.x + areaIter->x, pos.y + areaIter->y };
 			Object* searchObj = scene->getObject(searchPos);
 			// compare object type and push back being enemy.
-			// enemyVec.push_back(searchObj);
+			if (searchObj)
+			{
+				switch (searchObj->getType())
+				{
+				case OBJECT_TYPE::MONSTER_SLIME:
+				case OBJECT_TYPE::MONSTER_SLIME_BLUE:
+					enemyVec.push_back(searchObj);
+					break;
+				default:
+					break;
+				}
+			}
 		}
 		if (enemyVec.empty())
 		{
 			forwardObject = scene->getObject(forwardPos);
 		}
-		//////////////////////////////
-		//////////////////////////////
-		//////////////////////////////
 
 		switch (command) {
 		case DIRECTION::LEFT:
 			if (!enemyVec.empty())
 			{
-				//
+				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
+					(*iter)->interact(this);
 			}
 			else if (forwardObject)
 			{
@@ -266,7 +275,8 @@ void Player::update(void)
 		case DIRECTION::RIGHT:
 			if (!enemyVec.empty())
 			{
-				//
+				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
+					(*iter)->interact(this);
 			}
 			else if (forwardObject)
 			{
@@ -287,7 +297,8 @@ void Player::update(void)
 		case DIRECTION::TOP:
 			if (!enemyVec.empty())
 			{
-				//
+				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
+					(*iter)->interact(this);
 			}
 			else if (forwardObject)
 			{
@@ -308,7 +319,8 @@ void Player::update(void)
 		case DIRECTION::BOTTOM:
 			if (!enemyVec.empty())
 			{
-				//
+				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
+					(*iter)->interact(this);
 			}
 			else if (forwardObject)
 			{

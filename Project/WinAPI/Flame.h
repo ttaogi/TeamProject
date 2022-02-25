@@ -1,5 +1,5 @@
-#pragma once
-#include "GameNode.h"
+//#pragma once
+//#include "GameNode.h"
 /*
 실습 겸 과제1. 로켓에 Flame 이미지 추가
 -Flame 이미지는 프레임으로 렌더
@@ -88,28 +88,28 @@ new 는 생성자와 소멸자를 호출 해야한다
 
 */
 
-
-
-
-#define FLAME_COUNT 4.0f
-
-class Flame : public GameNode
-{
-private:
-	Image* _image;
-	RECT _rc;
-
-	float* _x;
-	float* _y;
-	float _flameTick;
-
-public:
-	HRESULT init(const char* fileName, float* x, float* y);
-	void release(void);
-	void update(void);
-	void render(void);
-
-	Flame();
-	~Flame();
-};
-
+//
+//
+//
+//#define FLAME_COUNT 4.0f
+//
+//class Flame : public GameNode
+//{
+//private:
+//	Image* _image;
+//	RECT _rc;
+//
+//	float* _x;
+//	float* _y;
+//	float _flameTick;
+//
+//public:
+//	HRESULT init(const char* fileName, float* x, float* y);
+//	void release(void);
+//	void update(void);
+//	void render(void);
+//
+//	Flame();
+//	~Flame();
+//};
+//

@@ -21,10 +21,12 @@ HRESULT LobbyScene::init(void)
 	player->Move(mapInfo->getStartPos());
 
 	slime = new Slime();
-	slime->init("KEY_SLIME", POINT{ 15, 8 });
+	slime->init(this, POINT{ 15, 8 });
 
-	slimeBlue = new SlimeBlue();
-	slimeBlue->init("KEY_SLIME", POINT{ 15, 10 });
+	/*slimeBlue = new SlimeBlue();
+	slimeBlue->init(this, POINT{ 15, 10 });*/
+
+	objectVec.push_back(slime);
 	
 	_plEquip = new PlEquip;
 	_plEquip->init();
@@ -62,8 +64,8 @@ void LobbyScene::update(void)
 	}
 
 	player->update();
-	slime->update();
-	slimeBlue->update();
+	/*slime->update();
+	slimeBlue->update();*/
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();
@@ -95,8 +97,8 @@ void LobbyScene::render(void)
 		pQue.pop();
 	}
 
-	slime->render();
-	slimeBlue->render();
+	/*slime->render();
+	slimeBlue->render();*/
 
 	_plEquip->render();
 	_plGold->render();

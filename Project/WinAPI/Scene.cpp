@@ -5,9 +5,7 @@
 #include <queue>
 
 #include "MainGame.h"
-#include "Player.h"
-#include "Slime.h"
-#include "Wall.h"
+#include "Object.h"
 
 MapInfo* Scene::getMapInfo() { return mapInfo; }
 
