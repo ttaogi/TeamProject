@@ -115,6 +115,9 @@
     <Filter Include="API FrameWork\Player">
       <UniqueIdentifier>{098fc220-f359-4c54-9d99-8a55090d180c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\GameUI">
+      <UniqueIdentifier>{4908fd4f-213c-4dba-bce8-37c5d8ca5db2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -250,6 +253,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>API FrameWork\Player</Filter>
     </ClCompile>
+    <ClCompile Include="GameUI.cpp">
+      <Filter>API FrameWork\GameUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -380,6 +386,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>API FrameWork\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GameUI.h">
+      <Filter>API FrameWork\GameUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -22,6 +22,67 @@ const std::string KEY_UI_PRESS_ANY_KEY =
 	"PRESS_ANY_KEY";
 const char* DIR_UI_PRESS_ANY_KEY =
 	"Resources/Images/mainmenu/continue.bmp";
+
+const std::string KEY_UI_SLOT_1 =
+"UI_SLOT_1";
+const char* DIR_UI_SLOT_1 =
+"Resources/Images/gui/hud_slot_1.bmp";
+const std::string KEY_UI_SLOT_2 =
+"UI_SLOT_2";
+const char* DIR_UI_SLOT_2 =
+"Resources/Images/gui/hud_slot_2.bmp";
+const std::string KEY_UI_SLOT_3 =
+"UI_SLOT_3";
+const char* DIR_UI_SLOT_3 =
+"Resources/Images/gui/hud_slot_3.bmp";
+const std::string KEY_UI_SLOT_4 =
+"UI_SLOT_4";
+const char* DIR_UI_SLOT_4 =
+"Resources/Images/gui/hud_slot_4.bmp";
+const std::string KEY_UI_SLOT_5 =
+"UI_SLOT_5";
+const char* DIR_UI_SLOT_5 =
+"Resources/Images/gui/hud_slot_7.bmp";
+const std::string KEY_UI_ACTION_1 =
+"UI_ACTION_1";
+const char* DIR_UI_ACTION_1 =
+"Resources/Images/gui/hud_slot_action1.bmp";
+const std::string KEY_UI_ACTION_2 =
+"UI_ACTION_2";
+const char* DIR_UI_ACTION_2 =
+"Resources/Images/gui/hud_slot_bomb.bmp";
+
+const std::string KEY_UI_HP =
+"UI_HP";
+const char* DIR_UI_HP =
+"Resources/Images/gui/heart.bmp";
+
+const std::string KEY_UI_HEART =
+	"UI_HEART";
+const char* DIR_UI_HEART =
+	"Resources/Images/gui/TEMP_beat_heart.bmp";
+const std::string KEY_UI_NOTE_GREEN_L =
+"UI_NOTE_GREEN_L";
+const char* DIR_UI_NOTE_GREEN_L =
+"Resources/Images/gui/TEMP_beat_marker.bmp";
+const std::string KEY_UI_NOTE_GREEN_R =
+"UI_NOTE_GREEN_R";
+const char* DIR_UI_NOTE_GREEN_R =
+"Resources/Images/gui/TEMP_beat_marker.bmp";
+const std::string KEY_UI_NOTE_RED_L =
+"UI_NOTE_RED_L";
+const char* DIR_UI_NOTE_RED_L =
+"Resources/Images/gui/TEMP_beat_marker_red.bmp";
+const std::string KEY_UI_NOTE_RED_R =
+"UI_NOTE_RED_R";
+const char* DIR_UI_NOTE_RED_R =
+"Resources/Images/gui/TEMP_beat_marker_red.bmp";
+
+const std::string KEY_UI_GOLD =
+"UI_GOLD";
+const char* DIR_UI_GOLD =
+"Resources/Images/gui/hud_coins.bmp";
+
 #pragma endregion UI
 
 #pragma region Player

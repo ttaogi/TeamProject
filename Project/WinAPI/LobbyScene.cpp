@@ -13,6 +13,18 @@ HRESULT LobbyScene::init(void)
 	player->init();
 	player->Move(mapInfo->getStartPos());
 
+	_plEquip = new PlEquip;
+	_plEquip->init();
+
+	_plGold = new PlGold;
+	_plGold->init();
+
+	_plHp = new PlHp;
+	_plHp->init();
+	
+	_Note = new RhythmNote;
+	_Note->init();
+
 	return S_OK;
 }
 
@@ -36,4 +48,9 @@ void LobbyScene::render(void)
 {
 	mapInfo->render(getMemDC());
 	player->render();
+
+	_plEquip->render();
+	_plGold->render();
+	_plHp->render();
+	_Note->render();
 }
