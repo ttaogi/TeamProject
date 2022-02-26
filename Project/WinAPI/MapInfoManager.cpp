@@ -200,7 +200,7 @@ HRESULT MapInfoManager::init()
 
 	MapInfo* exampleMap = new MapInfo();
 
-	if (FAILED(exampleMap->init(XML_DOC_EXAMPLE_MAP))) return E_FAIL;
+	//if (FAILED(exampleMap->init(XML_DOC_EXAMPLE_MAP))) return E_FAIL;
 
 	mapInfoMap.insert(make_pair(MAP_ID::EXAMPLE_MAP, exampleMap));
 
@@ -222,5 +222,10 @@ MapInfo* MapInfoManager::getMapInfo(MAP_ID _mapId)
 {
 	auto iter = mapInfoMap.find(_mapId);
 	if (iter == mapInfoMap.end()) return NULL;
-	else return iter->second;
+	else
+	{
+		if(SUCCEEDED(iter->second->init(MapIdToKeyString(_mapId))))
+			return iter->second;
+		else return NULL;
+	}
 }

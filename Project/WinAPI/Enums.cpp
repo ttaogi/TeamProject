@@ -27,6 +27,17 @@ string CharacterStateToWString(CHARACTER_STATE _state)
 	}
 }
 
+std::string MapIdToKeyString(MAP_ID id)
+{
+	switch (id)
+	{
+	case MAP_ID::EXAMPLE_MAP:
+		return XML_DOC_EXAMPLE_MAP;
+	default:
+		return "";
+	}
+}
+
 std::string SoundIdToKeyString(SOUND_ID id)
 {
 	switch (id)
@@ -40,5 +51,4 @@ std::string SoundIdToKeyString(SOUND_ID id)
 	default:
 		return "";
 	}
-	return std::string();
 }
