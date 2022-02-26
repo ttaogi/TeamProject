@@ -5,6 +5,7 @@
 #include "Enums.h"
 
 class Object;
+class Scene;
 
 class Tile {
 public:
@@ -34,7 +35,7 @@ public:
 	MapInfo();
 	~MapInfo();
 
-	HRESULT init(const std::string _fileName);
+	HRESULT init(const std::string _fileName, Scene* _scene);
 	void release();
 	void render(HDC _hdc);
 
@@ -57,5 +58,5 @@ public:
 	HRESULT init();
 	void release();
 
-	MapInfo* getMapInfo(MAP_ID _mapId);
+	MapInfo* getMapInfo(MAP_ID _mapId, Scene* _scene);
 };

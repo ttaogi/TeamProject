@@ -230,6 +230,7 @@ void Player::update(void)
 		{
 			POINT searchPos = POINT{ pos.x + areaIter->x, pos.y + areaIter->y };
 			Object* searchObj = scene->getObject(searchPos);
+
 			// compare object type and push back being enemy.
 			if (searchObj)
 			{

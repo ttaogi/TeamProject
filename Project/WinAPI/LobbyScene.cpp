@@ -12,7 +12,7 @@
 
 HRESULT LobbyScene::init(void)
 {
-	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::EXAMPLE_MAP);
+	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::EXAMPLE_MAP, this);
 	if (mapInfo == NULL) return E_FAIL;
 
 	objectVec = mapInfo->getObjectVec();
@@ -23,16 +23,8 @@ HRESULT LobbyScene::init(void)
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
-
-	slime = new Slime();
-	slime->init(this, POINT{ 15, 8 });
-
-	slimeBlue = new SlimeBlue();
-	slimeBlue->init(this, POINT{ 15, 10 });
-
-	objectVec.push_back(slime);
-	objectVec.push_back(slimeBlue);
 	
+	// UI.
 	_plEquip = new PlEquip;
 	_plEquip->init();
 

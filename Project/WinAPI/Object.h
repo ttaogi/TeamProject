@@ -25,7 +25,7 @@ public:
 	OBJECT_TYPE getType() const { return type; }
 	bool getDestroyed() const { return destroyed; }
 
-	// return bool means moving is possible.
+	// returned bool means moving is possible or not.
 	virtual bool interact(Player* player) = 0;
 
 	Object() { }

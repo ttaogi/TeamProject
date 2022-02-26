@@ -3,6 +3,9 @@
 #include "MapInfoManager.h"
 
 #include "Object.h"
+#include "Scene.h"
+#include "Slime.h"
+#include "slimeBlue.h"
 #include "Wall.h"
 
 Tile::Tile() { }
@@ -48,7 +51,7 @@ MapInfo::MapInfo() { }
 
 MapInfo::~MapInfo() { release(); }
 
-HRESULT MapInfo::init(const std::string _fileName)
+HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 {
 	release();
 
@@ -105,17 +108,46 @@ HRESULT MapInfo::init(const std::string _fileName)
 				int tileType = 0;
 				int objectType = 0;
 				Tile* tile = new Tile();
+
 				XmlManager::getAttributeValueInt(data, "type", &tileType);
 				tile->init((TILE_TYPE)tileType, POINT{ i, j });
 				vec.push_back(tile);
+
 				XmlManager::getAttributeValueInt(data, "object", &objectType);
 				if (objectType == (int)OBJECT_TYPE::WALL_UNBREAKABLE ||
 					objectType == (int)OBJECT_TYPE::WALL_DIRT ||
 					objectType == (int)OBJECT_TYPE::WALL_SHOP)
 				{
 					Wall* wall = new Wall();
-					wall->init((OBJECT_TYPE)objectType, POINT{ i, j });
-					objectVec.push_back(wall);
+					if(SUCCEEDED( wall->init((OBJECT_TYPE)objectType, POINT{ i, j }) ))
+						objectVec.push_back(wall);
+					else
+					{
+						SAFE_RELEASE(wall);
+						SAFE_DELETE(wall);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::MONSTER_SLIME)
+				{
+					Slime* slime = new Slime();
+					if (SUCCEEDED(slime->init(_scene, POINT{ i, j })))
+						objectVec.push_back(slime);
+					else
+					{
+						SAFE_RELEASE(slime);
+						SAFE_DELETE(slime);
+					}
+				}
+				else if(objectType == (int)OBJECT_TYPE::MONSTER_SLIME_BLUE)
+				{
+					SlimeBlue* slimeBlue = new SlimeBlue();
+					if (SUCCEEDED(slimeBlue->init(_scene, POINT{ i, j })))
+						objectVec.push_back(slimeBlue);
+					else
+					{
+						SAFE_RELEASE(slimeBlue);
+						SAFE_DELETE(slimeBlue);
+					}
 				}
 			}
 
@@ -132,6 +164,14 @@ HRESULT MapInfo::init(const std::string _fileName)
 			cout << endl;
 		}
 		cout << "tile map" << endl;
+		cout << "object vector" << endl;
+		for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
+		{
+			cout << (int)(*iter)->getType() << " ["
+				<< (*iter)->getPos().x << " : "
+				<< (*iter)->getPos().y << "]" << endl;
+		}
+		cout << "object vector" << endl;
 		cout << "********************" << endl;
 	}
 	else return E_FAIL;
@@ -200,8 +240,6 @@ HRESULT MapInfoManager::init()
 
 	MapInfo* exampleMap = new MapInfo();
 
-	//if (FAILED(exampleMap->init(XML_DOC_EXAMPLE_MAP))) return E_FAIL;
-
 	mapInfoMap.insert(make_pair(MAP_ID::EXAMPLE_MAP, exampleMap));
 
 	return S_OK;
@@ -218,13 +256,13 @@ void MapInfoManager::release()
 	mapInfoMap.clear();
 }
 
-MapInfo* MapInfoManager::getMapInfo(MAP_ID _mapId)
+MapInfo* MapInfoManager::getMapInfo(MAP_ID _mapId, Scene* _scene)
 {
 	auto iter = mapInfoMap.find(_mapId);
 	if (iter == mapInfoMap.end()) return NULL;
 	else
 	{
-		if(SUCCEEDED(iter->second->init(MapIdToKeyString(_mapId))))
+		if(SUCCEEDED( iter->second->init(MapIdToKeyString(_mapId), _scene) ))
 			return iter->second;
 		else return NULL;
 	}
