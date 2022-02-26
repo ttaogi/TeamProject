@@ -105,6 +105,19 @@ extern const char* DIR_SLIME_BLUE_JUMP;
 ///////////////////////
 ///////////////////////
 
+#pragma region Sound
+extern const std::string KEY_BGM_INTRO;
+extern const char* DIR_BGM_INTRO;
+extern const std::string KEY_BGM_LOBBY;
+extern const char* DIR_BGM_LOBBY;
+extern const std::string KEY_BGM_MAIN_MENU;
+extern const char* DIR_BGM_MAIN_MENU;
+#pragma endregion Sound
+
+///////////////////////
+///////////////////////
+
+
 #pragma region Scene
 extern const std::string KEY_SCENE_START;
 extern const std::string KEY_SCENE_LOBBY;

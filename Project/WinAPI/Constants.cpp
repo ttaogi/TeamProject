@@ -182,6 +182,23 @@ const char* DIR_SLIME_BLUE_JUMP =
 ///////////////////////
 ///////////////////////
 
+#pragma region Sound
+const std::string KEY_BGM_INTRO =
+	"BGM_INTRO";
+const char* DIR_BGM_INTRO =
+	"Resources/Sounds/BGM/intro.ogg";
+const std::string KEY_BGM_LOBBY =
+	"BGM_LOBBY";
+const char* DIR_BGM_LOBBY =
+	"Resources/Sounds/BGM/lobby.ogg";
+const std::string KEY_BGM_MAIN_MENU =
+	"BGM_MAIN_MENU";
+const char* DIR_BGM_MAIN_MENU =
+	"Resources/Sounds/BGM/main_menu.ogg";
+#pragma endregion Sound
+
+///////////////////////
+
 #pragma region Scene
 const std::string KEY_SCENE_START =
 	"START_SCENE";

@@ -94,9 +94,6 @@ void SlimeBlue::move(void)
 			pos.y -= 1;
 
 			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
-			//������ ��ġ���ٲ��ְ� ���ÿ� �ִϸ��̼��� �ٲ��شٰ�?
-			//������ ���� �ִϸ�����->ü�����ִϸ��̼� �̷� �Լ��� ��������
-			//���� ž���� �ٲ��ִ���...
 
 			turnCount -= 0.4f;
 			posCheck = false;

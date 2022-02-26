@@ -26,3 +26,19 @@ string CharacterStateToWString(CHARACTER_STATE _state)
 		return "CHARACTER_STATE_NUM";
 	}
 }
+
+std::string SoundIdToKeyString(SOUND_ID id)
+{
+	switch (id)
+	{
+	case SOUND_ID::BGM_INTRO:
+		return KEY_BGM_INTRO;
+	case SOUND_ID::BGM_LOBBY:
+		return KEY_BGM_LOBBY;
+	case SOUND_ID::BGM_MAIN_MENU:
+		return KEY_BGM_MAIN_MENU;
+	default:
+		return "";
+	}
+	return std::string();
+}

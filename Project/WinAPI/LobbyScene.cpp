@@ -14,7 +14,11 @@ HRESULT LobbyScene::init(void)
 {
 	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::EXAMPLE_MAP);
 	if (mapInfo == NULL) return E_FAIL;
+
 	objectVec = mapInfo->getObjectVec();
+
+	if (mapInfo->getBgmKey() != "")
+		SOUNDMANAGER->play(mapInfo->getBgmKey(), 1.0f);
 
 	player = new Player();
 	player->init(this);
@@ -23,10 +27,11 @@ HRESULT LobbyScene::init(void)
 	slime = new Slime();
 	slime->init(this, POINT{ 15, 8 });
 
-	/*slimeBlue = new SlimeBlue();
-	slimeBlue->init(this, POINT{ 15, 10 });*/
+	slimeBlue = new SlimeBlue();
+	slimeBlue->init(this, POINT{ 15, 10 });
 
 	objectVec.push_back(slime);
+	objectVec.push_back(slimeBlue);
 	
 	_plEquip = new PlEquip;
 	_plEquip->init();
@@ -45,6 +50,7 @@ HRESULT LobbyScene::init(void)
 
 void LobbyScene::release(void)
 {
+	SOUNDMANAGER->allStop();
 	SAFE_RELEASE(player);
 	SAFE_DELETE(player);
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
@@ -63,28 +69,22 @@ void LobbyScene::update(void)
 		return;
 	}
 
+	SOUNDMANAGER->update();
+
 	player->update();
-	/*slime->update();
-	slimeBlue->update();*/
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();
 	for (auto iter = objectVec.begin(); iter != objectVec.end();)
 	{
 		if ((*iter)->getDestroyed())
-		{
-			SAFE_RELEASE((*iter));
-			SAFE_DELETE((*iter));
 			iter = objectVec.erase(iter);
-		}
 		else ++iter;
 	}
 }
 
 void LobbyScene::render(void)
 {
-
-
 	mapInfo->render(getMemDC());
 
 	priority_queue<GameNode*, vector<GameNode*>, CmpGameNodePtrs> pQue;
@@ -98,9 +98,6 @@ void LobbyScene::render(void)
 		pQue.top()->render();
 		pQue.pop();
 	}
-
-	/*slime->render();
-	slimeBlue->render();*/
 
 	_plEquip->render();
 	_plGold->render();

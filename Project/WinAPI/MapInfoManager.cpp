@@ -62,7 +62,9 @@ HRESULT MapInfo::init(const std::string _fileName)
 		TiXmlElement* root = XmlManager::firstChildElement(doc, "ROOT");
 		TiXmlElement* interval = XmlManager::firstChildElement(root, "turnInterval");
 		TiXmlElement* startPosInfo = XmlManager::firstChildElement(root, "startPos");
+		TiXmlElement* bgm = XmlManager::firstChildElement(root, "bgm");
 		TiXmlElement* map = XmlManager::firstChildElement(root, "map");
+		int bgmId = 0;
 		int mapSizeX = 0;
 		int mapSizeY = 0;
 		int startX = 0;
@@ -75,6 +77,10 @@ HRESULT MapInfo::init(const std::string _fileName)
 		XmlManager::getAttributeValueInt(startPosInfo, "pos_y", &startY);
 		startPos = POINT{ startX, startY };
 		cout << "start pos : " << startX << " : " << startY << endl;
+
+		XmlManager::getAttributeValueInt(bgm, "sound_id", &bgmId);
+		XmlManager::getAttributeValueFloat(bgm, "play_time", &bgmPlayTime);
+		bgmKey = SoundIdToKeyString((SOUND_ID)bgmId);
 
 		XmlManager::getAttributeValueInt(map, "num_x", &mapSizeX);
 		XmlManager::getAttributeValueInt(map, "num_y", &mapSizeY);
@@ -138,6 +144,12 @@ HRESULT MapInfo::init(const std::string _fileName)
 void MapInfo::release()
 {
 	cout << "MapInfo release." << endl;
+	bgmKey = "";
+	bgmPlayTime = 0.0f;
+	startPos = POINT{ 0, 0 };
+	size = POINT{ 0, 0 };
+	turnInterval = 0.0f;
+
 	for (auto iter = tileMap.begin(); iter != tileMap.end(); ++iter)
 	{
 		for (auto iter2 = iter->begin(); iter2 != iter->end(); ++iter2)
@@ -147,14 +159,13 @@ void MapInfo::release()
 		}
 	}
 	tileMap.clear();
+
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 	{
 		SAFE_RELEASE((*iter));
 		SAFE_DELETE((*iter));
 	}
 	objectVec.clear();
-	startPos = POINT{ 0, 0 };
-	size = POINT{ 0, 0 };
 }
 
 void MapInfo::render(HDC _hdc)

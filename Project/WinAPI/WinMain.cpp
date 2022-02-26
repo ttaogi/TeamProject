@@ -8,10 +8,11 @@ LPTSTR		_lpszClass = TEXT("WindowsAPI");
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void setWindowSize(int x, int y, int width, int height);
+void loadResources();
+void releaseResources();
 
 MainGame* _mg;
 
-//! 윈도우 메인함수
 int APIENTRY WinMain(HINSTANCE hInstance,
 					 HINSTANCE hPrevInstance,
 					 LPSTR lpszCmdParam,
@@ -19,6 +20,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 {
 	_mg = new MainGame();
 	_hInstance = hInstance;
+
+	loadResources();
 
 	WNDCLASS wndClass;
 	wndClass.cbClsExtra = 0;
@@ -57,10 +60,8 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		return 0;
 	}
 
-
 	MSG message;
 
-	//게임 프로그래밍
 	while (true)
 	{
 		if (PeekMessage(&message, NULL, 0, 0, PM_REMOVE))
@@ -78,24 +79,13 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		}
 	}
 
-	/*
-	while (GetMessage(&message, 0, 0, 0))
-	{
-		TranslateMessage(&message);
-		DispatchMessage(&message);
-	}
 	_mg->release();
-	UnregisterClass(WINNAME, hInstance);
 
-
-	return (int)message.wParam;
-	*/
-	_mg->release();
+	releaseResources();
 
 	return (int)message.wParam;
 }
-       
-//! 윈도우 프로시저 
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT imessage, WPARAM wParam, LPARAM lParam)
 {
 	return _mg->MainProc(hWnd, imessage, wParam, lParam);
@@ -111,4 +101,55 @@ void setWindowSize(int x, int y, int width, int height)
 		(rc.right - rc.left),
 		(rc.bottom - rc.top),
 		SWP_NOZORDER | SWP_NOMOVE);
+}
+
+void loadResources()
+{
+	setlocale(LC_ALL, "Korean");
+
+	RND->init();
+	// FONTMANAGER has no init.
+	IMAGEMANAGER->init();
+	KEYMANAGER->init();
+	SCENEMANAGER->init();
+	SOUNDMANAGER->init();
+	TEXTDATAMANAGER->init();
+	TIMEMANAGER->init();
+	XMLMANAGER->init();
+
+	ITEMINFOMANAGER->init();
+	MAPINFOMANAGER->init();
+	PLAYERINFOMANAGER->init();
+
+	SOUNDMANAGER->addSound(KEY_BGM_INTRO, DIR_BGM_INTRO, true, true);
+	SOUNDMANAGER->addSound(KEY_BGM_LOBBY, DIR_BGM_LOBBY, true, true);
+	SOUNDMANAGER->addSound(KEY_BGM_MAIN_MENU, DIR_BGM_MAIN_MENU, true, true);
+}
+
+void releaseResources()
+{
+	PLAYERINFOMANAGER->release();
+	PLAYERINFOMANAGER->releaseSingleton();
+	MAPINFOMANAGER->release();
+	MAPINFOMANAGER->releaseSingleton();
+	ITEMINFOMANAGER->release();
+	ITEMINFOMANAGER->releaseSingleton();
+
+	XMLMANAGER->release();
+	XMLMANAGER->releaseSingleton();
+	TIMEMANAGER->release();
+	TIMEMANAGER->releaseSingleton();
+	TEXTDATAMANAGER->release();
+	TEXTDATAMANAGER->releaseSingleton();
+	SOUNDMANAGER->release();
+	SOUNDMANAGER->releaseSingleton();
+	SCENEMANAGER->release();
+	SCENEMANAGER->releaseSingleton();
+	MAPINFOMANAGER->release();
+	MAPINFOMANAGER->releaseSingleton();
+	KEYMANAGER->releaseSingleton();
+	IMAGEMANAGER->release();
+	IMAGEMANAGER->releaseSingleton();
+	FONTMANAGER->releaseSingleton();
+	RND->releaseSingleton();
 }

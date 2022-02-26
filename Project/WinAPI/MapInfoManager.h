@@ -23,6 +23,8 @@ public:
 
 class MapInfo {
 private:
+	std::string bgmKey;
+	float bgmPlayTime;
 	POINT startPos;
 	POINT size;
 	float turnInterval;
@@ -36,6 +38,8 @@ public:
 	void release();
 	void render(HDC _hdc);
 
+	std::string getBgmKey() const { return bgmKey; }
+	float getBgmPlayTime() const { return bgmPlayTime; }
 	POINT getStartPos() const { return startPos; }
 	POINT getSize() const { return size; }
 	float getTurnInterval() const { return turnInterval; }
