@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "GameUI.h"
+#include "Animator.h"
+#include "Animation.h"
 
 //장비창
 HRESULT PlEquip::init(void)
@@ -49,10 +51,16 @@ void PlEquip::render(void)
 //플레이어 체력
 HRESULT PlHp::init(void)
 {
-	_Hp = IMAGEMANAGER->addImage(KEY_UI_HP, DIR_UI_HP, 48, 44, true, MAGENTA);
+	_FullHp	 = IMAGEMANAGER->addImage(KEY_UI_FULLHP, DIR_UI_FULLHP, 48, 44, true, MAGENTA);
+	_HalfHp  = IMAGEMANAGER->addImage(KEY_UI_HALFHP, DIR_UI_HALFHP, 48, 44, true, MAGENTA);
+	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_EMPTYHP, DIR_UI_EMPTYHP, 48, 44, true, MAGENTA);
 	
-	_Hp_rc = RectMakeCenter(810, 45, _Hp->getWidth(), _Hp->getHeight());
+	_Hp_rc = RectMakeCenter(810, 45, _FullHp->getWidth(), _FullHp->getHeight());
 	
+	MaxHp = 10;
+	Hp = 10;
+	count = 0;
+
 	return S_OK;
 }
 
@@ -62,19 +70,41 @@ void PlHp::release(void)
 
 void PlHp::update(void)
 {
+	if (KEYMANAGER->isOnceKeyDown('1'))
+	{
+		Hp -= 1;
+		cout << "hp감소" << endl;
+	}
+
+	if (KEYMANAGER->isOnceKeyDown('2'))
+	{
+		Hp = MaxHp;
+		cout << "hp회복" << endl;
+	}
 }
 
 void PlHp::render(void)
 {
-	_Hp->render(getMemDC(), _Hp_rc.left, _Hp_rc.top);
-}
+	//_FullHp->render(getMemDC(), _Hp_rc.left, _Hp_rc.top);
+	count = Hp;
+	for (int i = 0; i < MaxHp / 2; i++)
+	{
+		if (count >= 2)
+		{
+			_FullHp->render(getMemDC(), _Hp_rc.left - 54 * (MaxHp / 2 - i - 1), _Hp_rc.top);
+		}
 
-PlHp::PlHp()
-{
-}
+		else if (count == 1)
+		{
+			_HalfHp->render(getMemDC(), _Hp_rc.left - 54 * (MaxHp / 2 - i - 1), _Hp_rc.top);
+		}
 
-PlHp::~PlHp()
-{
+		else
+		{
+			_EmptyHp->render(getMemDC(), _Hp_rc.left - 54 * (MaxHp / 2 - i - 1), _Hp_rc.top);
+		}
+		count -= 2;
+	}
 }
 
 //====================================================================================
@@ -96,6 +126,11 @@ HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 	_range = range;
 	_NoteMax = NoteMax;
 
+	_animator = new Animator();
+	Animation* _anim = new Animation();
+	_anim->init(KEY_UI_HEART, POINT{-41, -52}, CHARACTER_STATE::IDLE_RIGHT, true, false, 10);
+	_animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, _anim);
+
 	return S_OK;
 }
 
@@ -115,6 +150,8 @@ void RhythmNote::update(void)
 	}
 
 	NoteMove();
+	NoteCollision();
+	_animator->update();
 }
 
 void RhythmNote::render(void)
@@ -123,24 +160,9 @@ void RhythmNote::render(void)
 	{
 		Rectangle(getMemDC(), HeatBox.left, HeatBox.top, HeatBox.right, HeatBox.bottom);
 	}
-		
-	//animation();
 
 	Notedraw();
-	heart->frameRender(getMemDC(), Heart_rc.left, Heart_rc.top, heart->getFrameX(), heart->getFrameY());
-}
-
-void RhythmNote::animation(void)
-{
-	/*if (_rndTimeCount + _worldTimeCount <= TIMEMANAGER->getWorldTime())
-	{
-		_worldTimeCount = TIMEMANAGER->getWorldTime();
-		_currentFrameX++;
-		if (heart->getMaxFrameX() <= _currentFrameX)
-		{
-			_currentFrameX = 0;
-		}
-	}*/
+	_animator->animationRender(getMemDC(), POINT{ (Heart_rc.left + Heart_rc.right) / 2, (Heart_rc.top + Heart_rc.bottom) / 2 });
 }
 
 void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
@@ -149,17 +171,18 @@ void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 
 	tagNote Note;
 	ZeroMemory(&Note, sizeof(tagNote));
-	Note.img = Note_Green;
-	/*
-	if(TIMEMANAGER->getWorldTime() - _SceneStartTime < 150)
-	Note.img = Note_Green;
-	시간여유가 있으면 초록색 출력
+	if (TIMEMANAGER->getWorldTime() - _SceneStartTime < 150)
+	{
+		Note.img = Note_Green;
+	}
 	else
-	남은 시간이 30초이하이면 빨강색 출력
-	
+	{
+		Note.img = Note_Red;
+	}
+
 	_worldTimeCount = TIMEMANAGER->getWorldTime();
 	_SceneStartTime = TIMEMANAGER->getWorldTime();
-	*/
+	
 
 	Note.speed	= speed;
 	Note.angle	= angle;
@@ -168,8 +191,6 @@ void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 	Note.rc = RectMakeCenter(Note.x, Note.y, Note.img->getWidth(), Note.img->getHeight());
 
 	_vNote.push_back(Note);
-	cout << "NoteCreate" << endl;
-	cout << "이미지" << IMAGEMANAGER->findImage(_imageName) << endl;
 }
 
 void RhythmNote::NoteMove(void)
@@ -180,8 +201,6 @@ void RhythmNote::NoteMove(void)
 		
 		_viNote->rc = RectMakeCenter(_viNote->x, _viNote->y, _viNote->img->getWidth(), _viNote->img->getHeight());
 	}
-	
-	cout << "NoteMove" << endl;
 }
 
 void RhythmNote::Notedraw(void)
@@ -190,7 +209,25 @@ void RhythmNote::Notedraw(void)
 	{
 		_viNote->img->render(getMemDC(), _viNote->rc.left, _viNote->rc.top);
 	}
-	cout << "Notedraw" << endl;
+}
+
+void RhythmNote::NoteCollision(void)
+{
+	if (!_vNote.empty())
+	{
+		RECT rc;
+		if (IntersectRect(&rc, &_vNote[0].rc, &Heart_rc))
+		{
+			removeNote(1);
+			removeNote(0);
+		}
+	}
+}
+
+void RhythmNote::removeNote(int arrNum)
+{
+	if(_vNote.size() > arrNum)
+	_vNote.erase(_vNote.begin() + arrNum);
 }
 
 

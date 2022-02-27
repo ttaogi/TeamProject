@@ -65,6 +65,7 @@ void LobbyScene::update(void)
 	slime->update();
 	slimeBlue->update();
 	_Note->update();
+	_plHp->update();
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 		(*iter)->update();

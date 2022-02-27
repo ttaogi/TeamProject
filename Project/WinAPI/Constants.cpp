@@ -67,10 +67,18 @@ const std::string KEY_UI_ACTION_2 =
 const char* DIR_UI_ACTION_2 =
 	"Resources/Images/gui/hud_slot_bomb.bmp";
 
-const std::string KEY_UI_HP =
-	"UI_HP";
-const char* DIR_UI_HP =
+const std::string KEY_UI_FULLHP =
+	"UI_FULLHP";
+const char* DIR_UI_FULLHP =
 	"Resources/Images/gui/heart.bmp";
+const std::string KEY_UI_HALFHP =
+"UI_HALFHP";
+const char* DIR_UI_HALFHP =
+"Resources/Images/gui/heart_half.bmp";
+const std::string KEY_UI_EMPTYHP =
+"UI_EMPTYHP";
+const char* DIR_UI_EMPTYHP =
+"Resources/Images/gui/heart_empty.bmp";
 
 const std::string KEY_UI_HEART =
 	"UI_HEART";
@@ -83,8 +91,6 @@ const char* DIR_UI_NOTE_GREEN =
 const std::string KEY_UI_NOTE_RED =
 	"UI_NOTE_RED";
 const char* DIR_UI_NOTE_RED =
-	"Resources/Images/gui/TEMP_beat_marker_red.bmp";
-const char* DIR_UI_NOTE_RED_R =
 	"Resources/Images/gui/TEMP_beat_marker_red.bmp";
 
 const std::string KEY_UI_GOLD =
