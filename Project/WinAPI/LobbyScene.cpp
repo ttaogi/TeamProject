@@ -8,6 +8,8 @@
 #include "Player.h"
 #include "Slime.h"
 #include "slimeBlue.h"
+#include "Skeleton.h"
+#include "Bat.h"
 #include "Wall.h"
 
 HRESULT LobbyScene::init(void)
@@ -23,6 +25,15 @@ HRESULT LobbyScene::init(void)
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
+
+	skeleton = new Skeleton();
+	skeleton->init(this, POINT{ 7, 8 });
+
+	bat = new Bat();
+	bat->init(this, POINT{ 3, 8 });
+
+	objectVec.push_back(skeleton);
+	objectVec.push_back(bat);
 	
 	// UI.
 	_plEquip = new PlEquip;
@@ -35,8 +46,8 @@ HRESULT LobbyScene::init(void)
 	_plHp->init();
 	
 	_Note = new RhythmNote;
-	_Note->init();
-
+	_Note->init("", 300, 1000);
+	
 	return S_OK;
 }
 
@@ -73,6 +84,8 @@ void LobbyScene::update(void)
 			iter = objectVec.erase(iter);
 		else ++iter;
 	}
+
+	_Note->update();
 }
 
 void LobbyScene::render(void)

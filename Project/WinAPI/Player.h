@@ -16,6 +16,7 @@ private:
 	RECT rc;
 	Animator* headAnimator;
 	Animator* bodyAnimator;
+	Animator* attakAnimator;
 	Scene* scene;
 
 	HRESULT init(void) { return S_OK; }

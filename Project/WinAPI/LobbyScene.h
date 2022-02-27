@@ -7,12 +7,16 @@
 class Player;
 class Slime;
 class SlimeBlue;
+class Skeleton;
+class Bat;
 
 class LobbyScene : public Scene
 {
 private:
 	Slime* slime;
 	SlimeBlue* slimeBlue;
+	Skeleton* skeleton;
+	Bat* bat;
 
 	PlEquip* _plEquip;
 	PlGold* _plGold;

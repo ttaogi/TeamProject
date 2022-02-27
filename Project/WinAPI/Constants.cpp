@@ -95,20 +95,14 @@ const std::string KEY_UI_HEART =
 	"UI_HEART";
 const char* DIR_UI_HEART =
 	"Resources/Images/gui/TEMP_beat_heart.bmp";
-const std::string KEY_UI_NOTE_GREEN_L =
-	"UI_NOTE_GREEN_L";
-const char* DIR_UI_NOTE_GREEN_L =
+const std::string KEY_UI_NOTE_GREEN =
+	"UI_NOTE_GREEN";
+const char* DIR_UI_NOTE_GREEN =
 	"Resources/Images/gui/TEMP_beat_marker.bmp";
-const std::string KEY_UI_NOTE_GREEN_R =
-	"UI_NOTE_GREEN_R";
-const char* DIR_UI_NOTE_GREEN_R =
-	"Resources/Images/gui/TEMP_beat_marker.bmp";
-const std::string KEY_UI_NOTE_RED_L =
-	"UI_NOTE_RED_L";
-const char* DIR_UI_NOTE_RED_L =
+const std::string KEY_UI_NOTE_RED =
+	"UI_NOTE_RED";
+const char* DIR_UI_NOTE_RED =
 	"Resources/Images/gui/TEMP_beat_marker_red.bmp";
-const std::string KEY_UI_NOTE_RED_R =
-	"UI_NOTE_RED_R";
 const char* DIR_UI_NOTE_RED_R =
 	"Resources/Images/gui/TEMP_beat_marker_red.bmp";
 
@@ -194,7 +188,77 @@ const std::string KEY_SLIME_BLUE_JUMP =
 	"SLIME_BLUE_JUMP";
 const char* DIR_SLIME_BLUE_JUMP =
 	"Resources/Images/entities/slime_ice_jump.bmp";
+const std::string KEY_SLIME_BLUE_JUMP_TOP =
+	"SLIME_BLUE_JUMP_TOP";
+const char* DIR_SLIME_BLUE_JUMP_TOP =
+	"Resources/Images/entities/slime_ice_jump_top.bmp";
+const std::string KEY_SLIME_BLUE_JUMP_BOTTOM =
+	"SLIME_BLUE_JUMP_BOTTOM";
+const char* DIR_SLIME_BLUE_JUMP_BOTTOM =
+	"Resources/Images/entities/slime_ice_jump_bottom.bmp";
 #pragma endregion SlimeBlue
+
+#pragma region Skeleton
+const std::string KEY_SKELETON_LEFT =
+	"SKELETON_LEFT";
+const char* DIR_SKELETON_LEFT =
+	"Resources/Images/entities/skeleton_left.bmp";
+const std::string KEY_SKELETON_RIGHT =
+	"SKELETON_RIGHT";
+const char* DIR_SKELETON_RIGHT =
+	"Resources/Images/entities/skeleton_right.bmp";
+#pragma endregion Skeleton
+
+#pragma region bat
+const std::string KEY_BAT_LEFT =
+"BAT_LEFT";
+const char* DIR_BAT_LEFT =
+"Resources/Images/entities/bat_miniboss_left.bmp";
+const std::string KEY_BAT_RIGHT =
+"BAT_RIGHT";
+const char* DIR_BAT_RIGHT =
+"Resources/Images/entities/bat_miniboss_right.bmp";
+#pragma endregion bat
+
+
+
+//? ���� �������� �𸣰���,..
+//�÷��̾ �ܰ����� �����ϴ� ����Ʈ �����¿�
+const std::string KEY_SWIPE_DAGGER_TOP =
+	"SWIPE_DAGGER_TOP";
+const char* DIR_SWIPE_DAGGER_TOP =
+	"Resources/Images/swipes/swipe_dagger_top.bmp";
+const std::string KEY_SWIPE_DAGGER_BOTTOM =
+	"SWIPE_DAGGER_bottom";
+const char* DIR_SWIPE_DAGGER_BOTTOM =
+	"Resources/Images/swipes/swipe_dagger_bottom.bmp";
+const std::string KEY_SWIPE_DAGGER_LEFT =
+	"SWIPE_DAGGER_LEFT";
+const char* DIR_SWIPE_DAGGER_LEFT =
+	"Resources/Images/swipes/swipe_dagger_left.bmp";
+const std::string KEY_SWIPE_DAGGER_RIGHT =
+	"SWIPE_DAGGER_RIGHT";
+const char* DIR_SWIPE_DAGGER_RIGHT =
+	"Resources/Images/swipes/swipe_dagger_right.bmp";
+
+//? ���� �������� �𸣰���,..
+//���Ͱ� ������ ����Ʈ �����¿�
+const std::string KEY_SWIPE_ENEMY_LEFT =
+	"SWIPE_ENEMY_LEFT";
+const char* DIR_SWIPE_ENEMY_LEFT =
+	"Resources/Images/swipes/swipe_enemy_left.bmp";
+const std::string KEY_SWIPE_ENEMY_RIGHT =
+	"SWIPE_ENEMY_RIGHT";
+const char* DIR_SWIPE_ENEMY_RIGHT =
+	"Resources/Images/swipes/swipe_enemy_right.bmp";
+const std::string KEY_SWIPE_ENEMY_TOP =
+	"SWIPE_ENEMY_TOP";
+const char* DIR_SWIPE_ENEMY_TOP =
+	"Resources/Images/swipes/swipe_enemy_top.bmp";
+const std::string KEY_SWIPE_ENEMY_BOTTOM =
+	"SWIPE_ENEMY_BOTTOM";
+const char* DIR_SWIPE_ENEMY_BOTTOM =
+	"Resources/Images/swipes/swipe_enemy_bottom.bmp";
 #pragma endregion Stripe
 
 ///////////////////////

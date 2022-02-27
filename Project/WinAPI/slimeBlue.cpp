@@ -20,11 +20,12 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 	Enemy::move(position); // set pos(gameNode) and _rc.
 	// SlimeBlue.
 	turnCount = 0;
-	count = 0;
 	posCheck = true;
 
 	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE, DIR_SLIME_BLUE, 208, 104, 4, 2, 4, true, MAGENTA);
 	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP, DIR_SLIME_BLUE_JUMP, 208, 184, 4, 2, 4, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_TOP, DIR_SLIME_BLUE_JUMP_TOP, 208, 224, 4, 2, 4, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_BOTTOM, DIR_SLIME_BLUE_JUMP_BOTTOM, 208, 188, 4, 2, 4, true, MAGENTA);
 
 	Animation* slimeBlue = new Animation();
 	slimeBlue->init(
@@ -33,15 +34,24 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 		true, false, 16
 	);
 
-	Animation* slimeBlueJump = new Animation();
-	slimeBlueJump->init(
-		KEY_SLIME_BLUE_JUMP,
-		POINT{ -26, -90 }, CHARACTER_STATE::JUMP_TOP,
+	Animation* slimeBlueJumpTop = new Animation();
+	slimeBlueJumpTop->init(
+		KEY_SLIME_BLUE_JUMP_TOP,
+		POINT{ -26, -50 }, CHARACTER_STATE::JUMP_TOP,
 		false, false, 64
 	);
 
+	Animation* slimeBlueJumpBottom = new Animation();
+	slimeBlueJumpBottom->init(
+		KEY_SLIME_BLUE_JUMP_BOTTOM,
+		POINT{ -26, -100 }, CHARACTER_STATE::JUMP_BOTTOM,
+		false, false, 64
+	);
+
+
 	animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, slimeBlue);
-	animator->addAnimation(CHARACTER_STATE::JUMP_TOP, slimeBlueJump);
+	animator->addAnimation(CHARACTER_STATE::JUMP_TOP, slimeBlueJumpTop);
+	animator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, slimeBlueJumpBottom);
 
 	return S_OK;
 }
@@ -106,7 +116,7 @@ void SlimeBlue::move(void)
 		{
 			pos.y += 1;
 
-			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+			animator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 
 			turnCount -= 0.4f;
 			posCheck = true;

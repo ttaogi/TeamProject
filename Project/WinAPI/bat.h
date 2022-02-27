@@ -1,11 +1,14 @@
 #pragma once
 #include "Enemy.h"
 
-class Skeleton : public Enemy
+class Bat : public Enemy
 {
 private:
 	float turnCount;
 	bool posCheck;
+	
+	int rightCount;
+	int leftCount;
 
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
@@ -16,7 +19,7 @@ public:
 	bool interact(Player* player);
 	void move(void);
 
-	Skeleton() { }
-	~Skeleton() { }
+	Bat() { }
+	~Bat() { }
 };
 

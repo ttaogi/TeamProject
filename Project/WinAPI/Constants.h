@@ -55,14 +55,11 @@ extern const char* DIR_UI_HP;
 
 extern const std::string KEY_UI_HEART;
 extern const char* DIR_UI_HEART;
-extern const std::string KEY_UI_NOTE_GREEN_L;
-extern const char* DIR_UI_NOTE_GREEN_L;
-extern const std::string KEY_UI_NOTE_GREEN_R;
-extern const char* DIR_UI_NOTE_GREEN_R;
-extern const std::string KEY_UI_NOTE_RED_L;
-extern const char* DIR_UI_NOTE_RED_L;
-extern const std::string KEY_UI_NOTE_RED_R;
-extern const char* DIR_UI_NOTE_RED_R;
+extern const std::string KEY_UI_NOTE_GREEN;
+extern const char* DIR_UI_NOTE_GREEN;
+extern const std::string KEY_UI_NOTE_RED;
+extern const char* DIR_UI_NOTE_RED;
+
 
 extern const std::string KEY_UI_GOLD;
 extern const char* DIR_UI_GOLD;
@@ -109,7 +106,47 @@ extern const std::string KEY_SLIME_BLUE;
 extern const char* DIR_SLIME_BLUE;
 extern const std::string KEY_SLIME_BLUE_JUMP;
 extern const char* DIR_SLIME_BLUE_JUMP;
+extern const std::string KEY_SLIME_BLUE_JUMP_TOP;
+extern const char* DIR_SLIME_BLUE_JUMP_TOP;
+extern const std::string KEY_SLIME_BLUE_JUMP_BOTTOM;
+extern const char* DIR_SLIME_BLUE_JUMP_BOTTOM;
 #pragma endregion SlimeBlue
+
+#pragma region skeleton
+extern const std::string KEY_SKELETON_RIGHT;
+extern const char* DIR_SKELETON_RIGHT;
+extern const std::string KEY_SKELETON_LEFT;
+extern const char* DIR_SKELETON_LEFT;
+#pragma endregion skeleton
+
+#pragma region bat
+extern const std::string KEY_BAT_RIGHT;
+extern const char* DIR_BAT_RIGHT;
+extern const std::string KEY_BAT_LEFT;
+extern const char* DIR_BAT_LEFT;
+#pragma endregion bat
+
+//? ���� �������� �𸣰���,..
+//�÷��̾ �ܰ����� �����ϴ� ����Ʈ �����¿�
+extern const std::string KEY_SWIPE_DAGGER_TOP;
+extern const char* DIR_SWIPE_DAGGER_TOP;
+extern const std::string KEY_SWIPE_DAGGER_BOTTOM;
+extern const char* DIR_SWIPE_DAGGER_BOTTOM;
+extern const std::string KEY_SWIPE_DAGGER_LEFT;
+extern const char* DIR_SWIPE_DAGGER_LEFT;
+extern const std::string KEY_SWIPE_DAGGER_RIGHT;
+extern const char* DIR_SWIPE_DAGGER_RIGHT;
+
+//? ���� �������� �𸣰���,..
+//���Ͱ� ������ ����Ʈ �����¿�
+extern const std::string KEY_SWIPE_ENEMY_TOP;
+extern const char* DIR_SWIPE_ENEMY_TOP;
+extern const std::string KEY_SWIPE_ENEMY_BOTTOM;
+extern const char* DIR_SWIPE_ENEMY_BOTTOM;
+extern const std::string KEY_SWIPE_ENEMY_LEFT;
+extern const char* DIR_SWIPE_ENEMY_LEFT;
+extern const std::string KEY_SWIPE_ENEMY_RIGHT;
+extern const char* DIR_SWIPE_ENEMY_RIGHT;
 #pragma endregion Stripe
 
 ///////////////////////
