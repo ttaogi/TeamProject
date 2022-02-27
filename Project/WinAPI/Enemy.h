@@ -21,6 +21,6 @@ public:
 	RECT getRect(void) { return _rc; }
 
 	Enemy(void) { }
-	~Enemy(void) { }
+	virtual ~Enemy(void) { }
 };
 

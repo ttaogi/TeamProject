@@ -29,5 +29,5 @@ public:
 	void render(void);
 
 	LobbyScene() {}
-	~LobbyScene() {}
+	virtual ~LobbyScene() {}
 };

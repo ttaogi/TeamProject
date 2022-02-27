@@ -17,6 +17,6 @@ public:
 	void move(void);
 
 	SlimeBlue() { }
-	~SlimeBlue() { }
+	virtual ~SlimeBlue() { }
 };
 

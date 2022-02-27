@@ -17,6 +17,6 @@ public:
 	void move(void);
 
 	Skeleton() { }
-	~Skeleton() { }
+	virtual ~Skeleton() { }
 };
 

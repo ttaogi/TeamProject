@@ -20,6 +20,6 @@ public:
 	void move(void);
 
 	Bat() { }
-	~Bat() { }
+	virtual ~Bat() { }
 };
 

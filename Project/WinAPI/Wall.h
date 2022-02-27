@@ -17,5 +17,5 @@ public:
 	bool interact(Player* player);
 
 	Wall();
-	~Wall();
+	virtual ~Wall();
 };
