@@ -168,8 +168,6 @@ void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 	Note.rc = RectMakeCenter(Note.x, Note.y, Note.img->getWidth(), Note.img->getHeight());
 
 	_vNote.push_back(Note);
-	cout << "NoteCreate" << endl;
-	cout << "ÀÌ¹ÌÁö" << IMAGEMANAGER->findImage(_imageName) << endl;
 }
 
 void RhythmNote::NoteMove(void)
@@ -181,7 +179,6 @@ void RhythmNote::NoteMove(void)
 		_viNote->rc = RectMakeCenter(_viNote->x, _viNote->y, _viNote->img->getWidth(), _viNote->img->getHeight());
 	}
 	
-	cout << "NoteMove" << endl;
 }
 
 void RhythmNote::Notedraw(void)
@@ -190,7 +187,6 @@ void RhythmNote::Notedraw(void)
 	{
 		_viNote->img->render(getMemDC(), _viNote->rc.left, _viNote->rc.top);
 	}
-	cout << "Notedraw" << endl;
 }
 
 

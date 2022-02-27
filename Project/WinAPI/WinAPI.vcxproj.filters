@@ -168,7 +168,6 @@
     <ClCompile Include="CommonMacroFunction.cpp">
       <Filter>API FrameWork\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="WinMain.cpp" />
     <ClCompile Include="MapInfoManager.cpp">
       <Filter>API FrameWork\Manager\MapInfoManager</Filter>
     </ClCompile>
@@ -208,7 +207,14 @@
     <ClCompile Include="GameUI.cpp">
       <Filter>API FrameWork\GameUI</Filter>
     </ClCompile>
-    <ClCompile Include="Skeleton.cpp">
+    <ClCompile Include="skeleton.cpp">
+      <Filter>API FrameWork\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="bat.cpp">
+      <Filter>API FrameWork\Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Necrodancer.cpp">
       <Filter>API FrameWork\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -324,7 +330,13 @@
     <ClInclude Include="GameUI.h">
       <Filter>API FrameWork\GameUI</Filter>
     </ClInclude>
-    <ClInclude Include="Skeleton.h">
+    <ClInclude Include="skeleton.h">
+      <Filter>API FrameWork\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="bat.h">
+      <Filter>API FrameWork\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Necrodancer.h">
       <Filter>API FrameWork\Enemy</Filter>
     </ClInclude>
   </ItemGroup>

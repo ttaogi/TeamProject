@@ -19,8 +19,8 @@ HRESULT Slime::init(Scene* scenePtr, POINT position)
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	move(position); // set pos(gameNode) and _rc.
 	
-	IMAGEMANAGER->addFrameImage(KEY_SLIME, DIR_SLIME, 208, 104, 4, 2, 8, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_JUMP, DIR_SLIME_JUMP, 208, 82, 4, 1, 4, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_SLIME, DIR_SLIME, 208, 104, 4, 2, 4, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_SLIME_JUMP, DIR_SLIME_JUMP, 208, 164, 4, 2, 4, true, MAGENTA);
 
 	Animation* slimeJump = new Animation();
 	slimeJump->init(

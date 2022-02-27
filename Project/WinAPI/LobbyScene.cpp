@@ -8,6 +8,8 @@
 #include "Player.h"
 #include "Slime.h"
 #include "slimeBlue.h"
+#include "Skeleton.h"
+#include "Bat.h"
 #include "Wall.h"
 
 HRESULT LobbyScene::init(void)
@@ -26,8 +28,16 @@ HRESULT LobbyScene::init(void)
 	slimeBlue = new SlimeBlue();
 	slimeBlue->init(this, POINT{ 15, 10 });
 
+	skeleton = new Skeleton();
+	skeleton->init(this, POINT{ 7, 8 });
+
+	bat = new Bat();
+	bat->init(this, POINT{ 3, 8 });
+
 	objectVec.push_back(slime);
 	objectVec.push_back(slimeBlue);
+	objectVec.push_back(skeleton);
+	objectVec.push_back(bat);
 	
 	_plEquip = new PlEquip;
 	_plEquip->init();
@@ -83,8 +93,6 @@ void LobbyScene::update(void)
 
 void LobbyScene::render(void)
 {
-
-
 	mapInfo->render(getMemDC());
 
 	priority_queue<GameNode*, vector<GameNode*>, CmpGameNodePtrs> pQue;

@@ -31,9 +31,12 @@ HRESULT Player::init(Scene* scenePtr)
 		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_JUMP_TOP, DIR_PLAYER_BODY_JUMP_TOP, 192, 152, 4, 2, 8, true, MAGENTA);
 		IMAGEMANAGER->addFrameImage(KEY_PLAYER_HEAD_JUMP_BOTTOM, DIR_PLAYER_HEAD_JUMP_BOTTOM, 192, 192, 4, 2, 8, true, MAGENTA);
 		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_JUMP_BOTTOM, DIR_PLAYER_BODY_JUMP_BOTTOM, 192, 152, 4, 2, 8, true, MAGENTA);
+		
+		IMAGEMANAGER->addFrameImage(KEY_SWIPE_DAGGER_RIGHT, DIR_SWIPE_DAGGER_RIGHT, 144, 48, 3, 1, 3, true, MAGENTA);
 
 		headAnimator = new Animator();
 		bodyAnimator = new Animator();
+		attakAnimator = new Animator();
 
 		Animation* headIdleRight = new Animation();
 		Animation* bodyIdleRight = new Animation();
@@ -49,6 +52,8 @@ HRESULT Player::init(Scene* scenePtr)
 		Animation* bodyJumpTop = new Animation();
 		Animation* headJumpBottom = new Animation();
 		Animation* bodyJumpBottom = new Animation();
+
+		Animation* attakRight = new Animation();
 
 		headIdleRight->init(
 			KEY_PLAYER_HEAD_IDLE_RIGHT,
@@ -113,6 +118,13 @@ HRESULT Player::init(Scene* scenePtr)
 			false, false, 64
 		);
 
+		attakRight->init(
+			KEY_SWIPE_DAGGER_RIGHT,
+			POINT{ -24, -72 }, CHARACTER_STATE::IDLE_RIGHT,
+			false, false, 16
+		);
+
+
 		headAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, headIdleRight);
 		bodyAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, bodyIdleRight);
 		headAnimator->addAnimation(CHARACTER_STATE::IDLE_LEFT, headIdleLeft);
@@ -127,6 +139,8 @@ HRESULT Player::init(Scene* scenePtr)
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_TOP, bodyJumpTop);
 		headAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, headJumpBottom);
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, bodyJumpBottom);
+
+		attakAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, attakRight);
 	}
 
 	scene = scenePtr;
@@ -255,6 +269,7 @@ void Player::update(void)
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 					(*iter)->interact(this);
+
 			}
 			else if (forwardObject)
 			{
@@ -276,7 +291,10 @@ void Player::update(void)
 			if (!enemyVec.empty())
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
+				{
 					(*iter)->interact(this);
+				}
+
 			}
 			else if (forwardObject)
 			{
@@ -286,6 +304,7 @@ void Player::update(void)
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 				}
+
 			}
 			else
 			{
@@ -345,12 +364,14 @@ void Player::update(void)
 	// animation update.
 	headAnimator->update();
 	bodyAnimator->update();
+	attakAnimator->update();
 }
 
 void Player::render(void)
 {
 	headAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 	bodyAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
+	//attakAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 
 	if(turnCount >= 0.4f)
 		RectangleMake(getMemDC(), 0, 0, 100, 100);

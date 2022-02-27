@@ -132,22 +132,22 @@ const char* DIR_PLAYER_BODY_JUMP_LEFT =
 	"Resources/Images/entities/player1_armor_body_xmas_jump_left.bmp";
 
 const std::string KEY_PLAYER_HEAD_JUMP_TOP =
-"PLAYER_HEAD_JUMP_TOP";
+	"PLAYER_HEAD_JUMP_TOP";
 const char* DIR_PLAYER_HEAD_JUMP_TOP =
-"Resources/Images/entities/player1_heads_jump_top.bmp";
+	"Resources/Images/entities/player1_heads_jump_top.bmp";
 const std::string KEY_PLAYER_BODY_JUMP_TOP =
-"PLAYER_BODY_JUMP_TOP";
+	"PLAYER_BODY_JUMP_TOP";
 const char* DIR_PLAYER_BODY_JUMP_TOP =
-"Resources/Images/entities/player1_armor_body_xmas_jump_top.bmp";
+	"Resources/Images/entities/player1_armor_body_xmas_jump_top.bmp";
 
 const std::string KEY_PLAYER_HEAD_JUMP_BOTTOM =
-"PLAYER_HEAD_JUMP_BOTTOM";
+	"PLAYER_HEAD_JUMP_BOTTOM";
 const char* DIR_PLAYER_HEAD_JUMP_BOTTOM =
-"Resources/Images/entities/player1_heads_jump_bottom.bmp";
+	"Resources/Images/entities/player1_heads_jump_bottom.bmp";
 const std::string KEY_PLAYER_BODY_JUMP_BOTTOM =
-"PLAYER_BODY_JUMP_BOTTOM";
+	"PLAYER_BODY_JUMP_BOTTOM";
 const char* DIR_PLAYER_BODY_JUMP_BOTTOM =
-"Resources/Images/entities/player1_armor_body_xmas_jump_bottom.bmp";
+	"Resources/Images/entities/player1_armor_body_xmas_jump_bottom.bmp";
 #pragma endregion Player
 
 #pragma region Slime
@@ -163,25 +163,84 @@ const char* DIR_SLIME_JUMP =
 
 #pragma region SlimeBlue
 const std::string KEY_SLIME_BLUE =
-"SLIME_BLUE";
+	"SLIME_BLUE";
 const char* DIR_SLIME_BLUE =
-"Resources/Images/entities/slime_ice.bmp";
+	"Resources/Images/entities/slime_ice.bmp";
 const std::string KEY_SLIME_BLUE_JUMP =
-"SLIME_BLUE_JUMP";
+	"SLIME_BLUE_JUMP";
 const char* DIR_SLIME_BLUE_JUMP =
-"Resources/Images/entities/slime_ice_jump.bmp";
+	"Resources/Images/entities/slime_ice_jump.bmp";
+const std::string KEY_SLIME_BLUE_JUMP_TOP =
+	"SLIME_BLUE_JUMP_TOP";
+const char* DIR_SLIME_BLUE_JUMP_TOP =
+	"Resources/Images/entities/slime_ice_jump_top.bmp";
+const std::string KEY_SLIME_BLUE_JUMP_BOTTOM =
+	"SLIME_BLUE_JUMP_BOTTOM";
+const char* DIR_SLIME_BLUE_JUMP_BOTTOM =
+	"Resources/Images/entities/slime_ice_jump_bottom.bmp";
 #pragma endregion SlimeBlue
 
 #pragma region Skeleton
-const std::string KEY_SKELETON_RIGHT =
-"SKELETON_RIGHT";
-const char* DIR_SKELETON_RIGHT =
-"Resources/Images/entities/skeleton_right";
 const std::string KEY_SKELETON_LEFT =
-"SKELETON_LEFT";
+	"SKELETON_LEFT";
 const char* DIR_SKELETON_LEFT =
-"Resources/Images/entities/skeleton_left.bmp";
+	"Resources/Images/entities/skeleton_left.bmp";
+const std::string KEY_SKELETON_RIGHT =
+	"SKELETON_RIGHT";
+const char* DIR_SKELETON_RIGHT =
+	"Resources/Images/entities/skeleton_right.bmp";
 #pragma endregion Skeleton
+
+#pragma region bat
+const std::string KEY_BAT_LEFT =
+"BAT_LEFT";
+const char* DIR_BAT_LEFT =
+"Resources/Images/entities/bat_miniboss_left.bmp";
+const std::string KEY_BAT_RIGHT =
+"BAT_RIGHT";
+const char* DIR_BAT_RIGHT =
+"Resources/Images/entities/bat_miniboss_right.bmp";
+#pragma endregion bat
+
+
+
+//? 어디다 놔야할지 모르겠음,..
+//플레이어가 단검으로 공격하는 이펙트 상하좌우
+const std::string KEY_SWIPE_DAGGER_TOP =
+	"SWIPE_DAGGER_TOP";
+const char* DIR_SWIPE_DAGGER_TOP =
+	"Resources/Images/swipes/swipe_dagger_top.bmp";
+const std::string KEY_SWIPE_DAGGER_BOTTOM =
+	"SWIPE_DAGGER_bottom";
+const char* DIR_SWIPE_DAGGER_BOTTOM =
+	"Resources/Images/swipes/swipe_dagger_bottom.bmp";
+const std::string KEY_SWIPE_DAGGER_LEFT =
+	"SWIPE_DAGGER_LEFT";
+const char* DIR_SWIPE_DAGGER_LEFT =
+	"Resources/Images/swipes/swipe_dagger_left.bmp";
+const std::string KEY_SWIPE_DAGGER_RIGHT =
+	"SWIPE_DAGGER_RIGHT";
+const char* DIR_SWIPE_DAGGER_RIGHT =
+	"Resources/Images/swipes/swipe_dagger_right.bmp";
+
+//? 어디다 놔야할지 모르겠음,..
+//몬스터가 할퀴는 이펙트 상하좌우
+const std::string KEY_SWIPE_ENEMY_LEFT =
+	"SWIPE_ENEMY_LEFT";
+const char* DIR_SWIPE_ENEMY_LEFT =
+	"Resources/Images/swipes/swipe_enemy_left.bmp";
+const std::string KEY_SWIPE_ENEMY_RIGHT =
+	"SWIPE_ENEMY_RIGHT";
+const char* DIR_SWIPE_ENEMY_RIGHT =
+	"Resources/Images/swipes/swipe_enemy_right.bmp";
+const std::string KEY_SWIPE_ENEMY_TOP =
+	"SWIPE_ENEMY_TOP";
+const char* DIR_SWIPE_ENEMY_TOP =
+	"Resources/Images/swipes/swipe_enemy_top.bmp";
+const std::string KEY_SWIPE_ENEMY_BOTTOM =
+	"SWIPE_ENEMY_BOTTOM";
+const char* DIR_SWIPE_ENEMY_BOTTOM =
+	"Resources/Images/swipes/swipe_enemy_bottom.bmp";
 #pragma endregion Stripe
 
 ///////////////////////
