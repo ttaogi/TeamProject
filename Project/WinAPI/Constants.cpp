@@ -226,10 +226,7 @@ const char* DIR_BAT_RIGHT =
 "Resources/Images/entities/bat_miniboss_right.bmp";
 #pragma endregion bat
 
-
-
-//? ���� �������� �𸣰���,..
-//�÷��̾ �ܰ����� �����ϴ� ����Ʈ �����¿�
+#pragma region WeaponEffect
 const std::string KEY_SWIPE_DAGGER_TOP =
 	"SWIPE_DAGGER_TOP";
 const char* DIR_SWIPE_DAGGER_TOP =
@@ -246,9 +243,9 @@ const std::string KEY_SWIPE_DAGGER_RIGHT =
 	"SWIPE_DAGGER_RIGHT";
 const char* DIR_SWIPE_DAGGER_RIGHT =
 	"Resources/Images/swipes/swipe_dagger_right.bmp";
+#pragma endregion WeaponEffect
 
-//? ���� �������� �𸣰���,..
-//���Ͱ� ������ ����Ʈ �����¿�
+#pragma region EnemyAttackEffect
 const std::string KEY_SWIPE_ENEMY_LEFT =
 	"SWIPE_ENEMY_LEFT";
 const char* DIR_SWIPE_ENEMY_LEFT =
@@ -265,6 +262,7 @@ const std::string KEY_SWIPE_ENEMY_BOTTOM =
 	"SWIPE_ENEMY_BOTTOM";
 const char* DIR_SWIPE_ENEMY_BOTTOM =
 	"Resources/Images/swipes/swipe_enemy_bottom.bmp";
+#pragma endregion EnemyAttackEffect
 #pragma endregion Stripe
 
 ///////////////////////

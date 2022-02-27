@@ -130,8 +130,7 @@ extern const std::string KEY_BAT_LEFT;
 extern const char* DIR_BAT_LEFT;
 #pragma endregion bat
 
-//? ���� �������� �𸣰���,..
-//�÷��̾ �ܰ����� �����ϴ� ����Ʈ �����¿�
+#pragma region WeaponEffect
 extern const std::string KEY_SWIPE_DAGGER_TOP;
 extern const char* DIR_SWIPE_DAGGER_TOP;
 extern const std::string KEY_SWIPE_DAGGER_BOTTOM;
@@ -140,9 +139,9 @@ extern const std::string KEY_SWIPE_DAGGER_LEFT;
 extern const char* DIR_SWIPE_DAGGER_LEFT;
 extern const std::string KEY_SWIPE_DAGGER_RIGHT;
 extern const char* DIR_SWIPE_DAGGER_RIGHT;
+#pragma endregion WeaponEffect
 
-//? ���� �������� �𸣰���,..
-//���Ͱ� ������ ����Ʈ �����¿�
+#pragma region EnemyAttackEffect
 extern const std::string KEY_SWIPE_ENEMY_TOP;
 extern const char* DIR_SWIPE_ENEMY_TOP;
 extern const std::string KEY_SWIPE_ENEMY_BOTTOM;
@@ -151,6 +150,7 @@ extern const std::string KEY_SWIPE_ENEMY_LEFT;
 extern const char* DIR_SWIPE_ENEMY_LEFT;
 extern const std::string KEY_SWIPE_ENEMY_RIGHT;
 extern const char* DIR_SWIPE_ENEMY_RIGHT;
+#pragma endregion EnemyAttackEffect
 #pragma endregion Stripe
 
 ///////////////////////

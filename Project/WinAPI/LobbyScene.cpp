@@ -11,6 +11,7 @@
 #include "Skeleton.h"
 #include "Bat.h"
 #include "Wall.h"
+#include "SteppingStone.h"
 
 HRESULT LobbyScene::init(void)
 {
@@ -32,8 +33,24 @@ HRESULT LobbyScene::init(void)
 	bat = new Bat();
 	bat->init(this, POINT{ 3, 8 });
 
+	SteppingStoneRight *ssr = new SteppingStoneRight();
+	ssr->init(this, POINT{ 8, 8 });
+
+	SteppingStoneLeft *ssl = new SteppingStoneLeft();
+	ssl->init(this, POINT{ 10, 8 });
+
+	SteppingStoneTop *sst = new SteppingStoneTop();
+	sst->init(this, POINT{ 9, 9 });
+
+	SteppingStoneBottom *ssb = new SteppingStoneBottom();
+	ssb->init(this, POINT{ 9, 7 });
+
 	objectVec.push_back(skeleton);
 	objectVec.push_back(bat);
+	objectVec.push_back(ssr);
+	objectVec.push_back(ssl);
+	objectVec.push_back(sst);
+	objectVec.push_back(ssb);
 	
 	// UI.
 	_plEquip = new PlEquip;

@@ -178,6 +178,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="SteppingStone.cpp" />
     <ClCompile Include="TextDataManager.cpp" />
     <ClCompile Include="TimeManager.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -233,6 +234,7 @@
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
+    <ClInclude Include="SteppingStone.h" />
     <ClInclude Include="TextDataManager.h" />
     <ClInclude Include="TimeManager.h" />
     <ClInclude Include="Timer.h" />

@@ -14,6 +14,7 @@ HRESULT Player::init(Scene* scenePtr)
 	turnCount = 0;
 	turnInterval = scenePtr->getMapInfo()->getTurnInterval();
 	command = DIRECTION::DIRECTION_NUM;
+	bounce = DIRECTION::DIRECTION_NUM;
 	Move(POINT{ 0, 0 });
 
 	{ // animation.
@@ -161,27 +162,80 @@ void Player::update(void)
 	turnCount += TIMEMANAGER->getElapsedTime();
 
 	// non-idle animation -> idle animation.
-	if (headAnimator->isEnd())
+	if (headAnimator->isEnd() && bodyAnimator->isEnd())
 	{
-		if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_RIGHT)
-			headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-		if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_LEFT)
-			headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
-		if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_TOP)
-			headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-		if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_BOTTOM)
-			headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
-	}
-	if (bodyAnimator->isEnd())
-	{
-		if(bodyAnimator->getCurrentState() == CHARACTER_STATE::JUMP_RIGHT)
-			bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-		if (bodyAnimator->getCurrentState() == CHARACTER_STATE::JUMP_LEFT)
-			bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
-		if (bodyAnimator->getCurrentState() == CHARACTER_STATE::JUMP_TOP)
-			bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-		if (bodyAnimator->getCurrentState() == CHARACTER_STATE::JUMP_BOTTOM)
-			bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+		if (bounce != DIRECTION::DIRECTION_NUM)
+		{
+			POINT searchPos;
+			Object* searchObj = NULL;
+			switch (bounce)
+			{
+			case DIRECTION::LEFT:
+				searchPos = POINT{ pos.x - 1, pos.y };
+				searchObj = scene->getObject(searchPos);
+				if (!searchObj)
+				{
+					Move(searchPos);
+					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
+					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
+				}
+				break;
+			case DIRECTION::TOP:
+				searchPos = POINT{ pos.x, pos.y - 1 };
+				searchObj = scene->getObject(searchPos);
+				if (!searchObj)
+				{
+					Move(searchPos);
+					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+				}
+				break;
+			case DIRECTION::RIGHT:
+				searchPos = POINT{ pos.x + 1, pos.y };
+				searchObj = scene->getObject(searchPos);
+				if (!searchObj)
+				{
+					Move(searchPos);
+					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
+					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
+				}
+				break;
+			case DIRECTION::BOTTOM:
+				searchPos = POINT{ pos.x, pos.y + 1};
+				searchObj = scene->getObject(searchPos);
+				if (!searchObj)
+				{
+					Move(searchPos);
+					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
+					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
+				}
+				break;
+			}
+			bounce = DIRECTION::DIRECTION_NUM;
+		}
+		else
+		{
+			if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_RIGHT)
+			{
+				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+			}
+			if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_LEFT)
+			{
+				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+			}
+			if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_TOP)
+			{
+				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+			}
+			if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_BOTTOM)
+			{
+				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+			}
+		}
 	}
 
 	// get command.
@@ -383,4 +437,9 @@ void Player::Move(POINT _pos)
 	pos = _pos;
 	rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
 						pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
+}
+
+void Player::setBounce(DIRECTION dir)
+{
+	bounce = dir;
 }

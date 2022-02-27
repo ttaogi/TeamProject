@@ -2,6 +2,9 @@
 
 #include "SteppingStone.h"
 
+#include "Player.h"
+
+#pragma region left
 HRESULT SteppingStoneLeft::init(Scene* scenePtr, POINT position)
 {
 	// GameNode.
@@ -30,7 +33,7 @@ void SteppingStoneLeft::render(void)
 
 bool SteppingStoneLeft::interact(Player* player)
 {
-	//
+	player->setBounce(DIRECTION::LEFT);
 	return true;
 }
 
@@ -42,3 +45,133 @@ SteppingStoneLeft::SteppingStoneLeft()
 }
 
 SteppingStoneLeft::~SteppingStoneLeft() { release(); }
+#pragma endregion left
+
+#pragma region top
+HRESULT SteppingStoneTop::init(Scene* scenePtr, POINT position)
+{
+	// GameNode.
+	pos = position;
+	// Object.
+	destroyed = false;
+	type = OBJECT_TYPE::STEPPING_STONE_TOP;
+	animator = NULL;
+	scene = scenePtr;
+	// SteppingStone*.
+	stripe = IMAGEMANAGER->findImage(KEY_STEPPING_STONE_TOP);
+
+	return S_OK;
+}
+
+void SteppingStoneTop::release(void) { }
+
+void SteppingStoneTop::update(void) { }
+
+void SteppingStoneTop::render(void)
+{
+	POINT p = GridPointToPixelPointCenter(pos);
+	stripe->render(getMemDC(), p.x - stripe->getWidth() / 2,
+		p.y - stripe->getHeight() / 2);
+}
+
+bool SteppingStoneTop::interact(Player * player)
+{
+	player->setBounce(DIRECTION::TOP);
+	return true;
+}
+
+SteppingStoneTop::SteppingStoneTop()
+{
+	type = OBJECT_TYPE::STEPPING_STONE_TOP;
+	pos = POINT{ 0, 0 };
+	animator = NULL;
+}
+
+SteppingStoneTop::~SteppingStoneTop() { release(); }
+#pragma endregion top
+
+#pragma region right
+HRESULT SteppingStoneRight::init(Scene* scenePtr, POINT position)
+{
+	// GameNode.
+	pos = position;
+	// Object.
+	destroyed = false;
+	type = OBJECT_TYPE::STEPPING_STONE_RIGHT;
+	animator = NULL;
+	scene = scenePtr;
+	// SteppingStone*.
+	stripe = IMAGEMANAGER->findImage(KEY_STEPPING_STONE_RIGHT);
+
+	return S_OK;
+}
+
+void SteppingStoneRight::release(void) { }
+
+void SteppingStoneRight::update(void) { }
+
+void SteppingStoneRight::render(void)
+{
+	POINT p = GridPointToPixelPointCenter(pos);
+	stripe->render(getMemDC(), p.x - stripe->getWidth() / 2,
+		p.y - stripe->getHeight() / 2);
+}
+
+bool SteppingStoneRight::interact(Player* player)
+{
+	player->setBounce(DIRECTION::RIGHT);
+	return true;
+}
+
+SteppingStoneRight::SteppingStoneRight()
+{
+	type = OBJECT_TYPE::STEPPING_STONE_RIGHT;
+	pos = POINT{ 0, 0 };
+	animator = NULL;
+}
+
+SteppingStoneRight::~SteppingStoneRight() { release(); }
+#pragma endregion right
+
+#pragma region bottom
+HRESULT SteppingStoneBottom::init(Scene * scenePtr, POINT position)
+{
+	// GameNode.
+	pos = position;
+	// Object.
+	destroyed = false;
+	type = OBJECT_TYPE::STEPPING_STONE_BOTTOM;
+	animator = NULL;
+	scene = scenePtr;
+	// SteppingStone*.
+	stripe = IMAGEMANAGER->findImage(KEY_STEPPING_STONE_BOTTOM);
+
+	return S_OK;
+}
+
+void SteppingStoneBottom::release(void) { }
+
+void SteppingStoneBottom::update(void) { }
+
+void SteppingStoneBottom::render(void)
+{
+	POINT p = GridPointToPixelPointCenter(pos);
+	stripe->render(getMemDC(), p.x - stripe->getWidth() / 2,
+		p.y - stripe->getHeight() / 2);
+}
+
+bool SteppingStoneBottom::interact(Player * player)
+{
+	player->setBounce(DIRECTION::BOTTOM);
+	return true;
+}
+
+SteppingStoneBottom::SteppingStoneBottom()
+{
+	type = OBJECT_TYPE::STEPPING_STONE_BOTTOM;
+	pos = POINT{ 0, 0 };
+	animator = NULL;
+}
+
+SteppingStoneBottom::~SteppingStoneBottom() { release(); }
+#pragma endregion bottom

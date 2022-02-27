@@ -13,6 +13,7 @@ private:
 	float turnCount;
 	float turnInterval;
 	DIRECTION command;
+	DIRECTION bounce;
 	RECT rc;
 	Animator* headAnimator;
 	Animator* bodyAnimator;
@@ -27,6 +28,8 @@ public:
 	void render(void);
 
 	void Move(POINT _pos);
+
+	void setBounce(DIRECTION dir);
 
 	Player() { }
 	~Player() { }
