@@ -59,9 +59,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
 		break;
 	case OBJECT_TYPE::NONE:
 	default:
-		hp = 0;
-		animator = NULL;
-		break;
+		return E_FAIL;
 	}
 
 	return S_OK;

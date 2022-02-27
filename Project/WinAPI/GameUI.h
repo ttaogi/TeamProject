@@ -1,6 +1,8 @@
 #pragma once
 #include "GameNode.h"
 
+class Animator;
+
 enum Note
 {
 	Heat, Miss,
@@ -56,7 +58,15 @@ class PlHp : public GameNode
 private:
 	RECT _Hp_rc;
 
-	Image* _Hp;
+	Image* _FullHp;
+	Image* _HalfHp;
+	Image* _EmptyHp;
+
+	int MaxHp;
+	int Hp;
+	int count;
+
+	bool PlHeat;
 
 public:
 	HRESULT init(void);
@@ -64,8 +74,8 @@ public:
 	void update(void);
 	void render(void);
 	
-	PlHp();
-	~PlHp();
+	PlHp() {}
+	~PlHp() {}
 };
 
 //====================================================================================
@@ -75,6 +85,7 @@ class RhythmNote : public GameNode
 private:
 	vector<tagNote> _vNote;
 	vector<tagNote> ::iterator _viNote;
+	RhythmNote* _rhythmNote;
 	
 	const char* _imageName;
 	int _NoteMax;
@@ -83,13 +94,17 @@ private:
 
 	float _worldTimeCount;
 	float _SceneStartTime;
-			
+	
+	Note _NoteHeat;
+
 	RECT Heart_rc;
 	RECT HeatBox;
 	
 	Image* heart;
 	Image* Note_Green;
 	Image* Note_Red;
+
+	Animator* _animator;
 	
 public:
 	HRESULT init(const char* imageName, int _NoteMax, float range);
@@ -102,6 +117,12 @@ public:
 	void NoteCreate(float x, float y, float angle, float speed);
 	void NoteMove(void);
 	void Notedraw(void);
+
+	void NoteCollision(void);
+	void removeNote(int arrNum);
+
+	vector<tagNote> getNote(void) { return _vNote; }
+	RECT getHeatBox(void) { return HeatBox; }
 
 	RhythmNote() {}
 	~RhythmNote() {}

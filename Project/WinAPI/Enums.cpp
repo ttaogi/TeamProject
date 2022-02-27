@@ -26,3 +26,29 @@ string CharacterStateToWString(CHARACTER_STATE _state)
 		return "CHARACTER_STATE_NUM";
 	}
 }
+
+std::string MapIdToKeyString(MAP_ID id)
+{
+	switch (id)
+	{
+	case MAP_ID::EXAMPLE_MAP:
+		return XML_DOC_EXAMPLE_MAP;
+	default:
+		return "";
+	}
+}
+
+std::string SoundIdToKeyString(SOUND_ID id)
+{
+	switch (id)
+	{
+	case SOUND_ID::BGM_INTRO:
+		return KEY_BGM_INTRO;
+	case SOUND_ID::BGM_LOBBY:
+		return KEY_BGM_LOBBY;
+	case SOUND_ID::BGM_MAIN_MENU:
+		return KEY_BGM_MAIN_MENU;
+	default:
+		return "";
+	}
+}

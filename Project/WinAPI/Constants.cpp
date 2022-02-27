@@ -32,6 +32,25 @@ const char* DIR_WALL_SHOP =
 	"Resources/Images/level/wall_shop_crypt.bmp";
 #pragma endregion Wall
 
+#pragma region SteppingStone
+const std::string KEY_STEPPING_STONE_LEFT =
+	"STEPPING_STONE_LEFT";
+const char* DIR_STEPPING_STONE_LEFT =
+	"Resources/Images/traps/steppingStoneLeft.bmp";
+const std::string KEY_STEPPING_STONE_TOP =
+	"STEPPING_STONE_TOP";
+const char* DIR_STEPPING_STONE_TOP =
+	"Resources/Images/traps/steppingStoneTop.bmp";
+const std::string KEY_STEPPING_STONE_RIGHT =
+	"STEPPING_STONE_RIGHT";
+const char* DIR_STEPPING_STONE_RIGHT =
+	"Resources/Images/traps/steppingStoneRight.bmp";
+const std::string KEY_STEPPING_STONE_BOTTOM =
+	"STEPPING_STONE_BOTTOM";
+const char* DIR_STEPPING_STONE_BOTTOM =
+	"Resources/Images/traps/steppingStoneBottom.bmp";
+#pragma endregion SteppingStone
+
 #pragma region UI
 const std::string KEY_UI_PRESS_ANY_KEY =
 	"PRESS_ANY_KEY";
@@ -67,10 +86,18 @@ const std::string KEY_UI_ACTION_2 =
 const char* DIR_UI_ACTION_2 =
 	"Resources/Images/gui/hud_slot_bomb.bmp";
 
-const std::string KEY_UI_HP =
-	"UI_HP";
-const char* DIR_UI_HP =
+const std::string KEY_UI_FULLHP =
+	"UI_FULLHP";
+const char* DIR_UI_FULLHP =
 	"Resources/Images/gui/heart.bmp";
+const std::string KEY_UI_HALFHP =
+"UI_HALFHP";
+const char* DIR_UI_HALFHP =
+"Resources/Images/gui/heart_half.bmp";
+const std::string KEY_UI_EMPTYHP =
+"UI_EMPTYHP";
+const char* DIR_UI_EMPTYHP =
+"Resources/Images/gui/heart_empty.bmp";
 
 const std::string KEY_UI_HEART =
 	"UI_HEART";
@@ -84,14 +111,11 @@ const std::string KEY_UI_NOTE_RED =
 	"UI_NOTE_RED";
 const char* DIR_UI_NOTE_RED =
 	"Resources/Images/gui/TEMP_beat_marker_red.bmp";
-const char* DIR_UI_NOTE_RED_R =
-	"Resources/Images/gui/TEMP_beat_marker_red.bmp";
 
 const std::string KEY_UI_GOLD =
 	"UI_GOLD";
 const char* DIR_UI_GOLD =
 	"Resources/Images/gui/hud_coins.bmp";
-
 #pragma endregion UI
 
 #pragma region Player
@@ -204,8 +228,8 @@ const char* DIR_BAT_RIGHT =
 
 
 
-//? ¾îµð´Ù ³ö¾ßÇÒÁö ¸ð¸£°ÚÀ½,..
-//ÇÃ·¹ÀÌ¾î°¡ ´Ü°ËÀ¸·Î °ø°ÝÇÏ´Â ÀÌÆåÆ® »óÇÏÁÂ¿ì
+//? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ð¸£°ï¿½ï¿½ï¿½,..
+//ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ü°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½
 const std::string KEY_SWIPE_DAGGER_TOP =
 	"SWIPE_DAGGER_TOP";
 const char* DIR_SWIPE_DAGGER_TOP =
@@ -223,8 +247,8 @@ const std::string KEY_SWIPE_DAGGER_RIGHT =
 const char* DIR_SWIPE_DAGGER_RIGHT =
 	"Resources/Images/swipes/swipe_dagger_right.bmp";
 
-//? ¾îµð´Ù ³ö¾ßÇÒÁö ¸ð¸£°ÚÀ½,..
-//¸ó½ºÅÍ°¡ ÇÒÄû´Â ÀÌÆåÆ® »óÇÏÁÂ¿ì
+//? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ð¸£°ï¿½ï¿½ï¿½,..
+//ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½
 const std::string KEY_SWIPE_ENEMY_LEFT =
 	"SWIPE_ENEMY_LEFT";
 const char* DIR_SWIPE_ENEMY_LEFT =
@@ -242,6 +266,24 @@ const std::string KEY_SWIPE_ENEMY_BOTTOM =
 const char* DIR_SWIPE_ENEMY_BOTTOM =
 	"Resources/Images/swipes/swipe_enemy_bottom.bmp";
 #pragma endregion Stripe
+
+///////////////////////
+///////////////////////
+
+#pragma region Sound
+const std::string KEY_BGM_INTRO =
+	"BGM_INTRO";
+const char* DIR_BGM_INTRO =
+	"Resources/Sounds/BGM/intro.ogg";
+const std::string KEY_BGM_LOBBY =
+	"BGM_LOBBY";
+const char* DIR_BGM_LOBBY =
+	"Resources/Sounds/BGM/lobby.ogg";
+const std::string KEY_BGM_MAIN_MENU =
+	"BGM_MAIN_MENU";
+const char* DIR_BGM_MAIN_MENU =
+	"Resources/Sounds/BGM/main_menu.ogg";
+#pragma endregion Sound
 
 ///////////////////////
 ///////////////////////

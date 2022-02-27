@@ -185,7 +185,7 @@ void Player::update(void)
 	}
 
 	// get command.
-	if (turnCount >= turnInterval * 0.1f && turnCount < turnInterval * 0.8f)
+	if (turnCount >= turnInterval * 0.7f && turnCount < turnInterval * 0.8f)
 	{ // bad timing.
 		if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
 			command = DIRECTION::LEFT;
@@ -244,6 +244,7 @@ void Player::update(void)
 		{
 			POINT searchPos = POINT{ pos.x + areaIter->x, pos.y + areaIter->y };
 			Object* searchObj = scene->getObject(searchPos);
+
 			// compare object type and push back being enemy.
 			if (searchObj)
 			{
@@ -373,7 +374,7 @@ void Player::render(void)
 	bodyAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 	//attakAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 
-	if(turnCount >= 0.4f)
+	if(turnCount >= 0.7f * turnInterval && turnCount < 0.8f * turnInterval)
 		RectangleMake(getMemDC(), 0, 0, 100, 100);
 }
 

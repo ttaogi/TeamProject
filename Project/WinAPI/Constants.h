@@ -20,6 +20,17 @@ extern const std::string KEY_WALL_SHOP;
 extern const char* DIR_WALL_SHOP;
 #pragma endregion Wall
 
+#pragma region SteppingStone
+extern const std::string KEY_STEPPING_STONE_LEFT;
+extern const char* DIR_STEPPING_STONE_LEFT;
+extern const std::string KEY_STEPPING_STONE_TOP;
+extern const char* DIR_STEPPING_STONE_TOP;
+extern const std::string KEY_STEPPING_STONE_RIGHT;
+extern const char* DIR_STEPPING_STONE_RIGHT;
+extern const std::string KEY_STEPPING_STONE_BOTTOM;
+extern const char* DIR_STEPPING_STONE_BOTTOM;
+#pragma endregion SteppingStone
+
 #pragma region UI
 extern const std::string KEY_UI_PRESS_ANY_KEY;
 extern const char* DIR_UI_PRESS_ANY_KEY;
@@ -39,8 +50,12 @@ extern const char* DIR_UI_ACTION_1;
 extern const std::string KEY_UI_ACTION_2;
 extern const char* DIR_UI_ACTION_2;
 
-extern const std::string KEY_UI_HP;
-extern const char* DIR_UI_HP;
+extern const std::string KEY_UI_FULLHP;
+extern const char* DIR_UI_FULLHP;
+extern const std::string KEY_UI_HALFHP;
+extern const char* DIR_UI_HALFHP;
+extern const std::string KEY_UI_EMPTYHP;
+extern const char* DIR_UI_EMPTYHP;
 
 extern const std::string KEY_UI_HEART;
 extern const char* DIR_UI_HEART;
@@ -115,8 +130,8 @@ extern const std::string KEY_BAT_LEFT;
 extern const char* DIR_BAT_LEFT;
 #pragma endregion bat
 
-//? ¾îµð´Ù ³ö¾ßÇÒÁö ¸ð¸£°ÚÀ½,..
-//ÇÃ·¹ÀÌ¾î°¡ ´Ü°ËÀ¸·Î °ø°ÝÇÏ´Â ÀÌÆåÆ® »óÇÏÁÂ¿ì
+//? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ð¸£°ï¿½ï¿½ï¿½,..
+//ï¿½Ã·ï¿½ï¿½Ì¾î°¡ ï¿½Ü°ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½
 extern const std::string KEY_SWIPE_DAGGER_TOP;
 extern const char* DIR_SWIPE_DAGGER_TOP;
 extern const std::string KEY_SWIPE_DAGGER_BOTTOM;
@@ -126,8 +141,8 @@ extern const char* DIR_SWIPE_DAGGER_LEFT;
 extern const std::string KEY_SWIPE_DAGGER_RIGHT;
 extern const char* DIR_SWIPE_DAGGER_RIGHT;
 
-//? ¾îµð´Ù ³ö¾ßÇÒÁö ¸ð¸£°ÚÀ½,..
-//¸ó½ºÅÍ°¡ ÇÒÄû´Â ÀÌÆåÆ® »óÇÏÁÂ¿ì
+//? ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ð¸£°ï¿½ï¿½ï¿½,..
+//ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Â¿ï¿½
 extern const std::string KEY_SWIPE_ENEMY_TOP;
 extern const char* DIR_SWIPE_ENEMY_TOP;
 extern const std::string KEY_SWIPE_ENEMY_BOTTOM;
@@ -140,6 +155,19 @@ extern const char* DIR_SWIPE_ENEMY_RIGHT;
 
 ///////////////////////
 ///////////////////////
+
+#pragma region Sound
+extern const std::string KEY_BGM_INTRO;
+extern const char* DIR_BGM_INTRO;
+extern const std::string KEY_BGM_LOBBY;
+extern const char* DIR_BGM_LOBBY;
+extern const std::string KEY_BGM_MAIN_MENU;
+extern const char* DIR_BGM_MAIN_MENU;
+#pragma endregion Sound
+
+///////////////////////
+///////////////////////
+
 
 #pragma region Scene
 extern const std::string KEY_SCENE_START;

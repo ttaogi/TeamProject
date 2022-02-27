@@ -9,58 +9,11 @@ HRESULT GameNode::init(bool managerInit)
 	_hdc = GetDC(_hWnd);
 	_managerInit = managerInit;
 
-	if (managerInit)
-	{
-		setlocale(LC_ALL, "Korean");
-
-		RND->init();
-		// FONTMANAGER has no init.
-		IMAGEMANAGER->init();
-		KEYMANAGER->init();
-		SCENEMANAGER->init();
-		SOUNDMANAGER->init();
-		TEXTDATAMANAGER->init();
-		TIMEMANAGER->init();
-		XMLMANAGER->init();
-
-		ITEMINFOMANAGER->init();
-		MAPINFOMANAGER->init();
-		PLAYERINFOMANAGER->init();
-	}
-
 	return S_OK;
 }
 
 void GameNode::release()
 {
-	if (_managerInit)
-	{
-		PLAYERINFOMANAGER->release();
-		PLAYERINFOMANAGER->releaseSingleton();
-		MAPINFOMANAGER->release();
-		MAPINFOMANAGER->releaseSingleton();
-		ITEMINFOMANAGER->release();
-		ITEMINFOMANAGER->releaseSingleton();
-
-		XMLMANAGER->release();
-		XMLMANAGER->releaseSingleton();
-		TIMEMANAGER->release();
-		TIMEMANAGER->releaseSingleton();
-		TEXTDATAMANAGER->release();
-		TEXTDATAMANAGER->releaseSingleton();
-		SOUNDMANAGER->release();
-		SOUNDMANAGER->releaseSingleton();
-		SCENEMANAGER->release();
-		SCENEMANAGER->releaseSingleton();
-		MAPINFOMANAGER->release();
-		MAPINFOMANAGER->releaseSingleton();
-		KEYMANAGER->releaseSingleton();
-		IMAGEMANAGER->release();
-		IMAGEMANAGER->releaseSingleton();
-		FONTMANAGER->releaseSingleton();
-		RND->releaseSingleton();
-	}
-
 	ReleaseDC(_hWnd, _hdc);
 }
 

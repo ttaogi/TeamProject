@@ -5,6 +5,7 @@
 #include "Enums.h"
 
 class Object;
+class Scene;
 
 class Tile {
 public:
@@ -23,6 +24,8 @@ public:
 
 class MapInfo {
 private:
+	std::string bgmKey;
+	float bgmPlayTime;
 	POINT startPos;
 	POINT size;
 	float turnInterval;
@@ -32,10 +35,12 @@ public:
 	MapInfo();
 	~MapInfo();
 
-	HRESULT init(const std::string _fileName);
+	HRESULT init(const std::string _fileName, Scene* _scene);
 	void release();
 	void render(HDC _hdc);
 
+	std::string getBgmKey() const { return bgmKey; }
+	float getBgmPlayTime() const { return bgmPlayTime; }
 	POINT getStartPos() const { return startPos; }
 	POINT getSize() const { return size; }
 	float getTurnInterval() const { return turnInterval; }
@@ -53,5 +58,5 @@ public:
 	HRESULT init();
 	void release();
 
-	MapInfo* getMapInfo(MAP_ID _mapId);
+	MapInfo* getMapInfo(MAP_ID _mapId, Scene* _scene);
 };

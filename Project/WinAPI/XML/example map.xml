@@ -2,17 +2,31 @@
 <ROOT>
     <turnInterval interval="0.5" />
     <startPos pos_x="14" pos_y="8" />
+    <bgm sound_id="1" play_time="66" />
     <!--
 enum class TILE_TYPE
-	EMPTY = 0,
-	DIRT,
+{
+	EMPTY =         0,
+	DIRT,           1
 	TILE_TYPE_NUM
+};
 enum class OBJECT_TYPE
-	NONE = 0,
+{
+	NONE =              0,
 	WALL_UNBREAKABLE,   1
 	WALL_DIRT,          2
 	WALL_SHOP,          3
+	MONSTER_SLIME,      4
+	MONSTER_SLIME_BLUE, 5
 	OBJECT_TYPE_NUM
+};
+enum class SOUND_ID
+{
+	BGM_INTRO =     0,
+    BGM_LOBBY,      1
+    BGM_MAIN_MENU,  2
+	SOUND_ID_NUM
+};
     -->
     <map num_x="30" num_y="20">
         <x_0>
@@ -112,9 +126,9 @@ enum class OBJECT_TYPE
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="4" />
             <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
+            <y_10 type="1" object="5" />
             <y_11 type="1" object="0" />
             <y_12 type="0" object="3" />
             <y_13 type="0" object="0" />
@@ -134,9 +148,9 @@ enum class OBJECT_TYPE
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="4" />
             <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
+            <y_10 type="1" object="5" />
             <y_11 type="1" object="0" />
             <y_12 type="0" object="3" />
             <y_13 type="0" object="0" />
@@ -354,9 +368,9 @@ enum class OBJECT_TYPE
             <y_5 type="1" object="0" />
             <y_6 type="1" object="0" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="4" />
             <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
+            <y_10 type="1" object="5" />
             <y_11 type="1" object="0" />
             <y_12 type="1" object="0" />
             <y_13 type="1" object="0" />
@@ -420,9 +434,9 @@ enum class OBJECT_TYPE
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="4" />
             <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
+            <y_10 type="1" object="5" />
             <y_11 type="1" object="0" />
             <y_12 type="1" object="0" />
             <y_13 type="1" object="0" />
