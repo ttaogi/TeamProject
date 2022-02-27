@@ -86,6 +86,7 @@ void LobbyScene::update(void)
 	}
 
 	_Note->update();
+	_plHp->update();
 }
 
 void LobbyScene::render(void)

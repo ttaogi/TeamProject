@@ -50,8 +50,12 @@ extern const char* DIR_UI_ACTION_1;
 extern const std::string KEY_UI_ACTION_2;
 extern const char* DIR_UI_ACTION_2;
 
-extern const std::string KEY_UI_HP;
-extern const char* DIR_UI_HP;
+extern const std::string KEY_UI_FULLHP;
+extern const char* DIR_UI_FULLHP;
+extern const std::string KEY_UI_HALFHP;
+extern const char* DIR_UI_HALFHP;
+extern const std::string KEY_UI_EMPTYHP;
+extern const char* DIR_UI_EMPTYHP;
 
 extern const std::string KEY_UI_HEART;
 extern const char* DIR_UI_HEART;
