@@ -171,7 +171,7 @@ void Player::update(void)
 	}
 
 	// get command.
-	if (turnCount >= turnInterval * 0.1f && turnCount < turnInterval * 0.8f)
+	if (turnCount >= turnInterval * 0.7f && turnCount < turnInterval * 0.8f)
 	{ // bad timing.
 		if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
 			command = DIRECTION::LEFT;
@@ -353,7 +353,7 @@ void Player::render(void)
 	headAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 	bodyAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
 
-	if(turnCount >= 0.4f)
+	if(turnCount >= 0.7f * turnInterval && turnCount < 0.8f * turnInterval)
 		RectangleMake(getMemDC(), 0, 0, 100, 100);
 }
 

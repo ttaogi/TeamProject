@@ -20,6 +20,17 @@ extern const std::string KEY_WALL_SHOP;
 extern const char* DIR_WALL_SHOP;
 #pragma endregion Wall
 
+#pragma region SteppingStone
+extern const std::string KEY_STEPPING_STONE_LEFT;
+extern const char* DIR_STEPPING_STONE_LEFT;
+extern const std::string KEY_STEPPING_STONE_TOP;
+extern const char* DIR_STEPPING_STONE_TOP;
+extern const std::string KEY_STEPPING_STONE_RIGHT;
+extern const char* DIR_STEPPING_STONE_RIGHT;
+extern const std::string KEY_STEPPING_STONE_BOTTOM;
+extern const char* DIR_STEPPING_STONE_BOTTOM;
+#pragma endregion SteppingStone
+
 #pragma region UI
 extern const std::string KEY_UI_PRESS_ANY_KEY;
 extern const char* DIR_UI_PRESS_ANY_KEY;
