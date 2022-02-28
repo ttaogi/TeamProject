@@ -3,7 +3,7 @@
 #include "Animator.h"
 #include "Animation.h"
 
-//ÀåºñÃ¢
+//ï¿½ï¿½ï¿½Ã¢
 HRESULT PlEquip::init(void)
 {
 	_slot_1 = IMAGEMANAGER->addImage(KEY_UI_SLOT_1, DIR_UI_SLOT_1, 60, 66, true, MAGENTA);
@@ -48,7 +48,7 @@ void PlEquip::render(void)
 }
 
 //====================================================================================
-//ÇÃ·¹ÀÌ¾î Ã¼·Â
+//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã¼ï¿½ï¿½
 HRESULT PlHp::init(void)
 {
 	_FullHp	 = IMAGEMANAGER->addImage(KEY_UI_FULLHP, DIR_UI_FULLHP, 48, 44, true, MAGENTA);
@@ -73,13 +73,13 @@ void PlHp::update(void)
 	if (KEYMANAGER->isOnceKeyDown('1'))
 	{
 		Hp -= 1;
-		cout << "hp°¨¼Ò" << endl;
+		cout << "hpï¿½ï¿½ï¿½ï¿½" << endl;
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('2'))
 	{
 		Hp = MaxHp;
-		cout << "hpÈ¸º¹" << endl;
+		cout << "hpÈ¸ï¿½ï¿½" << endl;
 	}
 }
 
@@ -108,15 +108,15 @@ void PlHp::render(void)
 }
 
 //====================================================================================
-//¸®µë³ëÆ®
+//ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 {
 	heart		 = IMAGEMANAGER->addFrameImage(KEY_UI_HEART, DIR_UI_HEART, 164, 104, 2, 1, 2, true, MAGENTA);
 	Note_Green	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_GREEN, DIR_UI_NOTE_GREEN, 12, 64, true, MAGENTA);
 	Note_Red	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_RED, DIR_UI_NOTE_RED, 12, 64, true, MAGENTA);
 		
-	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 480, heart->getFrameWidth(), heart->getFrameHeight());
-	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 480, 150, heart->getHeight());
+	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 470, heart->getFrameWidth(), heart->getFrameHeight());
+	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 470, 150, heart->getHeight());
 
 	_worldTimeCount = TIMEMANAGER->getWorldTime();
 	_SceneStartTime = TIMEMANAGER->getWorldTime();
@@ -145,8 +145,8 @@ void RhythmNote::update(void)
 	if (_count > 0.461538f)
 	{
 		_count -= 0.461538f;
-		NoteCreate(0, 480, 1, 14);
-		NoteCreate(WINSIZEX, 480, -1, 14);
+		NoteCreate(0, 470, 1, 7);
+		NoteCreate(WINSIZEX, 470, -1, 7);
 	}
 
 	NoteMove();
@@ -175,15 +175,12 @@ void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 	{
 		Note.img = Note_Green;
 	}
+
 	else
 	{
 		Note.img = Note_Red;
 	}
-
-	_worldTimeCount = TIMEMANAGER->getWorldTime();
-	_SceneStartTime = TIMEMANAGER->getWorldTime();
 	
-
 	Note.speed	= speed;
 	Note.angle	= angle;
 	Note.x = Note.HeartX = x;
@@ -232,7 +229,7 @@ void RhythmNote::removeNote(int arrNum)
 
 
 //====================================================================================
-//ÀçÈ­
+//ï¿½ï¿½È­
 HRESULT PlGold::init(void)
 {
 	Gold = IMAGEMANAGER->addImage(KEY_UI_GOLD, DIR_UI_GOLD, 48, 48, true, MAGENTA);
@@ -248,9 +245,17 @@ void PlGold::release(void)
 
 void PlGold::update(void)
 {
+	
 }
 
 void PlGold::render(void)
 {
 	Gold->render(getMemDC(), Gold_rc.left, Gold_rc.top);
+
+	string script = "x" + to_string(PLAYERINFOMANAGER->getMoney());
+	FONTMANAGER->drawText(getMemDC(), 895, 33, "PFStardust", 20, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+		
+	script = "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½: 2";
+	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 50, 520, "PFStardust", 18, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
 }
+	
