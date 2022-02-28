@@ -31,4 +31,6 @@ public:
 	void aniStop();
 	void aniPause();
 	void aniResume();
+
+	void setFrameIdx(int idx);
 };

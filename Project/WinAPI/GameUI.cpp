@@ -142,11 +142,11 @@ void RhythmNote::release(void)
 void RhythmNote::update(void)
 {
 	_count += TIMEMANAGER->getElapsedTime();
-	if (_count > 0.5f)
+	if (_count > 0.461538f)
 	{
-		_count -= 0.5f;
-		NoteCreate(0, 480, 1, 7);
-		NoteCreate(WINSIZEX, 480, -1, 7);
+		_count -= 0.461538f;
+		NoteCreate(0, 480, 1, 14);
+		NoteCreate(WINSIZEX, 480, -1, 14);
 	}
 
 	NoteMove();
@@ -199,7 +199,7 @@ void RhythmNote::NoteMove(void)
 	{
 		_viNote->x += _viNote->angle * _viNote->speed;
 		
-		_viNote->rc = RectMakeCenter(_viNote->x, _viNote->y, _viNote->img->getWidth(), _viNote->img->getHeight());
+		_viNote->rc = RectMakeCenter((int)_viNote->x, (int)_viNote->y, _viNote->img->getWidth(), _viNote->img->getHeight());
 	}
 }
 

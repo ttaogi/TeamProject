@@ -79,3 +79,9 @@ void Animator::aniStop()
 void Animator::aniPause() { play = false; }
 
 void Animator::aniResume() { play = true; }
+
+void Animator::setFrameIdx(int idx)
+{
+	if (animations[(int)curState])
+		animations[(int)curState]->setFrameIdx(idx);
+}

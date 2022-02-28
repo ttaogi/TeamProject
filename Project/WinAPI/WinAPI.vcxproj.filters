@@ -94,6 +94,12 @@
     <Filter Include="API FrameWork\ProgressBar">
       <UniqueIdentifier>{ed7ec1e4-8683-44ea-89a7-d7174370c92f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Object\SteppingStone">
+      <UniqueIdentifier>{847033b3-df4c-4390-8b0c-9148d9f8cb48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Object\Money">
+      <UniqueIdentifier>{d4edf1f9-43d1-48e9-be3c-6f704ea4d846}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -217,6 +223,12 @@
     <ClCompile Include="Necrodancer.cpp">
       <Filter>API FrameWork\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="SteppingStone.cpp">
+      <Filter>API FrameWork\Object\SteppingStone</Filter>
+    </ClCompile>
+    <ClCompile Include="Money.cpp">
+      <Filter>API FrameWork\Object\Money</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -338,6 +350,12 @@
     </ClInclude>
     <ClInclude Include="Necrodancer.h">
       <Filter>API FrameWork\Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="SteppingStone.h">
+      <Filter>API FrameWork\Object\SteppingStone</Filter>
+    </ClInclude>
+    <ClInclude Include="Money.h">
+      <Filter>API FrameWork\Object\Money</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

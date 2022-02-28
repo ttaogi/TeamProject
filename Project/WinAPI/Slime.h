@@ -14,6 +14,6 @@ public:
 	bool interact(Player* player);
 	
 	Slime() { }
-	~Slime() { release(); }
+	virtual ~Slime() { release(); }
 };
 
