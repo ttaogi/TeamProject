@@ -1,7 +1,10 @@
-#include "stdafx.h"
+#include "Stdafx.h"
+
 #include "GameUI.h"
+
 #include "Animator.h"
 #include "Animation.h"
+#include "Scene.h"
 
 HRESULT PlEquip::init(void)
 {
@@ -106,7 +109,7 @@ void PlHp::render(void)
 }
 
 //====================================================================================
-HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
+HRESULT RhythmNote::init(Scene* _scene)
 {
 	heart		 = IMAGEMANAGER->addFrameImage(KEY_UI_HEART, DIR_UI_HEART, 164, 104, 2, 1, 2, true, MAGENTA);
 	Note_Green	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_GREEN, DIR_UI_NOTE_GREEN, 12, 64, true, MAGENTA);
@@ -115,13 +118,12 @@ HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 470, heart->getFrameWidth(), heart->getFrameHeight());
 	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 470, 150, heart->getHeight());
 
-	_worldTimeCount = TIMEMANAGER->getWorldTime();
+	scene = _scene;
+
+	_turnInterval = scene->getMapInfo()->getTurnInterval();
 	_SceneStartTime = TIMEMANAGER->getWorldTime();
 	
 	_count = 0;
-	_imageName = imageName;
-	_range = range;
-	_NoteMax = NoteMax;
 
 	_animator = new Animator();
 	Animation* _anim = new Animation();
@@ -139,9 +141,9 @@ void RhythmNote::release(void)
 void RhythmNote::update(void)
 {
 	_count += TIMEMANAGER->getElapsedTime();
-	if (_count > 0.461538f)
+	if (_count > _turnInterval)
 	{
-		_count -= 0.461538f;
+		_count -= _turnInterval;
 		NoteCreate(0, 470, 1, 7);
 		NoteCreate(WINSIZEX, 470, -1, 7);
 	}
@@ -164,8 +166,6 @@ void RhythmNote::render(void)
 
 void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 {
-	if (_NoteMax <= _vNote.size()) return;
-
 	tagNote Note;
 	ZeroMemory(&Note, sizeof(tagNote));
 	if (TIMEMANAGER->getWorldTime() - _SceneStartTime < 150)

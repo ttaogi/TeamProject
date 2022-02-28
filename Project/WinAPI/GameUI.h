@@ -2,6 +2,7 @@
 #include "GameNode.h"
 
 class Animator;
+class Scene;
 
 enum Note
 {
@@ -87,12 +88,9 @@ private:
 	vector<tagNote> ::iterator _viNote;
 	RhythmNote* _rhythmNote;
 	
-	const char* _imageName;
-	int _NoteMax;
-	float _range;
 	float _count;
 
-	float _worldTimeCount;
+	float _turnInterval;
 	float _SceneStartTime;
 	
 	Note _NoteHeat;
@@ -105,9 +103,9 @@ private:
 	Image* Note_Red;
 
 	Animator* _animator;
-	
+	Scene* scene;
 public:
-	HRESULT init(const char* imageName, int _NoteMax, float range);
+	HRESULT init(Scene* _scene);
 	void release(void);
 	void update(void);
 	void render(void);

@@ -74,7 +74,7 @@ HRESULT LobbyScene::init(void)
 	_plHp->init();
 	
 	_Note = new RhythmNote;
-	_Note->init("", 300, 1000);
+	_Note->init(this);
 	
 	return S_OK;
 }
