@@ -115,8 +115,8 @@ HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 	Note_Green	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_GREEN, DIR_UI_NOTE_GREEN, 12, 64, true, MAGENTA);
 	Note_Red	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_RED, DIR_UI_NOTE_RED, 12, 64, true, MAGENTA);
 		
-	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 480, heart->getFrameWidth(), heart->getFrameHeight());
-	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 480, 150, heart->getHeight());
+	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 470, heart->getFrameWidth(), heart->getFrameHeight());
+	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 470, 150, heart->getHeight());
 
 	_worldTimeCount = TIMEMANAGER->getWorldTime();
 	_SceneStartTime = TIMEMANAGER->getWorldTime();
@@ -142,11 +142,11 @@ void RhythmNote::release(void)
 void RhythmNote::update(void)
 {
 	_count += TIMEMANAGER->getElapsedTime();
-	if (_count > 0.5f)
+	if (_count > 0.461538f)
 	{
-		_count -= 0.5f;
-		NoteCreate(0, 480, 1, 7);
-		NoteCreate(WINSIZEX, 480, -1, 7);
+		_count -= 0.461538f;
+		NoteCreate(0, 470, 1, 7);
+		NoteCreate(WINSIZEX, 470, -1, 7);
 	}
 
 	NoteMove();
@@ -175,15 +175,12 @@ void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 	{
 		Note.img = Note_Green;
 	}
+
 	else
 	{
 		Note.img = Note_Red;
 	}
-
-	_worldTimeCount = TIMEMANAGER->getWorldTime();
-	_SceneStartTime = TIMEMANAGER->getWorldTime();
 	
-
 	Note.speed	= speed;
 	Note.angle	= angle;
 	Note.x = Note.HeartX = x;
@@ -248,9 +245,17 @@ void PlGold::release(void)
 
 void PlGold::update(void)
 {
+	
 }
 
 void PlGold::render(void)
 {
 	Gold->render(getMemDC(), Gold_rc.left, Gold_rc.top);
+
+	string script = "x" + to_string(PLAYERINFOMANAGER->getMoney());
+	FONTMANAGER->drawText(getMemDC(), 895, 33, "PFStardust", 20, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+		
+	script = "코인 배수: 2";
+	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 50, 520, "PFStardust", 18, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
 }
+	

@@ -45,16 +45,15 @@ void TimeManager::render(HDC hdc)
 	{
 		//프레임 시간
 		sprintf_s(str, "FramePerSec : %d", _timer->gerFrameRate());
-		TextOut(hdc, 0, 0, str, (int)strlen(str));
+		TextOut(hdc, 100, 100, str, (int)strlen(str));
 
 		//월드 시간
 		sprintf_s(str, "WorldTime : %f", _timer->getWorldTime());
-		TextOut(hdc, 0, 20, str, (int)strlen(str));
+		TextOut(hdc, 100, 120, str, (int)strlen(str));
 
 		//갱신 시간
 		sprintf_s(str, "ElapsedTime : %f", _timer->gerElapsedTime());
-		TextOut(hdc, 0, 40, str, (int)strlen(str));
-
+		TextOut(hdc, 100, 140, str, (int)strlen(str));
 	}
 
 //Release

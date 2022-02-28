@@ -111,9 +111,7 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
-
-	void animation(void);
-	
+		
 	void NoteCreate(float x, float y, float angle, float speed);
 	void NoteMove(void);
 	void Notedraw(void);
