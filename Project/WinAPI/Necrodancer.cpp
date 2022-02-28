@@ -272,8 +272,6 @@ void Necrodancer::move(void)
 		countTF = false;
 	}
 
-	
-	
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
 		pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
 }
