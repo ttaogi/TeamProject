@@ -9,6 +9,7 @@ class Slime;
 class SlimeBlue;
 class Skeleton;
 class Bat;
+class Necrodancer;
 
 class LobbyScene : public Scene
 {
@@ -17,6 +18,7 @@ private:
 	SlimeBlue* slimeBlue;
 	Skeleton* skeleton;
 	Bat* bat;
+	Necrodancer* necrodancer;
 
 	PlEquip* _plEquip;
 	PlGold* _plGold;

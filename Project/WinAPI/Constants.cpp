@@ -91,13 +91,13 @@ const std::string KEY_UI_FULLHP =
 const char* DIR_UI_FULLHP =
 	"Resources/Images/gui/heart.bmp";
 const std::string KEY_UI_HALFHP =
-"UI_HALFHP";
+	"UI_HALFHP";
 const char* DIR_UI_HALFHP =
-"Resources/Images/gui/heart_half.bmp";
+	"Resources/Images/gui/heart_half.bmp";
 const std::string KEY_UI_EMPTYHP =
-"UI_EMPTYHP";
+	"UI_EMPTYHP";
 const char* DIR_UI_EMPTYHP =
-"Resources/Images/gui/heart_empty.bmp";
+	"Resources/Images/gui/heart_empty.bmp";
 
 const std::string KEY_UI_HEART =
 	"UI_HEART";
@@ -217,14 +217,69 @@ const char* DIR_SKELETON_RIGHT =
 
 #pragma region bat
 const std::string KEY_BAT_LEFT =
-"BAT_LEFT";
+	"BAT_LEFT";
 const char* DIR_BAT_LEFT =
-"Resources/Images/entities/bat_miniboss_left.bmp";
+	"Resources/Images/entities/bat_miniboss_left.bmp";
 const std::string KEY_BAT_RIGHT =
-"BAT_RIGHT";
+	"BAT_RIGHT";
 const char* DIR_BAT_RIGHT =
-"Resources/Images/entities/bat_miniboss_right.bmp";
+	"Resources/Images/entities/bat_miniboss_right.bmp";
 #pragma endregion bat
+
+#pragma region necrodancer
+const std::string KEY_NECRODANCER_RIGHT_IDLE =
+	"NECRODANCER_RIGHT_IDLE";
+const char* DIR_NECRODANCER_RIGHT_IDLE =
+	"Resources/Images/entities/necrodancer_right_idle.bmp";
+const std::string KEY_NECRODANCER_RIGHT_UP_JUMP =
+	"NECRODANCER_RIGHT_UP_JUMP";
+const char* DIR_NECRODANCER_RIGHT_UP_JUMP =
+	"Resources/Images/entities/necrodancer_right_up_jump.bmp";
+const std::string KEY_NECRODANCER_RIGHT_DOWN_JUMP =
+	"NECRODANCER_RIGHT_DOWN_JUMP";
+const char* DIR_NECRODANCER_RIGHT_DOWN_JUMP =
+	"Resources/Images/entities/necrodancer_right_down_jump.bmp";
+
+const std::string KEY_NECRODANCER_LEFT_IDLE =
+	"NECRODANCER_LEFT_IDLE";
+const char* DIR_NECRODANCER_LEFT_IDLE =
+	"Resources/Images/entities/necrodancer_left_idle.bmp";
+const std::string KEY_NECRODANCER_LEFT_UP_JUMP =
+	"NECRODANCER_LEFT_UP_JUMP";
+const char* DIR_NECRODANCER_LEFT_UP_JUMP =
+	"Resources/Images/entities/necrodancer_left_up_jump.bmp";
+const std::string KEY_NECRODANCER_LEFT_DOWN_JUMP =
+	"NECRODANCER_LEFT_DOWN_JUMP";
+const char* DIR_NECRODANCER_LEFT_DOWN_JUMP =
+	"Resources/Images/entities/necrodancer_left_down_jump.bmp";
+
+const std::string KEY_NECRODANCER_EXPLOSION_IDLE =
+	"NECRODANCER_EXPLOSION_IDLE";
+const char* DIR_NECRODANCER_EXPLOSION_IDLE =
+	"Resources/Images/entities/necrodancer_explosion_idle.bmp";
+const std::string KEY_NECRODANCER_EXPLOSION =
+	"NECRODANCER_EXPLOSION";
+const char* DIR_NECRODANCER_EXPLOSION =
+	"Resources/Images/entities/necrodancer_explosion.bmp";
+
+const std::string KEY_NECRODANCER_RIGHT_BLUEATT =
+	"NECRODANCER_RIGHT_BLUEATT";
+const char* DIR_NECRODANCER_RIGHT_BLUEATT =
+	"Resources/Images/entities/necrodancer_rightBlueATT.bmp";
+const std::string KEY_NECRODANCER_LEFT_BLUEATT =
+	"NECRODANCER_LEFT_BLUEATT";
+const char* DIR_NECRODANCER_LEFT_BLUEATT =
+	"Resources/Images/entities/necrodancer_leftBlueATT.bmp";
+
+const std::string KEY_NECRODANCER_SOHWAN_IDLE =
+	"NECRODANCER_SOHWAN_IDLE";
+const char* DIR_NECRODANCER_SOHWAN_IDLE =
+	"Resources/Images/entities/necrodancer_sohwan_idle.bmp";
+const std::string KEY_NECRODANCER_IDLE2 =
+	"NECRODANCER_IDLE2";
+const char* DIR_NECRODANCER_IDLE2 =
+	"Resources/Images/entities/necrodancer_idle2.bmp";
+#pragma endregion necrodancer
 
 #pragma region WeaponEffect
 const std::string KEY_SWIPE_DAGGER_TOP =

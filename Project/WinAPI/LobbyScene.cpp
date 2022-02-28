@@ -10,6 +10,7 @@
 #include "slimeBlue.h"
 #include "Skeleton.h"
 #include "Bat.h"
+#include "Necrodancer.h"
 #include "Wall.h"
 #include "SteppingStone.h"
 
@@ -31,7 +32,10 @@ HRESULT LobbyScene::init(void)
 	skeleton->init(this, POINT{ 7, 8 });
 
 	bat = new Bat();
-	bat->init(this, POINT{ 3, 8 });
+	bat->init(this, POINT{ 3, 7 });
+
+	necrodancer = new Necrodancer();
+	necrodancer->init(this, POINT{ 12, 3 });
 
 	SteppingStoneRight *ssr = new SteppingStoneRight();
 	ssr->init(this, POINT{ 8, 8 });
@@ -47,6 +51,7 @@ HRESULT LobbyScene::init(void)
 
 	objectVec.push_back(skeleton);
 	objectVec.push_back(bat);
+	objectVec.push_back(necrodancer);
 	objectVec.push_back(ssr);
 	objectVec.push_back(ssl);
 	objectVec.push_back(sst);

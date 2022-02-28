@@ -130,6 +130,37 @@ extern const std::string KEY_BAT_LEFT;
 extern const char* DIR_BAT_LEFT;
 #pragma endregion bat
 
+#pragma region necrodancer
+extern const std::string KEY_NECRODANCER_RIGHT_IDLE;
+extern const char* DIR_NECRODANCER_RIGHT_IDLE;
+extern const std::string KEY_NECRODANCER_RIGHT_UP_JUMP;
+extern const char* DIR_NECRODANCER_RIGHT_UP_JUMP;
+extern const std::string KEY_NECRODANCER_RIGHT_DOWN_JUMP;
+extern const char* DIR_NECRODANCER_RIGHT_DOWN_JUMP;
+
+extern const std::string KEY_NECRODANCER_LEFT_IDLE;
+extern const char* DIR_NECRODANCER_LEFT_IDLE;
+extern const std::string KEY_NECRODANCER_LEFT_UP_JUMP;
+extern const char* DIR_NECRODANCER_LEFT_UP_JUMP;
+extern const std::string KEY_NECRODANCER_LEFT_DOWN_JUMP;
+extern const char* DIR_NECRODANCER_LEFT_DOWN_JUMP;
+
+extern const std::string KEY_NECRODANCER_EXPLOSION_IDLE;
+extern const char* DIR_NECRODANCER_EXPLOSION_IDLE;
+extern const std::string KEY_NECRODANCER_EXPLOSION;
+extern const char* DIR_NECRODANCER_EXPLOSION;
+
+extern const std::string KEY_NECRODANCER_LEFT_BLUEATT;
+extern const char* DIR_NECRODANCER_LEFT_BLUEATT;
+extern const std::string KEY_NECRODANCER_RIGHT_BLUEATT;
+extern const char* DIR_NECRODANCER_RIGHT_BLUEATT;
+
+extern const std::string KEY_NECRODANCER_SOHWAN_IDLE;
+extern const char* DIR_NECRODANCER_SOHWAN_IDLE;
+extern const std::string KEY_NECRODANCER_IDLE2;
+extern const char* DIR_NECRODANCER_IDLE2;
+#pragma endregion necrodancer
+
 #pragma region WeaponEffect
 extern const std::string KEY_SWIPE_DAGGER_TOP;
 extern const char* DIR_SWIPE_DAGGER_TOP;
