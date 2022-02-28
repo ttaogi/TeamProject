@@ -32,5 +32,5 @@ public:
 	void setBounce(DIRECTION dir);
 
 	Player() { }
-	~Player() { }
+	virtual ~Player() { }
 };

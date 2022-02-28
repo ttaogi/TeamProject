@@ -15,7 +15,7 @@ public:
 	bool interact(Player* player);
 
 	SteppingStoneLeft();
-	~SteppingStoneLeft();
+	virtual ~SteppingStoneLeft();
 };
 
 class SteppingStoneTop : public Object
@@ -31,7 +31,7 @@ public:
 	bool interact(Player* player);
 
 	SteppingStoneTop();
-	~SteppingStoneTop();
+	virtual ~SteppingStoneTop();
 };
 
 class SteppingStoneRight : public Object
@@ -47,7 +47,7 @@ public:
 	bool interact(Player* player);
 
 	SteppingStoneRight();
-	~SteppingStoneRight();
+	virtual ~SteppingStoneRight();
 };
 
 class SteppingStoneBottom : public Object
@@ -63,5 +63,5 @@ public:
 	bool interact(Player* player);
 
 	SteppingStoneBottom();
-	~SteppingStoneBottom();
+	virtual ~SteppingStoneBottom();
 };

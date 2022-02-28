@@ -1,15 +1,11 @@
 #pragma once
-#include "Enemy.h"
 
-class Bat : public Enemy
+#include "Object.h"
+
+class Money : public Object
 {
 private:
-	float turnCount;
-	bool posCheck;
-	
-	int rightCount;
-	int leftCount;
-
+	int quantity;
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
 	void release(void);
@@ -17,9 +13,10 @@ public:
 	void render(void);
 
 	bool interact(Player* player);
-	void move(void);
 
-	Bat() { }
-	virtual ~Bat() { }
+	int getQuantity() const { return quantity; }
+	void setQuantity(int quan);
+
+	Money();
+	virtual ~Money();
 };
-

@@ -1,8 +1,10 @@
 #pragma once
 
+#include "Enums.h"
 #include "SingletonBase.h"
 
 struct Item {
+	ITEM_TYPE type;
 	std::string name;
 	int value;
 };

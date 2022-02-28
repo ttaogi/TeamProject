@@ -318,6 +318,13 @@ const std::string KEY_SWIPE_ENEMY_BOTTOM =
 const char* DIR_SWIPE_ENEMY_BOTTOM =
 	"Resources/Images/swipes/swipe_enemy_bottom.bmp";
 #pragma endregion EnemyAttackEffect
+
+#pragma region Item
+extern const std::string KEY_ITEM_GOLD =
+	"DIR_ITEM_GOLD";
+extern const char* DIR_ITEM_GOLD =
+	"Resources/Images/items/resource_coin.bmp";
+#pragma endregion Item
 #pragma endregion Stripe
 
 ///////////////////////

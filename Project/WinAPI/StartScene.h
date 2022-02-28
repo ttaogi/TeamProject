@@ -15,5 +15,5 @@ public:
 	void render(void);
 
 	StartScene() {}
-	~StartScene() {}
+	virtual ~StartScene() {}
 };
