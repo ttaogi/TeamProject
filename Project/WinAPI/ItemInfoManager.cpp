@@ -58,14 +58,14 @@ int ItemInfoManager::getItemNum() const
 Item ItemInfoManager::getItemInfo(int _id) const
 {
 	if (_id >= itemVec.size())
-		return Item{ "", 0 };
+		return Item{ ITEM_TYPE::ITEM_TYPE_NUM, "", 0 };
 	else
 		return itemVec[_id];
 }
 
 Item ItemInfoManager::getItemInfo(string _name) const
 {
-	Item item{ "", 0 };
+	Item item{ ITEM_TYPE::ITEM_TYPE_NUM, "", 0 };
 	for (auto iter = itemVec.begin(); iter != itemVec.end(); ++iter)
 	{
 		if (iter->name == _name)

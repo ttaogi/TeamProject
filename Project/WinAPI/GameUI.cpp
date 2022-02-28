@@ -3,7 +3,6 @@
 #include "Animator.h"
 #include "Animation.h"
 
-//���â
 HRESULT PlEquip::init(void)
 {
 	_slot_1 = IMAGEMANAGER->addImage(KEY_UI_SLOT_1, DIR_UI_SLOT_1, 60, 66, true, MAGENTA);
@@ -48,7 +47,6 @@ void PlEquip::render(void)
 }
 
 //====================================================================================
-//�÷��̾� ü��
 HRESULT PlHp::init(void)
 {
 	_FullHp	 = IMAGEMANAGER->addImage(KEY_UI_FULLHP, DIR_UI_FULLHP, 48, 44, true, MAGENTA);
@@ -73,13 +71,13 @@ void PlHp::update(void)
 	if (KEYMANAGER->isOnceKeyDown('1'))
 	{
 		Hp -= 1;
-		cout << "hp����" << endl;
+		cout << "hp -= 1" << endl;
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('2'))
 	{
 		Hp = MaxHp;
-		cout << "hpȸ��" << endl;
+		cout << "hp = MaxHp" << endl;
 	}
 }
 
@@ -108,7 +106,6 @@ void PlHp::render(void)
 }
 
 //====================================================================================
-//�����Ʈ
 HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 {
 	heart		 = IMAGEMANAGER->addFrameImage(KEY_UI_HEART, DIR_UI_HEART, 164, 104, 2, 1, 2, true, MAGENTA);
@@ -229,7 +226,6 @@ void RhythmNote::removeNote(int arrNum)
 
 
 //====================================================================================
-//��ȭ
 HRESULT PlGold::init(void)
 {
 	Gold = IMAGEMANAGER->addImage(KEY_UI_GOLD, DIR_UI_GOLD, 48, 48, true, MAGENTA);
@@ -255,7 +251,7 @@ void PlGold::render(void)
 	string script = "x" + to_string(PLAYERINFOMANAGER->getMoney());
 	FONTMANAGER->drawText(getMemDC(), 895, 33, "PFStardust", 20, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
 		
-	script = "���� ���: 2";
+	script = "Coin Mul : 2";
 	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 50, 520, "PFStardust", 18, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
 }
 	
