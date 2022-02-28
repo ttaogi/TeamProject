@@ -58,3 +58,10 @@ enum class SOUND_ID
 };
 
 std::string SoundIdToKeyString(SOUND_ID id);
+
+enum class ITEM_TYPE
+{
+	SHOVEL = 0, ATTACK, BODY, HEAD,
+	TORCH, APPLE, BOMB,
+	ITEM_TYPE_NUM
+};
