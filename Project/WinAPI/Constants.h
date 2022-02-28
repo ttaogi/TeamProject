@@ -151,6 +151,11 @@ extern const char* DIR_SWIPE_ENEMY_LEFT;
 extern const std::string KEY_SWIPE_ENEMY_RIGHT;
 extern const char* DIR_SWIPE_ENEMY_RIGHT;
 #pragma endregion EnemyAttackEffect
+
+#pragma region Item
+extern const std::string KEY_ITEM_GOLD;
+extern const char* DIR_ITEM_GOLD;
+#pragma endregion Item
 #pragma endregion Stripe
 
 ///////////////////////

@@ -162,6 +162,7 @@
     <ClCompile Include="LobbyScene.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MapInfoManager.cpp" />
+    <ClCompile Include="Money.cpp" />
     <ClCompile Include="Necrodancer.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -219,6 +220,7 @@
     <ClInclude Include="LobbyScene.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MapInfoManager.h" />
+    <ClInclude Include="Money.h" />
     <ClInclude Include="Necrodancer.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />

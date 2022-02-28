@@ -4,14 +4,15 @@
 
 #include <queue>
 
+#include "Bat.h"
 #include "MainGame.h"
+#include "Money.h"
 #include "Player.h"
+#include "Skeleton.h"
 #include "Slime.h"
 #include "slimeBlue.h"
-#include "Skeleton.h"
-#include "Bat.h"
-#include "Wall.h"
 #include "SteppingStone.h"
+#include "Wall.h"
 
 HRESULT LobbyScene::init(void)
 {
@@ -45,12 +46,17 @@ HRESULT LobbyScene::init(void)
 	SteppingStoneBottom *ssb = new SteppingStoneBottom();
 	ssb->init(this, POINT{ 9, 7 });
 
+	Money* money = new Money();
+	money->init(this, POINT{ 11, 8 });
+	money->setQuantity(5);
+
 	objectVec.push_back(skeleton);
 	objectVec.push_back(bat);
 	objectVec.push_back(ssr);
 	objectVec.push_back(ssl);
 	objectVec.push_back(sst);
 	objectVec.push_back(ssb);
+	objectVec.push_back(money);
 	
 	// UI.
 	_plEquip = new PlEquip;
