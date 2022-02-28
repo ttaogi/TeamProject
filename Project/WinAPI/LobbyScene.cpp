@@ -115,6 +115,7 @@ void LobbyScene::update(void)
 
 	_Note->update();
 	_plHp->update();
+	_plGold->update();
 }
 
 void LobbyScene::render(void)
@@ -134,7 +135,7 @@ void LobbyScene::render(void)
 	}
 
 	_plEquip->render();
-	_plGold->render();
 	_plHp->render();
 	_Note->render();
+	_plGold->render();
 }

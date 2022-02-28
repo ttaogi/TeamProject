@@ -4,7 +4,7 @@
 
 HRESULT PlayerInfoManager::init()
 {
-	money = 0;
+	money = 99;
 
 	cout << "####################" << endl;
 	cout << "PlayerInfo Init." << endl;
