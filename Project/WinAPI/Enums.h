@@ -66,7 +66,19 @@ std::string SoundIdToKeyString(SOUND_ID id);
 
 enum class ITEM_TYPE
 {
-	SHOVEL = 0, ATTACK, BODY, HEAD,
-	TORCH, APPLE, BOMB,
+	SHOVEL = 0, ATTACK, BODY, HEAD, TORCH,
+	HEAL, BOMB,
 	ITEM_TYPE_NUM
 };
+
+enum class ITEM_DETAIL
+{
+	SHOVEL = 0,
+	ATTACK_DAGGER, ATTACK_BROADSWORD,
+	BODY, HEAD,
+	TORCH, HEAL_APPLE,
+	BOMB,
+	ITEM_DETAIL_NUM
+};
+
+std::string ItemDetailToIconKeyString(ITEM_DETAIL type);

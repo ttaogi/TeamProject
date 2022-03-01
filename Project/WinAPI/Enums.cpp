@@ -72,3 +72,28 @@ std::string SoundIdToKeyString(SOUND_ID id)
 		return "";
 	}
 }
+
+std::string ItemDetailToIconKeyString(ITEM_DETAIL type)
+{
+	switch (type)
+	{
+	case ITEM_DETAIL::SHOVEL:
+		return KEY_ITEM_SHOVEL;
+	case ITEM_DETAIL::ATTACK_DAGGER:
+		return KEY_ITEM_DAGGER;
+	case ITEM_DETAIL::ATTACK_BROADSWORD:
+		return KEY_ITEM_BROADSWORD;
+	case ITEM_DETAIL::BODY:
+		return KEY_ITEM_BODY;
+	case ITEM_DETAIL::HEAD:
+		return KEY_ITEM_HEAD;
+	case ITEM_DETAIL::TORCH:
+		return KEY_ITEM_TORCH;
+	case ITEM_DETAIL::HEAL_APPLE:
+		return KEY_ITEM_APPLE;
+	case ITEM_DETAIL::BOMB:
+		return KEY_ITEM_BOMB;
+	default:
+		return "";
+	}
+}
