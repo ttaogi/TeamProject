@@ -44,6 +44,12 @@ void PlEquip::render(void)
 
 	_action_1->render(getMemDC(), _action_1_rc.left, _action_1_rc.top);
 	_action_2->render(getMemDC(), _action_2_rc.left, _action_2_rc.top);
+
+	string script = "Z";
+	FONTMANAGER->drawText(getMemDC(), 45, 155, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+
+	script = "X";
+	FONTMANAGER->drawText(getMemDC(), 45, 235, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
 }
 
 //====================================================================================
@@ -83,7 +89,6 @@ void PlHp::update(void)
 
 void PlHp::render(void)
 {
-	//_FullHp->render(getMemDC(), _Hp_rc.left, _Hp_rc.top);
 	count = Hp;
 	for (int i = 0; i < MaxHp / 2; i++)
 	{
@@ -142,8 +147,8 @@ void RhythmNote::update(void)
 	if (_count > 0.461538f)
 	{
 		_count -= 0.461538f;
-		NoteCreate(0, 470, 1, 7);
-		NoteCreate(WINSIZEX, 470, -1, 7);
+		NoteCreate(0, 470, 1, 8.5f);
+		NoteCreate(WINSIZEX, 470, -1, 8.5f);
 	}
 
 	NoteMove();
