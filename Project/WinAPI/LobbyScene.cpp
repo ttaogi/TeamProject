@@ -14,6 +14,7 @@
 #include "Necrodancer.h"
 #include "SteppingStone.h"
 #include "Wall.h"
+#include "Head.h"
 
 HRESULT LobbyScene::init(void)
 {
@@ -50,6 +51,9 @@ HRESULT LobbyScene::init(void)
 	SteppingStoneBottom *ssb = new SteppingStoneBottom();
 	ssb->init(this, POINT{ 9, 7 });
 
+	Head *head = new Head();
+	head->init(this, POINT{ 1, 7 });
+
 	Money* money = new Money();
 	money->init(this, POINT{ 11, 8 });
 	money->setQuantity(5);
@@ -62,6 +66,8 @@ HRESULT LobbyScene::init(void)
 	objectVec.push_back(sst);
 	objectVec.push_back(ssb);
 	objectVec.push_back(money);
+
+	objectVec.push_back(head);
 	
 	// UI.
 	_plEquip = new PlEquip;

@@ -100,6 +100,9 @@
     <Filter Include="API FrameWork\Object\Money">
       <UniqueIdentifier>{d4edf1f9-43d1-48e9-be3c-6f704ea4d846}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Object\Euipment Item">
+      <UniqueIdentifier>{9e8badd5-9d3c-42f2-bad5-e40e8055e778}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -229,6 +232,9 @@
     <ClCompile Include="Money.cpp">
       <Filter>API FrameWork\Object\Money</Filter>
     </ClCompile>
+    <ClCompile Include="Head.cpp">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -356,6 +362,9 @@
     </ClInclude>
     <ClInclude Include="Money.h">
       <Filter>API FrameWork\Object\Money</Filter>
+    </ClInclude>
+    <ClInclude Include="Head.h">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
