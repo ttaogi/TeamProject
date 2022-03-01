@@ -2,6 +2,23 @@
 
 #include "ItemInfoManager.h"
 
+void Item::init(ITEM_TYPE _type, ITEM_DETAIL _detailType,
+	std::string _name, int _price, int _atk, int _def,
+	int _heal, int _range, Image * _stripe)
+{
+	type = _type;
+	detailType = _detailType;
+	name = _name;
+	price = _price;
+	atk = _atk;
+	def = _def;
+	heal = _heal;
+	range = _range;
+	stripe = _stripe;
+}
+
+/////////////////////////////////
+
 HRESULT ItemInfoManager::init()
 {
 	TiXmlDocument doc;
@@ -20,15 +37,34 @@ HRESULT ItemInfoManager::init()
 			if (itemInfo == NULL) continue;
 
 			Item item;
+			int type;
+			int detailType;
 			string name;
-			int value;
+			int price;
+			int atk;
+			int def;
+			int heal;
+			int range;
 
+			XmlManager::getAttributeValueInt(itemInfo, "type", &type);
+			XmlManager::getAttributeValueInt(itemInfo, "detailType", &detailType);
 			XmlManager::getAttributeValue(itemInfo, "name", name);
+			XmlManager::getAttributeValueInt(itemInfo, "price", &price);
+			XmlManager::getAttributeValueInt(itemInfo, "atk", &atk);
+			XmlManager::getAttributeValueInt(itemInfo, "def", &def);
+			XmlManager::getAttributeValueInt(itemInfo, "heal", &heal);
+			XmlManager::getAttributeValueInt(itemInfo, "range", &range);
 
-			XmlManager::getAttributeValueInt(itemInfo, "value", &value);
-
+			item.type = (ITEM_TYPE)type;
+			item.detailType = (ITEM_DETAIL)detailType;
 			item.name = name;
-			item.value = value;
+			item.price = price;
+			item.atk = atk;
+			item.def = def;
+			item.heal = heal;
+			item.range = range;
+			item.stripe = IMAGEMANAGER->
+				findImage(ItemDetailToIconKeyString(item.detailType));
 
 			itemVec.push_back(item);
 		}
@@ -38,7 +74,14 @@ HRESULT ItemInfoManager::init()
 		cout << "item list" << endl;
 		for (auto iter = itemVec.begin(); iter != itemVec.end(); ++iter)
 		{
-			cout << iter->name << " : " << iter->value << endl;
+			cout << iter->name << "(" << iter->price << ")\t["
+				<< (int)iter->type << ":"
+				<< (int)iter->detailType << ":"
+				<< ItemDetailToIconKeyString((ITEM_DETAIL)iter->detailType)
+				<< "] atk : " << iter->atk << " def : " << iter->def
+				<< " heal : " << iter->heal
+				<< " range : " << iter->range
+				<< " stripe : " << iter->stripe << endl;
 		}
 		cout << "item list" << endl;
 		cout << "####################" << endl;
@@ -55,17 +98,17 @@ int ItemInfoManager::getItemNum() const
 	return (int)itemVec.size();
 }
 
-Item ItemInfoManager::getItemInfo(int _id) const
+Item ItemInfoManager::getItemInfo(ITEM_DETAIL _detailType) const
 {
-	if (_id >= itemVec.size())
-		return Item{ ITEM_TYPE::ITEM_TYPE_NUM, "", 0 };
+	if ((int)_detailType >= itemVec.size())
+		return EMPTY_ITEM;
 	else
-		return itemVec[_id];
+		return itemVec[(int)_detailType];
 }
 
 Item ItemInfoManager::getItemInfo(string _name) const
 {
-	Item item{ ITEM_TYPE::ITEM_TYPE_NUM, "", 0 };
+	Item item = EMPTY_ITEM;
 	for (auto iter = itemVec.begin(); iter != itemVec.end(); ++iter)
 	{
 		if (iter->name == _name)

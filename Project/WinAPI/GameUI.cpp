@@ -5,12 +5,14 @@
 
 HRESULT PlEquip::init(void)
 {
+	// shovel, attack, body, head, ring.
 	_slot_1 = IMAGEMANAGER->addImage(KEY_UI_SLOT_1, DIR_UI_SLOT_1, 60, 66, true, MAGENTA);
 	_slot_2 = IMAGEMANAGER->addImage(KEY_UI_SLOT_2, DIR_UI_SLOT_2, 60, 66, true, MAGENTA);
 	_slot_3 = IMAGEMANAGER->addImage(KEY_UI_SLOT_3, DIR_UI_SLOT_3, 60, 66, true, MAGENTA);
 	_slot_4 = IMAGEMANAGER->addImage(KEY_UI_SLOT_4, DIR_UI_SLOT_4, 60, 66, true, MAGENTA);
 	_slot_5 = IMAGEMANAGER->addImage(KEY_UI_SLOT_5, DIR_UI_SLOT_5, 60, 66, true, MAGENTA);
 
+	// item, bomb.
 	_action_1 = IMAGEMANAGER->addImage(KEY_UI_ACTION_1, DIR_UI_ACTION_1, 60, 84, true, MAGENTA);
 	_action_2 = IMAGEMANAGER->addImage(KEY_UI_ACTION_2, DIR_UI_ACTION_2, 60, 84, true, MAGENTA);
 
@@ -36,14 +38,27 @@ void PlEquip::update(void)
 
 void PlEquip::render(void)
 {
+	Item tmpItem;
 	_slot_1->render(getMemDC(), _slot_1_rc.left, _slot_1_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getShovel();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_1_rc.left + 6, _slot_1_rc.top + 9);
 	_slot_2->render(getMemDC(), _slot_2_rc.left, _slot_2_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getAttack();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_2_rc.left + 6, _slot_2_rc.top + 9);
 	_slot_3->render(getMemDC(), _slot_3_rc.left, _slot_3_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getBody();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_3_rc.left + 6, _slot_3_rc.top + 9);
 	_slot_4->render(getMemDC(), _slot_4_rc.left, _slot_4_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getHead();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_4_rc.left + 6, _slot_4_rc.top + 9);
 	_slot_5->render(getMemDC(), _slot_5_rc.left, _slot_5_rc.top);
 
 	_action_1->render(getMemDC(), _action_1_rc.left, _action_1_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getHeal();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_1_rc.left + 6, _action_1_rc.top + 18);
 	_action_2->render(getMemDC(), _action_2_rc.left, _action_2_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getBomb();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_2_rc.left + 6, _action_2_rc.top + 18);
 }
 
 //====================================================================================
@@ -142,8 +157,8 @@ void RhythmNote::update(void)
 	if (_count > 0.461538f)
 	{
 		_count -= 0.461538f;
-		NoteCreate(0, 470, 1, 7);
-		NoteCreate(WINSIZEX, 470, -1, 7);
+		NoteCreate(0, 470, 1, 8.5);
+		NoteCreate(WINSIZEX, 470, -1, 8.5);
 	}
 
 	NoteMove();
