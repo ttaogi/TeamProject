@@ -57,8 +57,16 @@ void PlEquip::render(void)
 	tmpItem = PLAYERINFOMANAGER->getHeal();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_1_rc.left + 6, _action_1_rc.top + 18);
 	_action_2->render(getMemDC(), _action_2_rc.left, _action_2_rc.top);
+
 	tmpItem = PLAYERINFOMANAGER->getBomb();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_2_rc.left + 6, _action_2_rc.top + 18);
+
+	string script = "Z";
+	FONTMANAGER->drawText(getMemDC(), 45, 155, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+
+	script = "X";
+	FONTMANAGER->drawText(getMemDC(), 45, 235, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+
 }
 
 //====================================================================================
@@ -98,7 +106,6 @@ void PlHp::update(void)
 
 void PlHp::render(void)
 {
-	//_FullHp->render(getMemDC(), _Hp_rc.left, _Hp_rc.top);
 	count = Hp;
 	for (int i = 0; i < MaxHp / 2; i++)
 	{
@@ -149,6 +156,9 @@ HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 void RhythmNote::release(void)
 {
 	_vNote.clear();
+
+	SAFE_RELEASE(_animator);
+	SAFE_DELETE(_animator);
 }
 
 void RhythmNote::update(void)
@@ -157,8 +167,8 @@ void RhythmNote::update(void)
 	if (_count > 0.461538f)
 	{
 		_count -= 0.461538f;
-		NoteCreate(0, 470, 1, 8.5);
-		NoteCreate(WINSIZEX, 470, -1, 8.5);
+		NoteCreate(0, 470, 1, 8.5f);
+		NoteCreate(WINSIZEX, 470, -1, 8.5f);
 	}
 
 	NoteMove();
@@ -266,7 +276,32 @@ void PlGold::render(void)
 	string script = "x" + to_string(PLAYERINFOMANAGER->getMoney());
 	FONTMANAGER->drawText(getMemDC(), 895, 33, "PFStardust", 20, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
 		
-	script = "Coin Mul : 2";
-	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 50, 520, "PFStardust", 18, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+	script = "COIN MULTIPLIER : 2";
+	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 100, 520, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+	
+	/*
+	//COIN MULTIPLIER
+	script = "";
+	if (NoteCount >= 5)
+	{
+		script = "COIN MULTIPLIER : 1.5";
+	}
+
+	if (NoteCount >= 10)
+	{
+		script = "COIN MULTIPLIER : 2";
+	}
+
+	if (NoteCount >= 15)
+	{
+		script = "COIN MULTIPLIER : 2.5";
+	}
+
+	if (NoteCount >= 20)
+	{
+		script = "COIN MULTIPLIER : 3";
+	}
+	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 100, 520, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+	*/
 }
 	
