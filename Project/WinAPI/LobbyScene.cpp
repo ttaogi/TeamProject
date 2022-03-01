@@ -83,7 +83,7 @@ HRESULT LobbyScene::init(void)
 	_Note->init("", 300, 1000);
 
 	CAMERAMANAGER->init(player);
-	
+
 	return S_OK;
 }
 
