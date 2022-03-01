@@ -79,9 +79,14 @@ void Wall::update(void)
 
 void Wall::render(void)
 {
-	POINT p = GridPointToPixelPointCenter(pos);
+	POINT renderPos = GridPointToPixelPointCenter(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
+
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
 	if (animator && !destroyed)
-		animator->animationRender(getMemDC(), p);
+		animator->animationRender(getMemDC(), renderPos);
 }
 
 bool Wall::interact(Player* player)

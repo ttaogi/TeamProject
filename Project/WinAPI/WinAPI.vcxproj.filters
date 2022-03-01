@@ -103,6 +103,9 @@
     <Filter Include="API FrameWork\Object\Euipment Item">
       <UniqueIdentifier>{9e8badd5-9d3c-42f2-bad5-e40e8055e778}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Manager\CameraManager">
+      <UniqueIdentifier>{a72d77c0-cf4a-4495-836a-801286005517}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -235,6 +238,9 @@
     <ClCompile Include="Head.cpp">
       <Filter>API FrameWork\Object\Euipment Item</Filter>
     </ClCompile>
+    <ClCompile Include="CameraManager.cpp">
+      <Filter>API FrameWork\Manager\CameraManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -365,6 +371,9 @@
     </ClInclude>
     <ClInclude Include="Head.h">
       <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraManager.h">
+      <Filter>API FrameWork\Manager\CameraManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

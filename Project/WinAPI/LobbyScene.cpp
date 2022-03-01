@@ -81,6 +81,8 @@ HRESULT LobbyScene::init(void)
 	
 	_Note = new RhythmNote;
 	_Note->init("", 300, 1000);
+
+	CAMERAMANAGER->init(player);
 	
 	return S_OK;
 }
@@ -106,8 +108,6 @@ void LobbyScene::update(void)
 		return;
 	}
 
-	SOUNDMANAGER->update();
-
 	player->update();
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
@@ -122,6 +122,9 @@ void LobbyScene::update(void)
 	_Note->update();
 	_plHp->update();
 	_plGold->update();
+
+	CAMERAMANAGER->update();
+	SOUNDMANAGER->update();
 }
 
 void LobbyScene::render(void)

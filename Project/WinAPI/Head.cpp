@@ -20,18 +20,19 @@ HRESULT Head::init(Scene * scenePtr, POINT position)
 	return S_OK;
 }
 
-void Head::release(void)
-{
-}
+void Head::release(void) { }
 
-void Head::update(void)
-{
-}
+void Head::update(void) { }
 
 void Head::render(void)
 {
-	POINT p = GridPointToPixelPointLeftTop(pos);
-	_info.stripe->render(getMemDC(), (int)p.x, (int)p.y);
+	POINT renderPos = GridPointToPixelPointLeftTop(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
+
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
 }
 
 bool Head::interact(Player * player)
