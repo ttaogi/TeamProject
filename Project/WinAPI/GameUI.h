@@ -17,6 +17,7 @@ struct tagNote
 	float angle;
 	float speed;
 	bool fire;
+	int alpha;
 };
 
 //¿Â∫Ò√¢
@@ -89,6 +90,8 @@ private:
 	
 	const char* _imageName;
 	int _NoteMax;
+	int _countA;
+	int _alpha;
 	float _range;
 	float _count;
 

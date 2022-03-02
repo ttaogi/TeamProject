@@ -76,7 +76,7 @@ const char* DIR_UI_SLOT_4 =
 const std::string KEY_UI_SLOT_5 =
 	"UI_SLOT_5";
 const char* DIR_UI_SLOT_5 =
-	"Resources/Images/gui/hud_slot_7.bmp";
+	"Resources/Images/gui/hud_slot_6.bmp";
 const std::string KEY_UI_ACTION_1 =
 	"UI_ACTION_1";
 const char* DIR_UI_ACTION_1 =
