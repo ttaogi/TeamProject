@@ -424,12 +424,17 @@ void Player::update(void)
 
 void Player::render(void)
 {
-	headAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
-	bodyAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
-	//attakAnimator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
+	POINT renderPos = GridPointToPixelPointCenter(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
 
-	if(turnCount >= 0.7f * turnInterval && turnCount < 0.8f * turnInterval)
-		RectangleMake(getMemDC(), 0, 0, 100, 100);
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	headAnimator->animationRender(getMemDC(), renderPos);
+	bodyAnimator->animationRender(getMemDC(), renderPos);
+
+	/*if(turnCount >= 0.7f * turnInterval && turnCount < 0.8f * turnInterval)
+		RectangleMake(getMemDC(), 0, 0, 100, 100);*/
 }
 
 void Player::Move(POINT _pos)

@@ -76,7 +76,7 @@ const char* DIR_UI_SLOT_4 =
 const std::string KEY_UI_SLOT_5 =
 	"UI_SLOT_5";
 const char* DIR_UI_SLOT_5 =
-	"Resources/Images/gui/hud_slot_7.bmp";
+	"Resources/Images/gui/hud_slot_6.bmp";
 const std::string KEY_UI_ACTION_1 =
 	"UI_ACTION_1";
 const char* DIR_UI_ACTION_1 =
@@ -335,6 +335,39 @@ extern const std::string KEY_ITEM_GOLD =
 	"DIR_ITEM_GOLD";
 extern const char* DIR_ITEM_GOLD =
 	"Resources/Images/items/resource_coin.bmp";
+
+const std::string KEY_ITEM_SHOVEL =
+	"ITEM_SHOVEL";
+const char* DIR_ITEM_SHOVEL =
+	"Resources/Images/items/icon/shovel.bmp";
+const std::string KEY_ITEM_DAGGER =
+	"ITEM_DAGGER";
+const char* DIR_ITEM_DAGGER =
+	"Resources/Images/items/icon/dagger.bmp";
+const std::string KEY_ITEM_BROADSWORD =
+	"ITEM_BROADSWORD";
+const char* DIR_ITEM_BROADSWORD =
+	"Resources/Images/items/icon/broadwsord.bmp";
+const std::string KEY_ITEM_BODY =
+	"ITEM_BODY";
+const char* DIR_ITEM_BODY =
+	"Resources/Images/items/icon/armor.bmp";
+const std::string KEY_ITEM_HEAD =
+	"ITEM_HEAD";
+const char* DIR_ITEM_HEAD =
+	"Resources/Images/items/icon/head.bmp";
+const std::string KEY_ITEM_TORCH =
+	"ITEM_TORCH";
+const char* DIR_ITEM_TORCH =
+	"Resources/Images/items/icon/torch.bmp";
+const std::string KEY_ITEM_APPLE =
+	"ITEM_APPLE";
+const char* DIR_ITEM_APPLE =
+	"Resources/Images/items/icon/apple.bmp";
+const std::string KEY_ITEM_BOMB =
+	"ITEM_BOMB";
+const char* DIR_ITEM_BOMB =
+	"Resources/Images/items/icon/bomb.bmp";
 #pragma endregion Item
 #pragma endregion Stripe
 
@@ -388,3 +421,6 @@ const int TILE_SIZE = 48;
 
 const COLORREF MAGENTA = RGB(255, 0, 255);
 const float DEFAULT_FPS = 60.0f;
+const Item EMPTY_ITEM{ ITEM_TYPE::ITEM_TYPE_NUM,
+	ITEM_DETAIL::ITEM_DETAIL_NUM, "",
+	0, 0, 0, 0, 0, NULL };

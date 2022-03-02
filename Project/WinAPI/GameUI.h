@@ -2,6 +2,7 @@
 #include "GameNode.h"
 
 class Animator;
+class Scene;
 
 enum Note
 {
@@ -17,9 +18,10 @@ struct tagNote
 	float angle;
 	float speed;
 	bool fire;
+	int alpha;
 };
 
-//ÀåºñÃ¢
+//ï¿½ï¿½ï¿½Ã¢
 class PlEquip : public GameNode
 {
 private:
@@ -52,7 +54,7 @@ public:
 };
 
 //====================================================================================
-//ÇÃ·¹ÀÌ¾î Ã¼·Â
+//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã¼ï¿½ï¿½
 class PlHp : public GameNode
 {
 private:
@@ -79,7 +81,7 @@ public:
 };
 
 //====================================================================================
-//¸®µë³ëÆ®
+//ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 class RhythmNote : public GameNode
 {
 private:
@@ -87,12 +89,9 @@ private:
 	vector<tagNote> ::iterator _viNote;
 	RhythmNote* _rhythmNote;
 	
-	const char* _imageName;
-	int _NoteMax;
-	float _range;
 	float _count;
 
-	float _worldTimeCount;
+	float _turnInterval;
 	float _SceneStartTime;
 	
 	Note _NoteHeat;
@@ -105,9 +104,9 @@ private:
 	Image* Note_Red;
 
 	Animator* _animator;
-	
+	Scene* scene;
 public:
-	HRESULT init(const char* imageName, int _NoteMax, float range);
+	HRESULT init(Scene* _scene);
 	void release(void);
 	void update(void);
 	void render(void);
@@ -127,7 +126,7 @@ public:
 };
 
 //====================================================================================
-//ÀçÈ­
+//ï¿½ï¿½È­
 class PlGold : public GameNode
 {
 private:
