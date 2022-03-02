@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ANSI" ?>
 <ROOT>
     <!--This is a comment.-->
-    <list num="7">
+    <list num="8">
         <item_0 type="0" detailType="0" name="»ð" price="10" atk="1" def="0" heal="0" range="0" />
         <item_1 type="1" detailType="1" name="´ë°Å" price="10" atk="1" def="0" heal="0" range="0" />
         <item_2 type="1" detailType="2" name="´ë°Ë" price="20" atk="2" def="0" heal="0" range="0" />

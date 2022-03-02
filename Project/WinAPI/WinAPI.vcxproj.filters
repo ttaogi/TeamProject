@@ -235,6 +235,21 @@
     <ClCompile Include="Head.cpp">
       <Filter>API FrameWork\Object\Euipment Item</Filter>
     </ClCompile>
+    <ClCompile Include="Body.cpp">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Attack.cpp">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Torch.cpp">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Heal.cpp">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClCompile>
+    <ClCompile Include="Bomb.cpp">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -364,6 +379,21 @@
       <Filter>API FrameWork\Object\Money</Filter>
     </ClInclude>
     <ClInclude Include="Head.h">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Body.h">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Attack.h">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Torch.h">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Heal.h">
+      <Filter>API FrameWork\Object\Euipment Item</Filter>
+    </ClInclude>
+    <ClInclude Include="Bomb.h">
       <Filter>API FrameWork\Object\Euipment Item</Filter>
     </ClInclude>
   </ItemGroup>

@@ -144,6 +144,8 @@ HRESULT RhythmNote::init(const char* imageName, int NoteMax, float range)
 	_imageName = imageName;
 	_range = range;
 	_NoteMax = NoteMax;
+	_countA = 0;
+	_alpha = 0;
 
 	_animator = new Animator();
 	Animation* _anim = new Animation();
@@ -209,6 +211,8 @@ void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 	Note.y = Note.HeartY = y;
 	Note.rc = RectMakeCenter((int)Note.x, (int)Note.y, Note.img->getWidth(), Note.img->getHeight());
 
+	Note.alpha = 80;
+
 	_vNote.push_back(Note);
 }
 
@@ -219,6 +223,12 @@ void RhythmNote::NoteMove(void)
 		_viNote->x += _viNote->angle * _viNote->speed;
 		
 		_viNote->rc = RectMakeCenter((int)_viNote->x, (int)_viNote->y, _viNote->img->getWidth(), _viNote->img->getHeight());
+		
+		_viNote->alpha += 5;
+		if (_viNote->alpha >= 255)
+		{
+			_viNote->alpha = 255;
+		}
 	}
 }
 
@@ -226,7 +236,7 @@ void RhythmNote::Notedraw(void)
 {
 	for (_viNote = _vNote.begin(); _viNote != _vNote.end(); ++_viNote)
 	{
-		_viNote->img->render(getMemDC(), _viNote->rc.left, _viNote->rc.top);
+		_viNote->img->alphaRender(getMemDC(), _viNote->rc.left, _viNote->rc.top, _viNote->alpha);
 	}
 }
 
