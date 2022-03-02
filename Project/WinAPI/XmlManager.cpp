@@ -2,35 +2,17 @@
 
 #include "XmlManager.h"
 
-///////////////////////////////////////////
-/*
-	xml file is encoded by UTF-8.
-	wstring conversion functions.
-		int					: stoi
-		long				: stol
-		unsigned long		: stoul
-		long long			: stoll
-		unsigned long long	: stoull
-
-		float				: stof
-		double				: stod
-		long double			: stold
-
-		* to wstring		: to_wstring
-*/
-///////////////////////////////////////////
-
 XmlManager::XmlManager() { }
 
 XmlManager::~XmlManager() { }
 
 HRESULT XmlManager::init()
 {
-	loadXml();
+	//loadXml();
 	return S_OK;
 }
 
-void XmlManager::release() { saveXml(); }
+void XmlManager::release() { /*saveXml();*/ }
 
 void XmlManager::loadXml()
 {

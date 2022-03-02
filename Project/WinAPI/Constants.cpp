@@ -361,7 +361,6 @@ const std::string KEY_ITEM_GOLDENLUTE =
 	"ITEM_GOLDENLUTE";
 const char* DIR_ITEM_GOLDENLUTE =
 	"Resources/Images/items/icon/goldenlute.bmp";
-
 #pragma endregion Item
 #pragma endregion Stripe
 

@@ -33,6 +33,7 @@ enum class OBJECT_TYPE
 	EUIP_ATTACK_DAGGER,         = 18
 	EUIP_ATTACK_BROADSWORD,     = 19
 	EUIP_TORCH,                 = 20
+	EUIP_ATTACK_GOLDENLUTE,     = 21
 	OBJECT_TYPE_NUM
 };
 enum class SOUND_ID
@@ -99,7 +100,7 @@ enum class SOUND_ID
             <y_7 type="1" object="15" />
             <y_8 type="1" object="14" />
             <y_9 type="1" object="20" />
-            <y_10 type="1" object="0" />
+            <y_10 type="1" object="21" />
             <y_11 type="1" object="0" />
             <y_12 type="0" object="3" />
             <y_13 type="0" object="0" />

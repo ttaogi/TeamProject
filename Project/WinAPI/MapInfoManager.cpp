@@ -5,7 +5,7 @@
 #include "bat.h"
 #include "Attack.h"
 #include "Body.h"
-#include "Bomb.h"
+#include "Bomb.h""
 #include "Head.h"
 #include "Heal.h"
 #include "Money.h"
@@ -337,12 +337,23 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 						SAFE_DELETE(obj);
 					}
 				}
+				else if (objectType == (int)OBJECT_TYPE::EUIP_ATTACK_GOLDENLUTE)
+				{
+					Goldenlute* obj = new Goldenlute();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
 			}
 
 			tileMap.push_back(vec);
 		}
 
-		cout << "********************" << endl;
+		/*cout << "********************" << endl;
 		cout << "MapInfo file : " << _fileName << endl;
 		cout << "tile map" << endl;
 		for (int y = 0; y < mapSizeY; ++y)
@@ -360,7 +371,7 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 				<< (*iter)->getPos().y << "]" << endl;
 		}
 		cout << "object vector" << endl;
-		cout << "********************" << endl;
+		cout << "********************" << endl;*/
 	}
 	else return E_FAIL;
 
@@ -412,29 +423,34 @@ void MapInfo::render(HDC _hdc)
 
 HRESULT MapInfoManager::init()
 {
+	cout << "####################" << endl;
 	cout << "MapInfoManager init." << endl;
+
 	IMAGEMANAGER->addImage(KEY_TILE_DIRT, DIR_TILE_DIRT, TILE_SIZE, TILE_SIZE, true, MAGENTA);
 	IMAGEMANAGER->findImage(KEY_TILE_DIRT)->initForAlphaBlend();
-	cout << "TILE DIRT : " << IMAGEMANAGER->findImage(KEY_TILE_DIRT) << endl;
+	//cout << "TILE DIRT : " << IMAGEMANAGER->findImage(KEY_TILE_DIRT) << endl;
 	IMAGEMANAGER->addFrameImage(KEY_WALL_UNBREAKABLE, DIR_WALL_UNBREAKABLE, TILE_SIZE, TILE_SIZE * 2, 1, 1, 1, true, MAGENTA);
 	IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE)->initForAlphaBlend();
-	cout << "WALL UNBREAKABLE : " << IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE) << endl;
+	//cout << "WALL UNBREAKABLE : " << IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE) << endl;
 	IMAGEMANAGER->addFrameImage(KEY_WALL_DIRT, DIR_WALL_DIRT, TILE_SIZE * 16, TILE_SIZE * 2, 16, 1, 16, true, MAGENTA);
 	IMAGEMANAGER->findImage(KEY_WALL_DIRT)->initForAlphaBlend();
-	cout << "WALL DIRT : " << IMAGEMANAGER->findImage(KEY_WALL_DIRT) << endl;
+	//cout << "WALL DIRT : " << IMAGEMANAGER->findImage(KEY_WALL_DIRT) << endl;
 	IMAGEMANAGER->addFrameImage(KEY_WALL_SHOP, DIR_WALL_SHOP, TILE_SIZE, TILE_SIZE * 2, 1, 1, 1, true, MAGENTA);
 	IMAGEMANAGER->findImage(KEY_WALL_SHOP)->initForAlphaBlend();
-	cout << "WALL SHOP : " << IMAGEMANAGER->findImage(KEY_WALL_SHOP) << endl;
+	//cout << "WALL SHOP : " << IMAGEMANAGER->findImage(KEY_WALL_SHOP) << endl;
 
 	MapInfo* exampleMap = new MapInfo();
 
 	mapInfoMap.insert(make_pair(MAP_ID::EXAMPLE_MAP, exampleMap));
+
+	cout << "####################" << endl;
 
 	return S_OK;
 }
 
 void MapInfoManager::release()
 {
+	cout << "####################" << endl;
 	cout << "MapInfoManager release." << endl;
 	for (auto iter = mapInfoMap.begin(); iter != mapInfoMap.end(); ++iter)
 	{
@@ -442,6 +458,7 @@ void MapInfoManager::release()
 		SAFE_DELETE(iter->second);
 	}
 	mapInfoMap.clear();
+	cout << "####################" << endl;
 }
 
 MapInfo* MapInfoManager::getMapInfo(MAP_ID _mapId, Scene* _scene)
