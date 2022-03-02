@@ -357,6 +357,11 @@ const std::string KEY_ITEM_BOMB =
 	"ITEM_BOMB";
 const char* DIR_ITEM_BOMB =
 	"Resources/Images/items/icon/bomb.bmp";
+const std::string KEY_ITEM_GOLDENLUTE =
+	"ITEM_GOLDENLUTE";
+const char* DIR_ITEM_GOLDENLUTE =
+	"Resources/Images/items/icon/goldenlute.bmp";
+
 #pragma endregion Item
 #pragma endregion Stripe
 

@@ -77,6 +77,9 @@ HRESULT LobbyScene::init(void)
 	Torch *torch = new Torch();
 	torch->init(this, POINT{ 2, 9 });
 
+	Goldenlute *goldenlute = new Goldenlute();
+	goldenlute->init(this, POINT{ 2, 10 });
+
 	Money* money = new Money();
 	money->init(this, POINT{ 11, 8 });
 	money->setQuantity(5);
@@ -97,6 +100,7 @@ HRESULT LobbyScene::init(void)
 	objectVec.push_back(bomb);
 	objectVec.push_back(heal);
 	objectVec.push_back(torch);
+	objectVec.push_back(goldenlute);
 	
 	// UI.
 	_plEquip = new PlEquip;

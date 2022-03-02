@@ -43,7 +43,7 @@ bool Heal::interact(Player * player)
 {
 	if (PLAYERINFOMANAGER->getMoney() >= _info.price)
 	{
-		PLAYERINFOMANAGER->setHead(_info);
+		PLAYERINFOMANAGER->setHeal(_info);
 		PLAYERINFOMANAGER->setMoney(PLAYERINFOMANAGER->getMoney() - _info.price);
 		destroyed = true;
 		return true;

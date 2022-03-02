@@ -45,17 +45,23 @@ void PlEquip::render(void)
 	_slot_1->render(getMemDC(), _slot_1_rc.left, _slot_1_rc.top);
 	tmpItem = PLAYERINFOMANAGER->getShovel();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_1_rc.left + 6, _slot_1_rc.top + 9);
+
 	_slot_2->render(getMemDC(), _slot_2_rc.left, _slot_2_rc.top);
 	tmpItem = PLAYERINFOMANAGER->getAttack();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_2_rc.left + 6, _slot_2_rc.top + 9);
+
 	_slot_3->render(getMemDC(), _slot_3_rc.left, _slot_3_rc.top);
 	tmpItem = PLAYERINFOMANAGER->getBody();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_3_rc.left + 6, _slot_3_rc.top + 9);
+
 	_slot_4->render(getMemDC(), _slot_4_rc.left, _slot_4_rc.top);
 	tmpItem = PLAYERINFOMANAGER->getHead();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_4_rc.left + 6, _slot_4_rc.top + 9);
-	_slot_5->render(getMemDC(), _slot_5_rc.left, _slot_5_rc.top);
 
+	_slot_5->render(getMemDC(), _slot_5_rc.left, _slot_5_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getTorch();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_5_rc.left + 6, _slot_5_rc.top + 9);
+	
 	_action_1->render(getMemDC(), _action_1_rc.left, _action_1_rc.top);
 	tmpItem = PLAYERINFOMANAGER->getHeal();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_1_rc.left + 6, _action_1_rc.top + 18);
@@ -169,8 +175,8 @@ void RhythmNote::update(void)
 	if (_count > _turnInterval)
 	{
 		_count -= _turnInterval;
-		NoteCreate(0, 470, 1, 7);
-		NoteCreate(WINSIZEX, 470, -1, 7);
+		NoteCreate(0, 470, 1, 8.5f);
+		NoteCreate(WINSIZEX, 470, -1, 8.5f);
 	}
 
 	NoteMove();
