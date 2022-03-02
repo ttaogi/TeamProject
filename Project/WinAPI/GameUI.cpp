@@ -142,8 +142,8 @@ void RhythmNote::update(void)
 	if (_count > 0.461538f)
 	{
 		_count -= 0.461538f;
-		NoteCreate(0, 470, 1, 7);
-		NoteCreate(WINSIZEX, 470, -1, 7);
+		NoteCreate(0, 470, 1, 8.5f);
+		NoteCreate(WINSIZEX, 470, -1, 8.5f);
 	}
 
 	NoteMove();
