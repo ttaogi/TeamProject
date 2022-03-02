@@ -18,9 +18,10 @@ struct tagNote
 	float angle;
 	float speed;
 	bool fire;
+	int alpha;
 };
 
-//ÀåºñÃ¢
+//ï¿½ï¿½ï¿½Ã¢
 class PlEquip : public GameNode
 {
 private:
@@ -53,7 +54,7 @@ public:
 };
 
 //====================================================================================
-//ÇÃ·¹ÀÌ¾î Ã¼·Â
+//ï¿½Ã·ï¿½ï¿½Ì¾ï¿½ Ã¼ï¿½ï¿½
 class PlHp : public GameNode
 {
 private:
@@ -80,7 +81,7 @@ public:
 };
 
 //====================================================================================
-//¸®µë³ëÆ®
+//ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
 class RhythmNote : public GameNode
 {
 private:
@@ -125,7 +126,7 @@ public:
 };
 
 //====================================================================================
-//ÀçÈ­
+//ï¿½ï¿½È­
 class PlGold : public GameNode
 {
 private:

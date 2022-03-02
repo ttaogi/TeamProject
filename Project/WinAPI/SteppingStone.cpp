@@ -26,9 +26,13 @@ void SteppingStoneLeft::update(void) { }
 
 void SteppingStoneLeft::render(void)
 {
-	POINT p = GridPointToPixelPointCenter(pos);
-	stripe->render(getMemDC(), p.x - stripe->getWidth() / 2,
-		p.y - stripe->getHeight() / 2);
+	POINT renderPos = GridPointToPixelPointLeftTop(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
+
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	stripe->render(getMemDC(), renderPos.x, renderPos.y);
 }
 
 bool SteppingStoneLeft::interact(Player* player)
@@ -69,9 +73,13 @@ void SteppingStoneTop::update(void) { }
 
 void SteppingStoneTop::render(void)
 {
-	POINT p = GridPointToPixelPointCenter(pos);
-	stripe->render(getMemDC(), p.x - stripe->getWidth() / 2,
-		p.y - stripe->getHeight() / 2);
+	POINT renderPos = GridPointToPixelPointLeftTop(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
+
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	stripe->render(getMemDC(), renderPos.x, renderPos.y);
 }
 
 bool SteppingStoneTop::interact(Player * player)
@@ -112,9 +120,13 @@ void SteppingStoneRight::update(void) { }
 
 void SteppingStoneRight::render(void)
 {
-	POINT p = GridPointToPixelPointCenter(pos);
-	stripe->render(getMemDC(), p.x - stripe->getWidth() / 2,
-		p.y - stripe->getHeight() / 2);
+	POINT renderPos = GridPointToPixelPointLeftTop(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
+
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	stripe->render(getMemDC(), renderPos.x, renderPos.y);
 }
 
 bool SteppingStoneRight::interact(Player* player)
@@ -155,9 +167,13 @@ void SteppingStoneBottom::update(void) { }
 
 void SteppingStoneBottom::render(void)
 {
-	POINT p = GridPointToPixelPointCenter(pos);
-	stripe->render(getMemDC(), p.x - stripe->getWidth() / 2,
-		p.y - stripe->getHeight() / 2);
+	POINT renderPos = GridPointToPixelPointLeftTop(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
+
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	stripe->render(getMemDC(), renderPos.x, renderPos.y);
 }
 
 bool SteppingStoneBottom::interact(Player * player)

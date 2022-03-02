@@ -8,12 +8,14 @@
 
 HRESULT PlEquip::init(void)
 {
+	// shovel, attack, body, head, ring.
 	_slot_1 = IMAGEMANAGER->addImage(KEY_UI_SLOT_1, DIR_UI_SLOT_1, 60, 66, true, MAGENTA);
 	_slot_2 = IMAGEMANAGER->addImage(KEY_UI_SLOT_2, DIR_UI_SLOT_2, 60, 66, true, MAGENTA);
 	_slot_3 = IMAGEMANAGER->addImage(KEY_UI_SLOT_3, DIR_UI_SLOT_3, 60, 66, true, MAGENTA);
 	_slot_4 = IMAGEMANAGER->addImage(KEY_UI_SLOT_4, DIR_UI_SLOT_4, 60, 66, true, MAGENTA);
 	_slot_5 = IMAGEMANAGER->addImage(KEY_UI_SLOT_5, DIR_UI_SLOT_5, 60, 66, true, MAGENTA);
 
+	// item, bomb.
 	_action_1 = IMAGEMANAGER->addImage(KEY_UI_ACTION_1, DIR_UI_ACTION_1, 60, 84, true, MAGENTA);
 	_action_2 = IMAGEMANAGER->addImage(KEY_UI_ACTION_2, DIR_UI_ACTION_2, 60, 84, true, MAGENTA);
 
@@ -39,14 +41,35 @@ void PlEquip::update(void)
 
 void PlEquip::render(void)
 {
+	Item tmpItem;
 	_slot_1->render(getMemDC(), _slot_1_rc.left, _slot_1_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getShovel();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_1_rc.left + 6, _slot_1_rc.top + 9);
 	_slot_2->render(getMemDC(), _slot_2_rc.left, _slot_2_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getAttack();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_2_rc.left + 6, _slot_2_rc.top + 9);
 	_slot_3->render(getMemDC(), _slot_3_rc.left, _slot_3_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getBody();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_3_rc.left + 6, _slot_3_rc.top + 9);
 	_slot_4->render(getMemDC(), _slot_4_rc.left, _slot_4_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getHead();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _slot_4_rc.left + 6, _slot_4_rc.top + 9);
 	_slot_5->render(getMemDC(), _slot_5_rc.left, _slot_5_rc.top);
 
 	_action_1->render(getMemDC(), _action_1_rc.left, _action_1_rc.top);
+	tmpItem = PLAYERINFOMANAGER->getHeal();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_1_rc.left + 6, _action_1_rc.top + 18);
 	_action_2->render(getMemDC(), _action_2_rc.left, _action_2_rc.top);
+
+	tmpItem = PLAYERINFOMANAGER->getBomb();
+	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_2_rc.left + 6, _action_2_rc.top + 18);
+
+	string script = "Z";
+	FONTMANAGER->drawText(getMemDC(), 45, 155, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+
+	script = "X";
+	FONTMANAGER->drawText(getMemDC(), 45, 235, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+
 }
 
 //====================================================================================
@@ -86,7 +109,6 @@ void PlHp::update(void)
 
 void PlHp::render(void)
 {
-	//_FullHp->render(getMemDC(), _Hp_rc.left, _Hp_rc.top);
 	count = Hp;
 	for (int i = 0; i < MaxHp / 2; i++)
 	{
@@ -136,6 +158,9 @@ HRESULT RhythmNote::init(Scene* _scene)
 void RhythmNote::release(void)
 {
 	_vNote.clear();
+
+	SAFE_RELEASE(_animator);
+	SAFE_DELETE(_animator);
 }
 
 void RhythmNote::update(void)
@@ -184,6 +209,8 @@ void RhythmNote::NoteCreate(float x, float y, float angle, float speed)
 	Note.y = Note.HeartY = y;
 	Note.rc = RectMakeCenter((int)Note.x, (int)Note.y, Note.img->getWidth(), Note.img->getHeight());
 
+	Note.alpha = 80;
+
 	_vNote.push_back(Note);
 }
 
@@ -194,6 +221,12 @@ void RhythmNote::NoteMove(void)
 		_viNote->x += _viNote->angle * _viNote->speed;
 		
 		_viNote->rc = RectMakeCenter((int)_viNote->x, (int)_viNote->y, _viNote->img->getWidth(), _viNote->img->getHeight());
+		
+		_viNote->alpha += 5;
+		if (_viNote->alpha >= 255)
+		{
+			_viNote->alpha = 255;
+		}
 	}
 }
 
@@ -201,7 +234,7 @@ void RhythmNote::Notedraw(void)
 {
 	for (_viNote = _vNote.begin(); _viNote != _vNote.end(); ++_viNote)
 	{
-		_viNote->img->render(getMemDC(), _viNote->rc.left, _viNote->rc.top);
+		_viNote->img->alphaRender(getMemDC(), _viNote->rc.left, _viNote->rc.top, _viNote->alpha);
 	}
 }
 
@@ -251,7 +284,32 @@ void PlGold::render(void)
 	string script = "x" + to_string(PLAYERINFOMANAGER->getMoney());
 	FONTMANAGER->drawText(getMemDC(), 895, 33, "PFStardust", 20, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
 		
-	script = "Coin Mul : 2";
-	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 50, 520, "PFStardust", 18, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+	script = "COIN MULTIPLIER : 2";
+	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 100, 520, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+	
+	/*
+	//COIN MULTIPLIER
+	script = "";
+	if (NoteCount >= 5)
+	{
+		script = "COIN MULTIPLIER : 1.5";
+	}
+
+	if (NoteCount >= 10)
+	{
+		script = "COIN MULTIPLIER : 2";
+	}
+
+	if (NoteCount >= 15)
+	{
+		script = "COIN MULTIPLIER : 2.5";
+	}
+
+	if (NoteCount >= 20)
+	{
+		script = "COIN MULTIPLIER : 3";
+	}
+	FONTMANAGER->drawText(getMemDC(), WINSIZEX / 2 - 100, 520, "PFStardust", 15, 2000, (char*)script.c_str(), (int)script.length(), RGB(255, 255, 255));
+	*/
 }
 	

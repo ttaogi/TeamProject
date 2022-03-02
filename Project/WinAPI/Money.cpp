@@ -42,8 +42,13 @@ void Money::update(void) { }
 
 void Money::render(void)
 {
-	POINT p = GridPointToPixelPointCenter(pos);
-	animator->animationRender(getMemDC(), p);
+	POINT renderPos = GridPointToPixelPointCenter(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
+
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	animator->animationRender(getMemDC(), renderPos);
 }
 
 bool Money::interact(Player* player)

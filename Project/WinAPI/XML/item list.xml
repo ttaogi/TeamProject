@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="ANSI" ?>
 <ROOT>
     <!--This is a comment.-->
-    <list num="5">
-        <item_0 name="Åõ±¸" value="1000" />
-        <item_1 name="°©¿Ê" value="1000" />
-        <item_2 name="½Å¹ß" value="1000" />
-        <item_3 name="°Ë" value="2000" />
-        <item_4 name="¹æÆÐ" value="1000" />
+    <list num="8">
+        <item_0 type="0" detailType="0" name="»ð" price="10" atk="1" def="0" heal="0" range="0" />
+        <item_1 type="1" detailType="1" name="´ë°Å" price="10" atk="1" def="0" heal="0" range="0" />
+        <item_2 type="1" detailType="2" name="´ë°Ë" price="20" atk="2" def="0" heal="0" range="0" />
+        <item_3 type="2" detailType="3" name="°©¿Ê" price="10" atk="0" def="1" heal="0" range="0" />
+        <item_4 type="3" detailType="4" name="Åõ±¸" price="10" atk="0" def="1" heal="0" range="0" />
+        <item_5 type="4" detailType="5" name="È¶ºÒ" price="10" atk="0" def="0" heal="0" range="1" />
+        <item_6 type="5" detailType="6" name="»ç°ú" price="10" atk="0" def="0" heal="1" range="0" />
+        <item_7 type="6" detailType="7" name="ÆøÅº" price="10" atk="2" def="0" heal="0" range="0" />
     </list>
 </ROOT>

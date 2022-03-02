@@ -40,7 +40,14 @@ void Tile::render(HDC _hdc)
 {
 	if (stripe)
 	{
-		stripe->render(_hdc, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		POINT renderPos = GridPointToPixelPointLeftTop(pos);
+		POINT revision = CAMERAMANAGER->getRevision();
+
+		renderPos.x -= revision.x;
+		renderPos.y -= revision.y;
+
+		//stripe->render(_hdc, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
+		stripe->render(_hdc, renderPos.x, renderPos.y);
 	}
 }
 
