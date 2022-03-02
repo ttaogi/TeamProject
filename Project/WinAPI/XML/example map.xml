@@ -12,12 +12,27 @@ enum class TILE_TYPE
 };
 enum class OBJECT_TYPE
 {
-	NONE =              0,
-	WALL_UNBREAKABLE,   1
-	WALL_DIRT,          2
-	WALL_SHOP,          3
-	MONSTER_SLIME,      4
-	MONSTER_SLIME_BLUE, 5
+	NONE                        = 0,
+	WALL_UNBREAKABLE,           = 1
+	WALL_DIRT,                  = 2
+	WALL_SHOP,                  = 3
+	MONSTER_SLIME,              = 4
+	MONSTER_SLIME_BLUE,         = 5
+	MONSTER_SKELETON,           = 6
+	MONSTER_BAT,                = 7
+	MONSTER_NECRODANCER,        = 8
+	STEPPING_STONE_LEFT,        = 9
+	STEPPING_STONE_TOP,         = 10
+	STEPPING_STONE_RIGHT,       = 11
+	STEPPING_STONE_BOTTOM,      = 12
+	ITEM_MONEY,                 = 13
+	ITEM_HEAL_APPLE,            = 14
+	ITEM_BOMB,                  = 15
+	EUIP_HEAD,                  = 16
+	EUIP_BOBY,                  = 17
+	EUIP_ATTACK_DAGGER,         = 18
+	EUIP_ATTACK_BROADSWORD,     = 19
+	EUIP_TORCH,                 = 20
 	OBJECT_TYPE_NUM
 };
 enum class SOUND_ID
@@ -59,10 +74,10 @@ enum class SOUND_ID
             <y_4 type="0" object="0" />
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
-            <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
-            <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
+            <y_7 type="1" object="18" />
+            <y_8 type="1" object="19" />
+            <y_9 type="1" object="16" />
+            <y_10 type="1" object="17" />
             <y_11 type="1" object="0" />
             <y_12 type="0" object="3" />
             <y_13 type="0" object="0" />
@@ -81,9 +96,9 @@ enum class SOUND_ID
             <y_4 type="0" object="0" />
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
-            <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
-            <y_9 type="1" object="0" />
+            <y_7 type="1" object="15" />
+            <y_8 type="1" object="14" />
+            <y_9 type="1" object="20" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
             <y_12 type="0" object="3" />
@@ -103,7 +118,7 @@ enum class SOUND_ID
             <y_4 type="0" object="0" />
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
-            <y_7 type="1" object="0" />
+            <y_7 type="1" object="7" />
             <y_8 type="1" object="0" />
             <y_9 type="1" object="0" />
             <y_10 type="1" object="0" />
@@ -192,7 +207,7 @@ enum class SOUND_ID
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="6" />
             <y_9 type="1" object="0" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
@@ -214,7 +229,7 @@ enum class SOUND_ID
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="11" />
             <y_9 type="1" object="0" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
@@ -235,9 +250,9 @@ enum class SOUND_ID
             <y_4 type="0" object="3" />
             <y_5 type="0" object="3" />
             <y_6 type="0" object="3" />
-            <y_7 type="1" object="0" />
+            <y_7 type="1" object="12" />
             <y_8 type="1" object="0" />
-            <y_9 type="1" object="0" />
+            <y_9 type="1" object="10" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
             <y_12 type="0" object="3" />
@@ -258,7 +273,7 @@ enum class SOUND_ID
             <y_5 type="1" object="0" />
             <y_6 type="0" object="3" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="9" />
             <y_9 type="1" object="0" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
@@ -280,7 +295,7 @@ enum class SOUND_ID
             <y_5 type="1" object="0" />
             <y_6 type="0" object="3" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="13" quantity="5" />
             <y_9 type="1" object="0" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
@@ -297,7 +312,7 @@ enum class SOUND_ID
             <y_0 type="0" object="3" />
             <y_1 type="1" object="0" />
             <y_2 type="1" object="0" />
-            <y_3 type="1" object="0" />
+            <y_3 type="1" object="8" />
             <y_4 type="1" object="0" />
             <y_5 type="1" object="0" />
             <y_6 type="0" object="3" />

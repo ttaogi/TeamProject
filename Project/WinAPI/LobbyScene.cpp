@@ -34,69 +34,6 @@ HRESULT LobbyScene::init(void)
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
-
-	skeleton = new Skeleton();
-	skeleton->init(this, POINT{ 7, 8 });
-
-	bat = new Bat();
-	bat->init(this, POINT{ 3, 7 });
-
-	necrodancer = new Necrodancer();
-	necrodancer->init(this, POINT{ 12, 3 });
-
-	SteppingStoneRight *ssr = new SteppingStoneRight();
-	ssr->init(this, POINT{ 8, 8 });
-
-	SteppingStoneLeft *ssl = new SteppingStoneLeft();
-	ssl->init(this, POINT{ 10, 8 });
-
-	SteppingStoneTop *sst = new SteppingStoneTop();
-	sst->init(this, POINT{ 9, 9 });
-
-	SteppingStoneBottom *ssb = new SteppingStoneBottom();
-	ssb->init(this, POINT{ 9, 7 });
-
-	Dagger *dagger = new Dagger();
-	dagger->init(this, POINT{ 1, 7 });
-
-	BroadSword *broadSword = new BroadSword();
-	broadSword->init(this, POINT{ 1, 8 });
-
-	Head *head = new Head();
-	head->init(this, POINT{ 1, 9 });
-
-	Body *body = new Body();
-	body->init(this, POINT{ 1, 10 });
-
-	Bomb *bomb = new Bomb();
-	bomb->init(this, POINT{ 2, 7 });
-	
-	Heal *heal = new Heal();
-	heal->init(this, POINT{ 2, 8 });
-	
-	Torch *torch = new Torch();
-	torch->init(this, POINT{ 2, 9 });
-
-	Money* money = new Money();
-	money->init(this, POINT{ 11, 8 });
-	money->setQuantity(5);
-
-	objectVec.push_back(skeleton);
-	objectVec.push_back(bat);
-	objectVec.push_back(necrodancer);
-	objectVec.push_back(ssr);
-	objectVec.push_back(ssl);
-	objectVec.push_back(sst);
-	objectVec.push_back(ssb);
-	objectVec.push_back(money);
-
-	objectVec.push_back(dagger);
-	objectVec.push_back(broadSword);
-	objectVec.push_back(head);
-	objectVec.push_back(body);
-	objectVec.push_back(bomb);
-	objectVec.push_back(heal);
-	objectVec.push_back(torch);
 	
 	// UI.
 	_plEquip = new PlEquip;

@@ -248,7 +248,12 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 				{
 					Money* obj = new Money();
 					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+					{
+						int quantity;
+						XmlManager::getAttributeValueInt(data, "quantity", &quantity);
+						obj->setQuantity(quantity);
 						objectVec.push_back(obj);
+					}
 					else
 					{
 						SAFE_RELEASE(obj);
