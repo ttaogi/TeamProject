@@ -93,6 +93,9 @@ std::string ItemDetailToIconKeyString(ITEM_DETAIL type)
 		return KEY_ITEM_APPLE;
 	case ITEM_DETAIL::BOMB:
 		return KEY_ITEM_BOMB;
+	case ITEM_DETAIL::ATTACK_GOLDENLUTE:
+		return KEY_ITEM_GOLDENLUTE;
+
 	default:
 		return "";
 	}

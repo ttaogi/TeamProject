@@ -203,6 +203,8 @@ extern const std::string KEY_ITEM_APPLE;
 extern const char* DIR_ITEM_APPLE;
 extern const std::string KEY_ITEM_BOMB;
 extern const char* DIR_ITEM_BOMB;
+extern const std::string KEY_ITEM_GOLDENLUTE;
+extern const char* DIR_ITEM_GOLDENLUTE;
 #pragma endregion Item
 #pragma endregion Stripe
 
