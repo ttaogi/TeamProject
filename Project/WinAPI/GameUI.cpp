@@ -60,7 +60,6 @@ void PlEquip::render(void)
 	tmpItem = PLAYERINFOMANAGER->getHeal();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_1_rc.left + 6, _action_1_rc.top + 18);
 	_action_2->render(getMemDC(), _action_2_rc.left, _action_2_rc.top);
-
 	tmpItem = PLAYERINFOMANAGER->getBomb();
 	if (tmpItem.stripe) tmpItem.stripe->render(getMemDC(), _action_2_rc.left + 6, _action_2_rc.top + 18);
 

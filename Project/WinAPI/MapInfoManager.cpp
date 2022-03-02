@@ -2,10 +2,21 @@
 
 #include "MapInfoManager.h"
 
+#include "bat.h"
+#include "Attack.h"
+#include "Body.h"
+#include "Bomb.h"
+#include "Head.h"
+#include "Heal.h"
+#include "Money.h"
+#include "Necrodancer.h"
 #include "Object.h"
 #include "Scene.h"
+#include "Skeleton.h"
 #include "Slime.h"
 #include "slimeBlue.h"
+#include "SteppingStone.h"
+#include "Torch.h"
 #include "Wall.h"
 
 Tile::Tile() { }
@@ -125,35 +136,200 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 					objectType == (int)OBJECT_TYPE::WALL_DIRT ||
 					objectType == (int)OBJECT_TYPE::WALL_SHOP)
 				{
-					Wall* wall = new Wall();
-					if(SUCCEEDED( wall->init((OBJECT_TYPE)objectType, POINT{ i, j }) ))
-						objectVec.push_back(wall);
+					Wall* obj = new Wall();
+					if(SUCCEEDED(obj->init((OBJECT_TYPE)objectType, POINT{ i, j }) ))
+						objectVec.push_back(obj);
 					else
 					{
-						SAFE_RELEASE(wall);
-						SAFE_DELETE(wall);
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
 					}
 				}
 				else if (objectType == (int)OBJECT_TYPE::MONSTER_SLIME)
 				{
-					Slime* slime = new Slime();
-					if (SUCCEEDED(slime->init(_scene, POINT{ i, j })))
-						objectVec.push_back(slime);
+					Slime* obj = new Slime();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
 					else
 					{
-						SAFE_RELEASE(slime);
-						SAFE_DELETE(slime);
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
 					}
 				}
 				else if(objectType == (int)OBJECT_TYPE::MONSTER_SLIME_BLUE)
 				{
-					SlimeBlue* slimeBlue = new SlimeBlue();
-					if (SUCCEEDED(slimeBlue->init(_scene, POINT{ i, j })))
-						objectVec.push_back(slimeBlue);
+					SlimeBlue* obj = new SlimeBlue();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
 					else
 					{
-						SAFE_RELEASE(slimeBlue);
-						SAFE_DELETE(slimeBlue);
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::MONSTER_SKELETON)
+				{
+					Skeleton* obj = new Skeleton();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::MONSTER_BAT)
+				{
+					Bat* obj = new Bat();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::MONSTER_NECRODANCER)
+				{
+					Necrodancer* obj = new Necrodancer();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::STEPPING_STONE_LEFT)
+				{
+					SteppingStoneLeft* obj = new SteppingStoneLeft();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::STEPPING_STONE_TOP)
+				{
+					SteppingStoneTop* obj = new SteppingStoneTop();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::STEPPING_STONE_RIGHT)
+				{
+					SteppingStoneRight* obj = new SteppingStoneRight();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::STEPPING_STONE_BOTTOM)
+				{
+					SteppingStoneBottom* obj = new SteppingStoneBottom();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::ITEM_MONEY)
+				{
+					Money* obj = new Money();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::ITEM_HEAL_APPLE)
+				{
+					Heal* obj = new Heal();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::ITEM_BOMB)
+				{
+					Bomb* obj = new Bomb();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::EUIP_HEAD)
+				{
+					Head* obj = new Head();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::EUIP_BOBY)
+				{
+					Body* obj = new Body();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::EUIP_ATTACK_DAGGER)
+				{
+					Dagger* obj = new Dagger();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::EUIP_ATTACK_BROADSWORD)
+				{
+					BroadSword* obj = new BroadSword();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::EUIP_TORCH)
+				{
+					Torch* obj = new Torch();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
 					}
 				}
 			}
