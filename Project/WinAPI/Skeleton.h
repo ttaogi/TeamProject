@@ -6,7 +6,6 @@ class Skeleton : public Enemy
 private:
 	float turnCount;
 	bool posCheck;
-
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
 	void release(void);

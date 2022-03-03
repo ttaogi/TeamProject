@@ -469,6 +469,7 @@ MapInfo* MapInfoManager::getMapInfo(MAP_ID _mapId, Scene* _scene)
 	if (iter == mapInfoMap.end()) return NULL;
 	else
 	{
+		_scene->setMapInfo(iter->second);
 		if(SUCCEEDED( iter->second->init(MapIdToKeyString(_mapId), _scene) ))
 			return iter->second;
 		else return NULL;

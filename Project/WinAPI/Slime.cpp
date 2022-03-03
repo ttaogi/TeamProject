@@ -15,12 +15,10 @@ HRESULT Slime::init(Scene* scenePtr, POINT position)
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 1;
+	hp = hpMax = 1;
+	turnInterval = scene->getMapInfo()->getTurnInterval();
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	move(position); // set pos(gameNode) and _rc.
-	
-	IMAGEMANAGER->addFrameImage(KEY_SLIME, DIR_SLIME, 208, 104, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_JUMP, DIR_SLIME_JUMP, 208, 164, 4, 2, 4, true, MAGENTA);
 
 	Animation* slimeJump = new Animation();
 	slimeJump->init(
@@ -43,17 +41,6 @@ void Slime::release(void)
 void Slime::update(void)
 {
 	animator->update();
-	/*
-	POINT searchPos = POINT{ pos.x + areaIter->x, pos.y + areaIter->y };
-	Player* player = scene->getPlayer();
-	POINT playerPos = Player->getPos();
-
-	if(searchPos.x == playerPos.x && searchPos.y == playerPos.y)
-	{
-		hp--;
-	}
-	*/
-	
 }
 
 void Slime::render(void)
@@ -70,19 +57,25 @@ void Slime::render(void)
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
 	animator->animationRender(getMemDC(), renderPos);
+
+	int count = hp;
+	if (hp != hpMax)
+		for (int i = 0; i < hpMax; ++i)
+		{
+			if (count >= 1)
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			else
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			--count;
+		}
 }
 
 bool Slime::interact(Player* player)
 {
-	if (player)
-	{
-		hp--;
-	}
-
-	else
-	{
-		hp -= 4;
-	}
+	if (player)	hp--;
+	else		hp -= 4;
 
 	if (hp <= 0) destroyed = true;
 

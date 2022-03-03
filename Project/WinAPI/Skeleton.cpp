@@ -15,15 +15,13 @@ HRESULT Skeleton::init(Scene* scenePtr, POINT position)
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 1;
+	hp = hpMax = 1;
+	turnInterval = scene->getMapInfo()->getTurnInterval();
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
 
 	turnCount = 0;
 	posCheck = true;
-
-	IMAGEMANAGER->addFrameImage(KEY_SKELETON_LEFT, DIR_SKELETON_LEFT, 384, 100, 8, 2, 8, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SKELETON_RIGHT, DIR_SKELETON_RIGHT, 384, 100, 8, 2, 8, true, MAGENTA);
 
 	Animation* skeletonRight = new Animation();
 	skeletonRight->init(
@@ -74,67 +72,50 @@ void Skeleton::render(void)
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
 	animator->animationRender(getMemDC(), renderPos);
+
+	int count = hp;
+	if (hp != hpMax)
+		for (int i = 0; i < hpMax; ++i)
+		{
+			if (count >= 1)
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			else
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			--count;
+		}
 }
 
 bool Skeleton::interact(Player* player)
 {
-	if (player)
-	{
-		hp--;
-	}
-
-	else
-	{
-		hp -= 4;
-	}
+	if (player)	hp--;
+	else		hp -= 4;
 
 	if (hp <= 0) destroyed = true;
-	{
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
-	}
 
 	return false;
 }
 
 void Skeleton::move(void)
 {
-	/*if (turnCount >= 0.5f)
-	{
-		if (scene->getPlayer()->getPos().x - pos.x >= 2)
-		{
-			pos.x += 1;
-		}
-
-		turnCount -= 0.5f;
-	}*/
-
-	if (turnCount >= 0.5)
+	if (turnCount >= turnInterval)
 	{
 		if (pos.y == scene->getPlayer()->getPos().y)
-		{
 			if (pos.x > scene->getPlayer()->getPos().x)
-			{
 				pos.x -= 1;
-			}
-
 			else if (pos.x < scene->getPlayer()->getPos().x)
-			{
 				pos.x += 1;
-			}
-		}
-
 
 		if (pos.x == scene->getPlayer()->getPos().x)
-		{
 			if (pos.y > scene->getPlayer()->getPos().y)
 				pos.y -= 1;
-
 			else if (pos.y < scene->getPlayer()->getPos().y)
 				pos.y += 1;
-		}
 
-		turnCount -= 0.5f;
+		turnCount -= turnInterval;
 	}
+
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
 		pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
 }

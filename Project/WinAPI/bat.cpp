@@ -15,7 +15,8 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 4;
+	hp = hpMax = 4;
+	turnInterval = scene->getMapInfo()->getTurnInterval();
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
 
@@ -23,14 +24,6 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	posCheck = true;
 	rightCount = 0;
 	leftCount = 0;
-
-	IMAGEMANAGER->addFrameImage(KEY_BAT_LEFT, DIR_BAT_LEFT, 288, 96, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_BAT_RIGHT, DIR_BAT_RIGHT, 288, 96, 4, 2, 4, true, MAGENTA);
-	_FullHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_FULL, DIR_UI_MONSTER_HEART_FULL, 24, 24, true, MAGENTA);
-	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_EMPTY, DIR_UI_MONSTER_HEART_EMPTY, 24, 24, true, MAGENTA);
-	
-
-	_Hp_rc = RectMakeCenter(600, 400, _FullHp->getWidth(), _FullHp->getHeight());
 
 	Animation* batLeft = new Animation();
 	batLeft->init(
@@ -82,41 +75,26 @@ void Bat::render(void)
 
 	animator->animationRender(getMemDC(), renderPos);
 
-	count = hp;
-
-	if (hp != 4)
-	{
-		for (int i = 0; i < 4; i++)
+	int count = hp;
+	if (hp != hpMax)
+		for (int i = 0; i < hpMax; ++i)
 		{
 			if (count >= 1)
-			{
-				_FullHp->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
-			}
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
 			else
-			{
-				_EmptyHp->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
-			}
-			count--;
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			--count;
 		}
-	}
 }
 
 bool Bat::interact(Player* player)
 {
-	if (player)
-	{
-		hp--;
-	}
-
-	else
-	{
-		hp -= 4;
-	}
+	if (player)	hp--;
+	else		hp -= 4;
 
 	if (hp <= 0) destroyed = true;
-	{
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
-	}
 
 	return false;
 }
@@ -124,17 +102,15 @@ bool Bat::interact(Player* player)
 void Bat::move(void)
 {
 	if (animator->isEnd())
-	{
 		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
 
 	if (posCheck)
 	{
-		if (turnCount >= 0.4f)
+		if (turnCount >= turnInterval)
 		{
 			pos.x += 1;
 			animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-			turnCount -= 0.4f;
+			turnCount -= turnInterval;
 		
 			rightCount++;
 
@@ -148,13 +124,13 @@ void Bat::move(void)
 
 	if (!posCheck)
 	{
-		if (turnCount >= 0.4f)
+		if (turnCount >= turnInterval)
 		{
 			pos.x -= 1;
 
 			animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 			
-			turnCount -= 0.4f;
+			turnCount -= turnInterval;
 
 			leftCount++;
 			if (leftCount == 3)

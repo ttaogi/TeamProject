@@ -15,21 +15,13 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 2;
+	hp = hpMax = 2;
+	turnInterval = scene->getMapInfo()->getTurnInterval();
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
 	// SlimeBlue.
 	turnCount = 0;
 	posCheck = true;
-
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE, DIR_SLIME_BLUE, 208, 104, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP, DIR_SLIME_BLUE_JUMP, 208, 184, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_TOP, DIR_SLIME_BLUE_JUMP_TOP, 208, 224, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_BOTTOM, DIR_SLIME_BLUE_JUMP_BOTTOM, 208, 188, 4, 2, 4, true, MAGENTA);
-	_FullHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_FULL, DIR_UI_MONSTER_HEART_FULL, 24, 24, true, MAGENTA);
-	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_EMPTY, DIR_UI_MONSTER_HEART_EMPTY, 24, 24, true, MAGENTA);
-
-	_Hp_rc = RectMakeCenter(600, 400, _FullHp->getWidth(), _FullHp->getHeight());
 
 	Animation* slimeBlue = new Animation();
 	slimeBlue->init(
@@ -51,7 +43,6 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 		POINT{ -26, -100 }, CHARACTER_STATE::JUMP_BOTTOM,
 		false, false, 64
 	);
-
 
 	animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, slimeBlue);
 	animator->addAnimation(CHARACTER_STATE::JUMP_TOP, slimeBlueJumpTop);
@@ -90,45 +81,26 @@ void SlimeBlue::render(void)
 
 	animator->animationRender(getMemDC(), renderPos);
 
-	//renderPos.x -= _TileSize/2
-	//renderPos.y -= (_TileSize/2 + 24)
-
-	
-	count = hp;
-	if (hp != 2)
-	{
-		for (int i = 0; i < 2; i++)
+	int count = hp;
+	if (hp != hpMax)
+		for (int i = 0; i < hpMax; ++i)
 		{
 			if (count >= 1)
-			{
-				_FullHp->render(getMemDC(), renderPos.x - 24 + i * 24, renderPos.y - 78);
-			}
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
 			else
-			{
-				_EmptyHp->render(getMemDC(), renderPos.x - 24 + i * 24, renderPos.y - 78);
-			}
-			count--;
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			--count;
 		}
-	}
-	
 }
 
 bool SlimeBlue::interact(Player* player)
 {
-	if (player)
-	{
-		hp--;
-	}
-
-	else
-	{
-		hp -= 4;
-	}
+	if (player)	hp--;
+	else		hp -= 4;
 
 	if (hp <= 0) destroyed = true;
-	{
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
-	}
 
 	return false;
 }
@@ -142,26 +114,26 @@ void SlimeBlue::move(void)
 	
 	if (posCheck)
 	{
-		if (turnCount >= 0.4f)
+		if (turnCount >= turnInterval)
 		{
 			pos.y -= 1;
 
 			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
 
-			turnCount -= 0.4f;
+			turnCount -= turnInterval;
 			posCheck = false;
 		}
 	}
 
 	if (!posCheck)
 	{
-		if (turnCount >= 0.4f)
+		if (turnCount >= turnInterval)
 		{
 			pos.y += 1;
 
 			animator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 
-			turnCount -= 0.4f;
+			turnCount -= turnInterval;
 			posCheck = true;
 		}
 	}

@@ -314,7 +314,7 @@ enum class SOUND_ID
             <y_0 type="0" object="3" />
             <y_1 type="1" object="0" />
             <y_2 type="1" object="0" />
-            <y_3 type="1" object="8" />
+            <y_3 type="1" object="0" />
             <y_4 type="1" object="0" />
             <y_5 type="1" object="0" />
             <y_6 type="0" object="3" />

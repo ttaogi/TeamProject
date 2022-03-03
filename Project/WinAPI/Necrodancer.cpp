@@ -15,7 +15,8 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 6;
+	hp = hpMax = 6;
+	turnInterval = scene->getMapInfo()->getTurnInterval();
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
 
@@ -38,24 +39,6 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 
 	rightCount = 0;
 	leftCount = 0;
-
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_RIGHT_IDLE, DIR_NECRODANCER_RIGHT_IDLE, 352, 212, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_RIGHT_UP_JUMP, DIR_NECRODANCER_RIGHT_UP_JUMP, 704, 286, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_RIGHT_DOWN_JUMP, DIR_NECRODANCER_RIGHT_DOWN_JUMP, 704, 286, 4, 2, 4, true, MAGENTA);
-
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_LEFT_IDLE, DIR_NECRODANCER_LEFT_IDLE, 352, 212, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_LEFT_UP_JUMP, DIR_NECRODANCER_LEFT_UP_JUMP, 704, 286, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_LEFT_DOWN_JUMP, DIR_NECRODANCER_LEFT_DOWN_JUMP, 704, 286, 4, 2, 4, true, MAGENTA);
-
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EXPLOSION_IDLE, DIR_NECRODANCER_EXPLOSION_IDLE, 88, 212, 1, 2, 1, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EXPLOSION, DIR_NECRODANCER_EXPLOSION, 440, 212, 5, 2, 5, true, MAGENTA);
-	
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_RIGHT_BLUEATT, DIR_NECRODANCER_RIGHT_BLUEATT, 88, 212, 1, 2, 1, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_LEFT_BLUEATT, DIR_NECRODANCER_LEFT_BLUEATT, 88, 212, 1, 2, 1, true, MAGENTA);
-
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_SOHWAN_IDLE, DIR_NECRODANCER_SOHWAN_IDLE, 88, 212, 1, 2, 1, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_IDLE2, DIR_NECRODANCER_IDLE2, 176, 212, 2, 2, 2, true, MAGENTA);
-
 
 	Animation* necrodancerRightIdle = new Animation();
 	necrodancerRightIdle->init(
@@ -169,10 +152,7 @@ void Necrodancer::release(void)
 
 void Necrodancer::update(void)
 {
-	if (countTF)
-	{
-		turnCount += TIMEMANAGER->getElapsedTime();
-	}
+	turnCount += TIMEMANAGER->getElapsedTime();
 
 	move();
 
@@ -193,18 +173,25 @@ void Necrodancer::render(void)
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
 	animator->animationRender(getMemDC(), renderPos);
+
+	int count = hp;
+	if (hp != hpMax)
+		for (int i = 0; i < hpMax; ++i)
+		{
+			if(count >= 1)
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
+					render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			else
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
+					render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			--count;
+		}
 }
 
 bool Necrodancer::interact(Player* player)
 {
-	if (player)
-	{
-		hp--;
-	}
-	else
-	{
-		hp -= 4;
-	}
+	if (player)	hp--;
+	else		hp -= 4;
 
 	if (hp <= 0)
 	{
@@ -227,12 +214,10 @@ void Necrodancer::move(void)
 	if (animator->isEnd())
 	{
 		if(rightIdleTF && !leftIdleTF)
-		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-
+			animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 		else if (leftIdleTF && !rightIdleTF)
-		animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+			animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 	}
-
 	else if (rightUpJump)
 	{
 		pos.x += 1;
@@ -243,7 +228,6 @@ void Necrodancer::move(void)
 		rightIdleTF = false;
 		leftIdleTF = true;
 	}
-
 	else if (rightDownJump)
 	{
 		pos.x += 1;
@@ -254,7 +238,6 @@ void Necrodancer::move(void)
 		rightIdleTF = false;
 		leftIdleTF = true;
 	}
-
 	else if (leftUpJump)
 	{
 		pos.x -= 1;
@@ -265,7 +248,6 @@ void Necrodancer::move(void)
 		rightIdleTF = true;
 		leftIdleTF = false;
 	}
-
 	else if (leftDownJump)
 	{
 		pos.x -= 1;
@@ -276,23 +258,22 @@ void Necrodancer::move(void)
 		rightIdleTF = true;
 		leftIdleTF = false;
 	}
-
 	else if (explosion)
 	{
 		animator->changeAnimation(CHARACTER_STATE::EXPLOSION);	
 		explosion = false;
 	}
 
-	if (turnCount >= 0.5f)
+	if (turnCount >= turnInterval)
 	{
 		animator->changeAnimation(CHARACTER_STATE::EXPLOSION);
 		
-		pos.x -= 5;
-		pos.y += 2;
+		//pos.x -= 5;
+		//pos.y += 2;
 		
 		rightIdleTF = false;
 		leftIdleTF = true;
-		turnCount -= 0.5f;
+		turnCount -= turnInterval;
 		countTF = false;
 	}
 

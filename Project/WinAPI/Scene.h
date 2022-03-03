@@ -20,6 +20,7 @@ public:
 	virtual void render(void) = 0;
 
 	MapInfo* getMapInfo();
+	void setMapInfo(MapInfo* _mapInfo) { mapInfo = _mapInfo; }
 	Player* getPlayer();
 	std::vector<Object*>* getObjectVec();
 	Object* getObject(POINT _pos);
