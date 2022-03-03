@@ -42,6 +42,7 @@ using namespace std;
 // # 내가 만든 헤더파일을 이곳에 추가 #
 //===================================
 #pragma region Manager
+#include "CameraManager.h"
 #include "FontManager.h"
 #include "ImageManager.h"
 #include "ItemInfoManager.h"
@@ -68,6 +69,7 @@ using namespace MY_UTIL;
 // # 싱글톤을 이곳에 추가 #
 //========================
 #define RND						RandomFunction::getSingleton()
+#define CAMERAMANAGER			CameraManager::getSingleton()
 #define FONTMANAGER				FontManager::getSingleton()
 #define IMAGEMANAGER			ImageManager::getSingleton()
 #define ITEMINFOMANAGER			ItemInfoManager::getSingleton()

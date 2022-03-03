@@ -73,10 +73,18 @@ void SlimeBlue::update(void)
 
 void SlimeBlue::render(void)
 {
-	if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
+	POINT renderPos = GridPointToPixelPointCenter(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
 
-	animator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	if (KEYMANAGER->isToggleKey(VK_F1))
+		Rectangle(getMemDC(),
+			_rc.left - revision.x, _rc.top - revision.y,
+			_rc.right - revision.x, _rc.bottom - revision.y);
+
+	animator->animationRender(getMemDC(), renderPos);
 }
 
 bool SlimeBlue::interact(Player* player)

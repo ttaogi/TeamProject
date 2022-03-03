@@ -186,6 +186,23 @@ extern const char* DIR_SWIPE_ENEMY_RIGHT;
 #pragma region Item
 extern const std::string KEY_ITEM_GOLD;
 extern const char* DIR_ITEM_GOLD;
+
+extern const std::string KEY_ITEM_SHOVEL;
+extern const char* DIR_ITEM_SHOVEL;
+extern const std::string KEY_ITEM_DAGGER;
+extern const char* DIR_ITEM_DAGGER;
+extern const std::string KEY_ITEM_BROADSWORD;
+extern const char* DIR_ITEM_BROADSWORD;
+extern const std::string KEY_ITEM_BODY;
+extern const char* DIR_ITEM_BODY;
+extern const std::string KEY_ITEM_HEAD;
+extern const char* DIR_ITEM_HEAD;
+extern const std::string KEY_ITEM_TORCH;
+extern const char* DIR_ITEM_TORCH;
+extern const std::string KEY_ITEM_APPLE;
+extern const char* DIR_ITEM_APPLE;
+extern const std::string KEY_ITEM_BOMB;
+extern const char* DIR_ITEM_BOMB;
 #pragma endregion Item
 #pragma endregion Stripe
 
@@ -229,3 +246,4 @@ extern const int TILE_SIZE;
 
 extern const COLORREF MAGENTA;
 extern const float DEFAULT_FPS;
+extern const Item EMPTY_ITEM;

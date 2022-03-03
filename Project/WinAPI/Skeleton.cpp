@@ -62,10 +62,18 @@ void Skeleton::update(void)
 
 void Skeleton::render(void)
 {
-	if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
+	POINT renderPos = GridPointToPixelPointCenter(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
 
-	animator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	if (KEYMANAGER->isToggleKey(VK_F1))
+		Rectangle(getMemDC(),
+			_rc.left - revision.x, _rc.top - revision.y,
+			_rc.right - revision.x, _rc.bottom - revision.y);
+
+	animator->animationRender(getMemDC(), renderPos);
 }
 
 bool Skeleton::interact(Player* player)
@@ -82,20 +90,43 @@ bool Skeleton::interact(Player* player)
 void Skeleton::move(void)
 {
 	cout << pos.x << endl;
-	if (turnCount >= 0.5f)
+	/*if (turnCount >= 0.5f)
 	{
-		if (pos.x <= scene->getPlayer()->getPos().x)
+		if (scene->getPlayer()->getPos().x - pos.x >= 2)
 		{
 			pos.x += 1;
-			if (pos.x == scene->getPlayer()->getPos().x)
+		}
+
+		turnCount -= 0.5f;
+	}*/
+
+	if (turnCount >= 0.5)
+	{
+		if (pos.y == scene->getPlayer()->getPos().y)
+		{
+			if (pos.x > scene->getPlayer()->getPos().x)
 			{
-				pos.x = scene->getPlayer()->getPos().x - 1;
+				pos.x -= 1;
 			}
 
+			else if (pos.x < scene->getPlayer()->getPos().x)
+			{
+				pos.x += 1;
+			}
 		}
+
+
+		if (pos.x == scene->getPlayer()->getPos().x)
+		{
+			if (pos.y > scene->getPlayer()->getPos().y)
+				pos.y -= 1;
+
+			else if (pos.y < scene->getPlayer()->getPos().y)
+				pos.y += 1;
+		}
+
 		turnCount -= 0.5f;
 	}
-
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
 		pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
 }

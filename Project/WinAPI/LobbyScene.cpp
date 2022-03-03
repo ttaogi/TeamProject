@@ -14,6 +14,12 @@
 #include "Necrodancer.h"
 #include "SteppingStone.h"
 #include "Wall.h"
+#include "Head.h"
+#include "Attack.h"
+#include "Body.h"
+#include "Bomb.h"
+#include "Heal.h"
+#include "Torch.h"
 
 HRESULT LobbyScene::init(void)
 {
@@ -50,6 +56,27 @@ HRESULT LobbyScene::init(void)
 	SteppingStoneBottom *ssb = new SteppingStoneBottom();
 	ssb->init(this, POINT{ 9, 7 });
 
+	Dagger *dagger = new Dagger();
+	dagger->init(this, POINT{ 1, 7 });
+
+	BroadSword *broadSword = new BroadSword();
+	broadSword->init(this, POINT{ 1, 8 });
+
+	Head *head = new Head();
+	head->init(this, POINT{ 1, 9 });
+
+	Body *body = new Body();
+	body->init(this, POINT{ 1, 10 });
+
+	Bomb *bomb = new Bomb();
+	bomb->init(this, POINT{ 2, 7 });
+	
+	Heal *heal = new Heal();
+	heal->init(this, POINT{ 2, 8 });
+	
+	Torch *torch = new Torch();
+	torch->init(this, POINT{ 2, 9 });
+
 	Money* money = new Money();
 	money->init(this, POINT{ 11, 8 });
 	money->setQuantity(5);
@@ -62,6 +89,14 @@ HRESULT LobbyScene::init(void)
 	objectVec.push_back(sst);
 	objectVec.push_back(ssb);
 	objectVec.push_back(money);
+
+	objectVec.push_back(dagger);
+	objectVec.push_back(broadSword);
+	objectVec.push_back(head);
+	objectVec.push_back(body);
+	objectVec.push_back(bomb);
+	objectVec.push_back(heal);
+	objectVec.push_back(torch);
 	
 	// UI.
 	_plEquip = new PlEquip;
@@ -74,8 +109,10 @@ HRESULT LobbyScene::init(void)
 	_plHp->init();
 	
 	_Note = new RhythmNote;
-	_Note->init("", 300, 1000);
-	
+	_Note->init(this);
+
+	CAMERAMANAGER->init(player);
+
 	return S_OK;
 }
 
@@ -100,8 +137,6 @@ void LobbyScene::update(void)
 		return;
 	}
 
-	SOUNDMANAGER->update();
-
 	player->update();
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
@@ -116,6 +151,9 @@ void LobbyScene::update(void)
 	_Note->update();
 	_plHp->update();
 	_plGold->update();
+
+	CAMERAMANAGER->update();
+	SOUNDMANAGER->update();
 }
 
 void LobbyScene::render(void)

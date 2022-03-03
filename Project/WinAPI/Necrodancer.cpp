@@ -15,7 +15,7 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 10;
+	hp = 6;
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
 
@@ -183,10 +183,18 @@ void Necrodancer::update(void)
 
 void Necrodancer::render(void)
 {
-	if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
+	POINT renderPos = GridPointToPixelPointCenter(pos);
+	POINT revision = CAMERAMANAGER->getRevision();
 
-	animator->animationRender(getMemDC(), GridPointToPixelPointCenter(pos));
+	renderPos.x -= revision.x;
+	renderPos.y -= revision.y;
+
+	if (KEYMANAGER->isToggleKey(VK_F1))
+		Rectangle(getMemDC(),
+			_rc.left - revision.x, _rc.top - revision.y,
+			_rc.right - revision.x, _rc.bottom - revision.y);
+
+	animator->animationRender(getMemDC(), renderPos);
 }
 
 bool Necrodancer::interact(Player* player)
