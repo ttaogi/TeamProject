@@ -2,16 +2,12 @@
 
 #include "Scene.h"
 
-#include "GameUI.h"
+class PlEquip;
+class PlGold;
+class PlHp;
+class RhythmNote;
 
-class Player;
-class Slime;
-class SlimeBlue;
-class Skeleton;
-class Bat;
-class Necrodancer;
-
-class LobbyScene : public Scene
+class BossScene : public Scene
 {
 private:
 	PlEquip* _plEquip;
@@ -24,6 +20,6 @@ public:
 	void update(void);
 	void render(void);
 
-	LobbyScene() {}
-	virtual ~LobbyScene() {}
+	BossScene() {}
+	virtual ~BossScene() {}
 };

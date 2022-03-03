@@ -61,6 +61,7 @@ enum class OBJECT_TYPE
 enum class MAP_ID
 {
 	EXAMPLE_MAP = 0,
+	DUGEON_MAP, BOSS_MAP,
 	MAP_ID_NUM
 };
 

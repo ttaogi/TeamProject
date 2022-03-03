@@ -98,7 +98,6 @@ bool Skeleton::interact(Player* player)
 
 void Skeleton::move(void)
 {
-	cout << pos.x << endl;
 	/*if (turnCount >= 0.5f)
 	{
 		if (scene->getPlayer()->getPos().x - pos.x >= 2)

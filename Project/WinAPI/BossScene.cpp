@@ -1,6 +1,6 @@
 #include "Stdafx.h"
 
-#include "LobbyScene.h"
+#include "BossScene.h"
 
 #include <queue>
 
@@ -9,6 +9,7 @@
 #include "Body.h"
 #include "Bomb.h"
 #include "Explosion.h"
+#include "GameUI.h"
 #include "Head.h"
 #include "Heal.h"
 #include "MainGame.h"
@@ -23,16 +24,16 @@
 #include "Torch.h"
 #include "Wall.h"
 
-HRESULT LobbyScene::init(void)
+HRESULT BossScene::init(void)
 {
-	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::EXAMPLE_MAP, this);
+	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::BOSS_MAP, this);
 	if (mapInfo == NULL) return E_FAIL;
 
 	objectVec = mapInfo->getObjectVec();
 
 	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
-			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_BOSS);
+			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_START);
 
 	SOUNDMANAGER->allStop();
 	if (mapInfo->getBgmKey() != "")
@@ -41,7 +42,7 @@ HRESULT LobbyScene::init(void)
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
-	
+
 	// UI.
 	_plEquip = new PlEquip;
 	_plEquip->init();
@@ -51,7 +52,7 @@ HRESULT LobbyScene::init(void)
 
 	_plHp = new PlHp;
 	_plHp->init();
-	
+
 	_Note = new RhythmNote;
 	_Note->init(this);
 
@@ -60,7 +61,7 @@ HRESULT LobbyScene::init(void)
 	return S_OK;
 }
 
-void LobbyScene::release(void)
+void BossScene::release(void)
 {
 	SAFE_RELEASE(player);
 	SAFE_DELETE(player);
@@ -72,7 +73,7 @@ void LobbyScene::release(void)
 	objectVec.clear();
 }
 
-void LobbyScene::update(void)
+void BossScene::update(void)
 {
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))
 	{
@@ -99,7 +100,7 @@ void LobbyScene::update(void)
 	SOUNDMANAGER->update();
 }
 
-void LobbyScene::render(void)
+void BossScene::render(void)
 {
 	mapInfo->render(getMemDC());
 

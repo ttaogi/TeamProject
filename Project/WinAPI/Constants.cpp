@@ -423,6 +423,10 @@ const std::string KEY_SCENE_START =
 	"START_SCENE";
 const std::string KEY_SCENE_LOBBY =
 	"LOBBY_SCENE";
+const std::string KEY_SCENE_DUNGEON =
+	"SCENE_DUNGEON";
+const std::string KEY_SCENE_BOSS =
+	"SCENE_BOSS";
 #pragma endregion Scene
 
 ///////////////////////
@@ -435,6 +439,10 @@ const std::string XML_DOC_ITEM_LIST =
 	"XML/item list.xml";
 const std::string XML_DOC_EXAMPLE_MAP =
 	"XML/example map.xml";
+const std::string XML_DOC_DUGEON_MAP =
+	"XML/dugeon map.xml";
+const std::string XML_DOC_BOSS_MAP =
+	"XML/boss map.xml";
 #pragma endregion XmlDocument
 
 ///////////////////////

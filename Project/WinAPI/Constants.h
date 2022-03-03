@@ -247,6 +247,8 @@ extern const char* DIR_BGM_MAIN_MENU;
 extern const std::string KEY_SCENE_NONE;
 extern const std::string KEY_SCENE_START;
 extern const std::string KEY_SCENE_LOBBY;
+extern const std::string KEY_SCENE_DUNGEON;
+extern const std::string KEY_SCENE_BOSS;
 #pragma endregion Scene
 
 ///////////////////////
@@ -256,6 +258,8 @@ extern const std::string KEY_SCENE_LOBBY;
 extern const std::string XML_DOC_EXAMPLE;
 extern const std::string XML_DOC_ITEM_LIST;
 extern const std::string XML_DOC_EXAMPLE_MAP;
+extern const std::string XML_DOC_DUGEON_MAP;
+extern const std::string XML_DOC_BOSS_MAP;
 #pragma endregion XmlDocument
 
 ///////////////////////

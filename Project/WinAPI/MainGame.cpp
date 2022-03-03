@@ -2,6 +2,7 @@
 
 #include "MainGame.h"
 
+#include "BossScene.h"
 #include "LobbyScene.h"
 #include "StartScene.h"
 
@@ -12,8 +13,9 @@ HRESULT MainGame::init(void)
 	nextSceneKey = KEY_SCENE_NONE;
 	quit = false;
 
-	SCENEMANAGER->addScene(KEY_SCENE_START, new StartScene);
-	SCENEMANAGER->addScene(KEY_SCENE_LOBBY, new LobbyScene);
+	SCENEMANAGER->addScene(KEY_SCENE_START, new StartScene());
+	SCENEMANAGER->addScene(KEY_SCENE_LOBBY, new LobbyScene());
+	SCENEMANAGER->addScene(KEY_SCENE_BOSS, new BossScene());
 	SCENEMANAGER->changeScene(KEY_SCENE_START);
 
 	return S_OK;

@@ -53,6 +53,10 @@ std::string MapIdToKeyString(MAP_ID id)
 	{
 	case MAP_ID::EXAMPLE_MAP:
 		return XML_DOC_EXAMPLE_MAP;
+	case MAP_ID::DUGEON_MAP:
+		return XML_DOC_DUGEON_MAP;
+	case MAP_ID::BOSS_MAP:
+		return XML_DOC_BOSS_MAP;
 	default:
 		return "";
 	}

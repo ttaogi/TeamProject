@@ -58,7 +58,6 @@ void Tile::render(HDC _hdc)
 		renderPos.x -= revision.x;
 		renderPos.y -= revision.y;
 
-		//stripe->render(_hdc, pos.x * TILE_SIZE, pos.y * TILE_SIZE);
 		stripe->render(_hdc, renderPos.x, renderPos.y);
 	}
 }
@@ -79,7 +78,7 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 	cout << "####################" << endl;
 	cout << "MapInfo Init." << endl;
 
-	if (XmlManager::loadFile(doc, XML_DOC_EXAMPLE_MAP))
+	if (XmlManager::loadFile(doc, _fileName))
 	{
 		TiXmlElement* root = XmlManager::firstChildElement(doc, "ROOT");
 		TiXmlElement* interval = XmlManager::firstChildElement(root, "turnInterval");
@@ -438,22 +437,13 @@ HRESULT MapInfoManager::init()
 	cout << "####################" << endl;
 	cout << "MapInfoManager init." << endl;
 
-	IMAGEMANAGER->addImage(KEY_TILE_DIRT, DIR_TILE_DIRT, TILE_SIZE, TILE_SIZE, true, MAGENTA);
-	IMAGEMANAGER->findImage(KEY_TILE_DIRT)->initForAlphaBlend();
-	//cout << "TILE DIRT : " << IMAGEMANAGER->findImage(KEY_TILE_DIRT) << endl;
-	IMAGEMANAGER->addFrameImage(KEY_WALL_UNBREAKABLE, DIR_WALL_UNBREAKABLE, TILE_SIZE, TILE_SIZE * 2, 1, 1, 1, true, MAGENTA);
-	IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE)->initForAlphaBlend();
-	//cout << "WALL UNBREAKABLE : " << IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE) << endl;
-	IMAGEMANAGER->addFrameImage(KEY_WALL_DIRT, DIR_WALL_DIRT, TILE_SIZE * 16, TILE_SIZE * 2, 16, 1, 16, true, MAGENTA);
-	IMAGEMANAGER->findImage(KEY_WALL_DIRT)->initForAlphaBlend();
-	//cout << "WALL DIRT : " << IMAGEMANAGER->findImage(KEY_WALL_DIRT) << endl;
-	IMAGEMANAGER->addFrameImage(KEY_WALL_SHOP, DIR_WALL_SHOP, TILE_SIZE, TILE_SIZE * 2, 1, 1, 1, true, MAGENTA);
-	IMAGEMANAGER->findImage(KEY_WALL_SHOP)->initForAlphaBlend();
-	//cout << "WALL SHOP : " << IMAGEMANAGER->findImage(KEY_WALL_SHOP) << endl;
-
 	MapInfo* exampleMap = new MapInfo();
+	MapInfo* dungeonMap = new MapInfo();
+	MapInfo* bossMap = new MapInfo();
 
 	mapInfoMap.insert(make_pair(MAP_ID::EXAMPLE_MAP, exampleMap));
+	mapInfoMap.insert(make_pair(MAP_ID::DUGEON_MAP, dungeonMap));
+	mapInfoMap.insert(make_pair(MAP_ID::BOSS_MAP, bossMap));
 
 	cout << "####################" << endl;
 

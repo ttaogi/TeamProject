@@ -263,6 +263,9 @@
       <Filter>API FrameWork\Object\Stair</Filter>
     </ClCompile>
     <ClCompile Include="Explosion.cpp" />
+    <ClCompile Include="BossScene.cpp">
+      <Filter>API FrameWork\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -416,5 +419,8 @@
       <Filter>API FrameWork\Object\Stair</Filter>
     </ClInclude>
     <ClInclude Include="Explosion.h" />
+    <ClInclude Include="BossScene.h">
+      <Filter>API FrameWork\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
