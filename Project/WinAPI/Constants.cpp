@@ -123,6 +123,20 @@ const std::string KEY_UI_GOLD =
 	"UI_GOLD";
 const char* DIR_UI_GOLD =
 	"Resources/Images/gui/hud_coins.bmp";
+
+const std::string KEY_UI_MONSTER_HEART_EMPTY = 
+	"UI_MONSTER_HEART_EMPTY";
+const char* DIR_UI_MONSTER_HEART_EMPTY =
+	"Resources/Images/gui/TEMP_heart_empty_small.bmp";
+
+const std::string KEY_UI_MONSTER_HEART_FULL =
+	"UI_MONSTER_HEART_FULL";
+const char* DIR_UI_MONSTER_HEART_FULL =
+	"Resources/Images/gui/TEMP_heart_small.bmp";
+
+
+
+
 #pragma endregion UI
 
 #pragma region Player

@@ -72,6 +72,14 @@ extern const char* DIR_UI_NOTE_RED;
 
 extern const std::string KEY_UI_GOLD;
 extern const char* DIR_UI_GOLD;
+
+extern const std::string KEY_UI_MONSTER_HEART_EMPTY;
+extern const char* DIR_UI_MONSTER_HEART_EMPTY;
+
+extern const std::string KEY_UI_MONSTER_HEART_FULL;
+extern const char* DIR_UI_MONSTER_HEART_FULL;
+
+
 #pragma endregion UI
 
 #pragma region Player

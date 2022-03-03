@@ -43,6 +43,17 @@ void Slime::release(void)
 void Slime::update(void)
 {
 	animator->update();
+	/*
+	POINT searchPos = POINT{ pos.x + areaIter->x, pos.y + areaIter->y };
+	Player* player = scene->getPlayer();
+	POINT playerPos = Player->getPos();
+
+	if(searchPos.x == playerPos.x && searchPos.y == playerPos.y)
+	{
+		hp--;
+	}
+	*/
+	
 }
 
 void Slime::render(void)
