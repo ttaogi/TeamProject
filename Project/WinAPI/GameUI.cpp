@@ -170,8 +170,8 @@ void RhythmNote::update(void)
 	if (_count > _turnInterval)
 	{
 		_count -= _turnInterval;
-		NoteCreate(0, 470, 1, 8.5f);
-		NoteCreate(WINSIZEX, 470, -1, 8.5f);
+		NoteCreate(0, 470, 1, 7);
+		NoteCreate(WINSIZEX, 470, -1, 7);
 	}
 
 	NoteMove();

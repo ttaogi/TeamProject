@@ -142,7 +142,8 @@ void loadResources()
 	SOUNDMANAGER->addSound(KEY_BGM_INTRO, DIR_BGM_INTRO, true, true);
 	SOUNDMANAGER->addSound(KEY_BGM_LOBBY, DIR_BGM_LOBBY, true, true);
 	SOUNDMANAGER->addSound(KEY_BGM_MAIN_MENU, DIR_BGM_MAIN_MENU, true, true);
-
+	SOUNDMANAGER->addSound(KEY_BGM_ZONE_1_1, DIR_BGM_ZONE_1_1, true, true);
+	
 	ITEMINFOMANAGER->init();
 	MAPINFOMANAGER->init();
 	PLAYERINFOMANAGER->init();

@@ -237,6 +237,9 @@ extern const std::string KEY_BGM_LOBBY;
 extern const char* DIR_BGM_LOBBY;
 extern const std::string KEY_BGM_MAIN_MENU;
 extern const char* DIR_BGM_MAIN_MENU;
+extern const std::string KEY_BGM_ZONE_1_1;
+extern const char* DIR_BGM_ZONE_1_1;
+
 #pragma endregion Sound
 
 ///////////////////////
