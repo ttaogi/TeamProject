@@ -69,7 +69,6 @@ extern const char* DIR_UI_NOTE_GREEN;
 extern const std::string KEY_UI_NOTE_RED;
 extern const char* DIR_UI_NOTE_RED;
 
-
 extern const std::string KEY_UI_GOLD;
 extern const char* DIR_UI_GOLD;
 
@@ -78,8 +77,6 @@ extern const char* DIR_UI_MONSTER_HEART_EMPTY;
 
 extern const std::string KEY_UI_MONSTER_HEART_FULL;
 extern const char* DIR_UI_MONSTER_HEART_FULL;
-
-
 #pragma endregion UI
 
 #pragma region Player
@@ -223,7 +220,6 @@ extern const std::string KEY_ITEM_BOMBDROP;
 extern const char* DIR_ITEM_BOMBDROP;
 extern const std::string KEY_SFX_EXPLOSION;
 extern const char* DIR_SFX_EXPLOSION;
-
 #pragma endregion Item
 #pragma endregion Stripe
 
@@ -239,7 +235,8 @@ extern const std::string KEY_BGM_MAIN_MENU;
 extern const char* DIR_BGM_MAIN_MENU;
 extern const std::string KEY_BGM_ZONE_1_1;
 extern const char* DIR_BGM_ZONE_1_1;
-
+extern const std::string KEY_BGM_BOSS_NECRODANCER;
+extern const char* DIR_BGM_BOSS_NECRODANCER;
 #pragma endregion Sound
 
 ///////////////////////

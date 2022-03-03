@@ -70,6 +70,7 @@ std::string MapIdToKeyString(MAP_ID id);
 enum class SOUND_ID
 {
 	BGM_INTRO = 0, BGM_LOBBY, BGM_MAIN_MENU, BGM_ZONE_1_1,
+	BGM_NECRODANCER,
 	SOUND_ID_NUM
 };
 

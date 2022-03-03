@@ -21,7 +21,7 @@ struct tagNote
 	int alpha;
 };
 
-//ï¿½ï¿½ï¿½Ã¢
+//ï¿½ï¿½ï¿½Ã?
 class PlEquip : public GameNode
 {
 private:
@@ -79,7 +79,7 @@ public:
 };
 
 //====================================================================================
-//ï¿½ï¿½ï¿½ï¿½ï¿½Æ®
+//ï¿½ï¿½ï¿½ï¿½ï¿½Æ?
 class RhythmNote : public GameNode
 {
 private:
@@ -90,6 +90,7 @@ private:
 	float _count;
 
 	float _turnInterval;
+	float _noteSpeed;
 	float _SceneStartTime;
 	
 	Note _NoteHeat;

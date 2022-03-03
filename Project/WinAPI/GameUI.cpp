@@ -144,6 +144,7 @@ HRESULT RhythmNote::init(Scene* _scene)
 	scene = _scene;
 
 	_turnInterval = scene->getMapInfo()->getTurnInterval();
+	_noteSpeed = 439 / (_turnInterval * 60 * 3);
 	_SceneStartTime = TIMEMANAGER->getWorldTime();
 	
 	_count = 0;
@@ -170,8 +171,10 @@ void RhythmNote::update(void)
 	if (_count > _turnInterval)
 	{
 		_count -= _turnInterval;
-		NoteCreate(0, 470, 1, 7);
-		NoteCreate(WINSIZEX, 470, -1, 7);
+		/*NoteCreate(0, 470, 1, 7);
+		NoteCreate(WINSIZEX, 470, -1, 7);*/
+		NoteCreate(0, 470, 1, _noteSpeed);
+		NoteCreate(WINSIZEX, 470, -1, _noteSpeed);
 	}
 
 	NoteMove();
