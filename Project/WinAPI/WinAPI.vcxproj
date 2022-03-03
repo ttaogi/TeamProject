@@ -180,6 +180,7 @@
     <ClCompile Include="Slime.cpp" />
     <ClCompile Include="slimeBlue.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="Stair.cpp" />
     <ClCompile Include="StartScene.cpp" />
     <ClCompile Include="Stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -247,6 +248,7 @@
     <ClInclude Include="Slime.h" />
     <ClInclude Include="slimeBlue.h" />
     <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="Stair.h" />
     <ClInclude Include="StartScene.h" />
     <ClInclude Include="Stdafx.h" />
     <ClInclude Include="SteppingStone.h" />

@@ -51,6 +51,13 @@ const char* DIR_STEPPING_STONE_BOTTOM =
 	"Resources/Images/traps/steppingStoneBottom.bmp";
 #pragma endregion SteppingStone
 
+#pragma region Stair
+const std::string KEY_STAIR =
+"KEY_STAIR";
+const char* DIR_STAIR =
+"Resources/Images/level/stairs.bmp";
+#pragma endregion Stair
+
 #pragma region UI
 const std::string KEY_UI_PRESS_ANY_KEY =
 	"PRESS_ANY_KEY";
@@ -386,6 +393,8 @@ const char* DIR_BGM_MAIN_MENU =
 ///////////////////////
 
 #pragma region Scene
+const std::string KEY_SCENE_NONE =
+	"NONE_SCENE";
 const std::string KEY_SCENE_START =
 	"START_SCENE";
 const std::string KEY_SCENE_LOBBY =

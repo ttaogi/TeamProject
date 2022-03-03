@@ -9,11 +9,12 @@ HRESULT MainGame::init(void)
 {
 	GameNode::init(TRUE);
 
+	nextSceneKey = KEY_SCENE_NONE;
 	quit = false;
 
 	SCENEMANAGER->addScene(KEY_SCENE_START, new StartScene);
 	SCENEMANAGER->addScene(KEY_SCENE_LOBBY, new LobbyScene);
-	SCENEMANAGER->changeScene(KEY_SCENE_LOBBY);
+	SCENEMANAGER->changeScene(KEY_SCENE_START);
 
 	return S_OK;
 }
@@ -26,6 +27,12 @@ void MainGame::update(void)
 	{
 		PostQuitMessage(0);
 		return;
+	}
+
+	if (nextSceneKey != KEY_SCENE_NONE)
+	{
+		SCENEMANAGER->changeScene(nextSceneKey);
+		nextSceneKey = KEY_SCENE_NONE;
 	}
 
 	TIMEMANAGER->update(60.0f);
@@ -44,3 +51,5 @@ void MainGame::render(void)
 }
 
 void MainGame::quitGame() { quit = true; }
+
+void MainGame::setNextScene(std::string _nextSceneKey) { nextSceneKey = _nextSceneKey; }

@@ -31,6 +31,11 @@ extern const std::string KEY_STEPPING_STONE_BOTTOM;
 extern const char* DIR_STEPPING_STONE_BOTTOM;
 #pragma endregion SteppingStone
 
+#pragma region Stair
+extern const std::string KEY_STAIR;
+extern const char* DIR_STAIR;
+#pragma endregion Stair
+
 #pragma region UI
 extern const std::string KEY_UI_PRESS_ANY_KEY;
 extern const char* DIR_UI_PRESS_ANY_KEY;
@@ -225,6 +230,7 @@ extern const char* DIR_BGM_MAIN_MENU;
 
 
 #pragma region Scene
+extern const std::string KEY_SCENE_NONE;
 extern const std::string KEY_SCENE_START;
 extern const std::string KEY_SCENE_LOBBY;
 #pragma endregion Scene

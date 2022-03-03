@@ -23,7 +23,7 @@ void StartScene::update(void)
 {
 	if (KEYMANAGER->isOnceAnyKeyDown())
 	{ // a-z, 0-9, space, enter.
-		SCENEMANAGER->changeScene(KEY_SCENE_LOBBY);
+		_mg->setNextScene(KEY_SCENE_LOBBY);
 		return;
 	}
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))

@@ -51,17 +51,6 @@ void SceneManager::release(void)
 		else ++miSceneList;
 	}
 	_mSceneList.clear();
-
-	/*
-	//같은건데 예외처리 없는거.. 
-	//예외처리 생각하면서 작성하는것이 베스트 코드가 짧다고 좋은게 아님 코드 수에 연연하지말것
-	
-	for each(auto scene in _mSceneList)
-	{
-		scene.second->release();
-		SAFE_DELETE(scene.second);
-	}
-	*/
 }
 
 void SceneManager::update(void)
@@ -108,6 +97,8 @@ HRESULT SceneManager::changeScene(string sceneName)
 
 	if (SUCCEEDED(find->second->init()))
 	{
+		if(_currentScene) _currentScene->release();
+
 		_currentScene = find->second;
 
 		return S_OK;

@@ -15,6 +15,7 @@
 #include "Skeleton.h"
 #include "Slime.h"
 #include "slimeBlue.h"
+#include "Stair.h"
 #include "SteppingStone.h"
 #include "Torch.h"
 #include "Wall.h"
@@ -340,6 +341,17 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 				else if (objectType == (int)OBJECT_TYPE::EUIP_ATTACK_GOLDENLUTE)
 				{
 					Goldenlute* obj = new Goldenlute();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::STAIR)
+				{
+					Stair* obj = new Stair();
 					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
 						objectVec.push_back(obj);
 					else

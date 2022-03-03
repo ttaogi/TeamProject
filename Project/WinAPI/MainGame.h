@@ -4,6 +4,7 @@
 class MainGame : public GameNode
 {
 private:
+	std::string nextSceneKey;
 	bool quit;
 public:
 	HRESULT init(void);
@@ -11,9 +12,10 @@ public:
 	void update(void);
 	void render(void);
 
+	void quitGame();
+	void setNextScene(std::string _nextSceneKey);
+
 	MainGame() {}
 	~MainGame() {}
-
-	void quitGame();
 };
 

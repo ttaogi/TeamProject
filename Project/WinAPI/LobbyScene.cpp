@@ -12,6 +12,7 @@
 #include "Slime.h"
 #include "slimeBlue.h"
 #include "Necrodancer.h"
+#include "Stair.h"
 #include "SteppingStone.h"
 #include "Wall.h"
 #include "Head.h"
@@ -27,6 +28,10 @@ HRESULT LobbyScene::init(void)
 	if (mapInfo == NULL) return E_FAIL;
 
 	objectVec = mapInfo->getObjectVec();
+
+	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
+		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
+			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_START);
 
 	if (mapInfo->getBgmKey() != "")
 		SOUNDMANAGER->play(mapInfo->getBgmKey(), 1.0f);
