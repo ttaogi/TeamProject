@@ -6,10 +6,11 @@
 #include "Animator.h"
 #include "Scene.h"
 #include "Wall.h"
+#include "Explosion.h"
+#include "GameUI.h"
 
 HRESULT Player::init(Scene* scenePtr)
 {
-	hp = 6;
 	initTime = TIMEMANAGER->getWorldTime();
 	turnCount = 0;
 	turnInterval = scenePtr->getMapInfo()->getTurnInterval();
@@ -413,7 +414,28 @@ void Player::update(void)
 			}
 			break;
 		}
+
 		command = DIRECTION::DIRECTION_NUM;
+
+		if (PLAYERINFOMANAGER->getBomb().detailType != ITEM_DETAIL::ITEM_DETAIL_NUM)
+		{ 
+			if (KEYMANAGER->isOnceKeyDown('X'))
+			{
+				Explosion* explsion = new Explosion;
+				explsion->init(scene, pos);
+				scene->getObjectVec()->push_back(explsion);
+				PLAYERINFOMANAGER->setBomb(EMPTY_ITEM);
+			}
+		}
+
+		if (PLAYERINFOMANAGER->getHeal().detailType != ITEM_DETAIL::ITEM_DETAIL_NUM)
+		{
+			if (KEYMANAGER->isOnceKeyDown('Z'))
+			{
+				PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() + 2);
+				PLAYERINFOMANAGER->setHeal(EMPTY_ITEM);
+			}
+		}
 	}
 
 	// animation update.

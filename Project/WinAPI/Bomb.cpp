@@ -41,9 +41,16 @@ void Bomb::render(void)
 
 bool Bomb::interact(Player * player)
 {
+	if (player == NULL)
+	{
+		destroyed = true;
+		return true;
+	}
+
 	if (PLAYERINFOMANAGER->getMoney() >= _info.price)
 	{
 		PLAYERINFOMANAGER->setBomb(_info);
+
 		PLAYERINFOMANAGER->setMoney(PLAYERINFOMANAGER->getMoney() - _info.price);
 		destroyed = true;
 		return true;

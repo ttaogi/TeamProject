@@ -78,7 +78,16 @@ void Skeleton::render(void)
 
 bool Skeleton::interact(Player* player)
 {
-	hp--;
+	if (player)
+	{
+		hp--;
+	}
+
+	else
+	{
+		hp -= 4;
+	}
+
 	if (hp <= 0) destroyed = true;
 	{
 		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);

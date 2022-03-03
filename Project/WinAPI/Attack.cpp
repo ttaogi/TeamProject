@@ -43,6 +43,12 @@ void Dagger::render(void)
 
 bool Dagger::interact(Player * player)
 {
+	if (player == NULL)
+	{
+		destroyed = true;
+		return true;
+	}
+
 	if (PLAYERINFOMANAGER->getMoney() >= _info.price)
 	{
 		if(PLAYERINFOMANAGER->getAttack().detailType != ITEM_DETAIL::ITEM_DETAIL_NUM)

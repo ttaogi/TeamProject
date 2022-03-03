@@ -362,6 +362,15 @@ const std::string KEY_ITEM_GOLDENLUTE =
 const char* DIR_ITEM_GOLDENLUTE =
 	"Resources/Images/items/icon/goldenlute.bmp";
 
+const std::string KEY_ITEM_BOMBDROP =
+	"ITEM_BOMBDROP";
+const char* DIR_ITEM_BOMBDROP =
+	"Resources/Images/items/bomb.bmp";
+const std::string KEY_SFX_EXPLOSION =
+	"SFX_EXPLOSION";
+const char* DIR_SFX_EXPLOSION =
+	"Resources/Images/items/3x3_explosion.bmp";
+
 #pragma endregion Item
 #pragma endregion Stripe
 

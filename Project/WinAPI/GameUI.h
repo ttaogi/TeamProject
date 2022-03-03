@@ -64,8 +64,6 @@ private:
 	Image* _HalfHp;
 	Image* _EmptyHp;
 
-	int MaxHp;
-	int Hp;
 	int count;
 
 	bool PlHeat;

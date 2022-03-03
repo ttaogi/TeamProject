@@ -63,7 +63,16 @@ void Slime::render(void)
 
 bool Slime::interact(Player* player)
 {
-	hp--;
+	if (player)
+	{
+		hp--;
+	}
+
+	else
+	{
+		hp -= 4;
+	}
+
 	if (hp <= 0) destroyed = true;
 
 	return false;

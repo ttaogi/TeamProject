@@ -256,6 +256,7 @@
     <ClCompile Include="Bomb.cpp">
       <Filter>API FrameWork\Object\Euipment Item</Filter>
     </ClCompile>
+    <ClCompile Include="Explosion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -405,5 +406,6 @@
     <ClInclude Include="Bomb.h">
       <Filter>API FrameWork\Object\Euipment Item</Filter>
     </ClInclude>
+    <ClInclude Include="Explosion.h" />
   </ItemGroup>
 </Project>

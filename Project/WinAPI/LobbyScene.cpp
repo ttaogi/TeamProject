@@ -20,6 +20,7 @@
 #include "Bomb.h"
 #include "Heal.h"
 #include "Torch.h"
+#include "Explosion.h"
 
 HRESULT LobbyScene::init(void)
 {
@@ -83,7 +84,7 @@ HRESULT LobbyScene::init(void)
 	Money* money = new Money();
 	money->init(this, POINT{ 11, 8 });
 	money->setQuantity(5);
-
+	
 	objectVec.push_back(skeleton);
 	objectVec.push_back(bat);
 	objectVec.push_back(necrodancer);
@@ -101,7 +102,7 @@ HRESULT LobbyScene::init(void)
 	objectVec.push_back(heal);
 	objectVec.push_back(torch);
 	objectVec.push_back(goldenlute);
-	
+		
 	// UI.
 	_plEquip = new PlEquip;
 	_plEquip->init();

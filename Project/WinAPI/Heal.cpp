@@ -41,6 +41,12 @@ void Heal::render(void)
 
 bool Heal::interact(Player * player)
 {
+	if (player == NULL)
+	{
+		destroyed = true;
+		return true;
+	}
+
 	if (PLAYERINFOMANAGER->getMoney() >= _info.price)
 	{
 		PLAYERINFOMANAGER->setHeal(_info);
