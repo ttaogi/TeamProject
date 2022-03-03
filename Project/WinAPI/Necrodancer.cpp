@@ -169,8 +169,6 @@ void Necrodancer::release(void)
 
 void Necrodancer::update(void)
 {
-	
-
 	if (countTF)
 	{
 		turnCount += TIMEMANAGER->getElapsedTime();
@@ -203,15 +201,22 @@ bool Necrodancer::interact(Player* player)
 	{
 		hp--;
 	}
-
 	else
 	{
 		hp -= 4;
 	}
 
-	if (hp <= 0) destroyed = true;
+	if (hp <= 0)
 	{
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
+		Object* obj = NULL;
+		for (int i = 6; i <= 10; ++i)
+		{
+			obj = NULL;
+			obj = scene->getObject(POINT{ i, 5 });
+			if (obj)
+				obj->setDestroyed(true);
+		}
+		destroyed = true;
 	}
 	
 	return false;

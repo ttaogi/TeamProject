@@ -10,7 +10,8 @@ HRESULT StartScene::init(void)
 	pressAnyKey = IMAGEMANAGER->addImage(KEY_UI_PRESS_ANY_KEY, DIR_UI_PRESS_ANY_KEY, 876, 72, true, MAGENTA);
 	pressAnyKey->initForAlphaBlend();
 
-	wsprintf(_text, "Press any key.");
+	SOUNDMANAGER->allStop();
+	SOUNDMANAGER->play(KEY_BGM_MAIN_MENU, 1.0f);
 
 	return S_OK;
 }
@@ -38,6 +39,4 @@ void StartScene::render(void)
 	background->render(getMemDC(), 0, 0);
 	pressAnyKey->alphaRender(getMemDC(), (WINSIZEX - pressAnyKey->getWidth()) / 2,
 		WINSIZEY - 100, (BYTE)(63 + 192 * abs(sin(TIMEMANAGER->getWorldTime()))));
-
-	//TextOut(getMemDC(), CENTER_X, CENTER_Y, _text, strlen(_text));
 }

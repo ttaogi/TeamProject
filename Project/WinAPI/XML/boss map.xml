@@ -166,7 +166,7 @@ enum class SOUND_ID
             <y_2 type="1" object="0" />
             <y_3 type="1" object="0" />
             <y_4 type="1" object="0" />
-            <y_5 type="1" object="0" />
+            <y_5 type="1" object="1" />
             <y_6 type="1" object="0" />
             <y_7 type="1" object="0" />
             <y_8 type="1" object="0" />
@@ -185,7 +185,7 @@ enum class SOUND_ID
             <y_2 type="1" object="0" />
             <y_3 type="1" object="0" />
             <y_4 type="1" object="0" />
-            <y_5 type="1" object="0" />
+            <y_5 type="1" object="1" />
             <y_6 type="1" object="0" />
             <y_7 type="1" object="0" />
             <y_8 type="1" object="0" />
@@ -202,18 +202,18 @@ enum class SOUND_ID
             <y_0 type="0" object="1" />
             <y_1 type="1" object="0" />
             <y_2 type="1" object="0" />
-            <y_3 type="1" object="0" />
+            <y_3 type="1" object="22" />
             <y_4 type="1" object="0" />
-            <y_5 type="1" object="0" />
+            <y_5 type="1" object="1" />
             <y_6 type="1" object="0" />
             <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
+            <y_8 type="1" object="8" />
             <y_9 type="1" object="0" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
             <y_12 type="1" object="0" />
             <y_13 type="1" object="0" />
-            <y_14 type="1" object="0" />
+            <y_14 type="1" object="1" />
             <y_15 type="1" object="0" />
             <y_16 type="0" object="1" />
         </x_8>
@@ -223,7 +223,7 @@ enum class SOUND_ID
             <y_2 type="1" object="0" />
             <y_3 type="1" object="0" />
             <y_4 type="1" object="0" />
-            <y_5 type="1" object="0" />
+            <y_5 type="1" object="1" />
             <y_6 type="1" object="0" />
             <y_7 type="1" object="0" />
             <y_8 type="1" object="0" />
@@ -242,7 +242,7 @@ enum class SOUND_ID
             <y_2 type="1" object="0" />
             <y_3 type="1" object="0" />
             <y_4 type="1" object="0" />
-            <y_5 type="1" object="0" />
+            <y_5 type="1" object="1" />
             <y_6 type="1" object="0" />
             <y_7 type="1" object="0" />
             <y_8 type="1" object="0" />
