@@ -22,6 +22,7 @@ private:
 	int rightCount;
 	int leftCount;
 
+
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
 	void release(void);

@@ -11,14 +11,14 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 {
 	// object.
 	destroyed = false;
-	type = OBJECT_TYPE::MONSTER_BAT;
+	type = OBJECT_TYPE::MONSTER_NECRODANCER;
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 2;
+	hp = 6;
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
-	// SlimeBlue.
+
 	turnCount = 0;
 	
 	posCheck = true;
@@ -33,7 +33,7 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 
 	explosion = false;
 
-	countTF = true;
+	countTF = false;
 	countTF2 = false;
 
 	rightCount = 0;
@@ -169,6 +169,8 @@ void Necrodancer::release(void)
 
 void Necrodancer::update(void)
 {
+	
+
 	if (countTF)
 	{
 		turnCount += TIMEMANAGER->getElapsedTime();
@@ -211,7 +213,7 @@ bool Necrodancer::interact(Player* player)
 	{
 		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
 	}
-
+	
 	return false;
 }
 

@@ -18,7 +18,7 @@ HRESULT Skeleton::init(Scene* scenePtr, POINT position)
 	hp = 1;
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
-	// SlimeBlue.
+
 	turnCount = 0;
 	posCheck = true;
 
@@ -98,8 +98,44 @@ bool Skeleton::interact(Player* player)
 
 void Skeleton::move(void)
 {
-	//pos.x += 1;
+	cout << pos.x << endl;
+	/*if (turnCount >= 0.5f)
+	{
+		if (scene->getPlayer()->getPos().x - pos.x >= 2)
+		{
+			pos.x += 1;
+		}
 
+		turnCount -= 0.5f;
+	}*/
+
+	if (turnCount >= 0.5)
+	{
+		if (pos.y == scene->getPlayer()->getPos().y)
+		{
+			if (pos.x > scene->getPlayer()->getPos().x)
+			{
+				pos.x -= 1;
+			}
+
+			else if (pos.x < scene->getPlayer()->getPos().x)
+			{
+				pos.x += 1;
+			}
+		}
+
+
+		if (pos.x == scene->getPlayer()->getPos().x)
+		{
+			if (pos.y > scene->getPlayer()->getPos().y)
+				pos.y -= 1;
+
+			else if (pos.y < scene->getPlayer()->getPos().y)
+				pos.y += 1;
+		}
+
+		turnCount -= 0.5f;
+	}
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
 		pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
 }

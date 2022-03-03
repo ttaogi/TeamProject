@@ -18,7 +18,7 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	hp = 4;
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
-	// SlimeBlue.
+
 	turnCount = 0;
 	posCheck = true;
 	rightCount = 0;
