@@ -154,6 +154,9 @@
     <ClCompile Include="Constants.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enums.cpp" />
+    <ClCompile Include="Explosion.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="FontManager.cpp" />
     <ClCompile Include="GameNode.cpp" />
     <ClCompile Include="GameUI.cpp" />
@@ -222,6 +225,9 @@
     <ClInclude Include="Constants.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enums.h" />
+    <ClInclude Include="Explosion.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="FontManager.h" />
     <ClInclude Include="GameNode.h" />
     <ClInclude Include="GameUI.h" />

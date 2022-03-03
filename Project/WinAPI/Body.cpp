@@ -41,6 +41,12 @@ void Body::render(void)
 
 bool Body::interact(Player * player)
 {
+	if (player == NULL)
+	{
+		destroyed = true;
+		return true;
+	}
+
 	if (PLAYERINFOMANAGER->getMoney() >= _info.price)
 	{
 		PLAYERINFOMANAGER->setBody(_info);

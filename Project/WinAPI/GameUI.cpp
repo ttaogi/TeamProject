@@ -86,10 +86,8 @@ HRESULT PlHp::init(void)
 	
 	_Hp_rc = RectMakeCenter(810, 45, _FullHp->getWidth(), _FullHp->getHeight());
 	
-	MaxHp = 10;
-	Hp = 10;
 	count = 0;
-
+	
 	return S_OK;
 }
 
@@ -101,35 +99,33 @@ void PlHp::update(void)
 {
 	if (KEYMANAGER->isOnceKeyDown('1'))
 	{
-		Hp -= 1;
-		cout << "hp -= 1" << endl;
+		PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
 	}
 
 	if (KEYMANAGER->isOnceKeyDown('2'))
 	{
-		Hp = MaxHp;
-		cout << "hp = MaxHp" << endl;
+		PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHpMax());
 	}
 }
 
 void PlHp::render(void)
 {
-	count = Hp;
-	for (int i = 0; i < MaxHp / 2; i++)
+	count = PLAYERINFOMANAGER->getHp();
+	for (int i = 0; i < PLAYERINFOMANAGER->getHpMax() / 2; i++)
 	{
 		if (count >= 2)
 		{
-			_FullHp->render(getMemDC(), _Hp_rc.left - 54 * (MaxHp / 2 - i - 1), _Hp_rc.top);
+			_FullHp->render(getMemDC(), _Hp_rc.left - 54 * (PLAYERINFOMANAGER->getHpMax() / 2 - i - 1), _Hp_rc.top);
 		}
 
 		else if (count == 1)
 		{
-			_HalfHp->render(getMemDC(), _Hp_rc.left - 54 * (MaxHp / 2 - i - 1), _Hp_rc.top);
+			_HalfHp->render(getMemDC(), _Hp_rc.left - 54 * (PLAYERINFOMANAGER->getHpMax() / 2 - i - 1), _Hp_rc.top);
 		}
 
 		else
 		{
-			_EmptyHp->render(getMemDC(), _Hp_rc.left - 54 * (MaxHp / 2 - i - 1), _Hp_rc.top);
+			_EmptyHp->render(getMemDC(), _Hp_rc.left - 54 * (PLAYERINFOMANAGER->getHpMax() / 2 - i - 1), _Hp_rc.top);
 		}
 		count -= 2;
 	}

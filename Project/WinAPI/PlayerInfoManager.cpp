@@ -9,6 +9,7 @@ HRESULT PlayerInfoManager::init()
 	attack = ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::ATTACK_DAGGER);
 	body = head = torch = heal = bomb
 		= ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::ITEM_DETAIL_NUM);
+	hpMax = hp = 10;
 
 	cout << "####################" << endl;
 	cout << "PlayerInfo Init." << endl;
@@ -77,4 +78,24 @@ void PlayerInfoManager::setBomb(Item _bomb)
 {
 	if (_bomb.type == ITEM_TYPE::BOMB || _bomb.type == ITEM_TYPE::ITEM_TYPE_NUM)
 		bomb = _bomb;
+}
+
+int PlayerInfoManager::getHp() const
+{
+	return hp;
+}
+
+void PlayerInfoManager::setHp(int _hp)
+{
+	hp = _hp;
+
+	if (hp > hpMax)
+	{
+		hp = hpMax;
+	}
+}
+
+int PlayerInfoManager::getHpMax() const
+{
+	return hpMax;
 }

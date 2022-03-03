@@ -5,6 +5,8 @@
 class PlayerInfoManager : public SingletonBase<PlayerInfoManager> {
 private:
 	int money;
+	int hp;
+	int hpMax;
 	Item shovel;
 	Item attack;
 	Item body;
@@ -35,4 +37,7 @@ public:
 	void setHeal(Item _heal);
 	Item getBomb() const;
 	void setBomb(Item _bomb);
+	int getHp() const;
+	void setHp(int _hp);
+	int getHpMax() const;
 };

@@ -21,6 +21,7 @@
 #include "Bomb.h"
 #include "Heal.h"
 #include "Torch.h"
+#include "Explosion.h"
 
 HRESULT LobbyScene::init(void)
 {

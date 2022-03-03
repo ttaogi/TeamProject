@@ -41,6 +41,12 @@ void Torch::render(void)
 
 bool Torch::interact(Player * player)
 {
+	if (player == NULL)
+	{
+		destroyed = true;
+		return true;
+	}
+
 	if (PLAYERINFOMANAGER->getMoney() >= _info.price)
 	{
 		PLAYERINFOMANAGER->setTorch(_info);

@@ -210,6 +210,12 @@ extern const std::string KEY_ITEM_BOMB;
 extern const char* DIR_ITEM_BOMB;
 extern const std::string KEY_ITEM_GOLDENLUTE;
 extern const char* DIR_ITEM_GOLDENLUTE;
+
+extern const std::string KEY_ITEM_BOMBDROP;
+extern const char* DIR_ITEM_BOMBDROP;
+extern const std::string KEY_SFX_EXPLOSION;
+extern const char* DIR_SFX_EXPLOSION;
+
 #pragma endregion Item
 #pragma endregion Stripe
 

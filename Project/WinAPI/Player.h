@@ -8,7 +8,6 @@ class Scene;
 class Player : public GameNode
 {
 private:
-	int hp;
 	float initTime;
 	float turnCount;
 	float turnInterval;
@@ -19,6 +18,7 @@ private:
 	Animator* bodyAnimator;
 	Animator* attakAnimator;
 	Scene* scene;
+	
 
 	HRESULT init(void) { return S_OK; }
 public:

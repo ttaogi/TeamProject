@@ -37,6 +37,12 @@ void Head::render(void)
 
 bool Head::interact(Player * player)
 {
+	if (player == NULL)
+	{
+		destroyed = true;
+		return true;
+	}
+
 	if (PLAYERINFOMANAGER->getMoney() >= _info.price)
 	{
 		PLAYERINFOMANAGER->setHead(_info);

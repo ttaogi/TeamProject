@@ -262,6 +262,7 @@
     <ClCompile Include="Stair.cpp">
       <Filter>API FrameWork\Object\Stair</Filter>
     </ClCompile>
+    <ClCompile Include="Explosion.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -414,5 +415,6 @@
     <ClInclude Include="Stair.h">
       <Filter>API FrameWork\Object\Stair</Filter>
     </ClInclude>
+    <ClInclude Include="Explosion.h" />
   </ItemGroup>
 </Project>
