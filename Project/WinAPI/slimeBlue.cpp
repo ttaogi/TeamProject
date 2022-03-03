@@ -26,8 +26,10 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP, DIR_SLIME_BLUE_JUMP, 208, 184, 4, 2, 4, true, MAGENTA);
 	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_TOP, DIR_SLIME_BLUE_JUMP_TOP, 208, 224, 4, 2, 4, true, MAGENTA);
 	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_BOTTOM, DIR_SLIME_BLUE_JUMP_BOTTOM, 208, 188, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_EMPTY, DIR_UI_MONSTER_HEART_EMPTY, 25, 25, true, MAGENTA);
-	IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_FULL, DIR_UI_MONSTER_HEART_FULL, 24, 24, true, MAGENTA);
+	_FullHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_FULL, DIR_UI_MONSTER_HEART_FULL, 24, 24, true, MAGENTA);
+	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_EMPTY, DIR_UI_MONSTER_HEART_EMPTY, 24, 24, true, MAGENTA);
+
+	_Hp_rc = RectMakeCenter(600, 400, _FullHp->getWidth(), _FullHp->getHeight());
 
 	Animation* slimeBlue = new Animation();
 	slimeBlue->init(
@@ -87,6 +89,28 @@ void SlimeBlue::render(void)
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
 	animator->animationRender(getMemDC(), renderPos);
+
+	//renderPos.x -= _TileSize/2
+	//renderPos.y -= (_TileSize/2 + 24)
+
+	
+	count = hp;
+	if (hp != 2)
+	{
+		for (int i = 0; i < 2; i++)
+		{
+			if (count >= 1)
+			{
+				_FullHp->render(getMemDC(), renderPos.x - 24 + i * 24, renderPos.y - 78);
+			}
+			else
+			{
+				_EmptyHp->render(getMemDC(), renderPos.x - 24 + i * 24, renderPos.y - 78);
+			}
+			count--;
+		}
+	}
+	
 }
 
 bool SlimeBlue::interact(Player* player)

@@ -125,7 +125,10 @@ const char* DIR_UI_MONSTER_HEART_EMPTY =
 const std::string KEY_UI_MONSTER_HEART_FULL =
 	"UI_MONSTER_HEART_FULL";
 const char* DIR_UI_MONSTER_HEART_FULL =
-	"Resources/Image/gui/TEMP_heart_small.bmp";
+	"Resources/Images/gui/TEMP_heart_small.bmp";
+
+
+
 
 #pragma endregion UI
 

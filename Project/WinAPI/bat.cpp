@@ -15,7 +15,7 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	animator = new Animator();
 	scene = scenePtr;
 	// enemy.
-	hp = 2;
+	hp = 4;
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
 	Enemy::move(position); // set pos(gameNode) and _rc.
 	// SlimeBlue.
@@ -26,6 +26,11 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 
 	IMAGEMANAGER->addFrameImage(KEY_BAT_LEFT, DIR_BAT_LEFT, 288, 96, 4, 2, 4, true, MAGENTA);
 	IMAGEMANAGER->addFrameImage(KEY_BAT_RIGHT, DIR_BAT_RIGHT, 288, 96, 4, 2, 4, true, MAGENTA);
+	_FullHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_FULL, DIR_UI_MONSTER_HEART_FULL, 24, 24, true, MAGENTA);
+	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_EMPTY, DIR_UI_MONSTER_HEART_EMPTY, 24, 24, true, MAGENTA);
+	
+
+	_Hp_rc = RectMakeCenter(600, 400, _FullHp->getWidth(), _FullHp->getHeight());
 
 	Animation* batLeft = new Animation();
 	batLeft->init(
@@ -76,6 +81,24 @@ void Bat::render(void)
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
 	animator->animationRender(getMemDC(), renderPos);
+
+	count = hp;
+
+	if (hp != 4)
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (count >= 1)
+			{
+				_FullHp->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			}
+			else
+			{
+				_EmptyHp->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			}
+			count--;
+		}
+	}
 }
 
 bool Bat::interact(Player* player)
