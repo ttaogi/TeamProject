@@ -28,8 +28,8 @@ HRESULT Explosion::init(Scene * scenePtr, POINT position)
 	Animation* bombAnimation = new Animation();
 	Animation* explosionAnimation = new Animation();
 
-	bombAnimation->init(KEY_ITEM_BOMBDROP, POINT{-24, -24}, CHARACTER_STATE::IDLE_RIGHT, false, false, 7);
-	explosionAnimation->init(KEY_SFX_EXPLOSION, POINT{-74, -74}, CHARACTER_STATE::IDLE_RIGHT, false, false, 60);
+	bombAnimation->init(KEY_ITEM_BOMBDROP, POINT{-24, -24}, CHARACTER_STATE::IDLE_RIGHT, false, false, 5);
+	explosionAnimation->init(KEY_SFX_EXPLOSION, POINT{-74, -74}, CHARACTER_STATE::IDLE_RIGHT, false, false, 30);
 
 	bombAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, bombAnimation);
 	explosionAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, explosionAnimation);

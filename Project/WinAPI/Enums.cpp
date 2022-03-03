@@ -72,6 +72,8 @@ std::string SoundIdToKeyString(SOUND_ID id)
 		return KEY_BGM_LOBBY;
 	case SOUND_ID::BGM_MAIN_MENU:
 		return KEY_BGM_MAIN_MENU;
+	case SOUND_ID::BGM_ZONE_1_1:
+		return KEY_BGM_ZONE_1_1;
 	default:
 		return "";
 	}

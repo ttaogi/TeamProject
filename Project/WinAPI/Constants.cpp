@@ -411,6 +411,10 @@ const std::string KEY_BGM_MAIN_MENU =
 	"BGM_MAIN_MENU";
 const char* DIR_BGM_MAIN_MENU =
 	"Resources/Sounds/BGM/main_menu.ogg";
+const std::string KEY_BGM_ZONE_1_1 =
+"BGM_ZONE_1_1";
+const char* DIR_BGM_ZONE_1_1 =
+"Resources/Sounds/BGM/zone1_1.ogg";
 #pragma endregion Sound
 
 ///////////////////////
