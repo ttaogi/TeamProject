@@ -264,6 +264,12 @@ extern const std::string XML_DOC_EXAMPLE_MAP;
 ///////////////////////
 ///////////////////////
 
+extern const std::string KEY_NPC_SHOPKEEPER;
+extern const char* DIR_NPC_SHOPKEEPER;
+
+///////////////////////
+///////////////////////
+
 #pragma region Size
 extern const int TILE_SIZE;
 #pragma endregion Size

@@ -444,6 +444,16 @@ const std::string XML_DOC_EXAMPLE_MAP =
 ///////////////////////
 ///////////////////////
 
+#pragma region Npc
+const std::string KEY_NPC_SHOPKEEPER =
+"NPC_SHOPKEEPER";
+const char* DIR_NPC_SHOPKEEPER =
+"Resources/Images/entities/shopkeeper.bmp";
+#pragma endregion Npc
+
+///////////////////////
+///////////////////////
+
 #pragma region Size
 const int TILE_SIZE = 48;
 #pragma endregion Size

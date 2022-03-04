@@ -173,6 +173,7 @@
     <ClCompile Include="MapInfoManager.cpp" />
     <ClCompile Include="Money.cpp" />
     <ClCompile Include="Necrodancer.cpp" />
+    <ClCompile Include="Shopkeeper.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerInfoManager.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="MapInfoManager.h" />
     <ClInclude Include="Money.h" />
     <ClInclude Include="Necrodancer.h" />
+    <ClInclude Include="Shopkeeper.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerInfoManager.h" />

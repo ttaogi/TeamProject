@@ -49,6 +49,52 @@ void SoundManager::release()
 void SoundManager::update()
 {
 	m_system->update();
+	//if (mSilent) return;
+	
+	if (fading && song)
+	{
+		musicFadeTimeCounter -= TIMEMANAGER->getElapsedTime();
+		if (musicFadeTimeCounter < 0)
+		{
+			if (nextSong != "")
+				playSong(nextSong, 1, 0);
+			nextSong = "";
+			fading = false;
+			musicFadeTimeCounter = 0.0;
+			musicFadeTime = 0.0;
+		}
+		else
+		{
+			songChannel->setVolume(mMusicVolume * musicFadeTimeCounter / musicFadeTime);
+		}
+	}
+
+	//if we have a play list...well, use it
+	if (mUsePlayList && mPlayList.size())
+	{
+		unsigned int trackTime = 0;
+		if (songChannel)
+		{
+			bool playing;
+			songChannel->isPlaying(&playing);
+			if (!playing) mTrackTime = 99999;
+			else
+			{
+				songChannel->getPosition(&trackTime, FMOD_TIMEUNIT_MS);
+				//if tracktime is zero and the last tracktime is also zero
+			//	if(mTrackTime == 0 && trackTime == 0)
+			//		mTrackTime = 9999;
+			//	else
+				mTrackTime = 0.001 * trackTime;
+			}
+		}
+		else
+			mTrackTime = 99999;			//if the song stops, move on
+	//	printf("%f/%f\n", mTrackTime, mPlayList[mTrack].trackTime);
+		if (mTrackTime > mPlayList[mTrack].trackTime)
+			skipSong();
+
+	}
 }
 
 void SoundManager::addSound(string _keyName, string _wfileName, bool _bgm, bool _loop)
@@ -120,6 +166,64 @@ void SoundManager::resume(string _keyName) {
 			break;
 		}
 	}
+}
+
+void SoundManager::setSound3DInfo(SkySound soundChannel, float px, float py, float pz, float vx, float vy, float vz)
+{
+	if (mSilent) return;
+	if (!soundChannel) return;
+	if (mInitFailed) return;
+
+	FMOD_VECTOR pos = { px, py, pz };
+	FMOD_VECTOR vel = { vx, vy, vz };
+
+	soundChannel->set3DAttributes(&pos, &vel);
+
+	m_system->update();
+}
+
+void SoundManager::updateListener(float dt, float transform[16], float velx, float vely, float velz)
+{
+	if (mSilent) return;
+	if (mInitFailed) return;
+
+	//update(dt);
+	FMOD_VECTOR pos = { transform[12], transform[13], transform[14] };
+	FMOD_VECTOR vel = { velx, vely, velz };
+	FMOD_VECTOR forward = { transform[8], transform[9], transform[10] };
+	FMOD_VECTOR up = { transform[4], transform[5], transform[6] };
+	//takes position, velocity, forward vector, up vector
+	m_system->set3DListenerAttributes(0, &pos, &vel, &forward, &up);
+
+	result = m_system->update();
+}
+
+SkySound SoundManager::play3DSound(std::string name, float volume, float x, float y, float z, bool echo, bool loop, float fallOffStart)
+{
+	if (mSilent) return NULL;
+
+	if ("" == name) return false;
+	FMOD::Sound* sound = 0;
+	FMOD::Channel* soundChannel;
+	result = m_system->createSound(name.c_str(), FMOD_SOFTWARE | FMOD_3D, 0, &sound);
+
+	if (!sound)
+	{
+		return NULL;
+	}
+	
+	sound->set3DMinMaxDistance(fallOffStart, 2000);
+	sound->setMode(loop ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
+	//m_system->playSound(FMOD_CHANNEL_FREE, sound, false, &soundChannel);
+	
+	FMOD_VECTOR pos = { x, y, z }; // z??
+	FMOD_VECTOR vel = { 0, 0, 0 };
+	soundChannel->setVolume(volume);
+	soundChannel->set3DAttributes(&pos, &vel);
+
+	m_system->update();
+
+	return soundChannel;
 }
 
 bool SoundManager::isPlaySound(string _keyName) {

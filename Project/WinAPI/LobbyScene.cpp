@@ -22,6 +22,7 @@
 #include "Heal.h"
 #include "Torch.h"
 #include "Explosion.h"
+#include "Shopkeeper.h"
 
 HRESULT LobbyScene::init(void)
 {
@@ -40,7 +41,12 @@ HRESULT LobbyScene::init(void)
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
+
+	Shopkeeper* shopkeeper = new Shopkeeper;
+	shopkeeper->init(this, POINT{ 10, 10 });
 	
+	objectVec.push_back(shopkeeper);
+
 	// UI.
 	_plEquip = new PlEquip;
 	_plEquip->init();
