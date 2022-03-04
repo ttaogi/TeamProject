@@ -164,11 +164,8 @@ void Necrodancer::update(void)
 			animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 			break;
 		case CHARACTER_STATE::SOHWAN_IDLE:
-			cout << "1111" << endl;
 			summon();
-			cout << "2222" << endl;
 			animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
-			cout << "3333" << endl;
 			break;
 		case CHARACTER_STATE::LEFT_BLUEATT:
 			freeze();
@@ -391,6 +388,7 @@ bool Necrodancer::interact(Player* player)
 	if (hp <= 0)
 	{
 		Object* obj = NULL;
+
 		for (int i = 6; i <= 10; ++i)
 		{
 			obj = NULL;
@@ -398,20 +396,44 @@ bool Necrodancer::interact(Player* player)
 			if (obj)
 				obj->setDestroyed(true);
 		}
+
 		destroyed = true;
-	}
 
-	vector<Object*>* objectVec = scene->getObjectVec();
+		vector<Object*>* objectVec = scene->getObjectVec();
 
-	for (auto iter = objectVec->begin(); iter != objectVec->end(); ++iter)
-	{
-		OBJECT_TYPE type = (*iter)->getType();
-		if (type == OBJECT_TYPE::MONSTER_BAT ||
-			type == OBJECT_TYPE::MONSTER_SKELETON ||
-			type == OBJECT_TYPE::MONSTER_SLIME ||
-			type == OBJECT_TYPE::MONSTER_SLIME_BLUE)
+		for (auto iter = objectVec->begin(); iter != objectVec->end(); ++iter)
 		{
-			(*iter)->setDestroyed(true);
+			OBJECT_TYPE type = (*iter)->getType();
+			if (type == OBJECT_TYPE::MONSTER_BAT ||
+				type == OBJECT_TYPE::MONSTER_SKELETON ||
+				type == OBJECT_TYPE::MONSTER_SLIME ||
+				type == OBJECT_TYPE::MONSTER_SLIME_BLUE)
+			{
+				(*iter)->setDestroyed(true);
+			}
+		}
+	}
+	else
+	{
+		POINT playerPos = scene->getPlayer()->getPos();
+
+		while (true)
+		{
+			int x = RND->getFromIntTo(1, 15);
+			int y = RND->getFromIntTo(6, 15);
+			POINT searchPos = POINT{ x, y };
+			Object* searchObj = NULL;
+
+			if (playerPos.x == x && playerPos.y == y)
+				continue;
+
+			searchObj = scene->getObject(searchPos);
+
+			if (!searchObj)
+				continue;
+
+			move(searchPos);
+			break;
 		}
 	}
 	
