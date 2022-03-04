@@ -270,7 +270,7 @@ void Necrodancer::move(void)
 		
 		//pos.x -= 5;
 		//pos.y += 2;
-		
+		cout << "turnCount : " << turnCount << endl;
 		rightIdleTF = false;
 		leftIdleTF = true;
 		turnCount -= turnInterval;
