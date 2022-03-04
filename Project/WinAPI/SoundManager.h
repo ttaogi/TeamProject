@@ -26,21 +26,6 @@ private:
 	FMOD_RESULT result;
 	FMOD::System* mSystem;
 
-	/*
-	int mTrack;
-	bool fading;
-	bool mUsePlayList;
-	float musicFadeTime, musicFadeTimeCounter;
-	float mMusicVolume;
-	float mTrackTime;
-	
-	std::string nextSong;
-	FMOD::Sound* song;
-	FMOD::Channel* songChannel;
-
-	std::vector<PlayListEntry> mPlayList;
-	*/
-
 public:
 	SoundManager();
 	~SoundManager();

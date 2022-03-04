@@ -160,7 +160,7 @@ void SoundManager::addSound3d(std::string _fileName)
 
 Channel* SoundManager::play3DSound(float volume, float x, float y, float z)
 {
-	FMOD_VECTOR pos = { x, y, z }; // z??
+	FMOD_VECTOR pos = { x, y, z };
 	FMOD_VECTOR vel = { 0, 0, 0 };
 	shopKeeperChannel->setVolume(volume);
 	shopKeeperChannel->set3DAttributes(&pos, &vel);
