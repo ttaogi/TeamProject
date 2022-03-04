@@ -20,7 +20,7 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	hp = hpMax = 4;
 	turnInterval = scene->getMapInfo()->getTurnInterval();
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
-	Enemy::move(position); // set pos(gameNode) and _rc.
+	Enemy::move(position); 
 
 	posCheck = true;
 	act = true;
@@ -40,8 +40,7 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	Animation* Attak_Top_Animation		= new Animation();
 	Animation* Attak_Bottom_Animation	= new Animation();
 	Animation* null_animation			= new Animation();
-	
-	
+		
 	Idle_Left_Animation->init(KEY_BAT_LEFT, POINT{ -37, -50 }, CHARACTER_STATE::IDLE_LEFT, true, false, 16);
 	Idle_Right_Animation->init(KEY_BAT_RIGHT, POINT{ -37, -50 }, CHARACTER_STATE::IDLE_RIGHT, true, false, 16);
 

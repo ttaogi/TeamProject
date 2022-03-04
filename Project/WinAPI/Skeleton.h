@@ -5,7 +5,20 @@ class Skeleton : public Enemy
 {
 private:
 	float turnCount;
+	float attackDelay;
+	float atkRange;
+	float fieldOfVision;
+	float distanceX;
+	float distanceY;
+
 	bool posCheck;
+	bool act;
+
+	int rightCount;
+	int leftCount;
+
+	Animator* atk_animator;
+
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
 	void release(void);
@@ -14,6 +27,10 @@ public:
 
 	bool interact(Player* player);
 	void move(void);
+
+	void movetoTarget();
+	void faceTarget();
+	void attackTarget();
 
 	Skeleton() { }
 	virtual ~Skeleton() { }
