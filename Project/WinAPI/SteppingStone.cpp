@@ -37,7 +37,7 @@ void SteppingStoneLeft::render(void)
 
 bool SteppingStoneLeft::interact(Player* player)
 {
-	player->setBounce(DIRECTION::LEFT);
+	if(player) player->setBounce(DIRECTION::LEFT);
 	return true;
 }
 
@@ -84,7 +84,7 @@ void SteppingStoneTop::render(void)
 
 bool SteppingStoneTop::interact(Player * player)
 {
-	player->setBounce(DIRECTION::TOP);
+	if (player) player->setBounce(DIRECTION::TOP);
 	return true;
 }
 
@@ -131,7 +131,7 @@ void SteppingStoneRight::render(void)
 
 bool SteppingStoneRight::interact(Player* player)
 {
-	player->setBounce(DIRECTION::RIGHT);
+	if (player) player->setBounce(DIRECTION::RIGHT);
 	return true;
 }
 
@@ -178,7 +178,7 @@ void SteppingStoneBottom::render(void)
 
 bool SteppingStoneBottom::interact(Player * player)
 {
-	player->setBounce(DIRECTION::BOTTOM);
+	if (player) player->setBounce(DIRECTION::BOTTOM);
 	return true;
 }
 

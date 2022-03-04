@@ -419,6 +419,9 @@ const std::string KEY_BGM_BOSS_NECRODANCER =
 	"BGM_BOSS_NECRODANCER";
 const char* DIR_BGM_BOSS_NECRODANCER =
 	"Resources/Sounds/BGM/boss_necrodancer.ogg";
+
+const std::string DIR_SHOPKEEPER =
+	"Resources/Sounds/zone1_1_shopkeeper.ogg";
 #pragma endregion Sound
 
 ///////////////////////
@@ -456,6 +459,16 @@ const std::string XML_DOC_BOSS_MAP =
 ///////////////////////
 ///////////////////////
 
+#pragma region Npc
+const std::string KEY_NPC_SHOPKEEPER =
+"NPC_SHOPKEEPER";
+const char* DIR_NPC_SHOPKEEPER =
+"Resources/Images/entities/shopkeeper.bmp";
+#pragma endregion Npc
+
+///////////////////////
+///////////////////////
+
 #pragma region Size
 const int TILE_SIZE = 48;
 #pragma endregion Size
@@ -466,3 +479,4 @@ const float DEFAULT_FPS = 60.0f;
 const Item EMPTY_ITEM{ ITEM_TYPE::ITEM_TYPE_NUM,
 	ITEM_DETAIL::ITEM_DETAIL_NUM, "",
 	0, 0, 0, 0, 0, NULL };
+const float DEFAULT_VOLUME = 0.2f;

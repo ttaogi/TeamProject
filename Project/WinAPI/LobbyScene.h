@@ -5,11 +5,7 @@
 #include "GameUI.h"
 
 class Player;
-class Slime;
-class SlimeBlue;
-class Skeleton;
-class Bat;
-class Necrodancer;
+class Shopkeeper;
 
 class LobbyScene : public Scene
 {
@@ -18,6 +14,7 @@ private:
 	PlGold* _plGold;
 	PlHp* _plHp;
 	RhythmNote* _Note;
+	Shopkeeper* shopkeeper;
 public:
 	HRESULT init(void);
 	void release(void);

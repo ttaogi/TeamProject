@@ -2,7 +2,9 @@
 
 #include "SoundManager.h"
 
-SoundManager::SoundManager() : m_system(NULL), m_channel(NULL), m_sound(NULL) { }
+SoundManager::SoundManager()
+	: m_system(NULL), m_channel(NULL), m_sound(NULL),
+	shopKepperSound(NULL), shopKeeperChannel(NULL) { }
 
 SoundManager::~SoundManager() { }
 
@@ -14,6 +16,9 @@ HRESULT SoundManager::init()
 
 	m_sound = new Sound*[TOTALSOUNDBUFFER];
 	m_channel = new Channel*[TOTALSOUNDBUFFER];
+
+	shopKepperSound = NULL;
+	shopKeeperChannel = NULL;
 
 	for (int i = 0; i < TOTALSOUNDBUFFER; i++)
 	{
@@ -38,6 +43,9 @@ void SoundManager::release()
 	}
 	SAFE_DELETE_ARRAY(m_sound);
 	SAFE_DELETE_ARRAY(m_channel);
+
+	if (shopKeeperChannel) shopKeeperChannel->stop();
+	if (shopKepperSound) shopKepperSound->release();
 
 	if (m_system != NULL)
 	{
@@ -100,6 +108,7 @@ void SoundManager::allStop() {
 	for (auto iter = m_totalSounds.begin(); iter != m_totalSounds.end(); ++iter, ++count) {
 		m_channel[count]->stop();
 	}
+	stop3DSound();
 }
 
 void SoundManager::pause(string _keyName) {
@@ -121,6 +130,47 @@ void SoundManager::resume(string _keyName) {
 		}
 	}
 }
+
+void SoundManager::setSound3DInfo(float px, float py, float pz)
+{
+	FMOD_VECTOR pos = { px, py, pz };
+	FMOD_VECTOR vel = { 0, 0, 0 };
+
+	if(shopKeeperChannel)
+		shopKeeperChannel->set3DAttributes(&pos, &vel);
+}
+
+void SoundManager::updateListener(POINT _pos)
+{
+	FMOD_VECTOR pos = { (float)_pos.x, (float)_pos.y, 0};
+	FMOD_VECTOR vel = { 0, 0, 0 };
+	FMOD_VECTOR forward = { 0, -1, 0 };
+	FMOD_VECTOR up = { 0, 0, 1};
+
+	m_system->set3DListenerAttributes(0, &pos, &vel, &forward, &up);
+}
+
+void SoundManager::addSound3d(std::string _fileName)
+{
+	m_system->createSound(_fileName.c_str(), FMOD_SOFTWARE | FMOD_3D, NULL, &shopKepperSound);
+
+	shopKepperSound->set3DMinMaxDistance(2, 2000);
+	shopKepperSound->setMode(FMOD_LOOP_NORMAL);
+}
+
+Channel* SoundManager::play3DSound(float volume, float x, float y, float z)
+{
+	FMOD_VECTOR pos = { x, y, z }; // z??
+	FMOD_VECTOR vel = { 0, 0, 0 };
+	shopKeeperChannel->setVolume(volume);
+	shopKeeperChannel->set3DAttributes(&pos, &vel);
+
+	m_system->playSound(shopKepperSound, NULL, false, &shopKeeperChannel);
+
+	return shopKeeperChannel;
+}
+
+void SoundManager::stop3DSound() { shopKeeperChannel->stop(); }
 
 bool SoundManager::isPlaySound(string _keyName) {
 	bool isPlay = false;

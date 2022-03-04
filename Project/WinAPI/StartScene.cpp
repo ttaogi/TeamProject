@@ -11,7 +11,7 @@ HRESULT StartScene::init(void)
 	pressAnyKey->initForAlphaBlend();
 
 	SOUNDMANAGER->allStop();
-	SOUNDMANAGER->play(KEY_BGM_MAIN_MENU, 1.0f);
+	SOUNDMANAGER->play(KEY_BGM_MAIN_MENU, DEFAULT_VOLUME);
 
 	return S_OK;
 }

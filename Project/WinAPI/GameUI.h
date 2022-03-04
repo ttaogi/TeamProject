@@ -54,7 +54,6 @@ public:
 };
 
 //====================================================================================
-//�÷��̾� ü��
 class PlHp : public GameNode
 {
 private:
@@ -67,7 +66,6 @@ private:
 	int count;
 
 	bool PlHeat;
-
 public:
 	HRESULT init(void);
 	void release(void);
@@ -79,7 +77,6 @@ public:
 };
 
 //====================================================================================
-//������?
 class RhythmNote : public GameNode
 {
 private:

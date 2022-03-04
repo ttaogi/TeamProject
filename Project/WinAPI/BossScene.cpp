@@ -37,7 +37,7 @@ HRESULT BossScene::init(void)
 
 	SOUNDMANAGER->allStop();
 	if (mapInfo->getBgmKey() != "")
-		SOUNDMANAGER->play(mapInfo->getBgmKey(), 1.0f);
+		SOUNDMANAGER->play(mapInfo->getBgmKey(), DEFAULT_VOLUME);
 
 	player = new Player();
 	player->init(this);

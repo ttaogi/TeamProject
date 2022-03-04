@@ -266,6 +266,7 @@
     <ClCompile Include="BossScene.cpp">
       <Filter>API FrameWork\Scene</Filter>
     </ClCompile>
+    <ClCompile Include="Shopkeeper.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -422,5 +423,6 @@
     <ClInclude Include="BossScene.h">
       <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
+    <ClInclude Include="Shopkeeper.h" />
   </ItemGroup>
 </Project>

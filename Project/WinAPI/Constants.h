@@ -237,6 +237,8 @@ extern const std::string KEY_BGM_ZONE_1_1;
 extern const char* DIR_BGM_ZONE_1_1;
 extern const std::string KEY_BGM_BOSS_NECRODANCER;
 extern const char* DIR_BGM_BOSS_NECRODANCER;
+
+extern const std::string DIR_SHOPKEEPER;
 #pragma endregion Sound
 
 ///////////////////////
@@ -265,6 +267,12 @@ extern const std::string XML_DOC_BOSS_MAP;
 ///////////////////////
 ///////////////////////
 
+extern const std::string KEY_NPC_SHOPKEEPER;
+extern const char* DIR_NPC_SHOPKEEPER;
+
+///////////////////////
+///////////////////////
+
 #pragma region Size
 extern const int TILE_SIZE;
 #pragma endregion Size
@@ -273,3 +281,4 @@ extern const int TILE_SIZE;
 extern const COLORREF MAGENTA;
 extern const float DEFAULT_FPS;
 extern const Item EMPTY_ITEM;
+extern const float DEFAULT_VOLUME;

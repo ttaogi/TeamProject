@@ -176,7 +176,7 @@ void RhythmNote::update(void)
 		NoteCreate(0, 470, 1, _noteSpeed);
 		NoteCreate(WINSIZEX, 470, -1, _noteSpeed);
 	}
-
+	
 	NoteMove();
 	NoteCollision();
 	_animator->update();

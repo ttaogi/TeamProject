@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="ANSI" ?>
 <ROOT>
-    <turnInterval interval="0.521739" />
+    <turnInterval interval="0.260869" />
     <startPos pos_x="14" pos_y="8" />
     <bgm sound_id="3" play_time="180" />
     <!--
+    <turnInterval interval="0.521739" />
 enum class TILE_TYPE
 {
 	EMPTY =         0,

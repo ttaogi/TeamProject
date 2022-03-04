@@ -19,6 +19,28 @@ private:
 	System* m_system;
 	Sound** m_sound;
 	Channel** m_channel;
+
+	Sound* shopKepperSound;
+	Channel* shopKeeperChannel;
+	
+	FMOD_RESULT result;
+	FMOD::System* mSystem;
+
+	/*
+	int mTrack;
+	bool fading;
+	bool mUsePlayList;
+	float musicFadeTime, musicFadeTimeCounter;
+	float mMusicVolume;
+	float mTrackTime;
+	
+	std::string nextSong;
+	FMOD::Sound* song;
+	FMOD::Channel* songChannel;
+
+	std::vector<PlayListEntry> mPlayList;
+	*/
+
 public:
 	SoundManager();
 	~SoundManager();
@@ -29,6 +51,7 @@ public:
 
 	// bgm - true : bgm, false : sfx.
 	void addSound(std::string _keyName, std::string _fileName, bool _bgm = FALSE, bool _loop = FALSE);
+	void addSound3d(std::string _fileName);
 	// volume : 0.0f ~ 1.0f.
 	void play(std::string _keyName, float _volume = 1.0f);
 	// go to start point.
@@ -36,6 +59,11 @@ public:
 	void allStop();
 	void pause(std::string _keyName);
 	void resume(std::string _keyName);
+	
+	void setSound3DInfo(float px, float py, float pz);
+	void updateListener(POINT _pos);
+	Channel* play3DSound(float volume, float x, float y, float z);
+	void stop3DSound();
 
 	bool isPlaySound(std::string _keyName);
 	bool isPauseSound(std::string _keyName);

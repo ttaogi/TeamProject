@@ -15,6 +15,7 @@
 #include "Money.h"
 #include "Necrodancer.h"
 #include "Player.h"
+#include "Shopkeeper.h"
 #include "Skeleton.h"
 #include "Slime.h"
 #include "slimeBlue.h"
@@ -34,14 +35,24 @@ HRESULT LobbyScene::init(void)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
 			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_BOSS);
 
-	SOUNDMANAGER->allStop();
-	if (mapInfo->getBgmKey() != "")
-		SOUNDMANAGER->play(mapInfo->getBgmKey(), 1.0f);
-
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
-	
+
+	shopkeeper = new Shopkeeper;
+	shopkeeper->init(this, POINT{ 10, 10 });
+	objectVec.push_back(shopkeeper);
+
+	SOUNDMANAGER->allStop();
+	if (mapInfo->getBgmKey() != "")
+		SOUNDMANAGER->play(mapInfo->getBgmKey(), DEFAULT_VOLUME);
+
+	SOUNDMANAGER->setSound3DInfo(
+		GridPointToPixelPointCenter(shopkeeper->getPos()).x,
+		GridPointToPixelPointCenter(shopkeeper->getPos()).y, 0);
+	SOUNDMANAGER->play3DSound(DEFAULT_VOLUME * 5, 0, 0, 0);
+	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
+
 	// UI.
 	_plEquip = new PlEquip;
 	_plEquip->init();
@@ -96,6 +107,10 @@ void LobbyScene::update(void)
 	_plGold->update();
 
 	CAMERAMANAGER->update();
+	SOUNDMANAGER->setSound3DInfo(
+		GridPointToPixelPointCenter(shopkeeper->getPos()).x,
+		GridPointToPixelPointCenter(shopkeeper->getPos()).y, 0);
+	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 	SOUNDMANAGER->update();
 }
 

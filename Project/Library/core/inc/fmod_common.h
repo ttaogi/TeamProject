@@ -161,6 +161,8 @@ typedef unsigned int FMOD_MODE;
 #define FMOD_LOWMEM                                 0x08000000
 #define FMOD_VIRTUAL_PLAYFROMSTART                  0x80000000
 
+#define FMOD_SOFTWARE								0x00000040
+
 typedef unsigned int FMOD_CHANNELMASK;
 #define FMOD_CHANNELMASK_FRONT_LEFT                 0x00000001
 #define FMOD_CHANNELMASK_FRONT_RIGHT                0x00000002
