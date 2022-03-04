@@ -393,6 +393,17 @@ const char* DIR_SFX_EXPLOSION =
 	"Resources/Images/items/3x3_explosion.bmp";
 
 #pragma endregion Item
+
+#pragma region effect
+const std::string KEY_EFFECT_EXPLOSION55 =
+	"EFFECT_EXPLOSION55";
+const char* DIR_EFFECT_EXPLOSION55 =
+	"Resources/Images/spells/5x5_explosion.bmp";
+const std::string KEY_EFFECT_ICEBLAST =
+	"DIR_EFFECT_ICEBLAST";
+const char* DIR_EFFECT_ICEBLASE =
+	"Resources/Images/spells/ice_blast.bmp";
+#pragma endregion effect
 #pragma endregion Stripe
 
 ///////////////////////

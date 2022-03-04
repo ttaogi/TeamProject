@@ -109,6 +109,9 @@
     <Filter Include="API FrameWork\Object\Stair">
       <UniqueIdentifier>{8427b44b-83e4-4899-9fe0-726b8c2a2c2b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Object\Effect">
+      <UniqueIdentifier>{bf46c95e-120a-487e-8471-096213cb86c5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -267,6 +270,9 @@
       <Filter>API FrameWork\Scene</Filter>
     </ClCompile>
     <ClCompile Include="Shopkeeper.cpp" />
+    <ClCompile Include="Effect.cpp">
+      <Filter>API FrameWork\Object\Effect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -424,5 +430,8 @@
       <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
     <ClInclude Include="Shopkeeper.h" />
+    <ClInclude Include="Effect.h">
+      <Filter>API FrameWork\Object\Effect</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

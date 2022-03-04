@@ -13,6 +13,8 @@ Player* Scene::getPlayer() { return player; }
 
 std::vector<Object*>* Scene::getObjectVec() { return &objectVec; }
 
+std::vector<Object*>* Scene::getEffectVec() { return &effectVec; }
+
 Object* Scene::getObject(POINT _pos)
 {
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)

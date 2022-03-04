@@ -48,8 +48,8 @@ HRESULT LobbyScene::init(void)
 		SOUNDMANAGER->play(mapInfo->getBgmKey(), DEFAULT_VOLUME);
 
 	SOUNDMANAGER->setSound3DInfo(
-		GridPointToPixelPointCenter(shopkeeper->getPos()).x,
-		GridPointToPixelPointCenter(shopkeeper->getPos()).y, 0);
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
 	SOUNDMANAGER->play3DSound(DEFAULT_VOLUME * 5, 0, 0, 0);
 	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 
@@ -81,6 +81,12 @@ void LobbyScene::release(void)
 		SAFE_DELETE((*iter));
 	}
 	objectVec.clear();
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+	{
+		SAFE_RELEASE((*iter));
+		SAFE_DELETE((*iter));
+	}
+	effectVec.clear();
 }
 
 void LobbyScene::update(void)
@@ -102,14 +108,23 @@ void LobbyScene::update(void)
 		else ++iter;
 	}
 
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+		(*iter)->update();
+	for (auto iter = effectVec.begin(); iter != effectVec.end();)
+	{
+		if ((*iter)->getDestroyed())
+			iter = effectVec.erase(iter);
+		else ++iter;
+	}
+
 	_Note->update();
 	_plHp->update();
 	_plGold->update();
 
 	CAMERAMANAGER->update();
 	SOUNDMANAGER->setSound3DInfo(
-		GridPointToPixelPointCenter(shopkeeper->getPos()).x,
-		GridPointToPixelPointCenter(shopkeeper->getPos()).y, 0);
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
 	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 	SOUNDMANAGER->update();
 }
@@ -129,6 +144,9 @@ void LobbyScene::render(void)
 		pQue.top()->render();
 		pQue.pop();
 	}
+
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+		(*iter)->render();
 
 	_plEquip->render();
 	_plHp->render();

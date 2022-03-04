@@ -437,9 +437,6 @@ void Player::render(void)
 
 	headAnimator->animationRender(getMemDC(), renderPos);
 	bodyAnimator->animationRender(getMemDC(), renderPos);
-
-	/*if(turnCount >= 0.7f * turnInterval && turnCount < 0.8f * turnInterval)
-		RectangleMake(getMemDC(), 0, 0, 100, 100);*/
 }
 
 void Player::Move(POINT _pos)

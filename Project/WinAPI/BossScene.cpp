@@ -71,6 +71,12 @@ void BossScene::release(void)
 		SAFE_DELETE((*iter));
 	}
 	objectVec.clear();
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+	{
+		SAFE_RELEASE((*iter));
+		SAFE_DELETE((*iter));
+	}
+	effectVec.clear();
 }
 
 void BossScene::update(void)
@@ -89,6 +95,15 @@ void BossScene::update(void)
 	{
 		if ((*iter)->getDestroyed())
 			iter = objectVec.erase(iter);
+		else ++iter;
+	}
+
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+		(*iter)->update();
+	for (auto iter = effectVec.begin(); iter != effectVec.end();)
+	{
+		if ((*iter)->getDestroyed())
+			iter = effectVec.erase(iter);
 		else ++iter;
 	}
 
@@ -115,6 +130,9 @@ void BossScene::render(void)
 		pQue.top()->render();
 		pQue.pop();
 	}
+
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+		(*iter)->render();
 
 	_plEquip->render();
 	_plHp->render();

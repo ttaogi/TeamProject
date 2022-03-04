@@ -221,6 +221,13 @@ extern const char* DIR_ITEM_BOMBDROP;
 extern const std::string KEY_SFX_EXPLOSION;
 extern const char* DIR_SFX_EXPLOSION;
 #pragma endregion Item
+
+#pragma region effect
+extern const std::string KEY_EFFECT_EXPLOSION55;
+extern const char* DIR_EFFECT_EXPLOSION55;
+extern const std::string KEY_EFFECT_ICEBLAST;
+extern const char* DIR_EFFECT_ICEBLASE;
+#pragma endregion effect
 #pragma endregion Stripe
 
 ///////////////////////
