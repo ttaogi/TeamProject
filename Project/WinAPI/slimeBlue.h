@@ -12,6 +12,7 @@ private:
 	float turnCount;
 	bool posCheck;
 	int count;
+	int index;
 
 public:
 	HRESULT init(Scene* scenePtr, POINT position);

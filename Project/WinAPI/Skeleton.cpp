@@ -98,42 +98,18 @@ bool Skeleton::interact(Player* player)
 
 void Skeleton::move(void)
 {
-	cout << pos.x << endl;
-	/*if (turnCount >= 0.5f)
-	{
-		if (scene->getPlayer()->getPos().x - pos.x >= 2)
-		{
-			pos.x += 1;
-		}
-
-		turnCount -= 0.5f;
-	}*/
 
 	if (turnCount >= 0.5)
 	{
-		if (pos.y == scene->getPlayer()->getPos().y)
+		if (pos.x < scene->getPlayer()->getPos().x -1)
 		{
-			if (pos.x > scene->getPlayer()->getPos().x)
-			{
-				pos.x -= 1;
-			}
-
-			else if (pos.x < scene->getPlayer()->getPos().x)
+			pos.x += 1;
+			
+			if (pos.x == scene->getPlayer()->getPos().x - 1 && pos.y != scene->getPlayer()->getPos().y)
 			{
 				pos.x += 1;
 			}
 		}
-
-
-		if (pos.x == scene->getPlayer()->getPos().x)
-		{
-			if (pos.y > scene->getPlayer()->getPos().y)
-				pos.y -= 1;
-
-			else if (pos.y < scene->getPlayer()->getPos().y)
-				pos.y += 1;
-		}
-
 		turnCount -= 0.5f;
 	}
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,

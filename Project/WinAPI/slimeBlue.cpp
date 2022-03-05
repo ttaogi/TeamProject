@@ -70,6 +70,11 @@ void SlimeBlue::update(void)
 {
 	turnCount += TIMEMANAGER->getElapsedTime();
 	
+	if(turnCount >= 0.2f)
+	{
+		index++;
+	}
+
 	move();
 
 	animator->update();
