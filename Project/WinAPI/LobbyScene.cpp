@@ -56,7 +56,7 @@ HRESULT LobbyScene::init(void)
 	SOUNDMANAGER->setSound3DInfo(
 		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
 		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
-	SOUNDMANAGER->play3DSound(DEFAULT_VOLUME * 5, 0, 0, 0);
+	SOUNDMANAGER->play3DSound(DEFAULT_VOLUME, 0, 0, 0);
 	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 
 	// UI.
