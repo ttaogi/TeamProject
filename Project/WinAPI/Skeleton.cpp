@@ -172,8 +172,11 @@ bool Skeleton::interact(Player* player)
 	if (player)	hp--;
 	else		hp -= 4;
 
-	if (hp <= 0) destroyed = true;
-
+	if (hp <= 0)
+	{
+		destroyed = true;
+		SOUNDMANAGER->play(KEY_EN_SKEL_DEATH, DEFAULT_VOLUME);
+	}
 	return false;
 }
 
@@ -349,23 +352,27 @@ void Skeleton::attackTarget()
 	if (scene->getPlayer()->getPos().x - pos.x < 0)
 	{
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_LEFT);
+		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
 	}
 
 	//Target right
 	if (scene->getPlayer()->getPos().x - pos.x > 0)
 	{
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_RIGHT);
+		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
 	}
 
 	//Target top
 	if (scene->getPlayer()->getPos().y - pos.y < 0)
 	{
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_TOP);
+		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
 	}
 
 	//Target bottom
 	if (scene->getPlayer()->getPos().y - pos.y > 0)
 	{
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_BOTTOM);
+		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
 	}
 }

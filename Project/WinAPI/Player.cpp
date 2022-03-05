@@ -286,6 +286,9 @@ void Player::update(void)
 				{
 				case OBJECT_TYPE::MONSTER_SLIME:
 				case OBJECT_TYPE::MONSTER_SLIME_BLUE:
+				case OBJECT_TYPE::MONSTER_SKELETON:
+				case OBJECT_TYPE::MONSTER_BAT:
+				case OBJECT_TYPE::MONSTER_NECRODANCER:
 					enemyVec.push_back(searchObj);
 					break;
 				default:
@@ -304,6 +307,7 @@ void Player::update(void)
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 				(*iter)->interact(this);
+				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
 			}
 			else if (forwardObject)
 			{
@@ -329,6 +333,7 @@ void Player::update(void)
 					(*iter)->interact(this);
 				}
 				DaggerEffectRightTF = true;
+				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
 			}
 			else if (forwardObject)
 			{
@@ -352,6 +357,7 @@ void Player::update(void)
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 					(*iter)->interact(this);
+				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
 			}
 			else if (forwardObject)
 			{
@@ -374,6 +380,7 @@ void Player::update(void)
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 					(*iter)->interact(this);
+				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
 			}
 			else if (forwardObject)
 			{

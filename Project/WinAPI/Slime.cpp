@@ -149,7 +149,11 @@ bool Slime::interact(Player* player)
 	if (player)	hp--;
 	else		hp -= 4;
 
-	if (hp <= 0) destroyed = true;
+	if (hp <= 0)
+	{
+		SOUNDMANAGER->play(KEY_EN_SLIME_DEATH, DEFAULT_VOLUME);
+		destroyed = true;
+	}
 
 	return false;
 }

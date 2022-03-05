@@ -474,6 +474,64 @@ const char* DIR_BGM_BOSS_NECRODANCER =
 
 const std::string DIR_SHOPKEEPER =
 	"Resources/Sounds/zone1_1_shopkeeper.ogg";
+
+const std::string KEY_VO_CAD_MELLE_1_01 =
+	"VO_CAD_MELLE_1_01";
+const char* DIR_VO_CAD_MELLE_1_01 =
+	"Resources/Sounds/effect/vo_cad_melee_1_01.ogg";
+
+const std::string KEY_EN_SLIME_ATTACK =
+	"EN_SLIME_ATTACK";
+const char* DIR_EN_SLIME_ATTACK =
+	"Resources/Sounds/effect/en_slime_attack.ogg";
+const std::string KEY_EN_SLIME_DEATH =
+	"EN_SLIME_DEATH";
+const char* DIR_EN_SLIME_DEATH =
+	"Resources/Sounds/effect/en_slime_death.ogg";
+
+const std::string KEY_EN_BAT_ATTACK =
+	"EN_BAT_ATTACK";
+const char* DIR_EN_BAT_ATTACK =
+	"Resources/Sounds/effect/en_bat_attack.ogg";
+const std::string KEY_EN_BAT_DEATH =
+	"EN_BAT_DEATH";
+const char* DIR_EN_BAT_DEATH =
+	"Resources/Sounds/effect/en_bat_death.ogg";
+
+const std::string KEY_EN_SKEL_ATTACK_MELEE =
+	"EN_SKEL_ATTACK_MELEE";
+const char* DIR_EN_SKEL_ATTACK_MELEE =
+	"Resources/Sounds/effect/en_skel_attack_melee.ogg";
+const std::string KEY_EN_SKEL_DEATH =
+	"EN_SKEL_DEATH";
+const char* DIR_EN_SKEL_DEATH =
+	"Resources/Sounds/effect/en_skel_death.ogg";
+
+const std::string KEY_VO_NEC_ATT_V1_01 =
+	"VO_NEC_ATT_V1_01";
+const char* DIR_VO_NEC_ATT_V1_01 =
+	"Resources/Sounds/effect/vo_nec_att_v1_01.ogg";
+const std::string KEY_VO_NEC_DEATH =
+	"VO_NEC_DEATH";
+const char* DIR_VO_NEC_DEATH =
+	"Resources/Sounds/effect/vo_nec_death.ogg";
+const std::string KEY_VO_NEC_LAUGH_01 =
+	"VO_NEC_LAUGH_01";
+const char* DIR_VO_NEC_LAUGH_01 =
+	"Resources/Sounds/effect/vo_nec_laugh_01.ogg";
+const std::string KEY_VO_NEC_LAUGH_02 =
+	"VO_NEC_LAUGH_02";
+const char* DIR_VO_NEC_LAUGH_02 =
+	"Resources/Sounds/effect/vo_nec_laugh_02.ogg";
+
+const std::string KEY_SFX_BOMB_EXPLODE =
+	"SFX_BOMB_EXPLODE";
+const char* DIR_SFX_BOMB_EXPLODE =
+	"Resources/Sounds/effect/sfx_bomb_explode.ogg";
+const std::string KEY_WEP_SPELL_GENERAL_ST =
+	"WEP_SPELL_GENERAL_ST";
+const char* DIR_WEP_SPELL_GENERAL_ST =
+	"Resources/Sounds/effect/wep_spell_general_ST.ogg";
 #pragma endregion Sound
 
 ///////////////////////
