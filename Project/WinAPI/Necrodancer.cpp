@@ -31,7 +31,7 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 	leftUpJump = false;
 	leftDownJump = false;
 
-	explosion = true;
+	explosion = false;
 
 	countTF = false;
 	countTF2 = false;
@@ -56,11 +56,6 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_SOHWAN_IDLE, DIR_NECRODANCER_SOHWAN_IDLE, 88, 212, 1, 2, 1, true, MAGENTA);
 	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_IDLE2, DIR_NECRODANCER_IDLE2, 176, 212, 2, 2, 2, true, MAGENTA);
 
-	/*
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EFFECT_EXPLOSION, DIR_NECRODANCER_EFFECT_EXPLOSION, 1776, 222, 8, 1, 1, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EFFECT_ICE_BLAST, DIR_NECRODANCER_EFFECT_ICE_BLAST, 1408, 218, 8, 1, 1, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EFFECT_PROZEN_FEET, DIR_NECRODANCER_EFFECT_PROZEN_FEET, 62, 96, 1, 2, 1, true, MAGENTA);\
-	*/
 
 	Animation* necrodancerRightIdle = new Animation();
 	necrodancerRightIdle->init(
@@ -174,6 +169,8 @@ void Necrodancer::release(void)
 
 void Necrodancer::update(void)
 {
+	
+
 	if (countTF)
 	{
 		turnCount += TIMEMANAGER->getElapsedTime();
@@ -277,7 +274,7 @@ void Necrodancer::move(void)
 
 	else if (explosion)
 	{
-		animator->changeAnimation(CHARACTER_STATE::EXPLOSION);
+		animator->changeAnimation(CHARACTER_STATE::EXPLOSION);	
 		explosion = false;
 	}
 

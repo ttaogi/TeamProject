@@ -300,19 +300,6 @@ const std::string KEY_NECRODANCER_IDLE2 =
 	"NECRODANCER_IDLE2";
 const char* DIR_NECRODANCER_IDLE2 =
 	"Resources/Images/entities/necrodancer_idle2.bmp";
-
-const std::string KEY_NECRODANCER_EFFECT_EXPLOSION =
-	"NECRODANCER_EFFECT_EXPLOSION";
-const char* DIR_NECRODANCER_EFFECT_EXPLOSION =
-	"Resources/Images/spells/5x5_explosion.bmp";
-const std::string KEY_NECRODANCER_EFFECT_ICE_BLAST =
-	"NECRODANCER_EFFECT_ICE_BLAST";
-const char* DIR_NECRODANCER_EFFECT_ICE_BLAST =
-	"Resources/Images/spells/ice_blast.bmp";
-const std::string KEY_NECRODANCER_EFFECT_PROZEN_FEET =
-	"NECRODANCER_EFFECT_PROZEN_FEET";
-const char* DIR_NECRODANCER_EFFECT_PROZEN_FEET =
-	"Resources/Images/entities/frozen_feet_medium.bmp";
 #pragma endregion necrodancer
 
 #pragma region WeaponEffect
