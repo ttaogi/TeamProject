@@ -255,19 +255,55 @@ void Player::update(void)
 		switch (command)
 		{
 		case DIRECTION::LEFT:
+			if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+			{
+				searchArea.push_back(POINT{ -1, -1 });
+				searchArea.push_back(POINT{ -1, 0 });
+				searchArea.push_back(POINT{ -1, 1 });
+			}
+			else
+			{
 			searchArea.push_back(POINT{ -1, 0 });
+			}
 			forwardPos = POINT{ pos.x - 1, pos.y };
 			break;
 		case DIRECTION::RIGHT:
+			if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+			{
+				searchArea.push_back(POINT{  1, -1});
+				searchArea.push_back(POINT{	 1, 0 });
+				searchArea.push_back(POINT{  1, 1 });
+			}
+			else
+			{
 			searchArea.push_back(POINT{ 1, 0 });
+			}
 			forwardPos = POINT{ pos.x + 1, pos.y };
 			break;
 		case DIRECTION::TOP:
+			if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+			{
+				searchArea.push_back(POINT{ -1, -1 });
+				searchArea.push_back(POINT{ 0, -1 });
+				searchArea.push_back(POINT{ 1, -1 });
+			}
+			else
+			{
 			searchArea.push_back(POINT{ 0, -1 });
+			}
 			forwardPos = POINT{ pos.x, pos.y - 1 };
 			break;
 		case DIRECTION::BOTTOM:
+			if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+			{
+				searchArea.push_back(POINT{ -1, 1 });
+				searchArea.push_back(POINT{ 0, 1 });
+				searchArea.push_back(POINT{ 1, 1 });
+			}
+			else
+			{
 			searchArea.push_back(POINT{ 0, 1 });
+			}
 			forwardPos = POINT{ pos.x, pos.y + 1 };
 			break;
 		}
