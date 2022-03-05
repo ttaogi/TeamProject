@@ -152,8 +152,6 @@ void Bat::render(void)
 		animator->animationRender(getMemDC(), renderPos);
 	}
 
-	count = hp;
-
 	int count = hp;
 	if (hp != hpMax)
 		for (int i = 0; i < hpMax; ++i)

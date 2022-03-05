@@ -79,8 +79,8 @@ void Skeleton::update(void)
 
 	turnCount += TIMEMANAGER->getElapsedTime();
 
-	distanceX = scene->getPlayer()->getPos().x - pos.x;
-	distanceY = scene->getPlayer()->getPos().y - pos.y;
+	distanceX = (float)(scene->getPlayer()->getPos().x - pos.x);
+	distanceY = (float)(scene->getPlayer()->getPos().y - pos.y);
 
 	if (turnCount >= turnInterval)
 	{
