@@ -176,8 +176,11 @@ bool Bat::interact(Player* player)
 	if (player)	hp--;
 	else		hp -= 4;
 
-	if (hp <= 0) destroyed = true;
-
+	if (hp <= 0)
+	{
+		destroyed = true;
+		SOUNDMANAGER->play(KEY_EN_BAT_DEATH, DEFAULT_VOLUME);
+	}
 	return false;
 }
 
@@ -321,6 +324,7 @@ void Bat::attackTarget()
 {
 	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
 
+	SOUNDMANAGER->play(KEY_EN_BAT_ATTACK, DEFAULT_VOLUME);
 	//Target Left
 	if (scene->getPlayer()->getPos().x - pos.x < 0)
 	{

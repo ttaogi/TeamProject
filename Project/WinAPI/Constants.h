@@ -253,6 +253,38 @@ extern const std::string KEY_BGM_BOSS_NECRODANCER;
 extern const char* DIR_BGM_BOSS_NECRODANCER;
 
 extern const std::string DIR_SHOPKEEPER;
+
+extern const std::string KEY_VO_CAD_MELLE_1_01;
+extern const char* DIR_VO_CAD_MELLE_1_01;
+
+extern const std::string KEY_EN_SLIME_ATTACK;
+extern const char* DIR_EN_SLIME_ATTACK;
+extern const std::string KEY_EN_SLIME_DEATH;
+extern const char* DIR_EN_SLIME_DEATH;
+
+extern const std::string KEY_EN_BAT_ATTACK;
+extern const char* DIR_EN_BAT_ATTACK;
+extern const std::string KEY_EN_BAT_DEATH;
+extern const char* DIR_EN_BAT_DEATH;
+
+extern const std::string KEY_EN_SKEL_ATTACK_MELEE;
+extern const char* DIR_EN_SKEL_ATTACK_MELEE;
+extern const std::string KEY_EN_SKEL_DEATH;
+extern const char* DIR_EN_SKEL_DEATH;
+
+extern const std::string KEY_VO_NEC_ATT_V1_01;
+extern const char* DIR_VO_NEC_ATT_V1_01;
+extern const std::string KEY_VO_NEC_DEATH;
+extern const char* DIR_VO_NEC_DEATH;
+extern const std::string KEY_VO_NEC_LAUGH_01;
+extern const char* DIR_VO_NEC_LAUGH_01;
+extern const std::string KEY_VO_NEC_LAUGH_02;
+extern const char* DIR_VO_NEC_LAUGH_02;
+
+extern const std::string KEY_SFX_BOMB_EXPLODE;
+extern const char* DIR_SFX_BOMB_EXPLODE;
+extern const std::string KEY_WEP_SPELL_GENERAL_ST;
+extern const char* DIR_WEP_SPELL_GENERAL_ST;
 #pragma endregion Sound
 
 ///////////////////////

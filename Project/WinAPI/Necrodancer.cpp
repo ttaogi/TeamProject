@@ -170,10 +170,12 @@ void Necrodancer::update(void)
 		case CHARACTER_STATE::LEFT_BLUEATT:
 			freeze();
 			animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+			SOUNDMANAGER->play(KEY_VO_NEC_LAUGH_02, DEFAULT_VOLUME);
 			break;
 		case CHARACTER_STATE::RIGHT_BLUEATT:
 			freeze();
 			animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+			SOUNDMANAGER->play(KEY_VO_NEC_LAUGH_02, DEFAULT_VOLUME);
 			break;
 		case CHARACTER_STATE::LEFT_UP_JUMP:
 		case CHARACTER_STATE::LEFT_DOWN_JUMP:
@@ -246,7 +248,6 @@ void Necrodancer::moveRandom()
 	POINT searchPos = POINT{ 0, 0 };
 	POINT playerPos = scene->getPlayer()->getPos();
 	Object* searchObj = NULL;
-
 	switch (dir)
 	{
 	case 0:
@@ -294,6 +295,7 @@ void Necrodancer::summon()
 {
 	POINT playerPos = scene->getPlayer()->getPos();
 
+	SOUNDMANAGER->play(KEY_VO_NEC_LAUGH_01, DEFAULT_VOLUME);
 	while(true)
 	{
 		int x = RND->getFromIntTo(1, 15);
@@ -328,7 +330,7 @@ void Necrodancer::freeze()
 	IceBlast* ice = new IceBlast();
 	ice->init(scene, pos);
 	scene->getEffectVec()->push_back(ice);
-
+	SOUNDMANAGER->play(KEY_WEP_SPELL_GENERAL_ST, DEFAULT_VOLUME);
 	POINT playerPos = scene->getPlayer()->getPos();
 	if (playerPos.x >= pos.x - 3 && playerPos.x <= pos.x + 3 &&
 		playerPos.y >= pos.y - 3 && playerPos.y <= pos.y + 3)
@@ -343,6 +345,7 @@ void Necrodancer::explosion()
 	expl->init(scene, pos);
 	scene->getEffectVec()->push_back(expl);
 
+	SOUNDMANAGER->play(KEY_SFX_BOMB_EXPLODE, DEFAULT_VOLUME);
 	POINT playerPos = scene->getPlayer()->getPos();
 	if (playerPos.x >= pos.x - 2 && playerPos.x <= pos.x + 2 &&
 		playerPos.y >= pos.y - 2 && playerPos.y <= pos.y + 2)
@@ -391,6 +394,7 @@ bool Necrodancer::interact(Player* player)
 	if (player && PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_GOLDENLUTE)
 		--hp;
 
+	SOUNDMANAGER->play(KEY_VO_NEC_ATT_V1_01, DEFAULT_VOLUME);
 	if (hp <= 0)
 	{
 		Object* obj = NULL;
