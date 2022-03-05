@@ -139,11 +139,15 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 	return S_OK;
 }
 
+<<<<<<< HEAD
 void Necrodancer::release(void)
 {
 	SAFE_RELEASE(animator);
 	SAFE_DELETE(animator);
 }
+=======
+	explosion = true;
+>>>>>>> origin/테스트
 
 void Necrodancer::update(void)
 {
@@ -240,12 +244,130 @@ void Necrodancer::update(void)
 	animator->update();
 }
 
+<<<<<<< HEAD
 void Necrodancer::moveRandom()
 {
 	int dir = RND->getInt(6);
 	POINT searchPos = POINT{ 0, 0 };
 	POINT playerPos = scene->getPlayer()->getPos();
 	Object* searchObj = NULL;
+=======
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EXPLOSION_IDLE, DIR_NECRODANCER_EXPLOSION_IDLE, 88, 212, 1, 2, 1, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EXPLOSION, DIR_NECRODANCER_EXPLOSION, 440, 212, 5, 2, 5, true, MAGENTA);
+	
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_RIGHT_BLUEATT, DIR_NECRODANCER_RIGHT_BLUEATT, 88, 212, 1, 2, 1, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_LEFT_BLUEATT, DIR_NECRODANCER_LEFT_BLUEATT, 88, 212, 1, 2, 1, true, MAGENTA);
+
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_SOHWAN_IDLE, DIR_NECRODANCER_SOHWAN_IDLE, 88, 212, 1, 2, 1, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_IDLE2, DIR_NECRODANCER_IDLE2, 176, 212, 2, 2, 2, true, MAGENTA);
+
+	/*
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EFFECT_EXPLOSION, DIR_NECRODANCER_EFFECT_EXPLOSION, 1776, 222, 8, 1, 1, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EFFECT_ICE_BLAST, DIR_NECRODANCER_EFFECT_ICE_BLAST, 1408, 218, 8, 1, 1, true, MAGENTA);
+	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_EFFECT_PROZEN_FEET, DIR_NECRODANCER_EFFECT_PROZEN_FEET, 62, 96, 1, 2, 1, true, MAGENTA);\
+	*/
+
+	Animation* necrodancerRightIdle = new Animation();
+	necrodancerRightIdle->init(
+		KEY_NECRODANCER_RIGHT_IDLE,
+		POINT{ -45, -100 }, CHARACTER_STATE::IDLE_RIGHT,
+		true, false, 16
+	);
+
+	Animation* necrodancerRightUpJump = new Animation();
+	necrodancerRightUpJump->init(
+		KEY_NECRODANCER_RIGHT_UP_JUMP,
+		POINT{ -90, -90 }, CHARACTER_STATE::RIGHT_UP_JUMP,
+		false, false, 16
+	);
+
+	Animation* necrodancerRightDownJump = new Animation();
+	necrodancerRightDownJump->init(
+		KEY_NECRODANCER_RIGHT_DOWN_JUMP,
+		POINT{ -90, -140 }, CHARACTER_STATE::RIGHT_DOWN_JUMP,
+		false, false, 16
+	);
+
+	Animation* necrodancerLeftIdle = new Animation();
+	necrodancerLeftIdle->init(
+		KEY_NECRODANCER_LEFT_IDLE,
+		POINT{ -43, -100 }, CHARACTER_STATE::IDLE_LEFT,
+		true, false, 16
+	);
+
+	Animation* necrodancerLeftUpJump = new Animation();
+	necrodancerLeftUpJump->init(
+		KEY_NECRODANCER_LEFT_UP_JUMP,
+		POINT{ -90, -90 }, CHARACTER_STATE::LEFT_UP_JUMP,
+		false, false, 16
+	);
+
+	Animation* necrodancerLeftDownJump = new Animation();
+	necrodancerLeftDownJump->init(
+		KEY_NECRODANCER_LEFT_DOWN_JUMP,
+		POINT{ -85, -140 }, CHARACTER_STATE::LEFT_DOWN_JUMP,
+		false, false, 16
+	);
+
+	Animation* necrodancerExplosionIdle = new Animation();
+	necrodancerExplosionIdle->init(
+		KEY_NECRODANCER_EXPLOSION_IDLE,
+		POINT{ -45, -100 }, CHARACTER_STATE::EXPLOSION_IDLE,
+		false, false, 16
+	);
+
+	Animation* necrodancerExplosion = new Animation();
+	necrodancerExplosion->init(
+		KEY_NECRODANCER_EXPLOSION,
+		POINT{ -45, -100 }, CHARACTER_STATE::EXPLOSION,
+		false, false, 16
+	);
+
+	Animation* necrodancerRightBuleATT = new Animation();
+	necrodancerRightBuleATT->init(
+		KEY_NECRODANCER_RIGHT_BLUEATT,
+		POINT{ -45, -100 }, CHARACTER_STATE::RIGHT_BLUEATT,
+		true, false, 16
+	);
+
+	Animation* necrodancerLeftBuleATT = new Animation();
+	necrodancerLeftBuleATT->init(
+		KEY_NECRODANCER_LEFT_BLUEATT,
+		POINT{ -42, -100 }, CHARACTER_STATE::LEFT_BLUEATT,
+		true, false, 16
+	);
+
+	Animation* necrodancerSohwanIdle = new Animation();
+	necrodancerSohwanIdle->init(
+		KEY_NECRODANCER_SOHWAN_IDLE,
+		POINT{ -45, -100 }, CHARACTER_STATE::SOHWAN_IDLE,
+		true, false, 16
+	);
+
+	Animation* necrodancerIdle2 = new Animation();
+	necrodancerIdle2->init(
+		KEY_NECRODANCER_IDLE2,
+		POINT{ -45, -100 }, CHARACTER_STATE::IDLE2,
+		true, false, 16
+	);
+
+	animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, necrodancerRightIdle);
+	animator->addAnimation(CHARACTER_STATE::RIGHT_UP_JUMP, necrodancerRightUpJump);
+	animator->addAnimation(CHARACTER_STATE::RIGHT_DOWN_JUMP, necrodancerRightDownJump);
+
+	animator->addAnimation(CHARACTER_STATE::IDLE_LEFT, necrodancerLeftIdle);
+	animator->addAnimation(CHARACTER_STATE::LEFT_UP_JUMP, necrodancerLeftUpJump);
+	animator->addAnimation(CHARACTER_STATE::LEFT_DOWN_JUMP, necrodancerLeftDownJump);
+
+	animator->addAnimation(CHARACTER_STATE::EXPLOSION_IDLE, necrodancerExplosionIdle);
+	animator->addAnimation(CHARACTER_STATE::EXPLOSION, necrodancerExplosion);
+
+	animator->addAnimation(CHARACTER_STATE::RIGHT_BLUEATT, necrodancerRightBuleATT);
+	animator->addAnimation(CHARACTER_STATE::LEFT_BLUEATT, necrodancerLeftBuleATT);
+
+	animator->addAnimation(CHARACTER_STATE::SOHWAN_IDLE, necrodancerSohwanIdle);
+	animator->addAnimation(CHARACTER_STATE::IDLE2, necrodancerIdle2);
+>>>>>>> origin/테스트
 
 	switch (dir)
 	{

@@ -102,7 +102,7 @@ void SlimeBlue::update(void)
 		//if ((distanceX * distanceX) + (distanceY * distanceY) <= (fieldOfVision * fieldOfVision) &&
 		//	(distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
 		//		attackTarget();
-		//else //½Ã¾ß¹üÀ§ ¹Û¿¡ ÀÖÀ»¶§ Idle »óÅÂ
+		//else //ï¿½Ã¾ß¹ï¿½ï¿½ï¿½ ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Idle ï¿½ï¿½ï¿½ï¿½
 		//{
 			move();
 		//}

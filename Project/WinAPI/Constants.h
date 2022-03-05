@@ -169,6 +169,13 @@ extern const std::string KEY_NECRODANCER_SOHWAN_IDLE;
 extern const char* DIR_NECRODANCER_SOHWAN_IDLE;
 extern const std::string KEY_NECRODANCER_IDLE2;
 extern const char* DIR_NECRODANCER_IDLE2;
+
+extern const std::string KEY_NECRODANCER_EFFECT_EXPLOSION;
+extern const char* DIR_NECRODANCER_EFFECT_EXPLOSION;
+extern const std::string KEY_NECRODANCER_EFFECT_ICE_BLAST;
+extern const char* DIR_NECRODANCER_EFFECT_ICE_BLAST;
+extern const std::string KEY_NECRODANCER_EFFECT_PROZEN_FEET;
+extern const char* DIR_NECRODANCER_EFFECT_PROZEN_FEET;
 #pragma endregion necrodancer
 
 #pragma region WeaponEffect

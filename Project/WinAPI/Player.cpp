@@ -17,11 +17,12 @@ HRESULT Player::init(Scene* scenePtr)
 	command = DIRECTION::DIRECTION_NUM;
 	bounce = DIRECTION::DIRECTION_NUM;
 	Move(POINT{ 0, 0 });
+	effectCountIndex = 0;
+	DaggerEffectRightTF = false;
 
 	{ // animation.
 		headAnimator = new Animator();
 		bodyAnimator = new Animator();
-		attakAnimator = new Animator();
 
 		Animation* headIdleRight = new Animation();
 		Animation* bodyIdleRight = new Animation();
@@ -37,8 +38,6 @@ HRESULT Player::init(Scene* scenePtr)
 		Animation* bodyJumpTop = new Animation();
 		Animation* headJumpBottom = new Animation();
 		Animation* bodyJumpBottom = new Animation();
-
-		Animation* attakRight = new Animation();
 
 		headIdleRight->init(
 			KEY_PLAYER_HEAD_IDLE_RIGHT,
@@ -103,13 +102,6 @@ HRESULT Player::init(Scene* scenePtr)
 			false, false, 64
 		);
 
-		attakRight->init(
-			KEY_SWIPE_DAGGER_RIGHT,
-			POINT{ -24, -72 }, CHARACTER_STATE::IDLE_RIGHT,
-			false, false, 16
-		);
-
-
 		headAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, headIdleRight);
 		bodyAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, bodyIdleRight);
 		headAnimator->addAnimation(CHARACTER_STATE::IDLE_LEFT, headIdleLeft);
@@ -125,7 +117,6 @@ HRESULT Player::init(Scene* scenePtr)
 		headAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, headJumpBottom);
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, bodyJumpBottom);
 
-		attakAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, attakRight);
 	}
 
 	scene = scenePtr;
@@ -144,6 +135,11 @@ void Player::release(void)
 void Player::update(void)
 {
 	turnCount += TIMEMANAGER->getElapsedTime();
+	if (turnCount >= 0.5f)
+	{
+		effectCountIndex++;
+		turnCount -= 0.5f;
+	}
 
 	// non-idle animation -> idle animation.
 	if (headAnimator->isEnd() && bodyAnimator->isEnd())
@@ -307,8 +303,7 @@ void Player::update(void)
 			if (!enemyVec.empty())
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
-					(*iter)->interact(this);
-
+				(*iter)->interact(this);
 			}
 			else if (forwardObject)
 			{
@@ -333,7 +328,7 @@ void Player::update(void)
 				{
 					(*iter)->interact(this);
 				}
-
+				DaggerEffectRightTF = true;
 			}
 			else if (forwardObject)
 			{
@@ -424,19 +419,39 @@ void Player::update(void)
 	// animation update.
 	headAnimator->update();
 	bodyAnimator->update();
-	attakAnimator->update();
 }
 
 void Player::render(void)
 {
 	POINT renderPos = GridPointToPixelPointCenter(pos);
 	POINT revision = CAMERAMANAGER->getRevision();
+	
+	if (KEYMANAGER->isToggleKey(VK_F1))
+	{
+		Rectangle(getMemDC(),
+			GridPointToPixelPointLeftTop(pos).x - revision.x,
+			GridPointToPixelPointLeftTop(pos).y - revision.y,
+			GridPointToPixelPointLeftTop(pos).x - revision.x + TILE_SIZE,
+			GridPointToPixelPointLeftTop(pos).y - revision.y + TILE_SIZE);
+	}
+
 
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
 	headAnimator->animationRender(getMemDC(), renderPos);
 	bodyAnimator->animationRender(getMemDC(), renderPos);
+
+	if (DaggerEffectRightTF)
+	{
+		cout << "����" << endl;
+		IMAGEMANAGER->frameRender(KEY_SWIPE_DAGGER_RIGHT, getMemDC(), 
+			GridPointToPixelPointLeftTop(pos).x - revision.x + 50, 
+			GridPointToPixelPointLeftTop(pos).y - revision.y - 10, 
+			effectCountIndex, 0);
+
+		DaggerEffectRightTF = false; 
+	}
 }
 
 void Player::Move(POINT _pos)

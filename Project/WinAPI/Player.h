@@ -19,7 +19,8 @@ private:
 	Animator* attakAnimator;
 	Scene* scene;
 	
-
+	int effectCountIndex;
+	bool DaggerEffectRightTF;
 	HRESULT init(void) { return S_OK; }
 public:
 	HRESULT init(Scene* scenePtr);
