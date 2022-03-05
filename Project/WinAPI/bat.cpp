@@ -13,6 +13,7 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	destroyed = false;
 	type = OBJECT_TYPE::MONSTER_BAT;
 	scene = scenePtr;
+
 	animator = new Animator;
 	atk_animator = new Animator;
 		
@@ -44,10 +45,10 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	Idle_Left_Animation->init(KEY_BAT_LEFT, POINT{ -37, -50 }, CHARACTER_STATE::IDLE_LEFT, true, false, 16);
 	Idle_Right_Animation->init(KEY_BAT_RIGHT, POINT{ -37, -50 }, CHARACTER_STATE::IDLE_RIGHT, true, false, 16);
 
-	Attak_left_Animation->init(KEY_SWIPE_ENEMY_LEFT, POINT{ -70, -50 }, CHARACTER_STATE::ATTACK_LEFT, false, false, 16);
-	Attak_Right_Animation->init(KEY_SWIPE_ENEMY_RIGHT, POINT{ 20, -50 }, CHARACTER_STATE::ATTACK_RIGHT, false, false, 16);
-	Attak_Top_Animation->init(KEY_SWIPE_ENEMY_TOP, POINT{ -20, -80 }, CHARACTER_STATE::ATTACK_TOP, false, false, 16);
-	Attak_Bottom_Animation->init(KEY_SWIPE_ENEMY_BOTTOM, POINT{ -20, 10 }, CHARACTER_STATE::ATTACK_BOTTOM, false, false, 16);
+	Attak_left_Animation->init(KEY_SWIPE_ENEMY_LEFT, POINT{ -70, -50 }, CHARACTER_STATE::ATTACK_LEFT, false, false, 50);
+	Attak_Right_Animation->init(KEY_SWIPE_ENEMY_RIGHT, POINT{ 20, -50 }, CHARACTER_STATE::ATTACK_RIGHT, false, false, 50);
+	Attak_Top_Animation->init(KEY_SWIPE_ENEMY_TOP, POINT{ -20, -80 }, CHARACTER_STATE::ATTACK_TOP, false, false, 50);
+	Attak_Bottom_Animation->init(KEY_SWIPE_ENEMY_BOTTOM, POINT{ -20, 10 }, CHARACTER_STATE::ATTACK_BOTTOM, false, false, 50);
 
 	null_animation->init(KEY_SWIPE_ENEMY_LEFT, POINT{ -54, -48 }, CHARACTER_STATE::IDLE_RIGHT, true, false, 16);
 

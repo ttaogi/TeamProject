@@ -5,7 +5,17 @@ class SlimeBlue : public Enemy
 {
 private:
 	float turnCount;
+	float attackDelay;
+	float atkRange;
+	float fieldOfVision;
+	float distanceX;
+	float distanceY;
+
 	bool posCheck;
+	bool act;
+
+	Animator* atk_animator;
+
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
 	void release(void);
@@ -15,7 +25,9 @@ public:
 	bool interact(Player* player);
 	void move(void);
 
-	SlimeBlue() { }
-	virtual ~SlimeBlue() { }
+	void attackTarget();
+
+	SlimeBlue() {}
+	virtual ~SlimeBlue() {}
 };
 
