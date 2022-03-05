@@ -2,6 +2,7 @@
 
 #include "GameNode.h"
 
+class Image;
 class Object;
 class Player;
 class Slime;
@@ -12,6 +13,7 @@ private:
 protected:
 	MapInfo* mapInfo;
 	Player* player;
+	Image* minimap;
 	std::vector<Object*> objectVec;
 	std::vector<Object*> effectVec;
 public:

@@ -26,6 +26,11 @@
 
 HRESULT LobbyScene::init(void)
 {
+	minimap = new Image();
+	minimap->init(WINSIZEX, WINSIZEY);
+	PatBlt(minimap->getMemDC(), 0, 0, WINSIZEX, WINSIZEY, BLACKNESS);
+	minimap->setTransColor(true, RGB(0, 0, 0));
+
 	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::EXAMPLE_MAP, this);
 	if (mapInfo == NULL) return E_FAIL;
 
@@ -87,6 +92,8 @@ void LobbyScene::release(void)
 		SAFE_DELETE((*iter));
 	}
 	effectVec.clear();
+	SAFE_RELEASE(minimap);
+	SAFE_DELETE(minimap);
 }
 
 void LobbyScene::update(void)
