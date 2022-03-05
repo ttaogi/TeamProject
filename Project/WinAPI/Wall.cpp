@@ -85,8 +85,13 @@ void Wall::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
+
 	if (animator && !destroyed)
+	{
 		animator->animationRender(getMemDC(), renderPos);
+	}
+	
+
 }
 
 bool Wall::interact(Player* player)

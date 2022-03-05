@@ -4,6 +4,11 @@
 class Necrodancer : public Enemy
 {
 private:
+	RECT _Hp_rc;
+
+	Image* _FullHp;
+	Image* _EmptyHp;
+
 	float turnCount;
 	bool posCheck;
 
@@ -21,6 +26,8 @@ private:
 
 	int rightCount;
 	int leftCount;
+
+	int count;
 
 
 public:

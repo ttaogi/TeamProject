@@ -88,7 +88,13 @@ void SlimeBlue::render(void)
 			_rc.left - revision.x, _rc.top - revision.y,
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
-	animator->animationRender(getMemDC(), renderPos);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		animator->animationRender(getMemDC(), renderPos);
+	}
 
 	//renderPos.x -= _TileSize/2
 	//renderPos.y -= (_TileSize/2 + 24)

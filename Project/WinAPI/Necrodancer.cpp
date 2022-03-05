@@ -56,6 +56,10 @@ HRESULT Necrodancer::init(Scene* scenePtr, POINT position)
 	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_SOHWAN_IDLE, DIR_NECRODANCER_SOHWAN_IDLE, 88, 212, 1, 2, 1, true, MAGENTA);
 	IMAGEMANAGER->addFrameImage(KEY_NECRODANCER_IDLE2, DIR_NECRODANCER_IDLE2, 176, 212, 2, 2, 2, true, MAGENTA);
 
+	_FullHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_FULL, DIR_UI_MONSTER_HEART_FULL, 24, 24, true, MAGENTA);
+	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_EMPTY, DIR_UI_MONSTER_HEART_EMPTY, 24, 24, true, MAGENTA);
+
+	_Hp_rc = RectMakeCenter(600, 400, _FullHp->getWidth(), _FullHp->getHeight());
 
 	Animation* necrodancerRightIdle = new Animation();
 	necrodancerRightIdle->init(
@@ -194,7 +198,30 @@ void Necrodancer::render(void)
 			_rc.left - revision.x, _rc.top - revision.y,
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
-	animator->animationRender(getMemDC(), renderPos);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		animator->animationRender(getMemDC(), renderPos);
+	}
+
+	count = hp;
+	if (hp != 6)
+	{
+		for (int i = 0; i < 6; i++)
+		{
+			if (count >= 1)
+			{
+				_FullHp->render(getMemDC(), renderPos.x - 72 + i * 24, renderPos.y - 116);
+			}
+			else
+			{
+				_EmptyHp->render(getMemDC(), renderPos.x - 72 + i * 24, renderPos.y - 116);
+			}
+			count--;
+		}
+	}
 }
 
 bool Necrodancer::interact(Player* player)

@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Animator.h"
 #include "Player.h"
+#include "Scene.h"
 
 HRESULT Bomb::init(Scene * scenePtr, POINT position)
 {
@@ -35,8 +36,14 @@ void Bomb::render(void)
 
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
+	
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	if (distance < 8)
+	{
+		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	}
 }
 
 bool Bomb::interact(Player * player)

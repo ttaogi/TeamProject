@@ -43,17 +43,6 @@ void Slime::release(void)
 void Slime::update(void)
 {
 	animator->update();
-	/*
-	POINT searchPos = POINT{ pos.x + areaIter->x, pos.y + areaIter->y };
-	Player* player = scene->getPlayer();
-	POINT playerPos = Player->getPos();
-
-	if(searchPos.x == playerPos.x && searchPos.y == playerPos.y)
-	{
-		hp--;
-	}
-	*/
-	
 }
 
 void Slime::render(void)
@@ -69,7 +58,14 @@ void Slime::render(void)
 			_rc.left - revision.x, _rc.top - revision.y,
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
-	animator->animationRender(getMemDC(), renderPos);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		animator->animationRender(getMemDC(), renderPos);
+	}
+
 }
 
 bool Slime::interact(Player* player)
