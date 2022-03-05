@@ -46,7 +46,13 @@ void Shopkeeper::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	shopkeeper->animationRender(getMemDC(), renderPos);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
+	{
+		shopkeeper->animationRender(getMemDC(), renderPos);
+	}
 }
 
 bool Shopkeeper::interact(Player * player)
