@@ -10,7 +10,7 @@ HRESULT PlayerInfoManager::init()
 	body = head = torch = heal 
 		= ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::ITEM_DETAIL_NUM);
 	bomb = ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::BOMB);
-	hpMax = hp = 10;
+	hpMax = hp = PLAYER_HP_MAX;
 
 	cout << "####################" << endl;
 	cout << "PlayerInfo Init." << endl;

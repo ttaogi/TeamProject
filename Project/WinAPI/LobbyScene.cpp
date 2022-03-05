@@ -43,6 +43,7 @@ HRESULT LobbyScene::init(void)
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
+	PLAYERINFOMANAGER->setHp(PLAYER_HP_MAX);
 
 	shopkeeper = new Shopkeeper;
 	shopkeeper->init(this, POINT{ 10, 10 });

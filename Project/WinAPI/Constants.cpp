@@ -593,3 +593,4 @@ const Item EMPTY_ITEM{ ITEM_TYPE::ITEM_TYPE_NUM,
 	0, 0, 0, 0, 0, NULL };
 const float DEFAULT_FPS = 60.0f;
 const float DEFAULT_VOLUME = 0.2f;
+const int PLAYER_HP_MAX = 10;
