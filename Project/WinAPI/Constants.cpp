@@ -499,8 +499,8 @@ const int TILE_SIZE = 48;
 
 
 const COLORREF MAGENTA = RGB(255, 0, 255);
-const float DEFAULT_FPS = 60.0f;
 const Item EMPTY_ITEM{ ITEM_TYPE::ITEM_TYPE_NUM,
 	ITEM_DETAIL::ITEM_DETAIL_NUM, "",
 	0, 0, 0, 0, 0, NULL };
+const float DEFAULT_FPS = 60.0f;
 const float DEFAULT_VOLUME = 0.2f;

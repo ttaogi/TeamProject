@@ -293,6 +293,8 @@ extern const int TILE_SIZE;
 
 
 extern const COLORREF MAGENTA;
-extern const float DEFAULT_FPS;
 extern const Item EMPTY_ITEM;
+extern const float DEFAULT_FPS;
 extern const float DEFAULT_VOLUME;
+extern const int MINIMAP_WIDTH;
+extern const int MINIMAP_HEIGHT;

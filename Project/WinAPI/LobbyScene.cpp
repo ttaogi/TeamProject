@@ -155,6 +155,8 @@ void LobbyScene::render(void)
 	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
 		(*iter)->render();
 
+	// minimap.
+
 	_plEquip->render();
 	_plHp->render();
 	_Note->render();
