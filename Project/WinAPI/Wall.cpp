@@ -5,13 +5,15 @@
 #include "Animation.h"
 #include "Animator.h"
 #include "Player.h"
+#include "Scene.h"
 
-HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos)
+HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos, Scene* _scenPtr)
 {
 	destroyed = false;
 	type = _type;
 	pos = _pos;
-
+	scene = _scenPtr;
+	
 	Animation* anim = NULL;
 
 	switch (_type)
@@ -85,10 +87,16 @@ void Wall::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
+	
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (animator && !destroyed)
+	if (distance < 8)
 	{
-		animator->animationRender(getMemDC(), renderPos);
+		if (animator && !destroyed)
+		{
+			animator->animationRender(getMemDC(), renderPos);
+		}
 	}
 	
 
