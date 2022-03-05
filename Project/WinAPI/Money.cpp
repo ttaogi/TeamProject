@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Animator.h"
 #include "Player.h"
+#include "Scene.h"
 
 HRESULT Money::init(Scene* scenePtr, POINT position)
 {
@@ -48,7 +49,13 @@ void Money::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	animator->animationRender(getMemDC(), renderPos);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		animator->animationRender(getMemDC(), renderPos);
+	}
 }
 
 bool Money::interact(Player* player)

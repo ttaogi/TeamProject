@@ -5,6 +5,7 @@
 #include "Animation.h"
 #include "Animator.h"
 #include "Player.h"
+#include "Scene.h"
 
 HRESULT Head::init(Scene * scenePtr, POINT position)
 {
@@ -32,7 +33,13 @@ void Head::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	}
 }
 
 bool Head::interact(Player * player)

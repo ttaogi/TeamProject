@@ -38,7 +38,13 @@ void Dagger::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	}
 }
 
 bool Dagger::interact(Player * player)
@@ -118,7 +124,13 @@ void BroadSword::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	}
 }
 
 bool BroadSword::interact(Player * player)
@@ -190,7 +202,13 @@ void Goldenlute::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
+	}
 }
 
 bool Goldenlute::interact(Player * player)

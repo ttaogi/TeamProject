@@ -4,6 +4,11 @@
 class Necrodancer : public Enemy
 {
 private:
+	RECT _Hp_rc;
+
+	Image* _FullHp;
+	Image* _EmptyHp;
+
 	float turnCount;
 	int globalCool;
 	int summonCool;

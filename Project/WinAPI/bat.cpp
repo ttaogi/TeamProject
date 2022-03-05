@@ -30,8 +30,8 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	rightCount = 0;
 	leftCount = 0;
 
-	fieldOfVision = 4; //ÀÎ½Ä¹üÀ§
-	atkRange = 1; //°ø°Ý¹üÀ§
+	fieldOfVision = 4; //ï¿½Î½Ä¹ï¿½ï¿½ï¿½
+	atkRange = 1; //ï¿½ï¿½ï¿½Ý¹ï¿½ï¿½ï¿½
 		
 	Animation* Idle_Left_Animation	= new Animation();
 	Animation* Idle_Right_Animation = new Animation();
@@ -101,9 +101,9 @@ void Bat::update(void)
 
 		if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
 		{
-			faceTarget(); //Å¸°Ù ¹Ù¶óº¸±â
+			faceTarget(); //Å¸ï¿½ï¿½ ï¿½Ù¶óº¸±ï¿½
 
-			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange)) //Å¸°Ù°úÀÇ °Å¸®°¡ ¹üÀ§º¸´Ù ÀÛÀ»¶§
+			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange)) //Å¸ï¿½Ù°ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			{
 				attackTarget();
 			}
@@ -113,14 +113,14 @@ void Bat::update(void)
 				if (animator->getCurrentState() != CHARACTER_STATE::ATTACK_LEFT
 					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_RIGHT
 					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_TOP
-					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM) //°ø°Ý¾Ö´Ï¸ÞÀÌ¼ÇÀÌ ¾Æ´Ò¶§ ÃßÀû
+					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM) //ï¿½ï¿½ï¿½Ý¾Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ï¿½ï¿½ ï¿½Æ´Ò¶ï¿½ ï¿½ï¿½ï¿½ï¿½
 				{
 					movetoTarget();
 				}
 			}
 		}
 
-		else //½Ã¾ß¹üÀ§ ¹Û¿¡ ÀÖÀ»¶§ Idle »óÅÂ
+		else //ï¿½Ã¾ß¹ï¿½ï¿½ï¿½ ï¿½Û¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Idle ï¿½ï¿½ï¿½ï¿½
 		{
 			move();
 		}		
@@ -144,8 +144,16 @@ void Bat::render(void)
 			_rc.left - revision.x, _rc.top - revision.y,
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
-	animator->animationRender(getMemDC(), renderPos);
-	
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < 8)
+	{
+		animator->animationRender(getMemDC(), renderPos);
+	}
+
+	count = hp;
+
 	int count = hp;
 	if (hp != hpMax)
 		for (int i = 0; i < hpMax; ++i)

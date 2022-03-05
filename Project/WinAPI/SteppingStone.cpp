@@ -126,7 +126,8 @@ void SteppingStoneRight::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	stripe->render(getMemDC(), renderPos.x, renderPos.y);
+		stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	
 }
 
 bool SteppingStoneRight::interact(Player* player)
