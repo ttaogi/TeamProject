@@ -216,6 +216,11 @@ const std::string KEY_PLAYER_BODY_JUMP_BOTTOM =
 	"PLAYER_BODY_JUMP_BOTTOM";
 const char* DIR_PLAYER_BODY_JUMP_BOTTOM =
 	"Resources/Images/entities/player1_armor_body_xmas_jump_bottom.bmp";
+
+const std::string KEY_PLAYER_MINIMAP =
+	"PLAYER_MINIMAP";
+const char* DIR_PLAYER_MINIMAP =
+	"Resources/Images/level/minimap_player_pixel.bmp";
 #pragma endregion Player
 
 #pragma region Slime

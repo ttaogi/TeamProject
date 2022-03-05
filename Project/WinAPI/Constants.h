@@ -119,6 +119,9 @@ extern const std::string KEY_PLAYER_HEAD_JUMP_BOTTOM;
 extern const char* DIR_PLAYER_HEAD_JUMP_BOTTOM;
 extern const std::string KEY_PLAYER_BODY_JUMP_BOTTOM;
 extern const char* DIR_PLAYER_BODY_JUMP_BOTTOM;
+
+extern const std::string KEY_PLAYER_MINIMAP;
+extern const char* DIR_PLAYER_MINIMAP;
 #pragma endregion Player
 
 #pragma region Slime

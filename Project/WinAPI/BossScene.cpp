@@ -26,6 +26,11 @@
 
 HRESULT BossScene::init(void)
 {
+	minimap = new Image();
+	minimap->init(MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	PatBlt(minimap->getMemDC(), 0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, BLACKNESS);
+	minimap->setTransColor(true, RGB(0, 0, 0));
+
 	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::BOSS_MAP, this);
 	if (mapInfo == NULL) return E_FAIL;
 
@@ -79,6 +84,8 @@ void BossScene::release(void)
 		SAFE_DELETE((*iter));
 	}
 	effectVec.clear();
+	SAFE_RELEASE(minimap);
+	SAFE_DELETE(minimap);
 }
 
 void BossScene::update(void)
@@ -137,6 +144,17 @@ void BossScene::render(void)
 
 	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
 		(*iter)->render();
+
+	// minimap.
+	if (minimap)
+	{
+		mapInfo->renderMinimap(minimap->getMemDC());
+		for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
+			(*iter)->renderMinimap(minimap->getMemDC());
+		player->renderMinimap(minimap->getMemDC());
+
+		minimap->render(getMemDC(), WINSIZEX - MINIMAP_WIDTH, WINSIZEY - MINIMAP_HEIGHT);
+	}
 
 	_plEquip->render();
 	_plHp->render();

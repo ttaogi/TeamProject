@@ -18,6 +18,7 @@ private:
 	Animator* bodyAnimator;
 	Animator* attakAnimator;
 	Scene* scene;
+	Image* minimapStripe;
 	
 	int effectCountIndex;
 	bool DaggerEffectRightTF;
@@ -27,6 +28,7 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+	void renderMinimap(HDC _hdc);
 
 	void Move(POINT _pos);
 

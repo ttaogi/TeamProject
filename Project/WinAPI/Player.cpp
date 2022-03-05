@@ -17,6 +17,8 @@ HRESULT Player::init(Scene* scenePtr)
 	command = DIRECTION::DIRECTION_NUM;
 	bounce = DIRECTION::DIRECTION_NUM;
 	Move(POINT{ 0, 0 });
+	scene = scenePtr;
+	minimapStripe = IMAGEMANAGER->findImage(KEY_PLAYER_MINIMAP);
 	effectCountIndex = 0;
 	DaggerEffectRightTF = false;
 
@@ -118,8 +120,6 @@ HRESULT Player::init(Scene* scenePtr)
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, bodyJumpBottom);
 
 	}
-
-	scene = scenePtr;
 
 	return S_OK;
 }
@@ -451,6 +451,15 @@ void Player::render(void)
 			effectCountIndex, 0);
 
 		DaggerEffectRightTF = false; 
+	}
+}
+
+void Player::renderMinimap(HDC _hdc)
+{
+	if (minimapStripe)
+	{
+		POINT renderPos = GridPointToPixelPointLeftTopMiniMap(pos);
+		minimapStripe->render(_hdc, renderPos.x, renderPos.y);
 	}
 }
 

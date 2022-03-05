@@ -161,6 +161,7 @@ void LobbyScene::render(void)
 		mapInfo->renderMinimap(minimap->getMemDC());
 		for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
 			(*iter)->renderMinimap(minimap->getMemDC());
+		player->renderMinimap(minimap->getMemDC());
 
 		minimap->render(getMemDC(), WINSIZEX - MINIMAP_WIDTH, WINSIZEY - MINIMAP_HEIGHT);
 	}
