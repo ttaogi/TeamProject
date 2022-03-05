@@ -13,6 +13,7 @@ public:
 	TILE_TYPE type;
 	POINT pos;
 	Image* stripe;
+	Image* minimapStripe;
 
 	Tile();
 	~Tile();
@@ -20,6 +21,7 @@ public:
 	HRESULT init(TILE_TYPE _type, POINT _pos);
 	void release();
 	void render(HDC _hdc);
+	void renderMinimap(HDC _hdc);
 };
 
 class MapInfo {
@@ -39,6 +41,7 @@ public:
 	HRESULT init(const std::string _fileName, Scene* _scene);
 	void release();
 	void render(HDC _hdc);
+	void renderMinimap(HDC _hdc);
 
 	std::string getBgmKey() const { return bgmKey; }
 	float getBgmPlayTime() const { return bgmPlayTime; }

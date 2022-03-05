@@ -13,6 +13,11 @@ POINT GridPointToPixelPointLeftTop(POINT pos)
 	return POINT{ pos.x * TILE_SIZE, pos.y * TILE_SIZE };
 }
 
+POINT GridPointToPixelPointLeftTopMiniMap(POINT pos)
+{
+	return POINT{ pos.x * TILE_SIZE_MINIMAP, pos.y * TILE_SIZE_MINIMAP };
+}
+
 bool PointCmp(POINT pos1, POINT pos2)
 {
 	return (pos1.x == pos2.x && pos1.y == pos2.y);

@@ -6,9 +6,8 @@
 
 HRESULT StartScene::init(void)
 {
-	background = IMAGEMANAGER->addImage(KEY_BACKGROUND_START_SCENE, DIR_BACKGROUND_START_SCENE, WINSIZEX, WINSIZEY);
-	pressAnyKey = IMAGEMANAGER->addImage(KEY_UI_PRESS_ANY_KEY, DIR_UI_PRESS_ANY_KEY, 876, 72, true, MAGENTA);
-	pressAnyKey->initForAlphaBlend();
+	background = IMAGEMANAGER->findImage(KEY_BACKGROUND_START_SCENE);
+	pressAnyKey = IMAGEMANAGER->findImage(KEY_UI_PRESS_ANY_KEY);
 
 	SOUNDMANAGER->allStop();
 	SOUNDMANAGER->play(KEY_BGM_MAIN_MENU, DEFAULT_VOLUME);
@@ -16,9 +15,7 @@ HRESULT StartScene::init(void)
 	return S_OK;
 }
 
-void StartScene::release(void)
-{
-}
+void StartScene::release(void) { }
 
 void StartScene::update(void)
 {

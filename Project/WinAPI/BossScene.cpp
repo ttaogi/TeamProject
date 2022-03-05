@@ -35,6 +35,8 @@ HRESULT BossScene::init(void)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
 			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_START);
 
+	objectVec.reserve(objectVec.size() * 1.5);
+
 	SOUNDMANAGER->allStop();
 	if (mapInfo->getBgmKey() != "")
 		SOUNDMANAGER->play(mapInfo->getBgmKey(), DEFAULT_VOLUME);
@@ -90,7 +92,9 @@ void BossScene::update(void)
 	player->update();
 
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
+	{
 		(*iter)->update();
+	}
 	for (auto iter = objectVec.begin(); iter != objectVec.end();)
 	{
 		if ((*iter)->getDestroyed())

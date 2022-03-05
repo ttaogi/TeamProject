@@ -12,6 +12,7 @@ HRESULT Stair::init(Scene* scenePtr, POINT position)
 	// Object.
 	destroyed = false;
 	type = OBJECT_TYPE::STAIR;
+	minimapStripe = IMAGEMANAGER->findImage(KEY_STAIR_MINIMAP);
 	animator = NULL;
 	scene = scenePtr;
 	// Stair.
@@ -39,6 +40,15 @@ void Stair::render(void)
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
 	{
 		stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	}
+}
+
+void Stair::renderMinimap(HDC _hdc)
+{
+	if (minimapStripe)
+	{
+		POINT renderPos = GridPointToPixelPointLeftTopMiniMap(pos);
+		minimapStripe->render(_hdc, renderPos.x, renderPos.y);
 	}
 }
 

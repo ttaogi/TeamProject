@@ -19,9 +19,6 @@ HRESULT Explosion::init(Scene * scenePtr, POINT position)
 	scene = scenePtr;
 	_info = ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::BOMB);
 
-	IMAGEMANAGER->addFrameImage(KEY_ITEM_BOMBDROP, DIR_ITEM_BOMBDROP, 240, 48, 5, 1, 5, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SFX_EXPLOSION, DIR_SFX_EXPLOSION, 1184, 148, 8, 1, 8, true, MAGENTA);
-
 	bombAnimator = new Animator();
 	explosionAnimator = new Animator();
 	
@@ -47,20 +44,12 @@ void Explosion::release(void)
 
 void Explosion::update(void)
 {
-	if (!bombAnimator->isEnd())
-	{
-		bombAnimator->update();
-	}
-
-	else
-	{
-		explosionAnimator->update();
-	}
+	if (!bombAnimator->isEnd())	bombAnimator->update();
+	else						explosionAnimator->update();
 
 	if (explosionAnimator->isEnd())
 	{
 		for (int i = -1; i < 2; i++)
-		{
 			for (int j = -1; j < 2; j++)
 			{
 				POINT p = pos;
@@ -68,17 +57,11 @@ void Explosion::update(void)
 				p.y += j;
 				Object* obj = scene->getObject(p);
 		
-				if (obj)
-				{
-					obj->interact(NULL);
-				}
+				if (obj) obj->interact(NULL);
 			}
-		}
 		
 		destroyed = true;
 	}
-	
-
 }
 
 void Explosion::render(void)
@@ -90,12 +73,7 @@ void Explosion::render(void)
 	renderPos.y -= revision.y;
 
 	if (!bombAnimator->isEnd())
-	{
 		bombAnimator->animationRender(getMemDC(), renderPos);
-	}
-
 	else
-	{
 		explosionAnimator->animationRender(getMemDC(), renderPos);
-	}
 }

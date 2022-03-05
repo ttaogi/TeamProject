@@ -27,8 +27,8 @@
 HRESULT LobbyScene::init(void)
 {
 	minimap = new Image();
-	minimap->init(WINSIZEX, WINSIZEY);
-	PatBlt(minimap->getMemDC(), 0, 0, WINSIZEX, WINSIZEY, BLACKNESS);
+	minimap->init(MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	PatBlt(minimap->getMemDC(), 0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, BLACKNESS);
 	minimap->setTransColor(true, RGB(0, 0, 0));
 
 	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::EXAMPLE_MAP, this);
@@ -156,6 +156,14 @@ void LobbyScene::render(void)
 		(*iter)->render();
 
 	// minimap.
+	if(minimap)
+	{
+		mapInfo->renderMinimap(minimap->getMemDC());
+		for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
+			(*iter)->renderMinimap(minimap->getMemDC());
+
+		minimap->render(getMemDC(), WINSIZEX - MINIMAP_WIDTH, WINSIZEY - MINIMAP_HEIGHT);
+	}
 
 	_plEquip->render();
 	_plHp->render();

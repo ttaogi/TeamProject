@@ -306,7 +306,7 @@ void Necrodancer::summon()
 
 		searchObj = scene->getObject(searchPos);
 
-		if (!searchObj)
+		if (searchObj)
 			continue;
 
 		Skeleton* skeleton = new Skeleton();

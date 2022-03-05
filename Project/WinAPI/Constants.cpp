@@ -15,6 +15,11 @@ const std::string KEY_TILE_DIRT =
 	"TILE_DIRT";
 const char* DIR_TILE_DIRT =
 	"Resources/Images/Object/TILE/DIRT/dirt.bmp";
+
+const std::string KEY_TILE_DIRT_MINIMAP =
+	"TILE_DIRT_MINIMAP";
+const char* DIR_TILE_DIRT_MINIMAP =
+	"Resources/Images/Object/TILE/DIRT/dirtMinimap.bmp";
 #pragma endregion Tile
 
 #pragma region Wall
@@ -30,6 +35,19 @@ const std::string KEY_WALL_SHOP =
 	"WALL_SHOP";
 const char* DIR_WALL_SHOP =
 	"Resources/Images/level/wall_shop_crypt.bmp";
+
+const std::string KEY_WALL_UNBREAKABLE_MINIMAP =
+	"WALL_UNBREAKABLE_MINIMAP";
+const char* DIR_WALL_UNBREAKABLE_MINIMAP =
+	"Resources/Images/level/TEMP_wall_unbreakable_minimap.bmp";
+const std::string KEY_WALL_DIRT_MINIMAP =
+	"WALL_DIRT_MINIMAP";
+const char* DIR_WALL_DIRT_MINIMAP =
+	"Resources/Images/level/wall_dirt_crypt_minimap.bmp";
+const std::string KEY_WALL_SHOP_MINIMAP =
+	"WALL_SHOP_MINIMAP";
+const char* DIR_WALL_SHOP_MINIMAP =
+	"Resources/Images/level/wall_shop_crypt_minimap.bmp";
 #pragma endregion Wall
 
 #pragma region SteppingStone
@@ -53,9 +71,14 @@ const char* DIR_STEPPING_STONE_BOTTOM =
 
 #pragma region Stair
 const std::string KEY_STAIR =
-"KEY_STAIR";
+	"STAIR";
 const char* DIR_STAIR =
-"Resources/Images/level/stairs.bmp";
+	"Resources/Images/level/stairs.bmp";
+
+const std::string KEY_STAIR_MINIMAP =
+	"STAIR_MINIMAP";
+const char* DIR_STAIR_MINIMAP =
+	"Resources/Images/level/stair_minimap.bmp";
 #pragma endregion Stair
 
 #pragma region UI
@@ -495,6 +518,9 @@ const char* DIR_NPC_SHOPKEEPER =
 
 #pragma region Size
 const int TILE_SIZE = 48;
+const int TILE_SIZE_MINIMAP = 4;
+const int MINIMAP_WIDTH = 160;
+const int MINIMAP_HEIGHT = 160;
 #pragma endregion Size
 
 

@@ -9,6 +9,9 @@ extern const char* DIR_BACKGROUND_START_SCENE;
 #pragma region Tile
 extern const std::string KEY_TILE_DIRT;
 extern const char* DIR_TILE_DIRT;
+
+extern const std::string KEY_TILE_DIRT_MINIMAP;
+extern const char* DIR_TILE_DIRT_MINIMAP;
 #pragma endregion Tile
 
 #pragma region Wall
@@ -18,6 +21,13 @@ extern const std::string KEY_WALL_DIRT;
 extern const char* DIR_WALL_DIRT;
 extern const std::string KEY_WALL_SHOP;
 extern const char* DIR_WALL_SHOP;
+
+extern const std::string KEY_WALL_UNBREAKABLE_MINIMAP;
+extern const char* DIR_WALL_UNBREAKABLE_MINIMAP;
+extern const std::string KEY_WALL_DIRT_MINIMAP;
+extern const char* DIR_WALL_DIRT_MINIMAP;
+extern const std::string KEY_WALL_SHOP_MINIMAP;
+extern const char* DIR_WALL_SHOP_MINIMAP;
 #pragma endregion Wall
 
 #pragma region SteppingStone
@@ -34,6 +44,9 @@ extern const char* DIR_STEPPING_STONE_BOTTOM;
 #pragma region Stair
 extern const std::string KEY_STAIR;
 extern const char* DIR_STAIR;
+
+extern const std::string KEY_STAIR_MINIMAP;
+extern const char* DIR_STAIR_MINIMAP;
 #pragma endregion Stair
 
 #pragma region UI
@@ -289,6 +302,7 @@ extern const char* DIR_NPC_SHOPKEEPER;
 
 #pragma region Size
 extern const int TILE_SIZE;
+extern const int TILE_SIZE_MINIMAP;
 #pragma endregion Size
 
 

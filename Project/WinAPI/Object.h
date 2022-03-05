@@ -11,6 +11,7 @@ class Object : public GameNode
 protected:
 	bool destroyed;
 	OBJECT_TYPE type;
+	Image* minimapStripe;
 	Animator* animator;
 	Scene* scene;
 
@@ -21,6 +22,7 @@ public:
 	virtual void release(void) = 0;
 	virtual void update(void) = 0;
 	virtual void render(void) = 0;
+	virtual void renderMinimap(HDC _hdc) { }
 
 	OBJECT_TYPE getType() const { return type; }
 	bool getDestroyed() const { return destroyed; }

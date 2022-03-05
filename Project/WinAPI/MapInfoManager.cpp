@@ -31,14 +31,17 @@ HRESULT Tile::init(TILE_TYPE _type, POINT _pos)
 	case TILE_TYPE::EMPTY:
 		isBlocked = true;
 		stripe = NULL;
+		minimapStripe = NULL;
 		break;
 	case TILE_TYPE::DIRT:
 		isBlocked = false;
 		stripe = IMAGEMANAGER->findImage(KEY_TILE_DIRT);
+		minimapStripe = IMAGEMANAGER->findImage(KEY_TILE_DIRT_MINIMAP);
 		break;
 	default:
 		isBlocked = true;
 		stripe = NULL;
+		minimapStripe = NULL;
 		break;
 	}
 	type = _type;
@@ -60,6 +63,15 @@ void Tile::render(HDC _hdc)
 		renderPos.y -= revision.y;
 
 		stripe->render(_hdc, renderPos.x, renderPos.y);
+	}
+}
+
+void Tile::renderMinimap(HDC _hdc)
+{
+	if (minimapStripe)
+	{
+		POINT renderPos = GridPointToPixelPointLeftTopMiniMap(pos);
+		minimapStripe->render(_hdc, renderPos.x, renderPos.y);
 	}
 }
 
@@ -424,17 +436,19 @@ void MapInfo::release()
 void MapInfo::render(HDC _hdc)
 {
 	for (int y = 0; y < size.y; ++y)
-	{
 		for (int x = 0; x < size.x; ++x)
 		{
 			int deltaX = abs(x - scene->getPlayer()->getPos().x);
 			int deltaY = abs(y - scene->getPlayer()->getPos().y);
-			if ((deltaX + deltaY) < 8)
-			{
-				tileMap[x][y]->render(_hdc);
-			}
+			if ((deltaX + deltaY) < 8) tileMap[x][y]->render(_hdc);
 		}
-	}
+}
+
+void MapInfo::renderMinimap(HDC _hdc)
+{
+	for (int y = 0; y < size.y; ++y)
+		for (int x = 0; x < size.x; ++x)
+			tileMap[x][y]->renderMinimap(_hdc);
 }
 
 ///////////////////////////////

@@ -20,6 +20,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos, Scene* _scenPtr)
 	{
 	case OBJECT_TYPE::WALL_UNBREAKABLE:
 		hp = INT_MAX;
+		minimapStripe = IMAGEMANAGER->findImage(KEY_WALL_UNBREAKABLE_MINIMAP);
 		animator = new Animator();
 		animator->init();
 		anim = new Animation();
@@ -33,6 +34,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos, Scene* _scenPtr)
 		break;
 	case OBJECT_TYPE::WALL_DIRT:
 		hp = 1;
+		minimapStripe = IMAGEMANAGER->findImage(KEY_WALL_DIRT_MINIMAP);
 		animator = new Animator();
 		animator->init();
 		anim = new Animation();
@@ -48,6 +50,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos, Scene* _scenPtr)
 		break;
 	case OBJECT_TYPE::WALL_SHOP:
 		hp = INT_MAX;
+		minimapStripe = IMAGEMANAGER->findImage(KEY_WALL_SHOP_MINIMAP);
 		animator = new Animator();
 		animator->init();
 		anim = new Animation();
@@ -61,6 +64,7 @@ HRESULT Wall::init(OBJECT_TYPE _type, POINT _pos, Scene* _scenPtr)
 		break;
 	case OBJECT_TYPE::NONE:
 	default:
+		minimapStripe = NULL;
 		return E_FAIL;
 	}
 
@@ -87,19 +91,20 @@ void Wall::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
-		if (animator && !destroyed)
-		{
-			animator->animationRender(getMemDC(), renderPos);
-		}
-	}
-	
+	if (distance < PLAYERINFOMANAGER->getViewDistance() && animator && !destroyed)
+		animator->animationRender(getMemDC(), renderPos);
+}
 
+void Wall::renderMinimap(HDC _hdc)
+{
+	if (minimapStripe)
+	{
+		POINT renderPos = GridPointToPixelPointLeftTopMiniMap(pos);
+		minimapStripe->render(_hdc, renderPos.x, renderPos.y);
+	}
 }
 
 bool Wall::interact(Player* player)

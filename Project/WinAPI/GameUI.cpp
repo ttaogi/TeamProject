@@ -9,15 +9,15 @@
 HRESULT PlEquip::init(void)
 {
 	// shovel, attack, body, head, ring.
-	_slot_1 = IMAGEMANAGER->addImage(KEY_UI_SLOT_1, DIR_UI_SLOT_1, 60, 66, true, MAGENTA);
-	_slot_2 = IMAGEMANAGER->addImage(KEY_UI_SLOT_2, DIR_UI_SLOT_2, 60, 66, true, MAGENTA);
-	_slot_3 = IMAGEMANAGER->addImage(KEY_UI_SLOT_3, DIR_UI_SLOT_3, 60, 66, true, MAGENTA);
-	_slot_4 = IMAGEMANAGER->addImage(KEY_UI_SLOT_4, DIR_UI_SLOT_4, 60, 66, true, MAGENTA);
-	_slot_5 = IMAGEMANAGER->addImage(KEY_UI_SLOT_5, DIR_UI_SLOT_5, 60, 66, true, MAGENTA);
+	_slot_1 = IMAGEMANAGER->findImage(KEY_UI_SLOT_1);
+	_slot_2 = IMAGEMANAGER->findImage(KEY_UI_SLOT_2);
+	_slot_3 = IMAGEMANAGER->findImage(KEY_UI_SLOT_3);
+	_slot_4 = IMAGEMANAGER->findImage(KEY_UI_SLOT_4);
+	_slot_5 = IMAGEMANAGER->findImage(KEY_UI_SLOT_5);
 
 	// item, bomb.
-	_action_1 = IMAGEMANAGER->addImage(KEY_UI_ACTION_1, DIR_UI_ACTION_1, 60, 84, true, MAGENTA);
-	_action_2 = IMAGEMANAGER->addImage(KEY_UI_ACTION_2, DIR_UI_ACTION_2, 60, 84, true, MAGENTA);
+	_action_1 = IMAGEMANAGER->findImage(KEY_UI_ACTION_1);
+	_action_2 = IMAGEMANAGER->findImage(KEY_UI_ACTION_2);
 
 	_slot_1_rc = RectMakeCenter(50, 45, _slot_1->getWidth(), _slot_1->getHeight());
 	_slot_2_rc = RectMakeCenter(120, 45, _slot_2->getWidth(), _slot_2->getHeight());
@@ -31,13 +31,9 @@ HRESULT PlEquip::init(void)
 	return S_OK;
 }
 
-void PlEquip::release(void)
-{
-}
+void PlEquip::release(void) { }
 
-void PlEquip::update(void)
-{
-}
+void PlEquip::update(void) { }
 
 void PlEquip::render(void)
 {
@@ -80,9 +76,9 @@ void PlEquip::render(void)
 //====================================================================================
 HRESULT PlHp::init(void)
 {
-	_FullHp	 = IMAGEMANAGER->addImage(KEY_UI_FULLHP, DIR_UI_FULLHP, 48, 44, true, MAGENTA);
-	_HalfHp  = IMAGEMANAGER->addImage(KEY_UI_HALFHP, DIR_UI_HALFHP, 48, 44, true, MAGENTA);
-	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_EMPTYHP, DIR_UI_EMPTYHP, 48, 44, true, MAGENTA);
+	_FullHp	 = IMAGEMANAGER->findImage(KEY_UI_FULLHP);
+	_HalfHp  = IMAGEMANAGER->findImage(KEY_UI_HALFHP);
+	_EmptyHp = IMAGEMANAGER->findImage(KEY_UI_EMPTYHP);
 	
 	_Hp_rc = RectMakeCenter(810, 45, _FullHp->getWidth(), _FullHp->getHeight());
 	
@@ -134,9 +130,9 @@ void PlHp::render(void)
 //====================================================================================
 HRESULT RhythmNote::init(Scene* _scene)
 {
-	heart		 = IMAGEMANAGER->addFrameImage(KEY_UI_HEART, DIR_UI_HEART, 164, 104, 2, 1, 2, true, MAGENTA);
-	Note_Green	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_GREEN, DIR_UI_NOTE_GREEN, 12, 64, true, MAGENTA);
-	Note_Red	 = IMAGEMANAGER->addImage(KEY_UI_NOTE_RED, DIR_UI_NOTE_RED, 12, 64, true, MAGENTA);
+	heart		 = IMAGEMANAGER->findImage(KEY_UI_HEART);
+	Note_Green	 = IMAGEMANAGER->findImage(KEY_UI_NOTE_GREEN);
+	Note_Red	 = IMAGEMANAGER->findImage(KEY_UI_NOTE_RED);
 		
 	Heart_rc	 = RectMakeCenter(WINSIZEX / 2, 470, heart->getFrameWidth(), heart->getFrameHeight());
 	HeatBox		 = RectMakeCenter(WINSIZEX / 2, 470, 150, heart->getHeight());
@@ -265,21 +261,16 @@ void RhythmNote::removeNote(int arrNum)
 //====================================================================================
 HRESULT PlGold::init(void)
 {
-	Gold = IMAGEMANAGER->addImage(KEY_UI_GOLD, DIR_UI_GOLD, 48, 48, true, MAGENTA);
+	Gold = IMAGEMANAGER->findImage(KEY_UI_GOLD);
 	
 	Gold_rc = RectMakeCenter(870, 45, Gold->getWidth(), Gold->getHeight());
 
 	return S_OK;
 }
 
-void PlGold::release(void)
-{
-}
+void PlGold::release(void) { }
 
-void PlGold::update(void)
-{
-	
-}
+void PlGold::update(void) { }
 
 void PlGold::render(void)
 {

@@ -12,6 +12,7 @@ public:
 	void release(void);
 	void update(void);
 	void render(void);
+	void renderMinimap(HDC _hdc) override;
 
 	bool interact(Player* player);
 	void setNextSceneKey(std::string _nextSceneKey);
