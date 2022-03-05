@@ -6,6 +6,4 @@ void Enemy::move(POINT _pos) {
 	POINT pixelPos = GridPointToPixelPointCenter(pos);
 	_rc = RectMakeCenter(pixelPos.x, pixelPos.y,
 		_rc.right - _rc.left, _rc.bottom - _rc.top);
-
-	cout << "움직인다 12" << endl;
 }
