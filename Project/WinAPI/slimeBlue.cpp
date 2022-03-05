@@ -12,50 +12,54 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 	// object.
 	destroyed = false;
 	type = OBJECT_TYPE::MONSTER_SLIME_BLUE;
-	animator = new Animator();
 	scene = scenePtr;
+
+	animator = new Animator();
+	atk_animator = new Animator;
+
 	// enemy.
-	hp = 2;
+	hp = hpMax = 2;
+	turnInterval = scene->getMapInfo()->getTurnInterval();
 	_rc = RECT{ 0, 0, TILE_SIZE, TILE_SIZE };
-	Enemy::move(position); // set pos(gameNode) and _rc.
-	// SlimeBlue.
-	turnCount = 0;
+	Enemy::move(position);
+
 	posCheck = true;
+	act = true;
 
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE, DIR_SLIME_BLUE, 208, 104, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP, DIR_SLIME_BLUE_JUMP, 208, 184, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_TOP, DIR_SLIME_BLUE_JUMP_TOP, 208, 224, 4, 2, 4, true, MAGENTA);
-	IMAGEMANAGER->addFrameImage(KEY_SLIME_BLUE_JUMP_BOTTOM, DIR_SLIME_BLUE_JUMP_BOTTOM, 208, 188, 4, 2, 4, true, MAGENTA);
-	_FullHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_FULL, DIR_UI_MONSTER_HEART_FULL, 24, 24, true, MAGENTA);
-	_EmptyHp = IMAGEMANAGER->addImage(KEY_UI_MONSTER_HEART_EMPTY, DIR_UI_MONSTER_HEART_EMPTY, 24, 24, true, MAGENTA);
+	turnCount = 0;
+	fieldOfVision = 5;
+	atkRange = 1;
 
-	_Hp_rc = RectMakeCenter(600, 400, _FullHp->getWidth(), _FullHp->getHeight());
+	Animation* Idle_Animation			 = new Animation();
+	Animation* Idle_JumpTop_Animation	 = new Animation();
+	Animation* Idle_JumpBottom_Animation = new Animation();
 
-	Animation* slimeBlue = new Animation();
-	slimeBlue->init(
-		KEY_SLIME_BLUE,
-		POINT{ -26, -50 }, CHARACTER_STATE::IDLE_RIGHT,
-		true, false, 16
-	);
+	Animation* Attak_left_Animation		= new Animation();
+	Animation* Attak_Right_Animation	= new Animation();
+	Animation* Attak_Top_Animation		= new Animation();
+	Animation* Attak_Bottom_Animation	= new Animation();
+	Animation* null_animation			= new Animation();
 
-	Animation* slimeBlueJumpTop = new Animation();
-	slimeBlueJumpTop->init(
-		KEY_SLIME_BLUE_JUMP_TOP,
-		POINT{ -26, -50 }, CHARACTER_STATE::JUMP_TOP,
-		false, false, 64
-	);
+	Idle_Animation->init( KEY_SLIME_BLUE, POINT{ -26, -50 }, CHARACTER_STATE::IDLE_RIGHT, true, false, 16 );
+	Idle_JumpTop_Animation->init( KEY_SLIME_BLUE_JUMP_TOP, POINT{ -26, -50 }, CHARACTER_STATE::JUMP_TOP, false, false, 64 );
+	Idle_JumpBottom_Animation->init( KEY_SLIME_BLUE_JUMP_BOTTOM, POINT{ -26, -100 }, CHARACTER_STATE::JUMP_BOTTOM, false, false, 64 );
 
-	Animation* slimeBlueJumpBottom = new Animation();
-	slimeBlueJumpBottom->init(
-		KEY_SLIME_BLUE_JUMP_BOTTOM,
-		POINT{ -26, -100 }, CHARACTER_STATE::JUMP_BOTTOM,
-		false, false, 64
-	);
+	Attak_left_Animation->init(KEY_SWIPE_ENEMY_LEFT, POINT{ -70, -50 }, CHARACTER_STATE::ATTACK_LEFT, false, false, 50);
+	Attak_Right_Animation->init(KEY_SWIPE_ENEMY_RIGHT, POINT{ 20, -50 }, CHARACTER_STATE::ATTACK_RIGHT, false, false, 50);
+	Attak_Top_Animation->init(KEY_SWIPE_ENEMY_TOP, POINT{ -20, -80 }, CHARACTER_STATE::ATTACK_TOP, false, false, 50);
+	Attak_Bottom_Animation->init(KEY_SWIPE_ENEMY_BOTTOM, POINT{ -20, 10 }, CHARACTER_STATE::ATTACK_BOTTOM, false, false, 50);
 
+	null_animation->init(KEY_SWIPE_ENEMY_LEFT, POINT{ -54, -48 }, CHARACTER_STATE::IDLE_RIGHT, true, false, 16);
 
-	animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, slimeBlue);
-	animator->addAnimation(CHARACTER_STATE::JUMP_TOP, slimeBlueJumpTop);
-	animator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, slimeBlueJumpBottom);
+	animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, Idle_Animation);
+	animator->addAnimation(CHARACTER_STATE::JUMP_TOP, Idle_JumpTop_Animation);
+	animator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, Idle_JumpBottom_Animation);
+
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_LEFT, Attak_left_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_RIGHT, Attak_Right_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_TOP, Attak_Top_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_BOTTOM, Attak_Bottom_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, null_animation);
 
 	return S_OK;
 }
@@ -64,20 +68,48 @@ void SlimeBlue::release(void)
 {
 	SAFE_RELEASE(animator);
 	SAFE_DELETE(animator);
+	SAFE_RELEASE(atk_animator);
+	SAFE_DELETE(atk_animator);
 }
 
 void SlimeBlue::update(void)
 {
+	if (animator->isEnd())
+		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+	if (atk_animator->isEnd())
+		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+
 	turnCount += TIMEMANAGER->getElapsedTime();
-	
-	if(turnCount >= 0.2f)
+
+	distanceX = scene->getPlayer()->getPos().x - pos.x;
+	distanceY = scene->getPlayer()->getPos().y - pos.y;
+
+	if (turnCount >= turnInterval)
 	{
-		index++;
+		turnCount -= turnInterval;
+
+		if (!act)
+		{
+			animator->update();
+			atk_animator->update();
+			act = true;
+
+			return;
+		}
+
+		act = false;
+
+		//if ((distanceX * distanceX) + (distanceY * distanceY) <= (fieldOfVision * fieldOfVision) &&
+		//	(distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
+		//		attackTarget();
+		//else //�þ߹��� �ۿ� ������ Idle ����
+		//{
+			move();
+		//}
 	}
 
-	move();
-
 	animator->update();
+	atk_animator->update();
 }
 
 void SlimeBlue::render(void)
@@ -93,84 +125,111 @@ void SlimeBlue::render(void)
 			_rc.left - revision.x, _rc.top - revision.y,
 			_rc.right - revision.x, _rc.bottom - revision.y);
 
-	animator->animationRender(getMemDC(), renderPos);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	//renderPos.x -= _TileSize/2
-	//renderPos.y -= (_TileSize/2 + 24)
-
-	
-	count = hp;
-	if (hp != 2)
+	if (distance < 8)
 	{
-		for (int i = 0; i < 2; i++)
+		animator->animationRender(getMemDC(), renderPos);
+	}
+
+	int count = hp;
+	if (hp != hpMax)
+		for (int i = 0; i < hpMax; ++i)
 		{
 			if (count >= 1)
-			{
-				_FullHp->render(getMemDC(), renderPos.x - 24 + i * 24, renderPos.y - 78);
-			}
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
 			else
-			{
-				_EmptyHp->render(getMemDC(), renderPos.x - 24 + i * 24, renderPos.y - 78);
-			}
-			count--;
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
+				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+			--count;
 		}
+
+	if (atk_animator->getCurrentState() != CHARACTER_STATE::IDLE_RIGHT)
+	{
+		atk_animator->animationRender(getMemDC(), renderPos);
 	}
-	
 }
 
 bool SlimeBlue::interact(Player* player)
 {
-	if (player)
-	{
-		hp--;
-	}
-
-	else
-	{
-		hp -= 4;
-	}
+	if (player)	hp--;
+	else		hp -= 4;
 
 	if (hp <= 0) destroyed = true;
-	{
-		Rectangle(getMemDC(), _rc.left, _rc.top, _rc.right, _rc.bottom);
-	}
 
 	return false;
 }
 
 void SlimeBlue::move(void)
 {
-	if (animator->isEnd())
-	{
-		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
-	
 	if (posCheck)
 	{
-		if (turnCount >= 0.4f)
+		POINT search = POINT{ pos.x, pos.y - 1 };
+		Object* obj = scene->getObject(search);
+
+		if (!obj && (scene->getPlayer()->getPos().x != search.x ||
+			scene->getPlayer()->getPos().y != search.y))
 		{
 			pos.y -= 1;
-
-			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
-
-			turnCount -= 0.4f;
 			posCheck = false;
+			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+		}
+		else if (scene->getPlayer()->getPos().x == search.x &&
+			scene->getPlayer()->getPos().y == search.y)
+		{
+			attackTarget();
 		}
 	}
-
-	if (!posCheck)
+	else
 	{
-		if (turnCount >= 0.4f)
+		POINT search = POINT{ pos.x , pos.y + 1 };
+		Object* obj = scene->getObject(search);
+
+		if (!obj && (scene->getPlayer()->getPos().x != search.x ||
+			scene->getPlayer()->getPos().y != search.y))
 		{
 			pos.y += 1;
-
-			animator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
-
-			turnCount -= 0.4f;
 			posCheck = true;
+			animator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
+		}
+		else if (scene->getPlayer()->getPos().x == search.x &&
+			scene->getPlayer()->getPos().y == search.y)
+		{
+			attackTarget();
 		}
 	}
 
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
 		pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
+}
+
+void SlimeBlue::attackTarget()
+{
+	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+
+	//Target Left
+	if (scene->getPlayer()->getPos().x - pos.x < 0)
+	{
+		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_LEFT);
+	}
+
+	//Target right
+	if (scene->getPlayer()->getPos().x - pos.x > 0)
+	{
+		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_RIGHT);
+	}
+
+	//Target top
+	if (scene->getPlayer()->getPos().y - pos.y < 0)
+	{
+		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_TOP);
+	}
+
+	//Target bottom
+	if (scene->getPlayer()->getPos().y - pos.y > 0)
+	{
+		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_BOTTOM);
+	}
 }

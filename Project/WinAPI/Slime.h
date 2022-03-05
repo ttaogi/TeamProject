@@ -6,6 +6,18 @@
 class Slime : public Enemy
 {
 private:
+	float turnCount;
+	float attackDelay;
+	float atkRange;
+	float fieldOfVision;
+	float distanceX;
+	float distanceY;
+
+	bool posCheck;
+	bool act;
+
+	Animator* atk_animator;
+
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
 	void release(void);
@@ -13,8 +25,10 @@ public:
 	void render(void);
 
 	bool interact(Player* player);
+
+	void attackTarget();
 	
-	Slime() { }
-	virtual ~Slime() { release(); }
+	Slime() {}
+	virtual ~Slime() {}
 };
 

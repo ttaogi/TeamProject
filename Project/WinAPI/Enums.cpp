@@ -22,6 +22,14 @@ string CharacterStateToWString(CHARACTER_STATE _state)
 		return "ATTACK";
 	case CHARACTER_STATE::ATTACKED:
 		return "ATTACKED";
+	case CHARACTER_STATE::ATTACK_LEFT:
+		return "ATTACK_LEFT";
+	case CHARACTER_STATE::ATTACK_RIGHT:
+		return "ATTACK_RIGHT";
+	case CHARACTER_STATE::ATTACK_TOP:
+		return "ATTACK_TOP";
+	case CHARACTER_STATE::ATTACK_BOTTOM:
+		return "ATTACK_BOTTOM";
 	case CHARACTER_STATE::RIGHT_UP_JUMP:
 		return "RIGHT_UP_JUMP";
 	case CHARACTER_STATE::RIGHT_DOWN_JUMP:
@@ -53,6 +61,10 @@ std::string MapIdToKeyString(MAP_ID id)
 	{
 	case MAP_ID::EXAMPLE_MAP:
 		return XML_DOC_EXAMPLE_MAP;
+	case MAP_ID::DUGEON_MAP:
+		return XML_DOC_DUGEON_MAP;
+	case MAP_ID::BOSS_MAP:
+		return XML_DOC_BOSS_MAP;
 	default:
 		return "";
 	}
@@ -68,6 +80,10 @@ std::string SoundIdToKeyString(SOUND_ID id)
 		return KEY_BGM_LOBBY;
 	case SOUND_ID::BGM_MAIN_MENU:
 		return KEY_BGM_MAIN_MENU;
+	case SOUND_ID::BGM_ZONE_1_1:
+		return KEY_BGM_ZONE_1_1;
+	case SOUND_ID::BGM_NECRODANCER:
+		return KEY_BGM_BOSS_NECRODANCER;
 	default:
 		return "";
 	}

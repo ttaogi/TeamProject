@@ -4,27 +4,33 @@
 
 #include <queue>
 
+#include "Attack.h"
 #include "Bat.h"
+#include "Body.h"
+#include "Bomb.h"
+#include "Explosion.h"
+#include "Head.h"
+#include "Heal.h"
 #include "MainGame.h"
 #include "Money.h"
+#include "Necrodancer.h"
 #include "Player.h"
+#include "Shopkeeper.h"
 #include "Skeleton.h"
 #include "Slime.h"
 #include "slimeBlue.h"
-#include "Necrodancer.h"
 #include "Stair.h"
 #include "SteppingStone.h"
-#include "Wall.h"
-#include "Head.h"
-#include "Attack.h"
-#include "Body.h"
-#include "Bomb.h"
-#include "Heal.h"
 #include "Torch.h"
-#include "Explosion.h"
+#include "Wall.h"
 
 HRESULT LobbyScene::init(void)
 {
+	minimap = new Image();
+	minimap->init(WINSIZEX, WINSIZEY);
+	PatBlt(minimap->getMemDC(), 0, 0, WINSIZEX, WINSIZEY, BLACKNESS);
+	minimap->setTransColor(true, RGB(0, 0, 0));
+
 	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::EXAMPLE_MAP, this);
 	if (mapInfo == NULL) return E_FAIL;
 
@@ -32,15 +38,26 @@ HRESULT LobbyScene::init(void)
 
 	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
-			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_START);
-
-	if (mapInfo->getBgmKey() != "")
-		SOUNDMANAGER->play(mapInfo->getBgmKey(), 1.0f);
+			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_BOSS);
 
 	player = new Player();
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
-	
+
+	shopkeeper = new Shopkeeper;
+	shopkeeper->init(this, POINT{ 10, 10 });
+	objectVec.push_back(shopkeeper);
+
+	SOUNDMANAGER->allStop();
+	if (mapInfo->getBgmKey() != "")
+		SOUNDMANAGER->play(mapInfo->getBgmKey(), DEFAULT_VOLUME);
+
+	SOUNDMANAGER->setSound3DInfo(
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
+	SOUNDMANAGER->play3DSound(DEFAULT_VOLUME * 5, 0, 0, 0);
+	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
+
 	// UI.
 	_plEquip = new PlEquip;
 	_plEquip->init();
@@ -61,7 +78,6 @@ HRESULT LobbyScene::init(void)
 
 void LobbyScene::release(void)
 {
-	SOUNDMANAGER->allStop();
 	SAFE_RELEASE(player);
 	SAFE_DELETE(player);
 	for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
@@ -70,6 +86,14 @@ void LobbyScene::release(void)
 		SAFE_DELETE((*iter));
 	}
 	objectVec.clear();
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+	{
+		SAFE_RELEASE((*iter));
+		SAFE_DELETE((*iter));
+	}
+	effectVec.clear();
+	SAFE_RELEASE(minimap);
+	SAFE_DELETE(minimap);
 }
 
 void LobbyScene::update(void)
@@ -91,11 +115,24 @@ void LobbyScene::update(void)
 		else ++iter;
 	}
 
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+		(*iter)->update();
+	for (auto iter = effectVec.begin(); iter != effectVec.end();)
+	{
+		if ((*iter)->getDestroyed())
+			iter = effectVec.erase(iter);
+		else ++iter;
+	}
+
 	_Note->update();
 	_plHp->update();
 	_plGold->update();
 
 	CAMERAMANAGER->update();
+	SOUNDMANAGER->setSound3DInfo(
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
+	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 	SOUNDMANAGER->update();
 }
 
@@ -114,6 +151,9 @@ void LobbyScene::render(void)
 		pQue.top()->render();
 		pQue.pop();
 	}
+
+	for (auto iter = effectVec.begin(); iter != effectVec.end(); ++iter)
+		(*iter)->render();
 
 	_plEquip->render();
 	_plHp->render();

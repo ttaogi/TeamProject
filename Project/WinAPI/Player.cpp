@@ -21,26 +21,6 @@ HRESULT Player::init(Scene* scenePtr)
 	DaggerEffectRightTF = false;
 
 	{ // animation.
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_HEAD_IDLE_RIGHT, DIR_PLAYER_HEAD_IDLE_RIGHT, 192, 96, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_IDLE_RIGHT, DIR_PLAYER_BODY_IDLE_RIGHT, 192, 28, 4, 1, 4, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_HEAD_IDLE_LEFT, DIR_PLAYER_HEAD_IDLE_LEFT, 192, 96, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_IDLE_LEFT, DIR_PLAYER_BODY_IDLE_LEFT, 192, 28, 4, 1, 4, true, MAGENTA);
-
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_HEAD_JUMP_RIGHT, DIR_PLAYER_HEAD_JUMP_RIGHT, 384, 144, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_JUMP_RIGHT, DIR_PLAYER_BODY_JUMP_RIGHT, 384, 104, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_HEAD_JUMP_LEFT, DIR_PLAYER_HEAD_JUMP_LEFT, 384, 144, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_JUMP_LEFT, DIR_PLAYER_BODY_JUMP_LEFT, 384, 104, 4, 2, 8, true, MAGENTA);
-
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_HEAD_JUMP_TOP, DIR_PLAYER_HEAD_JUMP_TOP, 192, 192, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_JUMP_TOP, DIR_PLAYER_BODY_JUMP_TOP, 192, 152, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_HEAD_JUMP_BOTTOM, DIR_PLAYER_HEAD_JUMP_BOTTOM, 192, 192, 4, 2, 8, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_PLAYER_BODY_JUMP_BOTTOM, DIR_PLAYER_BODY_JUMP_BOTTOM, 192, 152, 4, 2, 8, true, MAGENTA);
-		
-		IMAGEMANAGER->addFrameImage(KEY_SWIPE_DAGGER_RIGHT, DIR_SWIPE_DAGGER_RIGHT, 144, 48, 3, 1, 3, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_SWIPE_DAGGER_LEFT, DIR_SWIPE_DAGGER_LEFT, 144, 48, 3, 1, 3, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_SWIPE_DAGGER_TOP, DIR_SWIPE_DAGGER_TOP, 144, 48, 3, 1, 3, true, MAGENTA);
-		IMAGEMANAGER->addFrameImage(KEY_SWIPE_DAGGER_BOTTOM, DIR_SWIPE_DAGGER_BOTTOM, 144, 48, 3, 1, 3, true, MAGENTA);
-
 		headAnimator = new Animator();
 		bodyAnimator = new Animator();
 
@@ -464,7 +444,7 @@ void Player::render(void)
 
 	if (DaggerEffectRightTF)
 	{
-		cout << "°ø°Ý" << endl;
+		cout << "ï¿½ï¿½ï¿½ï¿½" << endl;
 		IMAGEMANAGER->frameRender(KEY_SWIPE_DAGGER_RIGHT, getMemDC(), 
 			GridPointToPixelPointLeftTop(pos).x - revision.x + 50, 
 			GridPointToPixelPointLeftTop(pos).y - revision.y - 10, 
@@ -472,9 +452,6 @@ void Player::render(void)
 
 		DaggerEffectRightTF = false; 
 	}
-
-	/*if(turnCount >= 0.7f * turnInterval && turnCount < 0.8f * turnInterval)
-		RectangleMake(getMemDC(), 0, 0, 100, 100);*/
 }
 
 void Player::Move(POINT _pos)

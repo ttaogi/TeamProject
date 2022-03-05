@@ -69,7 +69,6 @@ extern const char* DIR_UI_NOTE_GREEN;
 extern const std::string KEY_UI_NOTE_RED;
 extern const char* DIR_UI_NOTE_RED;
 
-
 extern const std::string KEY_UI_GOLD;
 extern const char* DIR_UI_GOLD;
 
@@ -78,8 +77,6 @@ extern const char* DIR_UI_MONSTER_HEART_EMPTY;
 
 extern const std::string KEY_UI_MONSTER_HEART_FULL;
 extern const char* DIR_UI_MONSTER_HEART_FULL;
-
-
 #pragma endregion UI
 
 #pragma region Player
@@ -230,8 +227,14 @@ extern const std::string KEY_ITEM_BOMBDROP;
 extern const char* DIR_ITEM_BOMBDROP;
 extern const std::string KEY_SFX_EXPLOSION;
 extern const char* DIR_SFX_EXPLOSION;
-
 #pragma endregion Item
+
+#pragma region effect
+extern const std::string KEY_EFFECT_EXPLOSION55;
+extern const char* DIR_EFFECT_EXPLOSION55;
+extern const std::string KEY_EFFECT_ICEBLAST;
+extern const char* DIR_EFFECT_ICEBLASE;
+#pragma endregion effect
 #pragma endregion Stripe
 
 ///////////////////////
@@ -244,6 +247,12 @@ extern const std::string KEY_BGM_LOBBY;
 extern const char* DIR_BGM_LOBBY;
 extern const std::string KEY_BGM_MAIN_MENU;
 extern const char* DIR_BGM_MAIN_MENU;
+extern const std::string KEY_BGM_ZONE_1_1;
+extern const char* DIR_BGM_ZONE_1_1;
+extern const std::string KEY_BGM_BOSS_NECRODANCER;
+extern const char* DIR_BGM_BOSS_NECRODANCER;
+
+extern const std::string DIR_SHOPKEEPER;
 #pragma endregion Sound
 
 ///////////////////////
@@ -254,6 +263,8 @@ extern const char* DIR_BGM_MAIN_MENU;
 extern const std::string KEY_SCENE_NONE;
 extern const std::string KEY_SCENE_START;
 extern const std::string KEY_SCENE_LOBBY;
+extern const std::string KEY_SCENE_DUNGEON;
+extern const std::string KEY_SCENE_BOSS;
 #pragma endregion Scene
 
 ///////////////////////
@@ -263,7 +274,15 @@ extern const std::string KEY_SCENE_LOBBY;
 extern const std::string XML_DOC_EXAMPLE;
 extern const std::string XML_DOC_ITEM_LIST;
 extern const std::string XML_DOC_EXAMPLE_MAP;
+extern const std::string XML_DOC_DUGEON_MAP;
+extern const std::string XML_DOC_BOSS_MAP;
 #pragma endregion XmlDocument
+
+///////////////////////
+///////////////////////
+
+extern const std::string KEY_NPC_SHOPKEEPER;
+extern const char* DIR_NPC_SHOPKEEPER;
 
 ///////////////////////
 ///////////////////////
@@ -276,3 +295,4 @@ extern const int TILE_SIZE;
 extern const COLORREF MAGENTA;
 extern const float DEFAULT_FPS;
 extern const Item EMPTY_ITEM;
+extern const float DEFAULT_VOLUME;

@@ -4,18 +4,20 @@
 class Bat : public Enemy
 {
 private:
-	RECT _Hp_rc;
-
-	Image* _FullHp;
-	Image* _EmptyHp;
-
 	float turnCount;
+	float attackDelay;
+	float atkRange;
+	float fieldOfVision;
+	float distanceX;
+	float distanceY;
+
 	bool posCheck;
+	bool act;
 	
 	int rightCount;
 	int leftCount;
 
-	int count;
+	Animator* atk_animator;
 
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
@@ -25,6 +27,10 @@ public:
 
 	bool interact(Player* player);
 	void move(void);
+
+	void movetoTarget();
+	void faceTarget();
+	void attackTarget();
 
 	Bat() { }
 	virtual ~Bat() { }

@@ -7,8 +7,9 @@ HRESULT PlayerInfoManager::init()
 	money = 99;
 	shovel = ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::SHOVEL);
 	attack = ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::ATTACK_DAGGER);
-	body = head = torch = heal = bomb
+	body = head = torch = heal 
 		= ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::ITEM_DETAIL_NUM);
+	bomb = ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::BOMB);
 	hpMax = hp = 10;
 
 	cout << "####################" << endl;

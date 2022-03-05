@@ -4,15 +4,17 @@
 class SlimeBlue : public Enemy
 {
 private:
-	RECT _Hp_rc;
-
-	Image* _FullHp;
-	Image* _EmptyHp;
-
 	float turnCount;
+	float attackDelay;
+	float atkRange;
+	float fieldOfVision;
+	float distanceX;
+	float distanceY;
+
 	bool posCheck;
-	int count;
-	int index;
+	bool act;
+
+	Animator* atk_animator;
 
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
@@ -23,7 +25,9 @@ public:
 	bool interact(Player* player);
 	void move(void);
 
-	SlimeBlue() { }
-	virtual ~SlimeBlue() { }
+	void attackTarget();
+
+	SlimeBlue() {}
+	virtual ~SlimeBlue() {}
 };
 

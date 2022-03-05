@@ -32,7 +32,6 @@ public:
 
 	void setBounce(DIRECTION dir);
 
-	POINT getPosition(void) { return PointMake((int)pos.x, (int)pos.y); }
 	RECT getRect(void) { return rc; }
 
 	Player() { }

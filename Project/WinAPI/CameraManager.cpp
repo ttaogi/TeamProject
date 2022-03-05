@@ -12,14 +12,14 @@ HRESULT CameraManager::init(Player* _target)
 		coordinateRevision = GridPointToPixelPointCenter(target->getPos());
 		coordinateRevision.x -= WINSIZEX / 2;
 		coordinateRevision.y -= WINSIZEY / 2;
-		previousPosX = coordinateRevision.x;
-		previousPosY = coordinateRevision.y;
+		previousPosX = (float)coordinateRevision.x;
+		previousPosY = (float)coordinateRevision.y;
 	}
 	else
 	{
 		coordinateRevision = POINT{ 0, 0 };
-		previousPosX = coordinateRevision.x;
-		previousPosY = coordinateRevision.y;
+		previousPosX = (float)coordinateRevision.x;
+		previousPosY = (float)coordinateRevision.y;
 	}
 
 	return S_OK;

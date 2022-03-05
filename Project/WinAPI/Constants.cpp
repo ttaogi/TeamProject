@@ -406,6 +406,17 @@ const char* DIR_SFX_EXPLOSION =
 	"Resources/Images/items/3x3_explosion.bmp";
 
 #pragma endregion Item
+
+#pragma region effect
+const std::string KEY_EFFECT_EXPLOSION55 =
+	"EFFECT_EXPLOSION55";
+const char* DIR_EFFECT_EXPLOSION55 =
+	"Resources/Images/spells/5x5_explosion.bmp";
+const std::string KEY_EFFECT_ICEBLAST =
+	"DIR_EFFECT_ICEBLAST";
+const char* DIR_EFFECT_ICEBLASE =
+	"Resources/Images/spells/ice_blast.bmp";
+#pragma endregion effect
 #pragma endregion Stripe
 
 ///////////////////////
@@ -424,6 +435,17 @@ const std::string KEY_BGM_MAIN_MENU =
 	"BGM_MAIN_MENU";
 const char* DIR_BGM_MAIN_MENU =
 	"Resources/Sounds/BGM/main_menu.ogg";
+const std::string KEY_BGM_ZONE_1_1 =
+	"BGM_ZONE_1_1";
+const char* DIR_BGM_ZONE_1_1 =
+	"Resources/Sounds/BGM/zone1_1.ogg";
+const std::string KEY_BGM_BOSS_NECRODANCER =
+	"BGM_BOSS_NECRODANCER";
+const char* DIR_BGM_BOSS_NECRODANCER =
+	"Resources/Sounds/BGM/boss_necrodancer.ogg";
+
+const std::string DIR_SHOPKEEPER =
+	"Resources/Sounds/zone1_1_shopkeeper.ogg";
 #pragma endregion Sound
 
 ///////////////////////
@@ -436,6 +458,10 @@ const std::string KEY_SCENE_START =
 	"START_SCENE";
 const std::string KEY_SCENE_LOBBY =
 	"LOBBY_SCENE";
+const std::string KEY_SCENE_DUNGEON =
+	"SCENE_DUNGEON";
+const std::string KEY_SCENE_BOSS =
+	"SCENE_BOSS";
 #pragma endregion Scene
 
 ///////////////////////
@@ -448,7 +474,21 @@ const std::string XML_DOC_ITEM_LIST =
 	"XML/item list.xml";
 const std::string XML_DOC_EXAMPLE_MAP =
 	"XML/example map.xml";
+const std::string XML_DOC_DUGEON_MAP =
+	"XML/dugeon map.xml";
+const std::string XML_DOC_BOSS_MAP =
+	"XML/boss map.xml";
 #pragma endregion XmlDocument
+
+///////////////////////
+///////////////////////
+
+#pragma region Npc
+const std::string KEY_NPC_SHOPKEEPER =
+"NPC_SHOPKEEPER";
+const char* DIR_NPC_SHOPKEEPER =
+"Resources/Images/entities/shopkeeper.bmp";
+#pragma endregion Npc
 
 ///////////////////////
 ///////////////////////
@@ -463,3 +503,4 @@ const float DEFAULT_FPS = 60.0f;
 const Item EMPTY_ITEM{ ITEM_TYPE::ITEM_TYPE_NUM,
 	ITEM_DETAIL::ITEM_DETAIL_NUM, "",
 	0, 0, 0, 0, 0, NULL };
+const float DEFAULT_VOLUME = 0.2f;

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="ANSI" ?>
 <ROOT>
-    <turnInterval interval="0.461538" />
+    <turnInterval interval="0.260869" />
     <startPos pos_x="14" pos_y="8" />
-    <bgm sound_id="1" play_time="66" />
+    <bgm sound_id="3" play_time="180" />
     <!--
+    <turnInterval interval="0.521739" />
 enum class TILE_TYPE
 {
 	EMPTY =         0,
@@ -120,8 +121,8 @@ enum class SOUND_ID
             <y_4 type="0" object="0" />
             <y_5 type="0" object="0" />
             <y_6 type="0" object="3" />
-            <y_7 type="1" object="7" />
-            <y_8 type="1" object="0" />
+            <y_7 type="1" object="0" />
+            <y_8 type="1" object="7" />
             <y_9 type="1" object="0" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
@@ -314,7 +315,7 @@ enum class SOUND_ID
             <y_0 type="0" object="3" />
             <y_1 type="1" object="0" />
             <y_2 type="1" object="0" />
-            <y_3 type="1" object="8" />
+            <y_3 type="1" object="0" />
             <y_4 type="1" object="0" />
             <y_5 type="1" object="0" />
             <y_6 type="0" object="3" />
