@@ -92,13 +92,13 @@ void Slime::update(void)
 
 		act = false;
 
-		if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
+		/*if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
 		{
 			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
 			{
 				attackTarget();
 			}
-		}
+		}*/
 	}
 	animator->update();
 	atk_animator->update();

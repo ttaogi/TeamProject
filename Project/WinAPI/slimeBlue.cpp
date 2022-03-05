@@ -27,6 +27,8 @@ HRESULT SlimeBlue::init(Scene* scenePtr, POINT position)
 	act = true;
 
 	turnCount = 0;
+	fieldOfVision = 5;
+	atkRange = 1;
 
 	Animation* Idle_Animation			 = new Animation();
 	Animation* Idle_JumpTop_Animation	 = new Animation();
@@ -72,10 +74,10 @@ void SlimeBlue::release(void)
 
 void SlimeBlue::update(void)
 {
+	if (animator->isEnd())
+		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 	if (atk_animator->isEnd())
-	{
 		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
 
 	turnCount += TIMEMANAGER->getElapsedTime();
 
@@ -97,20 +99,13 @@ void SlimeBlue::update(void)
 
 		act = false;
 
-		if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
-		{
-			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
-			{
-				attackTarget();
-			}
-		}
-
-		else //시야범위 밖에 있을때 Idle 상태
-		{
+		//if ((distanceX * distanceX) + (distanceY * distanceY) <= (fieldOfVision * fieldOfVision) &&
+		//	(distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
+		//		attackTarget();
+		//else //시야범위 밖에 있을때 Idle 상태
+		//{
 			move();
-			cout << "move" << endl;
-		}
-
+		//}
 	}
 
 	animator->update();
@@ -163,57 +158,41 @@ bool SlimeBlue::interact(Player* player)
 
 void SlimeBlue::move(void)
 {
-	if (animator->isEnd())
-		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-		
 	if (posCheck)
 	{
 		POINT search = POINT{ pos.x, pos.y - 1 };
 		Object* obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
+		if (!obj && (scene->getPlayer()->getPos().x != search.x ||
+			scene->getPlayer()->getPos().y != search.y))
 		{
 			pos.y -= 1;
-		}
-
-		/*animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
-
-		if (turnCount >= turnInterval)
-		{
-			pos.y -= 1;
-
-			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
-
-			turnCount -= turnInterval;
 			posCheck = false;
-		}*/
+			animator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+		}
+		else if (scene->getPlayer()->getPos().x == search.x &&
+			scene->getPlayer()->getPos().y == search.y)
+		{
+			attackTarget();
+		}
 	}
-
-	if (!posCheck)
+	else
 	{
 		POINT search = POINT{ pos.x , pos.y + 1 };
 		Object* obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
+		if (!obj && (scene->getPlayer()->getPos().x != search.x ||
+			scene->getPlayer()->getPos().y != search.y))
 		{
 			pos.y += 1;
-		}
-
-		animator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
-
-		/*if (turnCount >= turnInterval)
-		{
-			pos.y += 1;
-
-			animator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
-
-			turnCount -= turnInterval;
 			posCheck = true;
-		}*/
+			animator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
+		}
+		else if (scene->getPlayer()->getPos().x == search.x &&
+			scene->getPlayer()->getPos().y == search.y)
+		{
+			attackTarget();
+		}
 	}
 
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
