@@ -4,6 +4,8 @@
 
 #include "Player.h"
 
+#include "Scene.h"
+
 #pragma region left
 HRESULT SteppingStoneLeft::init(Scene* scenePtr, POINT position)
 {
@@ -32,7 +34,13 @@ void SteppingStoneLeft::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
+	{
+		stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	}
 }
 
 bool SteppingStoneLeft::interact(Player* player)
@@ -79,7 +87,13 @@ void SteppingStoneTop::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
+	{
+		stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	}
 }
 
 bool SteppingStoneTop::interact(Player * player)
@@ -126,7 +140,13 @@ void SteppingStoneRight::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
+	{
 		stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	}
 	
 }
 
@@ -174,7 +194,13 @@ void SteppingStoneBottom::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
+	{
+		stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	}
 }
 
 bool SteppingStoneBottom::interact(Player * player)

@@ -19,6 +19,7 @@
 #include "SteppingStone.h"
 #include "Torch.h"
 #include "Wall.h"
+#include "Player.h"
 
 Tile::Tile() { }
 
@@ -71,8 +72,9 @@ MapInfo::~MapInfo() { release(); }
 
 HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 {
+	
 	release();
-
+	scene = _scene;
 	TiXmlDocument doc;
 
 	cout << "####################" << endl;
@@ -137,7 +139,7 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 					objectType == (int)OBJECT_TYPE::WALL_SHOP)
 				{
 					Wall* obj = new Wall();
-					if(SUCCEEDED(obj->init((OBJECT_TYPE)objectType, POINT{ i, j }) ))
+					if(SUCCEEDED(obj->init((OBJECT_TYPE)objectType, POINT{ i, j },_scene) ))
 						objectVec.push_back(obj);
 					else
 					{
@@ -394,6 +396,7 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 void MapInfo::release()
 {
 	cout << "MapInfo release." << endl;
+	scene = NULL;
 	bgmKey = "";
 	bgmPlayTime = 0.0f;
 	startPos = POINT{ 0, 0 };
@@ -424,7 +427,12 @@ void MapInfo::render(HDC _hdc)
 	{
 		for (int x = 0; x < size.x; ++x)
 		{
-			tileMap[x][y]->render(_hdc);
+			int deltaX = abs(x - scene->getPlayer()->getPos().x);
+			int deltaY = abs(y - scene->getPlayer()->getPos().y);
+			if ((deltaX + deltaY) < 8)
+			{
+				tileMap[x][y]->render(_hdc);
+			}
 		}
 	}
 }

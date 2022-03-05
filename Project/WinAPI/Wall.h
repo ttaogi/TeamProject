@@ -9,7 +9,7 @@ private:
 
 	HRESULT init(Scene* scenePtr, POINT position) { return S_OK; }
 public:
-	HRESULT init(OBJECT_TYPE _type, POINT _pos);
+	HRESULT init(OBJECT_TYPE _type, POINT _pos, Scene* _scenPtr);
 	void release(void);
 	void update(void);
 	void render(void);

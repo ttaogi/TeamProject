@@ -3,7 +3,8 @@
 #include "Stair.h"
 
 #include "MainGame.h"
-
+#include "Scene.h"
+#include "Player.h"
 HRESULT Stair::init(Scene* scenePtr, POINT position)
 {
 	// GameNode.
@@ -32,7 +33,13 @@ void Stair::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	POINT p = scene->getPlayer()->getPos();
+	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
+
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
+	{
+		stripe->render(getMemDC(), renderPos.x, renderPos.y);
+	}
 }
 
 bool Stair::interact(Player* player)

@@ -28,6 +28,7 @@ private:
 	float bgmPlayTime;
 	POINT startPos;
 	POINT size;
+	Scene* scene;
 	float turnInterval;
 	std::vector<std::vector<Tile*>> tileMap;
 	std::vector<Object*> objectVec;
