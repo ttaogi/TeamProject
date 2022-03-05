@@ -41,7 +41,7 @@ void Dagger::render(void)
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (distance < 8)
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
 	{
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
 	}
@@ -127,7 +127,7 @@ void BroadSword::render(void)
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (distance < 8)
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
 	{
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
 	}
@@ -205,7 +205,7 @@ void Goldenlute::render(void)
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (distance < 8)
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
 	{
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
 	}

@@ -91,7 +91,7 @@ void Wall::render(void)
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (distance < 8)
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
 	{
 		if (animator && !destroyed)
 		{
