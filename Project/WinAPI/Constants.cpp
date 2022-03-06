@@ -334,6 +334,29 @@ const char* DIR_SWIPE_DAGGER_RIGHT =
 	"Resources/Images/swipes/swipe_dagger_right.bmp";
 #pragma endregion WeaponEffect
 
+#pragma region BossRoomOpen
+const std::string KEY_BG_TOPBLADE =
+	"BG_TOPBLADE";
+const char* DIR_BG_TOPBLADE =
+	"Resources/Images/gui/bg_topblade.bmp";
+const std::string KEY_BG_GRADIENT =
+	"BG_GRADIENT";
+const char* DIR_BG_GRADIENT =
+	"Resources/Images/gui/bg_gradient.bmp";
+const std::string KEY_BG_GRADIENT2 =
+	"BG_GRADIENT2";
+const char* DIR_BG_GRADIENT2 =
+	"Resources/Images/gui/bg_gradient2.bmp";
+const std::string KEY_BG_BOTTOMBLADE =
+	"BG_BOTTOMBLADE";
+const char* DIR_BG_BOTTOMBLADE =
+	"Resources/Images/gui/bg_bottomblade.bmp";
+const std::string KEY_BG_BOTTOMBLADE2 =
+	"BG_BOTTOMBLADE2";
+const char* DIR_BG_BOTTOMBLADE2 =
+	"Resources/Images/gui/bg_bottomblade2.bmp";
+#pragma endregion BossRoomOpen
+
 #pragma region EnemyAttackEffect
 const std::string KEY_SWIPE_ENEMY_LEFT =
 	"SWIPE_ENEMY_LEFT";

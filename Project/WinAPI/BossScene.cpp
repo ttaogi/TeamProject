@@ -56,6 +56,27 @@ HRESULT BossScene::init(void)
 	_Note = new RhythmNote;
 	_Note->init(this);
 
+	// bossRoomOpen
+	IMAGEMANAGER->addImage(KEY_BG_TOPBLADE, DIR_BG_TOPBLADE, 602, 68, true, MAGENTA);
+	IMAGEMANAGER->addImage(KEY_BG_GRADIENT, DIR_BG_GRADIENT, 1920, 296, true, MAGENTA);
+	IMAGEMANAGER->addImage(KEY_BG_BOTTOMBLADE, DIR_BG_BOTTOMBLADE, 728, 96, true, MAGENTA);
+	IMAGEMANAGER->addImage(KEY_BG_GRADIENT2, DIR_BG_GRADIENT2, 960, 413, true, MAGENTA);
+	IMAGEMANAGER->addImage(KEY_BG_BOTTOMBLADE2, DIR_BG_BOTTOMBLADE2, 728, 96, true, MAGENTA);
+
+	upBarRect = RectMake(-590, 43, 602, 68);
+	necOpenRect = RectMake(970, 0, 960, 413);
+	downBarRect = RectMake(970, 427, 728, 96);
+
+	turnCount = 0;
+	turnCount1 = 0;
+	turnCount2 = 0;
+	turnCount3 = 0;
+	turnCount1TF = false;
+	turnCount2TF = false;
+	turnCount3TF = false;
+	upBarTF = true;
+	bossBarTF = true;
+	bottomBarTF = true;
 	CAMERAMANAGER->init(player);
 
 	return S_OK;
@@ -81,6 +102,100 @@ void BossScene::release(void)
 
 void BossScene::update(void)
 {
+	turnCount += TIMEMANAGER->getElapsedTime();
+	turnCount1 += TIMEMANAGER->getElapsedTime();
+	turnCount2 += TIMEMANAGER->getElapsedTime();
+	turnCount3 += TIMEMANAGER->getElapsedTime();
+	
+	if (upBarTF)
+	{
+		if (turnCount >= 0.1f)
+		{
+			upBarRect.right += 20;
+			upBarRect.left += 20;
+
+			if (upBarRect.left >= 0)
+			{
+				upBarRect.right = 602;
+				upBarRect.left = 0;
+			}
+		}
+	}
+	
+	if (turnCount >= 1.5f)
+	{
+		upBarTF = false;
+	}
+
+	if (!upBarTF)
+	{
+		if (turnCount >= 0.1f)
+		{
+			upBarRect.right -= 20;
+			upBarRect.left -= 20;
+		}
+	}
+
+	if (bossBarTF)
+	{
+		if (turnCount >= 0.2f)
+		{
+			necOpenRect.right -= 30;
+			necOpenRect.left -= 30;
+
+		if (necOpenRect.left <= 0)
+			{
+				necOpenRect.right = 960;
+				necOpenRect.left = 0;
+			}
+		}
+	}
+
+	if (turnCount >= 1.5f)
+	{
+		bossBarTF = false;
+	}
+
+	if (!bossBarTF)
+	{
+		if (turnCount >= 0.2f)
+		{
+			necOpenRect.right += 30;
+			necOpenRect.left += 30;
+		}
+	}
+
+
+	if (bottomBarTF)
+	{
+		if (turnCount >= 0.2f)
+		{
+			downBarRect.right -= 30;
+			downBarRect.left -= 30;
+
+			if (downBarRect.right <= 960)
+			{
+				downBarRect.right = 958;
+				downBarRect.left = 230;
+			}
+		}
+	}
+
+	if (turnCount >= 1.5f)
+	{
+		bottomBarTF = false;
+	}
+
+	if (!bottomBarTF)
+	{
+		if (turnCount >= 0.2f)
+		{
+			downBarRect.right += 30;
+			downBarRect.left += 30;
+		}
+	}
+
+
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))
 	{
 		_mg->quitGame();
@@ -111,6 +226,7 @@ void BossScene::update(void)
 	_plHp->update();
 	_plGold->update();
 
+
 	CAMERAMANAGER->update();
 	SOUNDMANAGER->update();
 }
@@ -138,4 +254,15 @@ void BossScene::render(void)
 	_plHp->render();
 	_Note->render();
 	_plGold->render();
+
+	IMAGEMANAGER->render(KEY_BG_TOPBLADE, getMemDC(), upBarRect.left, upBarRect.top);
+	IMAGEMANAGER->render(KEY_BG_GRADIENT2, getMemDC(), necOpenRect.left, necOpenRect.top);
+	IMAGEMANAGER->render(KEY_BG_BOTTOMBLADE2, getMemDC(), downBarRect.left, downBarRect.top);
+
+	if (KEYMANAGER->isToggleKey(VK_F1))
+	{
+		Rectangle(getMemDC(), upBarRect.left, upBarRect.top, upBarRect.right, upBarRect.bottom);
+		Rectangle(getMemDC(), necOpenRect.left, necOpenRect.top, necOpenRect.right, necOpenRect.bottom);
+		Rectangle(getMemDC(), downBarRect.left, downBarRect.top, downBarRect.right, downBarRect.bottom);
+	}
 }

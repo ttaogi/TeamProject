@@ -99,13 +99,7 @@ void SlimeBlue::update(void)
 
 		act = false;
 
-		//if ((distanceX * distanceX) + (distanceY * distanceY) <= (fieldOfVision * fieldOfVision) &&
-		//	(distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
-		//		attackTarget();
-		//else //�þ߹��� �ۿ� ������ Idle ����
-		//{
-			move();
-		//}
+		move();
 	}
 
 	animator->update();
@@ -139,10 +133,10 @@ void SlimeBlue::render(void)
 		{
 			if (count >= 1)
 				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				render(getMemDC(), renderPos.x - 24 + i * 24 , renderPos.y - 78);
 			else
 				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				render(getMemDC(), renderPos.x - 24 + i * 24, renderPos.y - 78);
 			--count;
 		}
 

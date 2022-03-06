@@ -16,9 +16,10 @@ private:
 	RECT rc;
 	Animator* headAnimator;
 	Animator* bodyAnimator;
-	Animator* attakAnimator;
+
+	Animator* atk_animator;
 	Scene* scene;
-	
+
 	int effectCountIndex;
 	bool DaggerEffectRightTF;
 	HRESULT init(void) { return S_OK; }

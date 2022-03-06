@@ -20,9 +20,11 @@ HRESULT Player::init(Scene* scenePtr)
 	effectCountIndex = 0;
 	DaggerEffectRightTF = false;
 
+
 	{ // animation.
 		headAnimator = new Animator();
 		bodyAnimator = new Animator();
+
 
 		Animation* headIdleRight = new Animation();
 		Animation* bodyIdleRight = new Animation();
@@ -119,6 +121,27 @@ HRESULT Player::init(Scene* scenePtr)
 
 	}
 
+	atk_animator = new Animator;
+
+	Animation* Attak_left_Animation = new Animation();
+	Animation* Attak_Right_Animation = new Animation();
+	Animation* Attak_Top_Animation = new Animation();
+	Animation* Attak_Bottom_Animation = new Animation();
+	Animation* null_animation = new Animation();
+
+	Attak_left_Animation->init(KEY_SWIPE_DAGGER_LEFT, POINT{ -70, -50 }, CHARACTER_STATE::ATTACK_LEFT, false, false, 50);
+	Attak_Right_Animation->init(KEY_SWIPE_DAGGER_RIGHT, POINT{ 20, -50 }, CHARACTER_STATE::ATTACK_RIGHT, false, false, 50);
+	Attak_Top_Animation->init(KEY_SWIPE_DAGGER_TOP, POINT{ -20, -80 }, CHARACTER_STATE::ATTACK_TOP, false, false, 50);
+	Attak_Bottom_Animation->init(KEY_SWIPE_DAGGER_BOTTOM, POINT{ -20, 10 }, CHARACTER_STATE::ATTACK_BOTTOM, false, false, 50);
+
+	null_animation->init(KEY_SWIPE_DAGGER_LEFT, POINT{ -54, -48 }, CHARACTER_STATE::IDLE_RIGHT, true, false, 16);
+
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_LEFT, Attak_left_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_RIGHT, Attak_Right_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_TOP, Attak_Top_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::ATTACK_BOTTOM, Attak_Bottom_Animation);
+	atk_animator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, null_animation);
+
 	scene = scenePtr;
 
 	return S_OK;
@@ -130,10 +153,15 @@ void Player::release(void)
 	SAFE_DELETE(headAnimator);
 	SAFE_RELEASE(bodyAnimator);
 	SAFE_DELETE(bodyAnimator);
+	SAFE_RELEASE(atk_animator);
+	SAFE_DELETE(atk_animator);
 }
 
 void Player::update(void)
 {
+	if (atk_animator->isEnd())
+		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+
 	turnCount += TIMEMANAGER->getElapsedTime();
 	if (turnCount >= 0.5f)
 	{
@@ -449,15 +477,19 @@ void Player::render(void)
 	headAnimator->animationRender(getMemDC(), renderPos);
 	bodyAnimator->animationRender(getMemDC(), renderPos);
 
-	if (DaggerEffectRightTF)
-	{
-		cout << "����" << endl;
-		IMAGEMANAGER->frameRender(KEY_SWIPE_DAGGER_RIGHT, getMemDC(), 
-			GridPointToPixelPointLeftTop(pos).x - revision.x + 50, 
-			GridPointToPixelPointLeftTop(pos).y - revision.y - 10, 
-			effectCountIndex, 0);
+	//if (DaggerEffectRightTF)
+	//{
+	//	IMAGEMANAGER->frameRender(KEY_SWIPE_DAGGER_RIGHT, getMemDC(), 
+	//		GridPointToPixelPointLeftTop(pos).x - revision.x + 50, 
+	//		GridPointToPixelPointLeftTop(pos).y - revision.y - 10, 
+	//		effectCountIndex, 0);
 
-		DaggerEffectRightTF = false; 
+	//	DaggerEffectRightTF = false; 
+	//}
+
+	if (atk_animator->getCurrentState() != CHARACTER_STATE::IDLE_RIGHT)
+	{
+		atk_animator->animationRender(getMemDC(), renderPos);
 	}
 }
 
