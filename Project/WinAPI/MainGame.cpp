@@ -5,6 +5,7 @@
 #include "BossScene.h"
 #include "LobbyScene.h"
 #include "StartScene.h"
+#include "DungeonScene.h"
 
 HRESULT MainGame::init(void)
 {
@@ -16,7 +17,8 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene(KEY_SCENE_START, new StartScene());
 	SCENEMANAGER->addScene(KEY_SCENE_LOBBY, new LobbyScene());
 	SCENEMANAGER->addScene(KEY_SCENE_BOSS, new BossScene());
-	SCENEMANAGER->changeScene(KEY_SCENE_START);
+	SCENEMANAGER->addScene(KEY_SCENE_DUNGEON, new DungeonScene());
+	SCENEMANAGER->changeScene(KEY_SCENE_DUNGEON);
 
 	return S_OK;
 }

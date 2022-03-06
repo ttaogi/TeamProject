@@ -273,6 +273,9 @@
     <ClCompile Include="Effect.cpp">
       <Filter>API FrameWork\Object\Effect</Filter>
     </ClCompile>
+    <ClCompile Include="DungeonScene.cpp">
+      <Filter>API FrameWork\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SingletonBase.h">
@@ -432,6 +435,9 @@
     <ClInclude Include="Shopkeeper.h" />
     <ClInclude Include="Effect.h">
       <Filter>API FrameWork\Object\Effect</Filter>
+    </ClInclude>
+    <ClInclude Include="DungeonScene.h">
+      <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
