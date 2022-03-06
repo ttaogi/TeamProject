@@ -339,7 +339,6 @@ extern const char* DIR_WEP_SPELL_GENERAL_ST;
 ///////////////////////
 ///////////////////////
 
-
 #pragma region Scene
 extern const std::string KEY_SCENE_NONE;
 extern const std::string KEY_SCENE_START;
