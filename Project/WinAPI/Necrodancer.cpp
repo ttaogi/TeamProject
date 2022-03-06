@@ -10,8 +10,8 @@
 #include "skeleton.h"
 
 const int GLOBAL_COOL = 3;
-const int SUMMON_COOL = 2;
-const int FREEZE_COOL = 4;
+const int SUMMON_COOL = 4;
+const int FREEZE_COOL = 5;
 const int EXPLOSION_COOL = 6;
 
 HRESULT Necrodancer::init(Scene* scenePtr, POINT position)

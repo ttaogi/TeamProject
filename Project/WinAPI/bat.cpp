@@ -4,6 +4,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Money.h"
 #include "Player.h"
 #include "Scene.h"
 
@@ -75,9 +76,7 @@ void Bat::release(void)
 void Bat::update(void)
 {
 	if (atk_animator->isEnd())
-	{
 		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
 	
 	turnCount += TIMEMANAGER->getElapsedTime();
 	
@@ -96,7 +95,6 @@ void Bat::update(void)
 
 			return;
 		}
-
 		act = false;
 
 		if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
@@ -104,27 +102,15 @@ void Bat::update(void)
 			faceTarget(); //Ÿ�� �ٶ󺸱�
 
 			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange)) //Ÿ�ٰ��� �Ÿ��� �������� ������
-			{
 				attackTarget();
-			}
-
-			else
-			{
-				if (animator->getCurrentState() != CHARACTER_STATE::ATTACK_LEFT
-					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_RIGHT
-					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_TOP
-					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM) //���ݾִϸ��̼��� �ƴҶ� ����
-				{
-					movetoTarget();
-				}
-			}
+			else if (animator->getCurrentState() != CHARACTER_STATE::ATTACK_LEFT && 
+				animator->getCurrentState() != CHARACTER_STATE::ATTACK_RIGHT &&
+				animator->getCurrentState() != CHARACTER_STATE::ATTACK_TOP &&
+				animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM) //���ݾִϸ��̼��� �ƴҶ� ����
+				movetoTarget();
 		}
-
 		else //�þ߹��� �ۿ� ������ Idle ����
-		{
 			move();
-		}		
-
 	}
 		
 	animator->update();
@@ -139,36 +125,29 @@ void Bat::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(),
-			_rc.left - revision.x, _rc.top - revision.y,
-			_rc.right - revision.x, _rc.bottom - revision.y);
+	/*if (KEYMANAGER->isToggleKey(VK_F1))
+		Rectangle(getMemDC(), _rc.left - revision.x, _rc.top - revision.y, _rc.right - revision.x, _rc.bottom - revision.y);*/
 
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		animator->animationRender(getMemDC(), renderPos);
-	}
 
 	int count = hp;
 	if (hp != hpMax)
 		for (int i = 0; i < hpMax; ++i)
 		{
 			if (count >= 1)
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
 			else
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+
 			--count;
 		}
 
 	if (atk_animator->getCurrentState() != CHARACTER_STATE::IDLE_RIGHT)
-	{
 		atk_animator->animationRender(getMemDC(), renderPos);
-	}
 }
 
 bool Bat::interact(Player* player)
@@ -180,6 +159,10 @@ bool Bat::interact(Player* player)
 	{
 		destroyed = true;
 		SOUNDMANAGER->play(KEY_EN_BAT_DEATH, DEFAULT_VOLUME);
+		Money* m = new Money();
+		m->init(scene, pos);
+		m->setQuantity(RND->getFromIntTo(1, 30));
+		scene->getObjectVec()->push_back(m);
 	}
 	return false;
 }
@@ -194,158 +177,99 @@ void Bat::move(void)
 		POINT search = POINT{ pos.x + 1, pos.y };
 		Object* obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
-		{
+		//if (!obj && (scene->getPlayer()->getPos().x != search.x || scene->getPlayer()->getPos().y != search.y))
+		if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 			pos.x += 1;
-		}
 		
 		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-			
-		rightCount++;
-
-		if(rightCount == 3)
+		
+		if(++rightCount == 3)
 		{
 			leftCount = 0;
 			posCheck = false;
 		}
 	}
-
-	if (!posCheck)
+	else
 	{
 		POINT search = POINT{ pos.x - 1, pos.y };
 		Object* obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
-		{
+		if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 			pos.x -= 1;
-		}
 
 		animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 		
-		leftCount++;
-		if (leftCount == 3)
+		if (++leftCount == 3)
 		{
 			rightCount = 0;
 			posCheck = true;
 		}
-		
 	}
 
 	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2, pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
-
-	
 }
 
 void Bat::movetoTarget()
 {
 	if (distanceX * distanceX > distanceY * distanceY)
 	{
-		//Target Left
-		if (scene->getPlayer()->getPos().x - pos.x < 0)
+		if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left
 		{
 			POINT search = POINT{ pos.x - 1, pos.y };
 			Object* obj = scene->getObject(search);
 
-			if (!obj && 
-				(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.x -= 1;
-			}
 		}
-
-		//Target right
-		else if (scene->getPlayer()->getPos().x - pos.x > 0)
+		else if (scene->getPlayer()->getPos().x - pos.x > 0) //Target right
 		{
 			POINT search = POINT{ pos.x + 1, pos.y };
 			Object* obj = scene->getObject(search);
 
-			if (!obj &&
-				(scene->getPlayer()->getPos().x != search.x ||
-					scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.x += 1;
-			}
 		}
 	}
-
 	else
 	{
-		//Target top
-		if (scene->getPlayer()->getPos().y - pos.y < 0)
+		if (scene->getPlayer()->getPos().y - pos.y < 0) //Target top
 		{
 			POINT search = POINT{ pos.x, pos.y - 1 };
 			Object* obj = scene->getObject(search);
 
-			if (!obj &&
-				(scene->getPlayer()->getPos().x != search.x ||
-					scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.y -= 1;
-			}
 		}
-
-		//Target bottom
-		else if (scene->getPlayer()->getPos().y - pos.y > 0)
+		else if (scene->getPlayer()->getPos().y - pos.y > 0) //Target bottom
 		{
 			POINT search = POINT{ pos.x, pos.y + 1 };
 			Object* obj = scene->getObject(search);
 
-			if (!obj &&
-				(scene->getPlayer()->getPos().x != search.x ||
-					scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.y += 1;
-			}
 		}
 	}
 }
 
 void Bat::faceTarget()
 {
-	//Target Left
-	if (scene->getPlayer()->getPos().x - pos.x < 0)
-	{
+	if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left
 		animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
-	}
-
-	//Target right
-	if (scene->getPlayer()->getPos().x - pos.x > 0)
-	{
+	else if (scene->getPlayer()->getPos().x - pos.x > 0) //Target right
 		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
 }
 
 void Bat::attackTarget()
 {
 	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
-
 	SOUNDMANAGER->play(KEY_EN_BAT_ATTACK, DEFAULT_VOLUME);
-	//Target Left
-	if (scene->getPlayer()->getPos().x - pos.x < 0)
-	{
+
+	if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_LEFT);
-	}
-
-	//Target right
-	if (scene->getPlayer()->getPos().x - pos.x > 0)
-	{
+	else if (scene->getPlayer()->getPos().x - pos.x > 0) //Target right
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_RIGHT);
-	}
-
-	//Target top
-	if (scene->getPlayer()->getPos().y - pos.y < 0)
-	{
+	else if (scene->getPlayer()->getPos().y - pos.y < 0) //Target top
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_TOP);
-	}
-
-	//Target bottom
-	if (scene->getPlayer()->getPos().y - pos.y > 0)
-	{
+	else if (scene->getPlayer()->getPos().y - pos.y > 0) //Target bottom
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_BOTTOM);
-	}
 }

@@ -4,6 +4,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Money.h"
 #include "Player.h"
 #include "Scene.h"
 
@@ -68,9 +69,7 @@ void Slime::release(void)
 void Slime::update(void)
 {
 	if (atk_animator->isEnd())
-	{
 		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
 
 	turnCount += TIMEMANAGER->getElapsedTime();
 
@@ -91,15 +90,8 @@ void Slime::update(void)
 		}
 
 		act = false;
-
-		/*if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
-		{
-			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
-			{
-				attackTarget();
-			}
-		}*/
 	}
+
 	animator->update();
 	atk_animator->update();
 }
@@ -112,36 +104,29 @@ void Slime::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(),
-			_rc.left - revision.x, _rc.top - revision.y,
-			_rc.right - revision.x, _rc.bottom - revision.y);
+	/*if (KEYMANAGER->isToggleKey(VK_F1))
+		Rectangle(getMemDC(), _rc.left - revision.x, _rc.top - revision.y, _rc.right - revision.x, _rc.bottom - revision.y);*/
 
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		animator->animationRender(getMemDC(), renderPos);
-	}
 
 	int count = hp;
 	if (hp != hpMax)
 		for (int i = 0; i < hpMax; ++i)
 		{
 			if (count >= 1)
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
 			else
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+
 			--count;
 		}
 
 	if (atk_animator->getCurrentState() != CHARACTER_STATE::IDLE_RIGHT)
-	{
 		atk_animator->animationRender(getMemDC(), renderPos);
-	}
 }
 
 bool Slime::interact(Player* player)
@@ -151,8 +136,12 @@ bool Slime::interact(Player* player)
 
 	if (hp <= 0)
 	{
-		SOUNDMANAGER->play(KEY_EN_SLIME_DEATH, DEFAULT_VOLUME);
 		destroyed = true;
+		SOUNDMANAGER->play(KEY_EN_SLIME_DEATH, DEFAULT_VOLUME);
+		Money* m = new Money();
+		m->init(scene, pos);
+		m->setQuantity(RND->getFromIntTo(1, 30));
+		scene->getObjectVec()->push_back(m);
 	}
 
 	return false;
@@ -161,28 +150,14 @@ bool Slime::interact(Player* player)
 void Slime::attackTarget()
 {
 	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+	SOUNDMANAGER->play(KEY_EN_BAT_ATTACK, DEFAULT_VOLUME);
 
-	//Target Left
-	if (scene->getPlayer()->getPos().x - pos.x < 0)
-	{
+	if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_LEFT);
-	}
-
-	//Target right
-	if (scene->getPlayer()->getPos().x - pos.x > 0)
-	{
+	if (scene->getPlayer()->getPos().x - pos.x > 0) //Target right
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_RIGHT);
-	}
-
-	//Target top
-	if (scene->getPlayer()->getPos().y - pos.y < 0)
-	{
+	if (scene->getPlayer()->getPos().y - pos.y < 0) //Target top
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_TOP);
-	}
-
-	//Target bottom
-	if (scene->getPlayer()->getPos().y - pos.y > 0)
-	{
+	if (scene->getPlayer()->getPos().y - pos.y > 0) //Target bottom
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_BOTTOM);
-	}
 }

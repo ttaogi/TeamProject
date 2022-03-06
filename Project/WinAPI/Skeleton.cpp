@@ -4,6 +4,7 @@
 
 #include "Animation.h"
 #include "Animator.h"
+#include "Money.h"
 #include "Player.h"
 #include "Scene.h"
 
@@ -73,9 +74,7 @@ void Skeleton::release(void)
 void Skeleton::update(void)
 {
 	if (atk_animator->isEnd())
-	{
 		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
 
 	turnCount += TIMEMANAGER->getElapsedTime();
 
@@ -94,7 +93,6 @@ void Skeleton::update(void)
 
 			return;
 		}
-
 		act = false;
 
 		if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
@@ -102,27 +100,14 @@ void Skeleton::update(void)
 			faceTarget();
 
 			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
-			{
 				attackTarget();
-			}
-
-			else
-			{
-				if (animator->getCurrentState() != CHARACTER_STATE::ATTACK_LEFT
-					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_RIGHT
-					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_TOP
-					&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM)
-				{
-					movetoTarget();
-				}
-			}
+			else if (animator->getCurrentState() != CHARACTER_STATE::ATTACK_LEFT
+				&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_RIGHT
+				&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_TOP
+				&& animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM)
+				movetoTarget();
 		}
-
-		else 
-		{
-			move();
-		}
-
+		else move();
 	}
 
 	animator->update();
@@ -137,34 +122,29 @@ void Skeleton::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(), _rc.left - revision.x, _rc.top - revision.y, _rc.right - revision.x, _rc.bottom - revision.y);
+	/*if (KEYMANAGER->isToggleKey(VK_F1))
+		Rectangle(getMemDC(), _rc.left - revision.x, _rc.top - revision.y, _rc.right - revision.x, _rc.bottom - revision.y);*/
 
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		animator->animationRender(getMemDC(), renderPos);
-	}
 
 	int count = hp;
 	if (hp != hpMax)
 		for (int i = 0; i < hpMax; ++i)
 		{
 			if (count >= 1)
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
 			else
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
-				render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+
 			--count;
 		}
 
 	if (atk_animator->getCurrentState() != CHARACTER_STATE::IDLE_RIGHT)
-	{
 		atk_animator->animationRender(getMemDC(), renderPos);
-	}
 }
 
 bool Skeleton::interact(Player* player)
@@ -176,6 +156,10 @@ bool Skeleton::interact(Player* player)
 	{
 		destroyed = true;
 		SOUNDMANAGER->play(KEY_EN_SKEL_DEATH, DEFAULT_VOLUME);
+		Money* m = new Money();
+		m->init(scene, pos);
+		m->setQuantity(RND->getFromIntTo(1, 30));
+		scene->getObjectVec()->push_back(m);
 	}
 	return false;
 }
@@ -191,188 +175,110 @@ void Skeleton::move(void)
 
 	switch (command)
 	{
-	case 0:
-		// Left
+	case 0: // Left
 		search = POINT{ pos.x - 1, pos.y };
 		obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
-		{
+		if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 			pos.x -= 1;
-		}
 
 		animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
-
 		break;
-
-	case 1:
-		// Right
+	case 1: // Right
 		search = POINT{ pos.x + 1, pos.y };
 		obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
-		{
+		if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 			pos.x += 1;
-		}
 
 		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-
 		break;
-
-	case 2:
-		// Top
+	case 2: // Top
 		search = POINT{ pos.x, pos.y - 1 };
 		obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
-		{
+		if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 			pos.y -= 1;
-		}
 
 		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-
 		break;
-
-	case 3:
-		// Bottom
+	case 3: // Bottom
 		search = POINT{ pos.x, pos.y + 1 };
 		obj = scene->getObject(search);
 
-		if (!obj &&
-			(scene->getPlayer()->getPos().x != search.x ||
-				scene->getPlayer()->getPos().y != search.y))
-		{
+		if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 			pos.y += 1;
-		}
 
 		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-
 		break;
-		
 	default:
 		break;
 	}
 	
-
-	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
-		pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
+	_rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2, pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
 }
 
 void Skeleton::movetoTarget()
 {
 	if (distanceX * distanceX > distanceY * distanceY)
 	{
-		//Target Left
-		if (scene->getPlayer()->getPos().x - pos.x < 0)
+		if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left
 		{
 			POINT search = POINT{ pos.x - 1, pos.y };
 			Object* obj = scene->getObject(search);
 
-			if (!obj &&
-				(scene->getPlayer()->getPos().x != search.x ||
-					scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.x -= 1;
-			}
 		}
-
-		//Target right
-		else if (scene->getPlayer()->getPos().x - pos.x > 0)
+		else if (scene->getPlayer()->getPos().x - pos.x > 0) //Target right
 		{
 			POINT search = POINT{ pos.x + 1, pos.y };
 			Object* obj = scene->getObject(search);
 
-			if (!obj &&
-				(scene->getPlayer()->getPos().x != search.x ||
-					scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.x += 1;
-			}
 		}
 	}
-
 	else
 	{
-		//Target top
-		if (scene->getPlayer()->getPos().y - pos.y < 0)
+		if (scene->getPlayer()->getPos().y - pos.y < 0) //Target top
 		{
 			POINT search = POINT{ pos.x, pos.y - 1 };
 			Object* obj = scene->getObject(search);
 
-			if (!obj &&
-				(scene->getPlayer()->getPos().x != search.x ||
-					scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.y -= 1;
-			}
 		}
-
-		//Target bottom
-		else if (scene->getPlayer()->getPos().y - pos.y > 0)
+		else if (scene->getPlayer()->getPos().y - pos.y > 0) //Target bottom
 		{
 			POINT search = POINT{ pos.x, pos.y + 1 };
 			Object* obj = scene->getObject(search);
 
-			if (!obj &&
-				(scene->getPlayer()->getPos().x != search.x ||
-					scene->getPlayer()->getPos().y != search.y))
-			{
+			if (!obj && !PointCmp(scene->getPlayer()->getPos(), search))
 				pos.y += 1;
-			}
 		}
 	}
 }
 
 void Skeleton::faceTarget()
 {
-	//Target Left
-	if (scene->getPlayer()->getPos().x - pos.x < 0)
-	{
+	if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left
 		animator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
-	}
-
-	//Target right
-	if (scene->getPlayer()->getPos().x - pos.x > 0)
-	{
+	else if (scene->getPlayer()->getPos().x - pos.x > 0) //Target right
 		animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-	}
 }
 
 void Skeleton::attackTarget()
 {
 	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+	SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
 
-	//Target Left
-	if (scene->getPlayer()->getPos().x - pos.x < 0)
-	{
+	if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_LEFT);
-		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
-	}
-
-	//Target right
-	if (scene->getPlayer()->getPos().x - pos.x > 0)
-	{
+	else if (scene->getPlayer()->getPos().x - pos.x > 0) //Target right
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_RIGHT);
-		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
-	}
-
-	//Target top
-	if (scene->getPlayer()->getPos().y - pos.y < 0)
-	{
+	else if (scene->getPlayer()->getPos().y - pos.y < 0) //Target top
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_TOP);
-		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
-	}
-
-	//Target bottom
-	if (scene->getPlayer()->getPos().y - pos.y > 0)
-	{
+	else if (scene->getPlayer()->getPos().y - pos.y > 0) //Target bottom
 		atk_animator->changeAnimation(CHARACTER_STATE::ATTACK_BOTTOM);
-		SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
-	}
 }

@@ -135,19 +135,14 @@ void Player::release(void)
 void Player::update(void)
 {
 	turnCount += TIMEMANAGER->getElapsedTime();
-	if (turnCount >= 0.5f)
-	{
-		effectCountIndex++;
-		turnCount -= 0.5f;
-	}
 
 	// non-idle animation -> idle animation.
 	if (headAnimator->isEnd() && bodyAnimator->isEnd())
-	{
 		if (bounce != DIRECTION::DIRECTION_NUM)
 		{
 			POINT searchPos;
 			Object* searchObj = NULL;
+
 			switch (bounce)
 			{
 			case DIRECTION::LEFT:
@@ -191,6 +186,7 @@ void Player::update(void)
 				}
 				break;
 			}
+
 			bounce = DIRECTION::DIRECTION_NUM;
 		}
 		else
@@ -200,38 +196,26 @@ void Player::update(void)
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 			}
-			if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_LEFT)
+			else if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_LEFT)
 			{
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 			}
-			if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_TOP)
+			else if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_TOP)
 			{
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 			}
-			if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_BOTTOM)
+			else if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_BOTTOM)
 			{
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 			}
 		}
-	}
 
 	// get command.
-	if (turnCount >= turnInterval * 0.7f && turnCount < turnInterval * 0.8f)
-	{ // bad timing.
-		if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
-			command = DIRECTION::LEFT;
-		else if (KEYMANAGER->isOnceKeyDown(VK_RIGHT))
-			command = DIRECTION::RIGHT;
-		else if (KEYMANAGER->isOnceKeyDown(VK_UP))
-			command = DIRECTION::TOP;
-		else if (KEYMANAGER->isOnceKeyDown(VK_DOWN))
-			command = DIRECTION::BOTTOM;
-	}
-	else if (turnCount >= turnInterval * 0.8f && turnCount < turnInterval)
-	{ // perfect timing.
+	if (turnCount >= turnInterval * 0.7f && turnCount < turnInterval)
+	{
 		if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
 			command = DIRECTION::LEFT;
 		else if(KEYMANAGER->isOnceKeyDown(VK_RIGHT))
@@ -262,9 +246,8 @@ void Player::update(void)
 				searchArea.push_back(POINT{ -1, 1 });
 			}
 			else
-			{
-			searchArea.push_back(POINT{ -1, 0 });
-			}
+				searchArea.push_back(POINT{ -1, 0 });
+
 			forwardPos = POINT{ pos.x - 1, pos.y };
 			break;
 		case DIRECTION::RIGHT:
@@ -275,9 +258,8 @@ void Player::update(void)
 				searchArea.push_back(POINT{  1, 1 });
 			}
 			else
-			{
-			searchArea.push_back(POINT{ 1, 0 });
-			}
+				searchArea.push_back(POINT{ 1, 0 });
+
 			forwardPos = POINT{ pos.x + 1, pos.y };
 			break;
 		case DIRECTION::TOP:
@@ -288,9 +270,8 @@ void Player::update(void)
 				searchArea.push_back(POINT{ 1, -1 });
 			}
 			else
-			{
-			searchArea.push_back(POINT{ 0, -1 });
-			}
+				searchArea.push_back(POINT{ 0, -1 });
+
 			forwardPos = POINT{ pos.x, pos.y - 1 };
 			break;
 		case DIRECTION::BOTTOM:
@@ -301,23 +282,20 @@ void Player::update(void)
 				searchArea.push_back(POINT{ 1, 1 });
 			}
 			else
-			{
-			searchArea.push_back(POINT{ 0, 1 });
-			}
+				searchArea.push_back(POINT{ 0, 1 });
+
 			forwardPos = POINT{ pos.x, pos.y + 1 };
 			break;
 		}
 
 		// searching.
-		for(auto areaIter = searchArea.begin();
-			areaIter != searchArea.end(); ++areaIter)
+		for(auto areaIter = searchArea.begin(); areaIter != searchArea.end(); ++areaIter)
 		{
 			POINT searchPos = POINT{ pos.x + areaIter->x, pos.y + areaIter->y };
 			Object* searchObj = scene->getObject(searchPos);
 
 			// compare object type and push back being enemy.
 			if (searchObj)
-			{
 				switch (searchObj->getType())
 				{
 				case OBJECT_TYPE::MONSTER_SLIME:
@@ -330,19 +308,16 @@ void Player::update(void)
 				default:
 					break;
 				}
-			}
 		}
-		if (enemyVec.empty())
-		{
-			forwardObject = scene->getObject(forwardPos);
-		}
+
+		if (enemyVec.empty()) forwardObject = scene->getObject(forwardPos);
 
 		switch (command) {
 		case DIRECTION::LEFT:
 			if (!enemyVec.empty())
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
-				(*iter)->interact(this);
+					(*iter)->interact(this);
 				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
 			}
 			else if (forwardObject)
@@ -365,9 +340,7 @@ void Player::update(void)
 			if (!enemyVec.empty())
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
-				{
 					(*iter)->interact(this);
-				}
 				DaggerEffectRightTF = true;
 				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
 			}
@@ -379,7 +352,6 @@ void Player::update(void)
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 				}
-
 			}
 			else
 			{
@@ -439,7 +411,6 @@ void Player::update(void)
 		command = DIRECTION::DIRECTION_NUM;
 
 		if (PLAYERINFOMANAGER->getBomb().detailType != ITEM_DETAIL::ITEM_DETAIL_NUM)
-		{ 
 			if (KEYMANAGER->isOnceKeyDown('X'))
 			{
 				Explosion* explsion = new Explosion;
@@ -447,16 +418,13 @@ void Player::update(void)
 				scene->getObjectVec()->push_back(explsion);
 				PLAYERINFOMANAGER->setBomb(EMPTY_ITEM);
 			}
-		}
 
 		if (PLAYERINFOMANAGER->getHeal().detailType != ITEM_DETAIL::ITEM_DETAIL_NUM)
-		{
 			if (KEYMANAGER->isOnceKeyDown('Z'))
 			{
 				PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() + 2);
 				PLAYERINFOMANAGER->setHeal(EMPTY_ITEM);
 			}
-		}
 	}
 
 	// animation update.
@@ -467,17 +435,11 @@ void Player::update(void)
 void Player::render(void)
 {
 	POINT renderPos = GridPointToPixelPointCenter(pos);
+	POINT ltPos = GridPointToPixelPointLeftTop(pos);
 	POINT revision = CAMERAMANAGER->getRevision();
 	
-	if (KEYMANAGER->isToggleKey(VK_F1))
-	{
-		Rectangle(getMemDC(),
-			GridPointToPixelPointLeftTop(pos).x - revision.x,
-			GridPointToPixelPointLeftTop(pos).y - revision.y,
-			GridPointToPixelPointLeftTop(pos).x - revision.x + TILE_SIZE,
-			GridPointToPixelPointLeftTop(pos).y - revision.y + TILE_SIZE);
-	}
-
+	/*if (KEYMANAGER->isToggleKey(VK_F1))
+		Rectangle(getMemDC(), ltPos.x - revision.x, ltPos.y - revision.y, ltPos.x - revision.x + TILE_SIZE, ltPos.y - revision.y + TILE_SIZE);*/
 
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
@@ -487,11 +449,7 @@ void Player::render(void)
 
 	if (DaggerEffectRightTF)
 	{
-		cout << "����" << endl;
-		IMAGEMANAGER->frameRender(KEY_SWIPE_DAGGER_RIGHT, getMemDC(), 
-			GridPointToPixelPointLeftTop(pos).x - revision.x + 50, 
-			GridPointToPixelPointLeftTop(pos).y - revision.y - 10, 
-			effectCountIndex, 0);
+		IMAGEMANAGER->frameRender(KEY_SWIPE_DAGGER_RIGHT, getMemDC(),  ltPos.x - revision.x + 50, ltPos.y - revision.y - 10, effectCountIndex, 0);
 
 		DaggerEffectRightTF = false; 
 	}
@@ -508,12 +466,9 @@ void Player::renderMinimap(HDC _hdc)
 
 void Player::Move(POINT _pos)
 {
+	POINT rcCenter = GridPointToPixelPointCenter(_pos);
 	pos = _pos;
-	rc = RectMakeCenter(pos.x * TILE_SIZE + TILE_SIZE / 2,
-						pos.y * TILE_SIZE + TILE_SIZE / 2, TILE_SIZE, TILE_SIZE);
+	rc = RectMakeCenter(rcCenter.x, rcCenter.y, TILE_SIZE, TILE_SIZE);
 }
 
-void Player::setBounce(DIRECTION dir)
-{
-	bounce = dir;
-}
+void Player::setBounce(DIRECTION dir) { bounce = dir; }
