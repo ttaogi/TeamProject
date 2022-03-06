@@ -10,6 +10,7 @@ private:
 	CHARACTER_STATE state;
 	Animator* bombAnimator;
 	Animator* explosionAnimator;
+	bool sound;
 
 public:
 	HRESULT init(Scene* scenePtr, POINT position);
