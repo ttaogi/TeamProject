@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ROOT>
-    <turnInterval interval="0.25" />
+    <!--<turnInterval interval="0.521739" />-->
+    <turnInterval interval="0.260870" />
     <startPos pos_x="4" pos_y="3" />
     <bgm sound_id="3" play_time="180" />
     <!--
@@ -227,11 +228,11 @@ enum class SOUND_ID
             <y_1 type="0" object="1" />
             <y_2 type="0" object="1" />
             <y_3 type="0" object="1" />
-            <y_4 type="0" object="1" />
-            <y_5 type="0" object="1" />
-            <y_6 type="0" object="1" />
-            <y_7 type="0" object="1" />
-            <y_8 type="0" object="1" />
+            <y_4 type="1" object="1" />
+            <y_5 type="1" object="1" />
+            <y_6 type="1" object="1" />
+            <y_7 type="1" object="1" />
+            <y_8 type="1" object="2" />
             <y_9 type="1" object="2" />
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
@@ -253,9 +254,9 @@ enum class SOUND_ID
             <y_5 type="0" object="1" />
             <y_6 type="0" object="1" />
             <y_7 type="0" object="1" />
-            <y_8 type="0" object="1" />
-            <y_9 type="0" object="1" />
-            <y_10 type="0" object="1" />
+            <y_8 type="1" object="2" />
+            <y_9 type="1" object="2" />
+            <y_10 type="1" object="0" />
             <y_11 type="1" object="4" />
             <y_12 type="1" object="4" />
             <y_13 type="1" object="0" />
@@ -492,7 +493,7 @@ enum class SOUND_ID
           <y_2 type="1" object="0" />
           <y_3 type="1" object="9" />
           <y_4 type="1" object="2" />
-          <y_5 type="1" object="0" />
+          <y_5 type="1" object="2" />
           <y_6 type="1" object="0" />
           <y_7 type="1" object="0" />
           <y_8 type="1" object="0" />

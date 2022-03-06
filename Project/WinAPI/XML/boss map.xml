@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ANSI" ?>
 <ROOT>
-    <turnInterval interval="0.451128" />
+    <!--<turnInterval interval="0.451128" />-->
+    <turnInterval interval="0.225564" />
     <startPos pos_x="8" pos_y="15" />
     <bgm sound_id="4" play_time="73" />
     <!--

@@ -9,7 +9,7 @@ private:
 	Image* _FullHp;
 	Image* _EmptyHp;
 
-	float turnCount;
+	double turnCount;
 	int globalCool;
 	int summonCool;
 	int freezeCool;

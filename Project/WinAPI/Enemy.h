@@ -7,7 +7,7 @@ class Enemy : public Object
 protected:
 	int hp;
 	int hpMax;
-	float turnInterval;
+	double turnInterval;
 	RECT _rc;
 public:
 	virtual HRESULT init(Scene* scenePtr, POINT position) = 0;

@@ -38,6 +38,7 @@ public:
 	static std::string value(TiXmlAttribute* _attribute);
 	static int valueInt(TiXmlAttribute* _attribute);
 	static float valueFloat(TiXmlAttribute* _attribute);
+	static double valueDouble(TiXmlAttribute* _attribute);
 	static void setAttribute(
 		TiXmlElement* _element, std::string _name, std::string _value);
 	static void setAttribute(
@@ -50,4 +51,6 @@ public:
 		TiXmlElement* _element, std::string _attribute, int* _value);
 	static bool getAttributeValueFloat(
 		TiXmlElement* _element, std::string _attribute, float* _value);
+	static bool getAttributeValueDouble(
+		TiXmlElement* _element, std::string _attribute, double* _value);
 };
