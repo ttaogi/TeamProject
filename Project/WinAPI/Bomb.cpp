@@ -21,13 +21,9 @@ HRESULT Bomb::init(Scene * scenePtr, POINT position)
 	return S_OK;
 }
 
-void Bomb::release(void)
-{
-}
+void Bomb::release(void) { }
 
-void Bomb::update(void)
-{
-}
+void Bomb::update(void) { }
 
 void Bomb::render(void)
 {
@@ -41,9 +37,7 @@ void Bomb::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
-	}
 }
 
 bool Bomb::interact(Player * player)
@@ -62,9 +56,5 @@ bool Bomb::interact(Player * player)
 		destroyed = true;
 		return true;
 	}
-
-	else
-	{
-		return false;
-	}
+	else return false;
 }

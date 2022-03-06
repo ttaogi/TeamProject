@@ -22,13 +22,9 @@ HRESULT Torch::init(Scene * scenePtr, POINT position)
 	return S_OK;
 }
 
-void Torch::release(void)
-{
-}
+void Torch::release(void) { }
 
-void Torch::update(void)
-{
-}
+void Torch::update(void) { }
 
 void Torch::render(void)
 {
@@ -42,9 +38,7 @@ void Torch::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
-	}
 }
 
 bool Torch::interact(Player * player)
@@ -62,9 +56,5 @@ bool Torch::interact(Player * player)
 		destroyed = true;
 		return true;
 	}
-
-	else
-	{
-		return false;
-	}
+	else return false;
 }

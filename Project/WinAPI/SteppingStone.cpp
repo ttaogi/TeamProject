@@ -38,9 +38,7 @@ void SteppingStoneLeft::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		stripe->render(getMemDC(), renderPos.x, renderPos.y);
-	}
 }
 
 bool SteppingStoneLeft::interact(Player* player)
@@ -91,9 +89,7 @@ void SteppingStoneTop::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		stripe->render(getMemDC(), renderPos.x, renderPos.y);
-	}
 }
 
 bool SteppingStoneTop::interact(Player * player)
@@ -144,10 +140,7 @@ void SteppingStoneRight::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		stripe->render(getMemDC(), renderPos.x, renderPos.y);
-	}
-	
 }
 
 bool SteppingStoneRight::interact(Player* player)
@@ -198,9 +191,7 @@ void SteppingStoneBottom::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		stripe->render(getMemDC(), renderPos.x, renderPos.y);
-	}
 }
 
 bool SteppingStoneBottom::interact(Player * player)

@@ -40,5 +40,5 @@ public:
 	int getHp() const;
 	void setHp(int _hp);
 	int getHpMax() const;
-	int getViewDistance() { return 8; }
+	int getViewDistance();
 };

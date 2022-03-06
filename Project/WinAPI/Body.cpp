@@ -21,13 +21,9 @@ HRESULT Body::init(Scene * scenePtr, POINT position)
 	return S_OK;
 }
 
-void Body::release(void)
-{
-}
+void Body::release(void) { }
 
-void Body::update(void)
-{
-}
+void Body::update(void) { }
 
 void Body::render(void)
 {
@@ -40,10 +36,8 @@ void Body::render(void)
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (distance < 8)
-	{
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
-	}
 }
 
 bool Body::interact(Player * player)
@@ -61,9 +55,5 @@ bool Body::interact(Player * player)
 		destroyed = true;
 		return true;
 	}
-
-	else
-	{
-		return false;
-	}
+	else return false;
 }

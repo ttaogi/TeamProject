@@ -38,9 +38,7 @@ void Stair::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		stripe->render(getMemDC(), renderPos.x, renderPos.y);
-	}
 }
 
 void Stair::renderMinimap(HDC _hdc)

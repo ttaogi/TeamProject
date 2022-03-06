@@ -21,13 +21,9 @@ HRESULT Heal::init(Scene * scenePtr, POINT position)
 	return S_OK;
 }
 
-void Heal::release(void)
-{
-}
+void Heal::release(void) { }
 
-void Heal::update(void)
-{
-}
+void Heal::update(void) { }
 
 void Heal::render(void)
 {
@@ -41,9 +37,7 @@ void Heal::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
-	}
 }
 
 bool Heal::interact(Player * player)
@@ -61,9 +55,5 @@ bool Heal::interact(Player * player)
 		destroyed = true;
 		return true;
 	}
-
-	else
-	{
-		return false;
-	}
+	else return false;
 }

@@ -36,10 +36,8 @@ void Head::render(void)
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
-	if (distance < 8)
-	{
+	if (distance < PLAYERINFOMANAGER->getViewDistance())
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
-	}
 }
 
 bool Head::interact(Player * player)

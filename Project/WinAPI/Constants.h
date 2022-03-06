@@ -361,3 +361,4 @@ extern const float DEFAULT_VOLUME;
 extern const int MINIMAP_WIDTH;
 extern const int MINIMAP_HEIGHT;
 extern const int PLAYER_HP_MAX;
+extern const int DEFAULT_VIEW_DISTANCE;

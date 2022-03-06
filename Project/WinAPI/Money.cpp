@@ -53,9 +53,7 @@ void Money::render(void)
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
 	if (distance < PLAYERINFOMANAGER->getViewDistance())
-	{
 		animator->animationRender(getMemDC(), renderPos);
-	}
 }
 
 bool Money::interact(Player* player)

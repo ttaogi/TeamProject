@@ -452,7 +452,8 @@ void MapInfo::render(HDC _hdc)
 		{
 			int deltaX = abs(x - scene->getPlayer()->getPos().x);
 			int deltaY = abs(y - scene->getPlayer()->getPos().y);
-			if ((deltaX + deltaY) < 8) tileMap[x][y]->render(_hdc);
+			if ((deltaX + deltaY) < PLAYERINFOMANAGER->getViewDistance())
+				tileMap[x][y]->render(_hdc);
 		}
 }
 

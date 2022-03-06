@@ -90,13 +90,15 @@ void PlayerInfoManager::setHp(int _hp)
 {
 	hp = _hp;
 
-	if (hp > hpMax)
-	{
-		hp = hpMax;
-	}
+	if (hp > hpMax) hp = hpMax;
 }
 
 int PlayerInfoManager::getHpMax() const
 {
 	return hpMax;
+}
+
+int PlayerInfoManager::getViewDistance()
+{
+	return DEFAULT_VIEW_DISTANCE + torch.range;
 }
