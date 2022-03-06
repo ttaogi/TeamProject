@@ -12,6 +12,7 @@
 #include "Necrodancer.h"
 #include "Object.h"
 #include "Scene.h"
+#include "Shopkeeper.h"
 #include "Skeleton.h"
 #include "Slime.h"
 #include "slimeBlue.h"
@@ -365,6 +366,17 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 				else if (objectType == (int)OBJECT_TYPE::STAIR)
 				{
 					Stair* obj = new Stair();
+					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
+						objectVec.push_back(obj);
+					else
+					{
+						SAFE_RELEASE(obj);
+						SAFE_DELETE(obj);
+					}
+				}
+				else if (objectType == (int)OBJECT_TYPE::NPC_SHOP)
+				{
+					Shopkeeper* obj = new Shopkeeper();
 					if (SUCCEEDED(obj->init(_scene, POINT{ i, j })))
 						objectVec.push_back(obj);
 					else

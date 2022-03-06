@@ -27,6 +27,11 @@
 HRESULT DungeonScene::init(void)
 {
 	minimap = new Image();
+	minimap->init(MINIMAP_WIDTH, MINIMAP_HEIGHT);
+	PatBlt(minimap->getMemDC(), 0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, BLACKNESS);
+	minimap->setTransColor(true, RGB(0, 0, 0));
+
+	minimap = new Image();
 	minimap->init(WINSIZEX, WINSIZEY);
 	PatBlt(minimap->getMemDC(), 0, 0, WINSIZEX, WINSIZEY, BLACKNESS);
 	minimap->setTransColor(true, RGB(0, 0, 0));
@@ -44,19 +49,18 @@ HRESULT DungeonScene::init(void)
 	player->init(this);
 	player->Move(mapInfo->getStartPos());
 
-	//shopkeeper = new Shopkeeper;
-	//shopkeeper->init(this, POINT{ 10, 10 });
-	//objectVec.push_back(shopkeeper);
+	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
+		if ((*obj)->getType() == OBJECT_TYPE::NPC_SHOP)
+			shopkeeper = (Shopkeeper*)(*obj);
 
 	SOUNDMANAGER->allStop();
 	if (mapInfo->getBgmKey() != "")
 		SOUNDMANAGER->play(mapInfo->getBgmKey(), DEFAULT_VOLUME);
-
-	//SOUNDMANAGER->setSound3DInfo(
-	//	(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
-	//	(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
-	//SOUNDMANAGER->play3DSound(DEFAULT_VOLUME * 5, 0, 0, 0);
-	//SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
+	SOUNDMANAGER->setSound3DInfo(
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
+	SOUNDMANAGER->play3DSound(DEFAULT_VOLUME * 5, 0, 0, 0);
+	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 
 	// UI.
 	_plEquip = new PlEquip;
@@ -129,10 +133,10 @@ void DungeonScene::update(void)
 	_plGold->update();
 
 	CAMERAMANAGER->update();
-	//SOUNDMANAGER->setSound3DInfo(
-	//	(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
-	//	(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
-	//SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
+	SOUNDMANAGER->setSound3DInfo(
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
+		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
+	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 	SOUNDMANAGER->update();
 }
 
@@ -156,6 +160,15 @@ void DungeonScene::render(void)
 		(*iter)->render();
 
 	// minimap.
+	if (minimap)
+	{
+		mapInfo->renderMinimap(minimap->getMemDC());
+		for (auto iter = objectVec.begin(); iter != objectVec.end(); ++iter)
+			(*iter)->renderMinimap(minimap->getMemDC());
+		player->renderMinimap(minimap->getMemDC());
+
+		minimap->render(getMemDC(), WINSIZEX - MINIMAP_WIDTH, WINSIZEY - MINIMAP_HEIGHT);
+	}
 
 	_plEquip->render();
 	_plHp->render();
