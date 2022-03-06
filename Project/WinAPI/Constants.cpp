@@ -384,6 +384,24 @@ const std::string KEY_SWIPE_DAGGER_RIGHT =
 	"SWIPE_DAGGER_RIGHT";
 const char* DIR_SWIPE_DAGGER_RIGHT =
 	"Resources/Images/swipes/swipe_dagger_right.bmp";
+
+const std::string KEY_SWIPE_BROADSWORD_TOP =
+	"SWIPE_BROADSWORD_TOP";
+const char* DIR_SWIPE_BROADSWORD_TOP =
+	"Resources/Images/swipes/swipe_broadsword_top.bmp";
+const std::string KEY_SWIPE_BROADSWORD_BOTTOM =
+	"SWIPE_BROADSWORD_BOTTOM";
+const char* DIR_SWIPE_BROADSWORD_BOTTOM =
+	"Resources/Images/swipes/swipe_broadsword_bottom.bmp";
+const std::string KEY_SWIPE_BROADSWORD_LEFT =
+	"SWIPE_BROADSWORD_LEFT";
+const char* DIR_SWIPE_BROADSWORD_LEFT =
+	"Resources/Images/swipes/swipe_broadsword_left.bmp";
+const std::string KEY_SWIPE_BROADSWORD_RIGHT =
+"SWIPE_BROADSWORD_RIGHT";
+const char* DIR_SWIPE_BROADSWORD_RIGHT =
+"Resources/Images/swipes/swipe_broadsword_right.bmp";
+
 #pragma endregion WeaponEffect
 
 #pragma region EnemyAttackEffect

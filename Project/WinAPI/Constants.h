@@ -215,6 +215,14 @@ extern const std::string KEY_SWIPE_DAGGER_LEFT;
 extern const char* DIR_SWIPE_DAGGER_LEFT;
 extern const std::string KEY_SWIPE_DAGGER_RIGHT;
 extern const char* DIR_SWIPE_DAGGER_RIGHT;
+extern const std::string KEY_SWIPE_BROADSWORD_TOP;
+extern const char* DIR_SWIPE_BROADSWORD_TOP;
+extern const std::string KEY_SWIPE_BROADSWORD_BOTTOM;
+extern const char* DIR_SWIPE_BROADSWORD_BOTTOM;
+extern const std::string KEY_SWIPE_BROADSWORD_LEFT;
+extern const char* DIR_SWIPE_BROADSWORD_LEFT;
+extern const std::string KEY_SWIPE_BROADSWORD_RIGHT;
+extern const char* DIR_SWIPE_BROADSWORD_RIGHT;
 #pragma endregion WeaponEffect
 
 #pragma region EnemyAttackEffect

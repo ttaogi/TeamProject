@@ -20,12 +20,13 @@ HRESULT Player::init(Scene* scenePtr)
 	scene = scenePtr;
 	minimapStripe = IMAGEMANAGER->findImage(KEY_PLAYER_MINIMAP);
 	effectCountIndex = 0;
-	DaggerEffectRightTF = false;
-
+	
 	{ // animation.
 		headAnimator = new Animator();
 		bodyAnimator = new Animator();
 		bodyArmorAnimator = new Animator();
+		atk_animator_Dagger = new Animator;
+		atk_animator_Broadsword = new Animator;
 
 		Animation* headIdleRight = new Animation();
 		Animation* bodyIdleRight = new Animation();
@@ -47,6 +48,17 @@ HRESULT Player::init(Scene* scenePtr)
 		Animation* headJumpBottom = new Animation();
 		Animation* bodyJumpBottom = new Animation();
 		Animation* armorJumpBottom = new Animation();
+
+		Animation* Attak_left_Animation_Dagger = new Animation();
+		Animation* Attak_Right_Animation_Dagger = new Animation();
+		Animation* Attak_Top_Animation_Dagger = new Animation();
+		Animation* Attak_Bottom_Animation_Dagger = new Animation();
+		
+		Animation* Attak_left_Animation_Broadsword = new Animation();
+		Animation* Attak_Right_Animation_Broadsword = new Animation();
+		Animation* Attak_Top_Animation_Broadsword = new Animation();
+		Animation* Attak_Bottom_Animation_Broadsword = new Animation();
+		Animation* null_animation = new Animation();
 
 		headIdleRight->init(
 			KEY_PLAYER_HEAD_IDLE_RIGHT,
@@ -141,6 +153,53 @@ HRESULT Player::init(Scene* scenePtr)
 			false, false, 64
 		);
 
+		Attak_left_Animation_Dagger->init(
+			KEY_SWIPE_DAGGER_LEFT,
+			POINT{ -70, -50 }, CHARACTER_STATE::ATTACK_LEFT,
+			false, false, 50
+		);
+		Attak_Right_Animation_Dagger->init(
+			KEY_SWIPE_DAGGER_RIGHT,
+			POINT{ 20, -50 }, CHARACTER_STATE::ATTACK_RIGHT,
+			false, false, 50
+		);
+		Attak_Top_Animation_Dagger->init(
+			KEY_SWIPE_DAGGER_TOP,
+			POINT{ -20, -80 }, CHARACTER_STATE::ATTACK_TOP,
+			false, false, 50
+		);
+		Attak_Bottom_Animation_Dagger->init(
+			KEY_SWIPE_DAGGER_BOTTOM,
+			POINT{ -20, 10 }, CHARACTER_STATE::ATTACK_BOTTOM,
+			false, false, 50
+		);
+	
+		Attak_left_Animation_Broadsword->init(
+			KEY_SWIPE_BROADSWORD_LEFT,
+			POINT{ -70, -70 }, CHARACTER_STATE::ATTACK_LEFT,
+			false, false, 40
+		);
+		Attak_Right_Animation_Broadsword->init(
+			KEY_SWIPE_BROADSWORD_RIGHT,
+			POINT{ 20, -70 }, CHARACTER_STATE::ATTACK_RIGHT,
+			false, false, 40
+		);
+		Attak_Top_Animation_Broadsword->init(
+			KEY_SWIPE_BROADSWORD_TOP,
+			POINT{ -68, -80 }, CHARACTER_STATE::ATTACK_TOP,
+			false, false, 40
+		);
+		Attak_Bottom_Animation_Broadsword->init(
+			KEY_SWIPE_BROADSWORD_BOTTOM,
+			POINT{ -68, 10 }, CHARACTER_STATE::ATTACK_BOTTOM,
+			false, false, 40
+		);
+		null_animation->init(
+			KEY_SWIPE_ENEMY_LEFT,
+			POINT{ -54, -48 }, CHARACTER_STATE::IDLE_RIGHT,
+			true, false, 16
+		);
+
 		headAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, headIdleRight);
 		bodyAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, bodyIdleRight);
 		bodyArmorAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, armorIdleRight);
@@ -161,6 +220,18 @@ HRESULT Player::init(Scene* scenePtr)
 		headAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, headJumpBottom);
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, bodyJumpBottom);
 		bodyArmorAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, armorJumpBottom);
+
+		atk_animator_Dagger->addAnimation(CHARACTER_STATE::ATTACK_LEFT, Attak_left_Animation_Dagger);
+		atk_animator_Dagger->addAnimation(CHARACTER_STATE::ATTACK_RIGHT, Attak_Right_Animation_Dagger);
+		atk_animator_Dagger->addAnimation(CHARACTER_STATE::ATTACK_TOP, Attak_Top_Animation_Dagger);
+		atk_animator_Dagger->addAnimation(CHARACTER_STATE::ATTACK_BOTTOM, Attak_Bottom_Animation_Dagger);
+		atk_animator_Dagger->addAnimation(CHARACTER_STATE::IDLE_RIGHT, null_animation);
+
+		atk_animator_Broadsword->addAnimation(CHARACTER_STATE::ATTACK_LEFT, Attak_left_Animation_Broadsword);
+		atk_animator_Broadsword->addAnimation(CHARACTER_STATE::ATTACK_RIGHT, Attak_Right_Animation_Broadsword);
+		atk_animator_Broadsword->addAnimation(CHARACTER_STATE::ATTACK_TOP, Attak_Top_Animation_Broadsword);
+		atk_animator_Broadsword->addAnimation(CHARACTER_STATE::ATTACK_BOTTOM, Attak_Bottom_Animation_Broadsword);
+		atk_animator_Broadsword->addAnimation(CHARACTER_STATE::IDLE_RIGHT, null_animation);
 	}
 
 	return S_OK;
@@ -174,6 +245,8 @@ void Player::release(void)
 	SAFE_DELETE(bodyAnimator);
 	SAFE_RELEASE(bodyArmorAnimator);
 	SAFE_DELETE(bodyArmorAnimator);
+	SAFE_RELEASE(atk_animator_Dagger);
+	SAFE_DELETE(atk_animator_Dagger);
 }
 
 void Player::update(void)
@@ -264,6 +337,17 @@ void Player::update(void)
 				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 			}
 		}
+
+	// weapon animation -> idle
+	if (atk_animator_Dagger->isEnd())
+	{
+		atk_animator_Dagger->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+	}
+
+	if (atk_animator_Broadsword->isEnd())
+	{
+		atk_animator_Broadsword->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+	}
 
 	// get command.
 	if (turnCount >= turnInterval * 0.7f && turnCount < turnInterval)
@@ -371,7 +455,18 @@ void Player::update(void)
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 					(*iter)->interact(this);
 				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
+
+				if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_DAGGER)
+				{
+					atk_animator_Dagger->changeAnimation(CHARACTER_STATE::ATTACK_LEFT);
+				}
+
+				else if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+				{
+					atk_animator_Broadsword->changeAnimation(CHARACTER_STATE::ATTACK_LEFT);
+				}
 			}
+
 			else if (forwardObject)
 			{
 				if (forwardObject->interact(this))
@@ -382,6 +477,7 @@ void Player::update(void)
 					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 				}
 			}
+
 			else
 			{
 				Move(POINT{ pos.x - 1, pos.y });
@@ -389,14 +485,24 @@ void Player::update(void)
 				bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 			}
+
 			break;
 		case DIRECTION::RIGHT:
 			if (!enemyVec.empty())
 			{
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 					(*iter)->interact(this);
-				DaggerEffectRightTF = true;
 				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
+
+				if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_DAGGER)
+				{
+					atk_animator_Dagger->changeAnimation(CHARACTER_STATE::ATTACK_RIGHT);
+				}
+
+				else if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+				{
+					atk_animator_Broadsword->changeAnimation(CHARACTER_STATE::ATTACK_RIGHT);
+				}
 			}
 			else if (forwardObject)
 			{
@@ -422,6 +528,16 @@ void Player::update(void)
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 					(*iter)->interact(this);
 				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
+
+				if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_DAGGER)
+				{
+					atk_animator_Dagger->changeAnimation(CHARACTER_STATE::ATTACK_TOP);
+				}
+
+				else if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+				{
+					atk_animator_Broadsword->changeAnimation(CHARACTER_STATE::ATTACK_TOP);
+				}
 			}
 			else if (forwardObject)
 			{
@@ -447,6 +563,16 @@ void Player::update(void)
 				for (auto iter = enemyVec.begin(); iter != enemyVec.end(); ++iter)
 					(*iter)->interact(this);
 				SOUNDMANAGER->play(KEY_VO_CAD_MELLE_1_01, DEFAULT_VOLUME);
+
+				if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_DAGGER)
+				{
+					atk_animator_Dagger->changeAnimation(CHARACTER_STATE::ATTACK_BOTTOM);
+				}
+
+				else if (PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_BROADSWORD)
+				{
+					atk_animator_Broadsword->changeAnimation(CHARACTER_STATE::ATTACK_BOTTOM);
+				}
 			}
 			else if (forwardObject)
 			{
@@ -491,6 +617,8 @@ void Player::update(void)
 	headAnimator->update();
 	bodyAnimator->update();
 	bodyArmorAnimator->update();
+	atk_animator_Dagger->update();
+	atk_animator_Broadsword->update();
 }
 
 void Player::render(void)
@@ -499,9 +627,6 @@ void Player::render(void)
 	POINT ltPos = GridPointToPixelPointLeftTop(pos);
 	POINT revision = CAMERAMANAGER->getRevision();
 	
-	/*if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(), ltPos.x - revision.x, ltPos.y - revision.y, ltPos.x - revision.x + TILE_SIZE, ltPos.y - revision.y + TILE_SIZE);*/
-
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
@@ -511,12 +636,11 @@ void Player::render(void)
 	else
 		bodyArmorAnimator->animationRender(getMemDC(), renderPos);
 
-	if (DaggerEffectRightTF)
-	{
-		IMAGEMANAGER->frameRender(KEY_SWIPE_DAGGER_RIGHT, getMemDC(),  ltPos.x - revision.x + 50, ltPos.y - revision.y - 10, effectCountIndex, 0);
-
-		DaggerEffectRightTF = false; 
-	}
+	if (atk_animator_Dagger->getCurrentState() != CHARACTER_STATE::IDLE_RIGHT)
+		atk_animator_Dagger->animationRender(getMemDC(), renderPos);
+	
+	if (atk_animator_Broadsword->getCurrentState() != CHARACTER_STATE::IDLE_RIGHT)
+		atk_animator_Broadsword->animationRender(getMemDC(), renderPos);
 }
 
 void Player::renderMinimap(HDC _hdc)

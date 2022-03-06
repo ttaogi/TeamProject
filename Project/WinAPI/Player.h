@@ -11,19 +11,24 @@ private:
 	float initTime;
 	float turnCount;
 	float turnInterval;
+
 	DIRECTION command;
 	DIRECTION bounce;
-	RECT rc;
+	
 	Animator* headAnimator;
 	Animator* bodyAnimator;
 	Animator* bodyArmorAnimator;
-	Animator* attakAnimator;
+	Animator* atk_animator_Dagger;
+	Animator* atk_animator_Broadsword;
+
+	RECT rc;
 	Scene* scene;
 	Image* minimapStripe;
 	
 	int effectCountIndex;
-	bool DaggerEffectRightTF;
+	
 	HRESULT init(void) { return S_OK; }
+
 public:
 	HRESULT init(Scene* scenePtr);
 	void release(void);
