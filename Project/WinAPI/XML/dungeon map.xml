@@ -211,7 +211,7 @@ enum class SOUND_ID
             <y_6 type="0" object="0" />
             <y_7 type="0" object="0" />
             <y_8 type="0" object="0" />
-            <y_9 type="0" object="9" />
+            <y_9 type="0" object="0" />
             <y_10 type="0" object="1" />
             <y_11 type="1" object="0" />
             <y_12 type="1" object="0" />
@@ -278,15 +278,15 @@ enum class SOUND_ID
             <y_7 type="0" object="0" />
             <y_8 type="0" object="0" />
             <y_9 type="0" object="0" />
-            <y_10 type="1" object="1" />
+            <y_10 type="0" object="1" />
             <y_11 type="1" object="0" />
             <y_12 type="1" object="0" />
-            <y_13 type="1" object="1" />
-            <y_14 type="1" object="1" />
-            <y_15 type="1" object="1" />
-            <y_16 type="1" object="1" />
-            <y_17 type="1" object="1" />
-            <y_18 type="1" object="1" />
+            <y_13 type="0" object="1" />
+            <y_14 type="0" object="1" />
+            <y_15 type="0" object="1" />
+            <y_16 type="0" object="1" />
+            <y_17 type="0" object="1" />
+            <y_18 type="0" object="1" />
             <y_19 type="0" object="1" />
         </x_10>
         <x_11>
@@ -304,11 +304,11 @@ enum class SOUND_ID
             <y_11 type="1" object="0" />
             <y_12 type="1" object="0" />
             <y_13 type="1" object="1" />
-            <y_14 type="1" object="0" />
-            <y_15 type="1" object="0" />
-            <y_16 type="1" object="0" />
-            <y_17 type="1" object="0" />
-            <y_18 type="1" object="0" />
+            <y_14 type="0" object="0" />
+            <y_15 type="0" object="0" />
+            <y_16 type="0" object="0" />
+            <y_17 type="0" object="0" />
+            <y_18 type="0" object="0" />
             <y_19 type="0" object="0" />
         </x_11>
         <x_12>
@@ -347,7 +347,7 @@ enum class SOUND_ID
             <y_10 type="1" object="0" />
             <y_11 type="1" object="0" />
             <y_12 type="1" object="0" />
-            <y_13 type="1" object="3" />
+            <y_13 type="0" object="3" />
             <y_14 type="1" object="0" />
             <y_15 type="1" object="0" />
             <y_16 type="1" object="0" />
@@ -603,14 +603,14 @@ enum class SOUND_ID
             <y_2 type="1" object="2" />
             <y_3 type="1" object="2" />
             <y_4 type="0" object="1" />
-            <y_5 type="1" object="0" />
-            <y_6 type="1" object="0" />
-            <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
-            <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
-            <y_11 type="1" object="0" />
-            <y_12 type="1" object="0" />
+            <y_5 type="0" object="1" />
+            <y_6 type="0" object="1" />
+            <y_7 type="0" object="1" />
+            <y_8 type="0" object="1" />
+            <y_9 type="0" object="1" />
+            <y_10 type="0" object="1" />
+            <y_11 type="0" object="1" />
+            <y_12 type="0" object="1" />
             <y_13 type="0" object="3" />
             <y_14 type="1" object="0" />
             <y_15 type="1" object="0" />
@@ -625,14 +625,14 @@ enum class SOUND_ID
             <y_2 type="1" object="0" />
             <y_3 type="1" object="0" />
             <y_4 type="0" object="1" />
-            <y_5 type="1" object="0" />
-            <y_6 type="1" object="0" />
-            <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
-            <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
-            <y_11 type="1" object="0" />
-            <y_12 type="1" object="0" />
+            <y_5 type="0" object="0" />
+            <y_6 type="0" object="0" />
+            <y_7 type="0" object="0" />
+            <y_8 type="0" object="0" />
+            <y_9 type="0" object="0" />
+            <y_10 type="0" object="0" />
+            <y_11 type="0" object="0" />
+            <y_12 type="0" object="0" />
             <y_13 type="0" object="3" />
             <y_14 type="1" object="0" />
             <y_15 type="1" object="0" />
@@ -643,18 +643,18 @@ enum class SOUND_ID
         </x_26>
         <x_27>
             <y_0 type="0" object="1" />
-            <y_1 type="0" object="22" />
-            <y_2 type="1" object="0" />
+            <y_1 type="0" object="0" />
+            <y_2 type="1" object="22" />
             <y_3 type="1" object="7" />
             <y_4 type="0" object="1" />
-            <y_5 type="1" object="0" />
-            <y_6 type="1" object="0" />
-            <y_7 type="1" object="0" />
-            <y_8 type="1" object="0" />
-            <y_9 type="1" object="0" />
-            <y_10 type="1" object="0" />
-            <y_11 type="1" object="0" />
-            <y_12 type="1" object="0" />
+            <y_5 type="0" object="0" />
+            <y_6 type="0" object="0" />
+            <y_7 type="0" object="0" />
+            <y_8 type="0" object="0" />
+            <y_9 type="0" object="0" />
+            <y_10 type="0" object="0" />
+            <y_11 type="0" object="0" />
+            <y_12 type="0" object="0" />
             <y_13 type="0" object="3" />
             <y_14 type="0" object="3" />
             <y_15 type="0" object="3" />
@@ -669,21 +669,21 @@ enum class SOUND_ID
             <y_2 type="0" object="1" />
             <y_3 type="0" object="1" />
             <y_4 type="0" object="1" />
-            <y_5 type="0" object="1" />
-            <y_6 type="0" object="1" />
-            <y_7 type="0" object="1" />
-            <y_8 type="0" object="1" />
-            <y_9 type="0" object="1" />
-            <y_10 type="0" object="1" />
-            <y_11 type="0" object="1" />
-            <y_12 type="0" object="1" />
-            <y_13 type="0" object="1" />
-            <y_14 type="0" object="1" />
-            <y_15 type="0" object="1" />
-            <y_16 type="0" object="1" />
-            <y_17 type="0" object="1" />
-            <y_18 type="0" object="1" />
-            <y_19 type="0" object="1" />
+            <y_5 type="0" object="0" />
+            <y_6 type="0" object="0" />
+            <y_7 type="0" object="0" />
+            <y_8 type="0" object="0" />
+            <y_9 type="0" object="0" />
+            <y_10 type="0" object="0" />
+            <y_11 type="0" object="0" />
+            <y_12 type="0" object="0" />
+            <y_13 type="0" object="0" />
+            <y_14 type="0" object="0" />
+            <y_15 type="0" object="0" />
+            <y_16 type="0" object="0" />
+            <y_17 type="0" object="0" />
+            <y_18 type="0" object="0" />
+            <y_19 type="0" object="0" />
         </x_28>
         <x_29>
             <y_0 type="0" object="0" />

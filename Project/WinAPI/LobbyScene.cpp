@@ -45,19 +45,9 @@ HRESULT LobbyScene::init(void)
 	player->Move(mapInfo->getStartPos());
 	PLAYERINFOMANAGER->setHp(PLAYER_HP_MAX);
 
-	shopkeeper = new Shopkeeper;
-	shopkeeper->init(this, POINT{ 10, 10 });
-	objectVec.push_back(shopkeeper);
-
 	SOUNDMANAGER->allStop();
 	if (mapInfo->getBgmKey() != "")
 		SOUNDMANAGER->play(mapInfo->getBgmKey(), DEFAULT_VOLUME);
-
-	SOUNDMANAGER->setSound3DInfo(
-		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
-		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
-	SOUNDMANAGER->play3DSound(DEFAULT_VOLUME, 0, 0, 0);
-	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 
 	// UI.
 	_plEquip = new PlEquip;
@@ -130,10 +120,6 @@ void LobbyScene::update(void)
 	_plGold->update();
 
 	CAMERAMANAGER->update();
-	SOUNDMANAGER->setSound3DInfo(
-		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).x),
-		(float)(GridPointToPixelPointCenter(shopkeeper->getPos()).y), 0);
-	SOUNDMANAGER->updateListener(GridPointToPixelPointCenter(player->getPos()));
 	SOUNDMANAGER->update();
 }
 
