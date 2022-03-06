@@ -104,9 +104,6 @@ void Slime::render(void)
 	renderPos.x -= revision.x;
 	renderPos.y -= revision.y;
 
-	/*if (KEYMANAGER->isToggleKey(VK_F1))
-		Rectangle(getMemDC(), _rc.left - revision.x, _rc.top - revision.y, _rc.right - revision.x, _rc.bottom - revision.y);*/
-
 	POINT p = scene->getPlayer()->getPos();
 	int distance = abs(p.x - pos.x) + abs(p.y - pos.y);
 
@@ -118,9 +115,9 @@ void Slime::render(void)
 		for (int i = 0; i < hpMax; ++i)
 		{
 			if (count >= 1)
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->render(getMemDC(), renderPos.x - (24 * hpMax / 2) + i * 24, renderPos.y - 78);
 			else
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->render(getMemDC(), renderPos.x - 48 + i * 24, renderPos.y - 78);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->render(getMemDC(), renderPos.x - (24 * hpMax / 2) + i * 24, renderPos.y - 78);
 
 			--count;
 		}

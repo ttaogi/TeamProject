@@ -252,9 +252,6 @@ void Player::release(void)
 
 void Player::update(void)
 {
-	if (atk_animator->isEnd())
-		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
-
 	turnCount += TIMEMANAGER->getElapsedTime();
 
 	// non-idle animation -> idle animation.

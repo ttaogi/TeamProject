@@ -380,11 +380,10 @@ void Necrodancer::render(void)
 		for (int i = 0; i < hpMax; ++i)
 		{
 			if(count >= 1)
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->
-					render(getMemDC(), renderPos.x - 72 + i * 24, renderPos.y - 102);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_FULL)->render(getMemDC(), renderPos.x - (24 * hpMax / 2) + i * 24, renderPos.y - 102);
 			else
-				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->
-					render(getMemDC(), renderPos.x - 72 + i * 24, renderPos.y - 102);
+				IMAGEMANAGER->findImage(KEY_UI_MONSTER_HEART_EMPTY)->render(getMemDC(), renderPos.x - (24 * hpMax / 2) + i * 24, renderPos.y - 102);
+
 			--count;
 		}
 }
