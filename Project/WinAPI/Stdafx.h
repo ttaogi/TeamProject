@@ -8,7 +8,7 @@
 //! Windows 헤더 파일
 #include <Windows.h>
 
-#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
+//#pragma comment(linker, "/entry:WinMainCRTStartup /subsystem:console")
 //! 라이브러리
 //멀티미디어
 #pragma comment(lib,"Winmm.lib")
