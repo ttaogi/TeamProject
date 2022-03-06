@@ -153,6 +153,7 @@
     <ClCompile Include="Bomb.cpp" />
     <ClCompile Include="CommonMacroFunction.cpp" />
     <ClCompile Include="Constants.cpp" />
+    <ClCompile Include="DungeonScene.cpp" />
     <ClCompile Include="Effect.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Enums.cpp" />
@@ -227,6 +228,7 @@
     <ClInclude Include="Bomb.h" />
     <ClInclude Include="CommonMacroFunction.h" />
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="DungeonScene.h" />
     <ClInclude Include="Effect.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="Enums.h" />

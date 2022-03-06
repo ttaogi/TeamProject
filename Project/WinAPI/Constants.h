@@ -336,6 +336,7 @@ extern const std::string XML_DOC_ITEM_LIST;
 extern const std::string XML_DOC_EXAMPLE_MAP;
 extern const std::string XML_DOC_DUGEON_MAP;
 extern const std::string XML_DOC_BOSS_MAP;
+extern const std::string XML_DOC_DUNGEON_MAP;
 #pragma endregion XmlDocument
 
 ///////////////////////

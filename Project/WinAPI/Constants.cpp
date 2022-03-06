@@ -585,7 +585,7 @@ const std::string XML_DOC_ITEM_LIST =
 const std::string XML_DOC_EXAMPLE_MAP =
 	"XML/example map.xml";
 const std::string XML_DOC_DUGEON_MAP =
-	"XML/dugeon map.xml";
+	"XML/dungeon map.xml";
 const std::string XML_DOC_BOSS_MAP =
 	"XML/boss map.xml";
 #pragma endregion XmlDocument
