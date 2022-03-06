@@ -16,6 +16,7 @@ private:
 	RECT rc;
 	Animator* headAnimator;
 	Animator* bodyAnimator;
+	Animator* bodyArmorAnimator;
 	Animator* attakAnimator;
 	Scene* scene;
 	Image* minimapStripe;

@@ -171,6 +171,10 @@ const std::string KEY_PLAYER_BODY_IDLE_RIGHT =
 	"PLAYER_BODY_IDLE_RIGHT";
 const char* DIR_PLAYER_BODY_IDLE_RIGHT =
 	"Resources/Images/entities/player1_armor_body_xmas_idle_right.bmp";
+const std::string KEY_PLAYER_ARMOR_IDLE_RIGHT =
+	"PLAYER_ARMOR_IDLE_RIGHT";
+const char* DIR_PLAYER_ARMOR_IDLE_RIGHT =
+	"Resources/Images/entities/player1_armor_idle_right.bmp";
 
 const std::string KEY_PLAYER_HEAD_IDLE_LEFT =
 	"PLAYER_HEAD_IDLE_LEFT";
@@ -180,6 +184,10 @@ const std::string KEY_PLAYER_BODY_IDLE_LEFT =
 	"PLAYER_BODY_IDLE_LEFT";
 const char* DIR_PLAYER_BODY_IDLE_LEFT =
 	"Resources/Images/entities/player1_armor_body_xmas_idle_left.bmp";
+const std::string KEY_PLAYER_ARMOR_IDLE_LEFT =
+	"PLAYER_ARMOR_IDLE_LEFT";
+const char* DIR_PLAYER_ARMOR_IDLE_LEFT =
+	"Resources/Images/entities/player1_armor_idle_left.bmp";
 
 const std::string KEY_PLAYER_HEAD_JUMP_RIGHT =
 	"PLAYER_HEAD_JUMP_RIGHT";
@@ -189,6 +197,10 @@ const std::string KEY_PLAYER_BODY_JUMP_RIGHT =
 	"PLAYER_BODY_JUMP_RIGHT";
 const char* DIR_PLAYER_BODY_JUMP_RIGHT =
 	"Resources/Images/entities/player1_armor_body_xmas_jump_right.bmp";
+const std::string KEY_PLAYER_ARMOR_JUMP_RIGHT =
+	"PLAYER_ARMOR_JUMP_RIGHT";
+const char* DIR_PLAYER_ARMOR_JUMP_RIGHT =
+	"Resources/Images/entities/player1_armor_jump_right.bmp";
 
 const std::string KEY_PLAYER_HEAD_JUMP_LEFT =
 	"PLAYER_HEAD_JUMP_LEFT";
@@ -198,6 +210,10 @@ const std::string KEY_PLAYER_BODY_JUMP_LEFT =
 	"PLAYER_BODY_JUMP_LEFT";
 const char* DIR_PLAYER_BODY_JUMP_LEFT =
 	"Resources/Images/entities/player1_armor_body_xmas_jump_left.bmp";
+const std::string KEY_PLAYER_ARMOR_JUMP_LEFT =
+	"PLAYER_ARMOR_JUMP_LEFT";
+const char* DIR_PLAYER_ARMOR_JUMP_LEFT =
+	"Resources/Images/entities/player1_armor_jump_left.bmp";
 
 const std::string KEY_PLAYER_HEAD_JUMP_TOP =
 	"PLAYER_HEAD_JUMP_TOP";
@@ -207,6 +223,10 @@ const std::string KEY_PLAYER_BODY_JUMP_TOP =
 	"PLAYER_BODY_JUMP_TOP";
 const char* DIR_PLAYER_BODY_JUMP_TOP =
 	"Resources/Images/entities/player1_armor_body_xmas_jump_top.bmp";
+const std::string KEY_PLAYER_ARMOR_JUMP_TOP =
+	"PLAYER_ARMOR_JUMP_TOP";
+const char* DIR_PLAYER_ARMOR_JUMP_TOP =
+	"Resources/Images/entities/player1_armor_jump_top.bmp";
 
 const std::string KEY_PLAYER_HEAD_JUMP_BOTTOM =
 	"PLAYER_HEAD_JUMP_BOTTOM";
@@ -216,6 +236,10 @@ const std::string KEY_PLAYER_BODY_JUMP_BOTTOM =
 	"PLAYER_BODY_JUMP_BOTTOM";
 const char* DIR_PLAYER_BODY_JUMP_BOTTOM =
 	"Resources/Images/entities/player1_armor_body_xmas_jump_bottom.bmp";
+const std::string KEY_PLAYER_ARMOR_JUMP_BOTTOM =
+	"PLAYER_ARMOR_JUMP_BOTTOM";
+const char* DIR_PLAYER_ARMOR_JUMP_BOTTOM =
+	"Resources/Images/entities/player1_armor_jump_bottom.bmp";
 
 const std::string KEY_PLAYER_MINIMAP =
 	"PLAYER_MINIMAP";

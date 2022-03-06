@@ -25,21 +25,28 @@ HRESULT Player::init(Scene* scenePtr)
 	{ // animation.
 		headAnimator = new Animator();
 		bodyAnimator = new Animator();
+		bodyArmorAnimator = new Animator();
 
 		Animation* headIdleRight = new Animation();
 		Animation* bodyIdleRight = new Animation();
+		Animation* armorIdleRight = new Animation();
 		Animation* headJumpRight = new Animation();
 		Animation* bodyJumpRight = new Animation();
+		Animation* armorJumpRight = new Animation();
 
 		Animation* headIdleLeft = new Animation();
 		Animation* bodyIdleLeft = new Animation();
+		Animation* armorIdleLeft = new Animation();
 		Animation* headJumpLeft = new Animation();
 		Animation* bodyJumpLeft = new Animation();
+		Animation* armorJumpLeft = new Animation();
 
 		Animation* headJumpTop = new Animation();
 		Animation* bodyJumpTop = new Animation();
+		Animation* armorJumpTop = new Animation();
 		Animation* headJumpBottom = new Animation();
 		Animation* bodyJumpBottom = new Animation();
+		Animation* armorJumpBottom = new Animation();
 
 		headIdleRight->init(
 			KEY_PLAYER_HEAD_IDLE_RIGHT,
@@ -51,6 +58,11 @@ HRESULT Player::init(Scene* scenePtr)
 			POINT{ -24, -24 }, CHARACTER_STATE::IDLE_RIGHT,
 			true, false, 16
 		);
+		armorIdleRight->init(
+			KEY_PLAYER_ARMOR_IDLE_RIGHT,
+			POINT{ -24, -24 }, CHARACTER_STATE::IDLE_RIGHT,
+			true, false, 16
+		);
 		headJumpRight->init(
 			KEY_PLAYER_HEAD_JUMP_RIGHT,
 			POINT{ -72, -68 }, CHARACTER_STATE::JUMP_RIGHT,
@@ -58,6 +70,11 @@ HRESULT Player::init(Scene* scenePtr)
 		);
 		bodyJumpRight->init(
 			KEY_PLAYER_BODY_JUMP_RIGHT,
+			POINT{ -72, -48 }, CHARACTER_STATE::JUMP_RIGHT,
+			false, false, 64
+		);
+		armorJumpRight->init(
+			KEY_PLAYER_ARMOR_JUMP_RIGHT,
 			POINT{ -72, -48 }, CHARACTER_STATE::JUMP_RIGHT,
 			false, false, 64
 		);
@@ -72,6 +89,11 @@ HRESULT Player::init(Scene* scenePtr)
 			POINT{ -24, -24 }, CHARACTER_STATE::IDLE_LEFT,
 			true, false, 16
 		);
+		armorIdleLeft->init(
+			KEY_PLAYER_ARMOR_IDLE_LEFT,
+			POINT{ -24, -24 }, CHARACTER_STATE::IDLE_LEFT,
+			true, false, 16
+		);
 		headJumpLeft->init(
 			KEY_PLAYER_HEAD_JUMP_LEFT,
 			POINT{ -24, -68 }, CHARACTER_STATE::JUMP_LEFT,
@@ -79,6 +101,11 @@ HRESULT Player::init(Scene* scenePtr)
 		);
 		bodyJumpLeft->init(
 			KEY_PLAYER_BODY_JUMP_LEFT,
+			POINT{ -24, -48 }, CHARACTER_STATE::JUMP_LEFT,
+			false, false, 64
+		);
+		armorJumpLeft->init(
+			KEY_PLAYER_ARMOR_JUMP_LEFT,
 			POINT{ -24, -48 }, CHARACTER_STATE::JUMP_LEFT,
 			false, false, 64
 		);
@@ -93,6 +120,11 @@ HRESULT Player::init(Scene* scenePtr)
 			POINT{ -24, -24 }, CHARACTER_STATE::JUMP_TOP,
 			false, false, 64
 		);
+		armorJumpTop->init(
+			KEY_PLAYER_ARMOR_JUMP_TOP,
+			POINT{ -24, -24 }, CHARACTER_STATE::JUMP_TOP,
+			false, false, 64
+		);
 		headJumpBottom->init(
 			KEY_PLAYER_HEAD_JUMP_BOTTOM,
 			POINT{ -24, -92 }, CHARACTER_STATE::JUMP_BOTTOM,
@@ -103,22 +135,32 @@ HRESULT Player::init(Scene* scenePtr)
 			POINT{ -24, -72 }, CHARACTER_STATE::JUMP_BOTTOM,
 			false, false, 64
 		);
+		armorJumpBottom->init(
+			KEY_PLAYER_ARMOR_JUMP_BOTTOM,
+			POINT{ -24, -72 }, CHARACTER_STATE::JUMP_BOTTOM,
+			false, false, 64
+		);
 
 		headAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, headIdleRight);
 		bodyAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, bodyIdleRight);
+		bodyArmorAnimator->addAnimation(CHARACTER_STATE::IDLE_RIGHT, armorIdleRight);
 		headAnimator->addAnimation(CHARACTER_STATE::IDLE_LEFT, headIdleLeft);
 		bodyAnimator->addAnimation(CHARACTER_STATE::IDLE_LEFT, bodyIdleLeft);
+		bodyArmorAnimator->addAnimation(CHARACTER_STATE::IDLE_LEFT, armorIdleLeft);
 
 		headAnimator->addAnimation(CHARACTER_STATE::JUMP_RIGHT, headJumpRight);
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_RIGHT, bodyJumpRight);
+		bodyArmorAnimator->addAnimation(CHARACTER_STATE::JUMP_RIGHT, armorJumpRight);
 		headAnimator->addAnimation(CHARACTER_STATE::JUMP_LEFT, headJumpLeft);
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_LEFT, bodyJumpLeft);
+		bodyArmorAnimator->addAnimation(CHARACTER_STATE::JUMP_LEFT, armorJumpLeft);
 
 		headAnimator->addAnimation(CHARACTER_STATE::JUMP_TOP, headJumpTop);
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_TOP, bodyJumpTop);
+		bodyArmorAnimator->addAnimation(CHARACTER_STATE::JUMP_TOP, armorJumpTop);
 		headAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, headJumpBottom);
 		bodyAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, bodyJumpBottom);
-
+		bodyArmorAnimator->addAnimation(CHARACTER_STATE::JUMP_BOTTOM, armorJumpBottom);
 	}
 
 	return S_OK;
@@ -130,6 +172,8 @@ void Player::release(void)
 	SAFE_DELETE(headAnimator);
 	SAFE_RELEASE(bodyAnimator);
 	SAFE_DELETE(bodyAnimator);
+	SAFE_RELEASE(bodyArmorAnimator);
+	SAFE_DELETE(bodyArmorAnimator);
 }
 
 void Player::update(void)
@@ -153,6 +197,7 @@ void Player::update(void)
 					Move(searchPos);
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 				}
 				break;
 			case DIRECTION::TOP:
@@ -163,6 +208,7 @@ void Player::update(void)
 					Move(searchPos);
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
 				}
 				break;
 			case DIRECTION::RIGHT:
@@ -173,6 +219,7 @@ void Player::update(void)
 					Move(searchPos);
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 				}
 				break;
 			case DIRECTION::BOTTOM:
@@ -183,6 +230,7 @@ void Player::update(void)
 					Move(searchPos);
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 				}
 				break;
 			}
@@ -195,21 +243,25 @@ void Player::update(void)
 			{
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 			}
 			else if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_LEFT)
 			{
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 			}
 			else if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_TOP)
 			{
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
 			}
 			else if (headAnimator->getCurrentState() == CHARACTER_STATE::JUMP_BOTTOM)
 			{
 				headAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::IDLE_LEFT);
 			}
 		}
 
@@ -327,6 +379,7 @@ void Player::update(void)
 					Move(POINT{ pos.x - 1, pos.y });
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 				}
 			}
 			else
@@ -334,6 +387,7 @@ void Player::update(void)
 				Move(POINT{ pos.x - 1, pos.y });
 				headAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_LEFT);
 			}
 			break;
 		case DIRECTION::RIGHT:
@@ -351,6 +405,7 @@ void Player::update(void)
 					Move(POINT{ pos.x + 1, pos.y });
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 				}
 			}
 			else
@@ -358,6 +413,7 @@ void Player::update(void)
 				Move(POINT{ pos.x + 1, pos.y });
 				headAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_RIGHT);
 			}
 			break;
 		case DIRECTION::TOP:
@@ -374,6 +430,7 @@ void Player::update(void)
 					Move(POINT{ pos.x, pos.y - 1 });
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
 				}
 			}
 			else
@@ -381,6 +438,7 @@ void Player::update(void)
 				Move(POINT{ pos.x, pos.y - 1 });
 				headAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_TOP);
 			}
 			break;
 		case DIRECTION::BOTTOM:
@@ -397,6 +455,7 @@ void Player::update(void)
 					Move(POINT{ pos.x, pos.y + 1 });
 					headAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 					bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
+					bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 				}
 			}
 			else
@@ -404,6 +463,7 @@ void Player::update(void)
 				Move(POINT{ pos.x, pos.y + 1 });
 				headAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 				bodyAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
+				bodyArmorAnimator->changeAnimation(CHARACTER_STATE::JUMP_BOTTOM);
 			}
 			break;
 		}
@@ -430,6 +490,7 @@ void Player::update(void)
 	// animation update.
 	headAnimator->update();
 	bodyAnimator->update();
+	bodyArmorAnimator->update();
 }
 
 void Player::render(void)
@@ -445,7 +506,10 @@ void Player::render(void)
 	renderPos.y -= revision.y;
 
 	headAnimator->animationRender(getMemDC(), renderPos);
-	bodyAnimator->animationRender(getMemDC(), renderPos);
+	if(PLAYERINFOMANAGER->getBody().type == ITEM_TYPE::ITEM_TYPE_NUM)
+		bodyAnimator->animationRender(getMemDC(), renderPos);
+	else
+		bodyArmorAnimator->animationRender(getMemDC(), renderPos);
 
 	if (DaggerEffectRightTF)
 	{
