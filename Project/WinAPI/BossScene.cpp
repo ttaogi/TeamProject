@@ -35,6 +35,8 @@ HRESULT BossScene::init(void)
 	if (mapInfo == NULL) return E_FAIL;
 
 	objectVec = mapInfo->getObjectVec();
+	bgmLength = mapInfo->getBgmPlayTime();
+	sceneInitTime = TIMEMANAGER->getWorldTime();
 
 	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
@@ -111,6 +113,17 @@ void BossScene::release(void)
 
 void BossScene::update(void)
 {
+	if (PLAYERINFOMANAGER->getHp() <= 0)
+	{
+		_mg->setNextScene(KEY_SCENE_LOBBY);
+		return;
+	}
+	if (TIMEMANAGER->getWorldTime() - sceneInitTime > bgmLength)
+	{
+		_mg->setNextScene(KEY_SCENE_LOBBY);
+		return;
+	}
+
 	turnCount += TIMEMANAGER->getElapsedTime();
 	turnCount1 += TIMEMANAGER->getElapsedTime();
 	turnCount2 += TIMEMANAGER->getElapsedTime();
