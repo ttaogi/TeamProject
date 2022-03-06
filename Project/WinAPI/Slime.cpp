@@ -131,7 +131,7 @@ void Slime::render(void)
 
 bool Slime::interact(Player* player)
 {
-	if (player)	hp--;
+	if (player)	hp -= PLAYERINFOMANAGER->getAttack().atk;
 	else		hp -= 4;
 
 	if (hp <= 0)
@@ -149,7 +149,7 @@ bool Slime::interact(Player* player)
 
 void Slime::attackTarget()
 {
-	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+	PLAYERINFOMANAGER->isAttacked(1);
 	SOUNDMANAGER->play(KEY_EN_BAT_ATTACK, DEFAULT_VOLUME);
 
 	if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left

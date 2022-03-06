@@ -149,7 +149,7 @@ void Skeleton::render(void)
 
 bool Skeleton::interact(Player* player)
 {
-	if (player)	hp--;
+	if (player)	hp -= PLAYERINFOMANAGER->getAttack().atk;
 	else		hp -= 4;
 
 	if (hp <= 0)
@@ -270,7 +270,7 @@ void Skeleton::faceTarget()
 
 void Skeleton::attackTarget()
 {
-	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+	PLAYERINFOMANAGER->isAttacked(1);
 	SOUNDMANAGER->play(KEY_EN_SKEL_ATTACK_MELEE, DEFAULT_VOLUME);
 
 	if (scene->getPlayer()->getPos().x - pos.x < 0) //Target Left

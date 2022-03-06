@@ -335,7 +335,7 @@ void Necrodancer::freeze()
 	if (playerPos.x >= pos.x - 3 && playerPos.x <= pos.x + 3 &&
 		playerPos.y >= pos.y - 3 && playerPos.y <= pos.y + 3)
 	{
-		PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+		PLAYERINFOMANAGER->isAttacked(3);
 	}
 }
 
@@ -350,7 +350,7 @@ void Necrodancer::explosion()
 	if (playerPos.x >= pos.x - 2 && playerPos.x <= pos.x + 2 &&
 		playerPos.y >= pos.y - 2 && playerPos.y <= pos.y + 2)
 	{
-		PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+		PLAYERINFOMANAGER->isAttacked(3);
 	}
 }
 
@@ -392,9 +392,9 @@ void Necrodancer::render(void)
 bool Necrodancer::interact(Player* player)
 {
 	if (player && PLAYERINFOMANAGER->getAttack().detailType == ITEM_DETAIL::ATTACK_GOLDENLUTE)
-		--hp;
-
+		hp -= PLAYERINFOMANAGER->getAttack().atk;
 	SOUNDMANAGER->play(KEY_VO_NEC_ATT_V1_01, DEFAULT_VOLUME);
+
 	if (hp <= 0)
 	{
 		Object* obj = NULL;

@@ -141,7 +141,7 @@ void SlimeBlue::render(void)
 
 bool SlimeBlue::interact(Player* player)
 {
-	if (player)	hp--;
+	if (player)	hp -= PLAYERINFOMANAGER->getAttack().atk;
 	else		hp -= 4;
 
 	if (hp <= 0)
@@ -194,7 +194,7 @@ void SlimeBlue::move(void)
 
 void SlimeBlue::attackTarget()
 {
-	PLAYERINFOMANAGER->setHp(PLAYERINFOMANAGER->getHp() - 1);
+	PLAYERINFOMANAGER->isAttacked(1);
 	SOUNDMANAGER->play(KEY_EN_SLIME_ATTACK, DEFAULT_VOLUME);
 
 	if (scene->getPlayer()->getPos().x - pos.x < 0)

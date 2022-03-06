@@ -40,7 +40,7 @@ void Heal::render(void)
 		_info.stripe->render(getMemDC(), (int)renderPos.x, (int)renderPos.y);
 }
 
-bool Heal::interact(Player * player)
+bool Heal::interact(Player* player)
 {
 	if (player == NULL)
 	{

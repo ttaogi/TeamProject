@@ -29,6 +29,15 @@ HRESULT PlayerInfoManager::init()
 
 void PlayerInfoManager::release() { }
 
+void PlayerInfoManager::isAttacked(int _dmg)
+{
+	int dmg = _dmg - (body.def + head.def);
+	if (dmg < 1) dmg = 1;
+
+	hp -= dmg;
+	if (hp < 0) hp = 0;
+}
+
 int PlayerInfoManager::getMoney() const { return money; }
 void PlayerInfoManager::setMoney(int _money) { money = _money; }
 

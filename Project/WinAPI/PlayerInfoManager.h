@@ -21,6 +21,8 @@ public:
 	HRESULT init();
 	void release();
 
+	void isAttacked(int _dmg);
+
 	int getMoney() const;
 	void setMoney(int _money);
 	Item getShovel() const;
