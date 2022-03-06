@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "Scene.h"
 #include "skeleton.h"
+#include "Money.h"
 
 const int GLOBAL_COOL = 3;
 const int SUMMON_COOL = 4;
@@ -407,6 +408,12 @@ bool Necrodancer::interact(Player* player)
 		}
 
 		destroyed = true;
+		SOUNDMANAGER->play(KEY_VO_NEC_DEATH, DEFAULT_VOLUME);
+
+		Money* m = new Money();
+		m->init(scene, pos);
+		m->setQuantity(RND->getFromIntTo(1, 30));
+		scene->getObjectVec()->push_back(m);
 
 		vector<Object*>* objectVec = scene->getObjectVec();
 

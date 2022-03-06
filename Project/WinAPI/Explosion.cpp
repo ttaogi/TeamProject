@@ -18,6 +18,7 @@ HRESULT Explosion::init(Scene * scenePtr, POINT position)
 	animator = NULL;
 	scene = scenePtr;
 	_info = ITEMINFOMANAGER->getItemInfo(ITEM_DETAIL::BOMB);
+	sound = false;
 
 	bombAnimator = new Animator();
 	explosionAnimator = new Animator();
@@ -45,7 +46,16 @@ void Explosion::release(void)
 void Explosion::update(void)
 {
 	if (!bombAnimator->isEnd())	bombAnimator->update();
-	else						explosionAnimator->update();
+	else
+	{
+		explosionAnimator->update();
+		if (sound == false)
+		{
+			sound = true;
+			SOUNDMANAGER->play(KEY_SFX_BOMB_EXPLODE, DEFAULT_VOLUME);
+		}
+	}
+	
 
 	if (explosionAnimator->isEnd())
 	{
