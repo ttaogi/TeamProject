@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ROOT>
     <turnInterval interval="0.25" />
-    <startPos pos_x="27" pos_y="12" />
+    <startPos pos_x="4" pos_y="3" />
     <bgm sound_id="3" play_time="180" />
     <!--
 enum class TILE_TYPE
