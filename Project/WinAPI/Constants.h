@@ -271,6 +271,19 @@ extern const char* DIR_EFFECT_EXPLOSION55;
 extern const std::string KEY_EFFECT_ICEBLAST;
 extern const char* DIR_EFFECT_ICEBLASE;
 #pragma endregion effect
+
+#pragma region BossRoomOpen
+extern const std::string KEY_BG_TOPBLADE;
+extern const char* DIR_BG_TOPBLADE;
+extern const std::string KEY_BG_GRADIENT;
+extern const char* DIR_BG_GRADIENT;
+extern const std::string KEY_BG_BOTTOMBLADE;
+extern const char* DIR_BG_BOTTOMBLADE;
+extern const std::string KEY_BG_GRADIENT2;
+extern const char* DIR_BG_GRADIENT2;
+extern const std::string KEY_BG_BOTTOMBLADE2;
+extern const char* DIR_BG_BOTTOMBLADE2;
+#pragma endregion BossRoomOpen
 #pragma endregion Stripe
 
 ///////////////////////

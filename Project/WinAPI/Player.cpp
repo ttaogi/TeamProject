@@ -28,6 +28,7 @@ HRESULT Player::init(Scene* scenePtr)
 		atk_animator_Dagger = new Animator;
 		atk_animator_Broadsword = new Animator;
 
+
 		Animation* headIdleRight = new Animation();
 		Animation* bodyIdleRight = new Animation();
 		Animation* armorIdleRight = new Animation();
@@ -251,6 +252,9 @@ void Player::release(void)
 
 void Player::update(void)
 {
+	if (atk_animator->isEnd())
+		atk_animator->changeAnimation(CHARACTER_STATE::IDLE_RIGHT);
+
 	turnCount += TIMEMANAGER->getElapsedTime();
 
 	// non-idle animation -> idle animation.

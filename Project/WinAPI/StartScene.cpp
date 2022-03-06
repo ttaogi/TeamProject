@@ -35,5 +35,5 @@ void StartScene::render(void)
 {
 	background->render(getMemDC(), 0, 0);
 	pressAnyKey->alphaRender(getMemDC(), (WINSIZEX - pressAnyKey->getWidth()) / 2,
-		WINSIZEY - 100, (BYTE)(63 + 192 * abs(sin(TIMEMANAGER->getWorldTime()))));
+		WINSIZEY - 44, (BYTE)(63 + 192 * abs(sin(TIMEMANAGER->getWorldTime()))));
 }
