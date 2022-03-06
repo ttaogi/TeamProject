@@ -445,7 +445,7 @@ bool Necrodancer::interact(Player* player)
 
 			searchObj = scene->getObject(searchPos);
 
-			if (!searchObj)
+			if (searchObj)
 				continue;
 
 			move(searchPos);
