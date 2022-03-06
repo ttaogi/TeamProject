@@ -14,6 +14,8 @@ protected:
 	MapInfo* mapInfo;
 	Player* player;
 	Image* minimap;
+	double bgmLength;
+	double sceneInitTime;
 	std::vector<Object*> objectVec;
 	std::vector<Object*> effectVec;
 public:

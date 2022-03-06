@@ -31,15 +31,12 @@ HRESULT DungeonScene::init(void)
 	PatBlt(minimap->getMemDC(), 0, 0, MINIMAP_WIDTH, MINIMAP_HEIGHT, BLACKNESS);
 	minimap->setTransColor(true, RGB(0, 0, 0));
 
-	minimap = new Image();
-	minimap->init(WINSIZEX, WINSIZEY);
-	PatBlt(minimap->getMemDC(), 0, 0, WINSIZEX, WINSIZEY, BLACKNESS);
-	minimap->setTransColor(true, RGB(0, 0, 0));
-
 	mapInfo = MAPINFOMANAGER->getMapInfo(MAP_ID::DUGEON_MAP, this);
 	if (mapInfo == NULL) return E_FAIL;
 
 	objectVec = mapInfo->getObjectVec();
+	bgmLength = mapInfo->getBgmPlayTime();
+	sceneInitTime = TIMEMANAGER->getWorldTime();
 
 	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
@@ -105,6 +102,17 @@ void DungeonScene::update(void)
 	if (KEYMANAGER->isOnceKeyDown(VK_ESCAPE))
 	{
 		_mg->quitGame();
+		return;
+	}
+
+	if (PLAYERINFOMANAGER->getHp() <= 0)
+	{
+		_mg->setNextScene(KEY_SCENE_LOBBY);
+		return;
+	}
+	if (TIMEMANAGER->getWorldTime() - sceneInitTime > bgmLength)
+	{
+		_mg->setNextScene(KEY_SCENE_BOSS);
 		return;
 	}
 
