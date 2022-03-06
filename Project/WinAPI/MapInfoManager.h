@@ -31,7 +31,7 @@ private:
 	POINT startPos;
 	POINT size;
 	Scene* scene;
-	float turnInterval;
+	double turnInterval;
 	std::vector<std::vector<Tile*>> tileMap;
 	std::vector<Object*> objectVec;
 public:
@@ -47,7 +47,7 @@ public:
 	float getBgmPlayTime() const { return bgmPlayTime; }
 	POINT getStartPos() const { return startPos; }
 	POINT getSize() const { return size; }
-	float getTurnInterval() const { return turnInterval; }
+	double getTurnInterval() const { return turnInterval; }
 	std::vector<std::vector<Tile*>>* getTileMap() { return &tileMap; }
 	std::vector<Object*> getObjectVec() const { return objectVec; }
 };

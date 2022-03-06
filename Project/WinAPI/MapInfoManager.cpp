@@ -106,7 +106,7 @@ HRESULT MapInfo::init(const std::string _fileName, Scene* _scene)
 		int startX = 0;
 		int startY = 0;
 
-		XmlManager::getAttributeValueFloat(interval, "interval", &turnInterval);
+		XmlManager::getAttributeValueDouble(interval, "interval", &turnInterval);
 		cout << "turn interval : " << turnInterval << endl;
 
 		XmlManager::getAttributeValueInt(startPosInfo, "pos_x", &startX);

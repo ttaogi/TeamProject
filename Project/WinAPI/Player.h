@@ -9,8 +9,8 @@ class Player : public GameNode
 {
 private:
 	float initTime;
-	float turnCount;
-	float turnInterval;
+	double turnCount;
+	double turnInterval;
 
 	DIRECTION command;
 	DIRECTION bounce;

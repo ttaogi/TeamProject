@@ -84,9 +84,9 @@ private:
 	vector<tagNote> ::iterator _viNote;
 	RhythmNote* _rhythmNote;
 	
-	float _count;
+	double _count;
 
-	float _turnInterval;
+	double _turnInterval;
 	float _noteSpeed;
 	float _SceneStartTime;
 	

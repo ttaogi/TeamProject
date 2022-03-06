@@ -351,7 +351,7 @@ void Player::update(void)
 	}
 
 	// get command.
-	if (turnCount >= turnInterval * 0.7f && turnCount < turnInterval)
+	if (turnCount >= turnInterval * 0.2f && turnCount < turnInterval)
 	{
 		if (KEYMANAGER->isOnceKeyDown(VK_LEFT))
 			command = DIRECTION::LEFT;

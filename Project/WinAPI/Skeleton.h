@@ -4,7 +4,7 @@
 class Skeleton : public Enemy
 {
 private:
-	float turnCount;
+	double turnCount;
 	float attackDelay;
 	float atkRange;
 	float fieldOfVision;

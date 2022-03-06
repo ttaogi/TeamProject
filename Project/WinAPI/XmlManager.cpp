@@ -216,6 +216,11 @@ float XmlManager::valueFloat(TiXmlAttribute * _attribute)
 	return stof(_attribute->Value());
 }
 
+double XmlManager::valueDouble(TiXmlAttribute * _attribute)
+{
+	return stod(_attribute->Value());
+}
+
 void XmlManager::setAttribute(
 	TiXmlElement* _element, string _name, string _value)
 {
@@ -259,6 +264,17 @@ bool XmlManager::getAttributeValueFloat(
 	const char* result = _element->Attribute(_attribute.c_str(), &value);
 
 	if (result != NULL) *_value = (float)value;
+
+	return (result != NULL);
+}
+
+bool XmlManager::getAttributeValueDouble(
+	TiXmlElement* _element, std::string _attribute, double* _value)
+{
+	double value;
+	const char* result = _element->Attribute(_attribute.c_str(), &value);
+
+	if (result != NULL) *_value = value;
 
 	return (result != NULL);
 }
