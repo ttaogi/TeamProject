@@ -7,7 +7,7 @@
         <item_2 type="1" detailType="2" name="´ë°Ë" price="20" atk="2" def="0" heal="0" range="0" />
         <item_3 type="2" detailType="3" name="°©¿Ê" price="10" atk="0" def="1" heal="0" range="0" />
         <item_4 type="3" detailType="4" name="Åõ±¸" price="10" atk="0" def="1" heal="0" range="0" />
-        <item_5 type="4" detailType="5" name="È¶ºÒ" price="10" atk="0" def="0" heal="0" range="1" />
+        <item_5 type="4" detailType="5" name="È¶ºÒ" price="10" atk="0" def="0" heal="0" range="3" />
         <item_6 type="5" detailType="6" name="»ç°ú" price="10" atk="0" def="0" heal="1" range="0" />
         <item_7 type="6" detailType="7" name="ÆøÅº" price="10" atk="4" def="0" heal="0" range="0" />
         <item_8 type="1" detailType="8" name="È²±Ý·ùÆ®" price="0" atk="1" def="0" heal="0" range="0" />

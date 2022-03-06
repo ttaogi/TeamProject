@@ -18,7 +18,7 @@ HRESULT MainGame::init(void)
 	SCENEMANAGER->addScene(KEY_SCENE_LOBBY, new LobbyScene());
 	SCENEMANAGER->addScene(KEY_SCENE_BOSS, new BossScene());
 	SCENEMANAGER->addScene(KEY_SCENE_DUNGEON, new DungeonScene());
-	SCENEMANAGER->changeScene(KEY_SCENE_DUNGEON);
+	SCENEMANAGER->changeScene(KEY_SCENE_START);
 
 	return S_OK;
 }
