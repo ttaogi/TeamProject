@@ -38,7 +38,7 @@ HRESULT BossScene::init(void)
 
 	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
-			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_START);
+			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_LOBBY);
 
 	objectVec.reserve(objectVec.size() * 1.5);
 

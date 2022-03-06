@@ -38,7 +38,7 @@ HRESULT LobbyScene::init(void)
 
 	for (auto obj = objectVec.begin(); obj != objectVec.end(); ++obj)
 		if ((*obj)->getType() == OBJECT_TYPE::STAIR)
-			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_BOSS);
+			((Stair*)(*obj))->setNextSceneKey(KEY_SCENE_DUNGEON);
 
 	player = new Player();
 	player->init(this);
