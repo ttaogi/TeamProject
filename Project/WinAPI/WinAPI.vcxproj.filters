@@ -112,6 +112,12 @@
     <Filter Include="API FrameWork\Object\Effect">
       <UniqueIdentifier>{bf46c95e-120a-487e-8471-096213cb86c5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="API FrameWork\Object\Shopkeeper">
+      <UniqueIdentifier>{629d2bbc-85ee-4cf7-bdc6-e423f81b1be6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="API FrameWork\Object\Explosion">
+      <UniqueIdentifier>{38039a9c-38fa-4833-9e26-00cb09403d38}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Stdafx.cpp">
@@ -265,16 +271,20 @@
     <ClCompile Include="Stair.cpp">
       <Filter>API FrameWork\Object\Stair</Filter>
     </ClCompile>
-    <ClCompile Include="Explosion.cpp" />
     <ClCompile Include="BossScene.cpp">
       <Filter>API FrameWork\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="Shopkeeper.cpp" />
     <ClCompile Include="Effect.cpp">
       <Filter>API FrameWork\Object\Effect</Filter>
     </ClCompile>
     <ClCompile Include="DungeonScene.cpp">
       <Filter>API FrameWork\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Shopkeeper.cpp">
+      <Filter>API FrameWork\Object\Shopkeeper</Filter>
+    </ClCompile>
+    <ClCompile Include="Explosion.cpp">
+      <Filter>API FrameWork\Object\Explosion</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -428,16 +438,20 @@
     <ClInclude Include="Stair.h">
       <Filter>API FrameWork\Object\Stair</Filter>
     </ClInclude>
-    <ClInclude Include="Explosion.h" />
     <ClInclude Include="BossScene.h">
       <Filter>API FrameWork\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Shopkeeper.h" />
     <ClInclude Include="Effect.h">
       <Filter>API FrameWork\Object\Effect</Filter>
     </ClInclude>
     <ClInclude Include="DungeonScene.h">
       <Filter>API FrameWork\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Shopkeeper.h">
+      <Filter>API FrameWork\Object\Shopkeeper</Filter>
+    </ClInclude>
+    <ClInclude Include="Explosion.h">
+      <Filter>API FrameWork\Object\Explosion</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
