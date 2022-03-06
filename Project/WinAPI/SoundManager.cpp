@@ -154,7 +154,7 @@ void SoundManager::addSound3d(std::string _fileName)
 {
 	m_system->createSound(_fileName.c_str(), FMOD_SOFTWARE | FMOD_3D, NULL, &shopKepperSound);
 
-	shopKepperSound->set3DMinMaxDistance(96, 1000);
+	shopKepperSound->set3DMinMaxDistance(30, 5000);
 	shopKepperSound->setMode(FMOD_LOOP_NORMAL);
 }
 
