@@ -31,8 +31,8 @@ HRESULT Bat::init(Scene* scenePtr, POINT position)
 	rightCount = 0;
 	leftCount = 0;
 
-	fieldOfVision = 4; //�νĹ���
-	atkRange = 1; //���ݹ���
+	fieldOfVision = 4;
+	atkRange = 1;
 		
 	Animation* Idle_Left_Animation	= new Animation();
 	Animation* Idle_Right_Animation = new Animation();
@@ -99,17 +99,17 @@ void Bat::update(void)
 
 		if ((distanceX * distanceX) + (distanceY * distanceY) <= fieldOfVision * fieldOfVision)
 		{
-			faceTarget(); //Ÿ�� �ٶ󺸱�
+			faceTarget();
 
-			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange)) //Ÿ�ٰ��� �Ÿ��� �������� ������
+			if ((distanceX * distanceX) + (distanceY * distanceY) <= (atkRange * atkRange))
 				attackTarget();
 			else if (animator->getCurrentState() != CHARACTER_STATE::ATTACK_LEFT && 
 				animator->getCurrentState() != CHARACTER_STATE::ATTACK_RIGHT &&
 				animator->getCurrentState() != CHARACTER_STATE::ATTACK_TOP &&
-				animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM) //���ݾִϸ��̼��� �ƴҶ� ����
+				animator->getCurrentState() != CHARACTER_STATE::ATTACK_BOTTOM)
 				movetoTarget();
 		}
-		else //�þ߹��� �ۿ� ������ Idle ����
+		else 
 			move();
 	}
 		
